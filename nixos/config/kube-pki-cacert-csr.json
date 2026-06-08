@@ -1,0 +1,1 @@
+{"key":{"algo":"rsa","size":2048},"names":[{"CN":"kubernetes-cluster-ca","L":"auto-generated","O":"NixOS","OU":"services.kubernetes.pki.caSpec"}]}
