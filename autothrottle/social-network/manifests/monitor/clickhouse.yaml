@@ -1,0 +1,72 @@
+---
+apiVersion: clickhouse.com/v1alpha1
+kind: KeeperCluster
+metadata:
+  namespace: monitoring
+  name: sample
+spec:
+  replicas: 3
+  dataVolumeClaimSpec:
+    storageClassName: local-path
+    resources:
+      requests:
+        storage: 1Gi
+---
+apiVersion: clickhouse.com/v1alpha1
+kind: ClickHouseCluster
+metadata:
+  namespace: monitoring
+  name: sample
+spec:
+  replicas: 1
+  shards: 1
+  dataVolumeClaimSpec:
+    storageClassName: local-path
+    resources:
+      requests:
+        storage: 10Gi
+  settings:
+    defaultUserPassword:
+      secret:
+        key: password
+        name: default-password
+    logger:
+      level: information
+    extraUsersConfig:
+      profiles:
+        default:
+          join_use_nulls: 1
+          distributed_product_mode: "global"
+          optimize_skip_unused_shards: 1
+      users:
+        reader:
+          # echo -n secret_password | sha256sum -z | awk '{print $1}'
+          password_sha256_hex: "8e67dd1355714239acde098b6f1cf906bde45be6db826dc2caca7536e07ae844"
+          profile: default
+          grants:
+            - query: "GRANT SELECT ON *.*"
+  keeperClusterRef:
+    name: sample
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: monitoring
+  name: default-password
+data:
+  # echo -n secret-password | base64
+  password: "c2VjcmV0LXBhc3N3b3Jk"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: monitoring
+  name: clickhouse
+spec:
+  selector:
+    app: sample-clickhouse
+  type: NodePort
+  ports:
+  - name: '9000'
+    port: 9000
+    nodePort: 30900
