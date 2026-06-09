@@ -9,5 +9,4 @@ resources:
   - ./monitor/clickhouse.yaml
   - ./monitor/vector.yaml
   - ./monitor/prometheus.yaml
-  - ./application/jaeger.yaml
-  - ./application/1.json
+  - ./application/social-network.yaml
