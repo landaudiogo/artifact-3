@@ -104,7 +104,7 @@ data:
         metric_backends:
           some_metrics_storage:
             prometheus:
-              endpoint: http://prometheus.metrics:9090
+              endpoint: http://release-name-kube-promethe-prometheus.monitoring:9090
               normalize_calls: true
               normalize_duration: true
 
