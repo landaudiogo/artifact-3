@@ -9,4 +9,4 @@ resources:
   - ./monitor/clickhouse.yaml
   - ./monitor/vector.yaml
   - ./monitor/prometheus.yaml
-  - ./application/social-network.yaml
+  - ./application/dsb-social.yaml
