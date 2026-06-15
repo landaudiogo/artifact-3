@@ -1,0 +1,24 @@
+nameOverride: "social-network"
+fullnameOverride: "locust-social-network"
+
+config:
+  locust_uri: "http://locust:8089"
+
+service:
+  create: true
+
+serviceMonitor:
+  enabled: true
+  additionalLabels:
+    release: "release-name"
+
+tolerations:
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/master
+    value: "true"
+  - effect: NoSchedule
+    key: unschedulable
+    value: "true"
+
+nodeSelector:
+  "kubernetes.io/hostname": k8s-master

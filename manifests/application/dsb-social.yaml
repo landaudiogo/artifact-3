@@ -5932,7 +5932,7 @@ spec:
             memory: 128Mi
         args:
         - -c
-        - git clone https://github.com/dimoibiehg/DeathStarBench.git /DeathStarBench && cp -r /DeathStarBench/socialNetwork/media-frontend/lua-scripts/* /lua-scripts/        
+        - git clone --depth 1 https://github.com/dimoibiehg/DeathStarBench.git /DeathStarBench && cp -r /DeathStarBench/socialNetwork/media-frontend/lua-scripts/* /lua-scripts/        
         volumeMounts:
         - name: lua-scripts
           mountPath: /lua-scripts
@@ -6154,7 +6154,7 @@ spec:
             memory: 128Mi
         args:
         - -c
-        - git clone https://github.com/dimoibiehg/DeathStarBench.git /DeathStarBench && cp -r /DeathStarBench/socialNetwork/gen-lua/* /gen-lua/ && cp -r /DeathStarBench/socialNetwork/docker/openresty-thrift/lua-thrift/* /lua-thrift/ && cp -r /DeathStarBench/socialNetwork/nginx-web-server/lua-scripts/* /lua-scripts/ && cp -r /DeathStarBench/socialNetwork/nginx-web-server/pages/* /pages/ && cp /DeathStarBench/socialNetwork/keys/* /keys/         
+        - git clone --depth 1 https://github.com/dimoibiehg/DeathStarBench.git /DeathStarBench && cp -r /DeathStarBench/socialNetwork/gen-lua/* /gen-lua/ && cp -r /DeathStarBench/socialNetwork/docker/openresty-thrift/lua-thrift/* /lua-thrift/ && cp -r /DeathStarBench/socialNetwork/nginx-web-server/lua-scripts/* /lua-scripts/ && cp -r /DeathStarBench/socialNetwork/nginx-web-server/pages/* /pages/ && cp /DeathStarBench/socialNetwork/keys/* /keys/         
         volumeMounts:
         - name: lua-scripts
           mountPath: /lua-scripts

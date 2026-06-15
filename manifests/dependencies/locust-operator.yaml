@@ -1,0 +1,282 @@
+---
+# Source: locust-operator/crds/locusttest.yaml
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: locusttests.locust.io
+spec:
+  group: locust.io
+  scope: Namespaced
+  names:
+    plural: locusttests
+    singular: locusttest
+    kind: LocustTest
+    shortNames:
+      - locust
+      - lt
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      subresources:
+        status: {}
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              required: ["workers"]
+              properties:
+                annotations:
+                  description: Annotations to all generated resources
+                  type: object
+                  additionalProperties:
+                    type: string
+                    default: ""
+                labels:
+                  description: Labels to all generated resources
+                  type: object
+                  additionalProperties:
+                    type: string
+                    default: ""
+                image:
+                  description: Container image with locust installed
+                  type: string
+                  default: locustio/locust:latest
+                imagePullPolicy:
+                  description: Image pull policy
+                  type: string
+                  enum:
+                    - IfNotPresent
+                    - Always
+                    - Never
+                imagePullSecrets:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                    required: ["name"]
+                workers:
+                  description: Number of worker replicas
+                  type: integer
+                  minimum: 1
+                  default: 1
+                args:
+                  description: Arguments to locust
+                  type: string
+                  default: ""
+                env:
+                  description: List of environment variables to set in the containers
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name: { type: string }
+                      value: { type: string }
+                    required: ["name"]
+                master:
+                  description: Master configuration
+                  type: object
+                  properties:
+                    labels:
+                      description: Master pod labels
+                      type: object
+                      additionalProperties:
+                        type: string
+                        default: ""
+                    annotations:
+                      description: Master pod annotations
+                      type: object
+                      additionalProperties:
+                        type: string
+                        default: ""
+                    resources:
+                      description: Master resources
+                      type: object
+                      properties:
+                        requests:
+                          type: object
+                          additionalProperties:
+                            x-kubernetes-int-or-string: true
+                        limits:
+                          type: object
+                          additionalProperties:
+                            x-kubernetes-int-or-string: true
+                worker:
+                  description: Worker configuration
+                  type: object
+                  properties:
+                    labels:
+                      description: Worker pods labels
+                      type: object
+                      additionalProperties:
+                        type: string
+                        default: ""
+                    annotations:
+                      description: Worker pods annotations
+                      type: object
+                      additionalProperties:
+                        type: string
+                        default: ""
+                    resources:
+                      description: Worker resources
+                      type: object
+                      properties:
+                        requests:
+                          type: object
+                          additionalProperties:
+                            x-kubernetes-int-or-string: true
+                        limits:
+                          type: object
+                          additionalProperties:
+                            x-kubernetes-int-or-string: true
+                locustfile:
+                  type: object
+                  description: Locustfile
+                  properties:
+                    content:
+                      type: string
+                    configMap:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                      required: ["name"]
+                  oneOf:
+                    - required: ["content"]
+                    - required: ["configMap"]
+                metrics:
+                  type: object
+                  properties:
+                    intervalSeconds: { type: integer, default: 5 }
+            status:
+              type: object
+              properties:
+                state: { type: string }
+                message: { type: string }
+                fail_ratio: { type: string }
+                total_rps: { type: number }
+                user_count: { type: integer }
+                worker_count: { type: integer }
+                worker_ratio: { type: string }
+      additionalPrinterColumns:
+        - name: state
+          description: Locust current state
+          type: string
+          jsonPath: .status.state
+        - name: workers
+          description: Locust connected workers / desired workers
+          type: string
+          jsonPath: .status.worker_ratio
+        - name: fail_ratio
+          description: Locust fail ratio
+          type: string
+          jsonPath: .status.fail_ratio
+        - name: RPS
+          description: Locust total RPS
+          type: string
+          jsonPath: .status.total_rps
+        - name: users
+          description: Locust user count
+          type: string
+          jsonPath: .status.user_count
+        - name: age
+          type: date
+          jsonPath: .metadata.creationTimestamp
+
+---
+# Source: locust-operator/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: locust-operator
+  labels:
+    helm.sh/chart: locust-operator-0.1.6
+    app.kubernetes.io/name: locust-operator
+    app.kubernetes.io/instance: locust-operator
+    app.kubernetes.io/version: "0.1.6"
+    app.kubernetes.io/managed-by: Helm
+---
+# Source: locust-operator/templates/clusterrole.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: locust-operator-clusterrole
+rules:
+  # Framework: runtime observation of namespaces & CRDs (addition/deletion).
+  - apiGroups: [apiextensions.k8s.io]
+    resources: [customresourcedefinitions]
+    verbs: [list, watch]
+  - apiGroups: [""]
+    resources: [namespaces]
+    verbs: [list, watch]
+  # Application
+  - apiGroups: ["locust.io"]
+    resources: ["*"]
+    verbs: ["*"]
+  # Applcation: Managed resources
+  - apiGroups: [""]
+    resources: ["services", "configmaps"]
+    verbs: ["get","create","update","patch","delete"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["get","list","create","update","patch","delete"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "patch", "update"]
+---
+# Source: locust-operator/templates/clusterrole.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: locust-operator-clusterrolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: locust-operator-clusterrole
+subjects:
+- kind: ServiceAccount
+  name: locust-operator
+  namespace: default
+---
+# Source: locust-operator/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: locust-operator
+  labels:
+    helm.sh/chart: locust-operator-0.1.6
+    app.kubernetes.io/name: locust-operator
+    app.kubernetes.io/instance: locust-operator
+    app.kubernetes.io/version: "0.1.6"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: locust-operator
+      app.kubernetes.io/instance: locust-operator
+  template:
+    metadata:
+      labels:
+        helm.sh/chart: locust-operator-0.1.6
+        app.kubernetes.io/name: locust-operator
+        app.kubernetes.io/instance: locust-operator
+        app.kubernetes.io/version: "0.1.6"
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      serviceAccountName: locust-operator
+      containers:
+        - name: locust-operator
+          image: "locustio/operator:0.1.6"
+          imagePullPolicy: IfNotPresent
+          args: ["--all-namespaces"]
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080

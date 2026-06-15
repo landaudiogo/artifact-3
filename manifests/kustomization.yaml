@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./dependencies/cert-manager.yaml
   - ./dependencies/clickhouse-operator.yaml
+  - ./dependencies/locust-operator.yaml
   - ./dependencies/prometheus.yaml
   - ./monitor/namespace.yaml
   - ./monitor/clickhouse.yaml
