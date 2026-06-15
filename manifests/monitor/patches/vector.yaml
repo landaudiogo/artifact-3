@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: vector
+  namespace: monitoring
+spec:
+  template:
+    spec:
+      initContainers:
+        - name: wait-for-ch
+          image: clickhouse/clickhouse-server:25.12
+          env: 
+            - name: CLICKHOUSE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: default-password
+                  key: password
+          command:
+            - sh
+            - -c
+            - |
+              while true; do
+                result="$(clickhouse-client -h clickhouse --port 9000 --user default --password "$(echo $CLICKHOUSE_PASSWORD)" -q "select count(*) from information_schema.tables where table_schema='default' and table_name='logs'")"
+                
+                if [ -n "$result" ] && [ "$result" -eq "1" ]; then
+                  echo "Success: default schema contains 'logs' table"
+                  break
+                fi
+                
+                echo "Waiting for 'logs' table in default schema..."
+                sleep 5
+              done

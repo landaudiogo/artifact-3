@@ -3,7 +3,7 @@ apiVersion: clickhouse.com/v1alpha1
 kind: KeeperCluster
 metadata:
   namespace: monitoring
-  name: sample
+  name: ch-cluster
 spec:
   replicas: 3
   dataVolumeClaimSpec:
@@ -16,7 +16,7 @@ apiVersion: clickhouse.com/v1alpha1
 kind: ClickHouseCluster
 metadata:
   namespace: monitoring
-  name: sample
+  name: ch-cluster
 spec:
   replicas: 1
   shards: 1
@@ -46,7 +46,7 @@ spec:
           grants:
             - query: "GRANT SELECT ON *.*"
   keeperClusterRef:
-    name: sample
+    name: ch-cluster
 ---
 apiVersion: v1
 kind: Secret
@@ -64,7 +64,7 @@ metadata:
   name: clickhouse
 spec:
   selector:
-    app: sample-clickhouse
+    app: ch-cluster-clickhouse
   type: NodePort
   ports:
   - name: '9000'

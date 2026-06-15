@@ -1,0 +1,31 @@
+role: Agent
+
+customConfig:
+  data_dir: /vector-data-dir
+  api:
+    enabled: true
+    address: 0.0.0.0:8686
+
+  sources:
+    k8s_logs:
+      type: kubernetes_logs
+      extra_namespace_label_selector: "kubernetes.io/metadata.name==social-network"
+      extra_label_selector: "name!=jaeger"
+
+  sinks:
+    console:
+      type: console
+      inputs: [k8s_logs]
+      encoding:
+        codec: json
+    clickhouse:
+      type: clickhouse
+      inputs: [k8s_logs]
+      endpoint: http://ch-cluster-clickhouse-headless:8123
+      table: logs
+      database: default
+      format: json_each_row
+      auth: 
+        strategy: basic
+        user: default
+        password: secret-password
