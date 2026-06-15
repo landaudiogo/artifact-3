@@ -1,13 +1,17 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+helmCharts:
+  - name: kube-prometheus-stack
+    repo: https://prometheus-community.github.io/helm-charts
+    releaseName: kube-prometheus-stack
+    namespace: monitoring
+    valuesFile: ./monitor/prometheus-values.yaml
+
 resources:
   - ./dependencies/cert-manager.yaml
   - ./dependencies/clickhouse-operator.yaml
-  - ./dependencies/locust-operator.yaml
   - ./dependencies/prometheus.yaml
   - ./monitor/namespace.yaml
   - ./monitor/clickhouse.yaml
   - ./monitor/vector.yaml
-  - ./monitor/prometheus.yaml
-  - ./application/dsb-social.yaml

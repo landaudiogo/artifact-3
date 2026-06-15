@@ -10,7 +10,7 @@ service:
 serviceMonitor:
   enabled: true
   additionalLabels:
-    release: "release-name"
+    release: kube-prometheus-stack
 
 tolerations:
   - effect: NoSchedule

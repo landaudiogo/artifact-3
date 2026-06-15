@@ -1,0 +1,32 @@
+# helm install prometheus -n monitoring \
+#   --create-namespace \
+#   prometheus-community/kube-prometheus-stack \
+#   -f prometheus-values.yaml
+
+coreDns:
+  serviceMonitor:
+    port: http-metrics
+  service:
+    port: 10055
+    targetPort: 10055
+
+prometheus:
+  service:
+    type: NodePort
+    nodePort: 30954
+    
+alertmanager:
+  enabled: false
+
+grafana:
+  enabled: true
+  service:
+    type: NodePort
+    nodePort: 30007
+  adminUser: admin
+  adminPassword: admin-password
+
+kubelet:
+  serviceMonitor:
+    interval: 15s
+    cAdvisorMetricRelabelings: null

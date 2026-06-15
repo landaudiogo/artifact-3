@@ -5127,42 +5127,6 @@ spec:
   - port: reloader-web
     path: "/metrics"
 ---
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: social-network-aggregated-trace-metrics
-  namespace: monitoring
-  labels:    
-    release: release-name
-spec:
-  jobLabel: jaeger
-  selector:
-    matchLabels:
-      app: jaeger
-  namespaceSelector:
-    matchNames:
-      - "social-network"
-  endpoints:
-  - port: "8889"
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: social-network-jaeger-collector-metrics
-  namespace: monitoring
-  labels:    
-    release: release-name
-spec:
-  jobLabel: jaeger
-  selector:
-    matchLabels:
-      app: jaeger
-  namespaceSelector:
-    matchNames:
-      - "social-network"
-  endpoints:
-  - port: "8888"
----
 # Source: kube-prometheus-stack/templates/prometheus-operator/admission-webhooks/validatingWebhookConfiguration.yaml
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
