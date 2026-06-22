@@ -22,3 +22,15 @@ helmCharts:
 resources:
   - ./configmap.yaml
   - ./namespace.yaml
+
+patches:
+  - path: ./patches/locust-exporter.yaml
+    target:
+      kind: Deployment
+      name: locust-social-network
+  - path: ./patches/servicemonitor.yaml
+    target:
+      group: monitoring.coreos.com
+      version: v1
+      kind: ServiceMonitor
+      name: locust-social-network

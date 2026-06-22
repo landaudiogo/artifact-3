@@ -165,6 +165,7 @@ spec:
       - "social-network"
   endpoints:
   - port: "8889"
+    interval: 15s
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor

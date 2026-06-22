@@ -4,6 +4,10 @@ fullnameOverride: "locust-social-network"
 config:
   locust_uri: "http://locust:8089"
 
+image:
+  repository: rvankruistum/locust-exporter
+  tag: 0.7.0
+
 service:
   create: true
 
