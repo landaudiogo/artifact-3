@@ -1,0 +1,57 @@
+[project]
+name = "RCAEval"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+
+dependencies = [
+    "causal-learn==0.1.2.3",
+    "certifi",
+    "charset-normalizer",
+    "contourpy",
+    "cycler",
+    "decorator",
+    "et_xmlfile",
+    "fonttools",
+    "graphviz",
+    "idna",
+    "importlib_resources",
+    "joblib",
+    "kiwisolver",
+    "matplotlib",
+    "networkx",
+    "numpy<2",
+    "openpyxl",
+    "packaging",
+    "pandas>2.0.1",
+    "patsy",
+    "pillow",
+    "pydot",
+    "pyparsing",
+    "python-dateutil",
+    "pytz",
+    "requests",
+    "scikit-learn",
+    "scipy",
+    "six",
+    "statsmodels",
+    "threadpoolctl",
+    "tqdm",
+    "tzdata",
+    "urllib3",
+    "zipp",
+    "cppy",
+    "pybind11",
+    "meson-python",
+    "ninja",
+    "torch",
+    "scikit-network",
+    "pingouin",
+    "tigramite",
+    "pyagrum==1.17.2",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
