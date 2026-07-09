@@ -1,3 +1,6 @@
 chaosDaemon:
   runtime: containerd
   socketPath: /run/containerd/containerd.sock
+
+controllerManager:
+  chaosdSecurityMode: false

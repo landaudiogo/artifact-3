@@ -1,5 +1,7 @@
 { config, ... }: 
 {
+    imports = [ ./chaosd ];
+
     services.kubernetes = {
         roles = [ "node" ];
         masterAddress = "k8s-master";
