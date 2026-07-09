@@ -87,11 +87,9 @@ spec:
           value: "{{ (tpl ($e.value | toString) $) }}"
         {{ end -}}
         {{ end -}}
-        {{- if .args}}
+        {{- if .args }}
         args:
-        {{- range $arg := .args}}
-        - {{ $arg }}
-        {{- end -}}
+        {{ toYaml .args | nindent 10 }}
         {{- end }}
         {{- if .volumeMounts }}        
         volumeMounts: 

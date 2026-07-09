@@ -4,7 +4,15 @@ ports:
   - port: 8080
     targetPort: 8080
 
+
 container:
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
   image: yg397/openresty-thrift
   imageVersion: xenial
   name: nginx-thrift
@@ -27,6 +35,13 @@ container:
 
 
 initContainer:
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
   image: alpine/git
   imageVersion: latest
   name: alpine-container
@@ -42,12 +57,15 @@ initContainer:
   - name: keys
     mountPath: /keys
   command: "/bin/sh" 
-  args: ["-c", "git clone --depth 1 https://github.com/dimoibiehg/DeathStarBench.git /DeathStarBench &&
-            cp -r /DeathStarBench/socialNetwork/gen-lua/* /gen-lua/ &&
-            cp -r /DeathStarBench/socialNetwork/docker/openresty-thrift/lua-thrift/* /lua-thrift/ &&
-            cp -r /DeathStarBench/socialNetwork/nginx-web-server/lua-scripts/* /lua-scripts/ &&
-            cp -r /DeathStarBench/socialNetwork/nginx-web-server/pages/* /pages/ &&
-            cp /DeathStarBench/socialNetwork/keys/* /keys/ "]
+  args: 
+    - "-c"
+    - |
+      git clone --depth 1 https://github.com/dimoibiehg/DeathStarBench.git /DeathStarBench &&
+        cp -r /DeathStarBench/socialNetwork/gen-lua/* /gen-lua/ &&
+        cp -r /DeathStarBench/socialNetwork/docker/openresty-thrift/lua-thrift/* /lua-thrift/ &&
+        cp -r /DeathStarBench/socialNetwork/nginx-web-server/lua-scripts/* /lua-scripts/ &&
+        cp -r /DeathStarBench/socialNetwork/nginx-web-server/pages/* /pages/ &&
+        cp /DeathStarBench/socialNetwork/keys/* /keys/
 
 volumes:
   - name: lua-scripts
