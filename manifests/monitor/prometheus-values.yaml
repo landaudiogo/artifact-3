@@ -11,6 +11,8 @@ coreDns:
     targetPort: 10055
 
 prometheus:
+  prometheusSpec:
+    enableOTLPReceiver: true
   service:
     type: NodePort
     nodePort: 30954
