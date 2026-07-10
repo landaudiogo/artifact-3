@@ -1,0 +1,50 @@
+image:
+  repository: ghcr.io/open-telemetry/demo
+  tag: 2.2.0-load-generator
+  pullPolicy: IfNotPresent
+
+loadtest: 
+  name: otel-demo-loadtest
+  locust_locustfile_configmap: otel-demo-locustfile
+  locust_host: "http://frontend-proxy.otel-demo:8080"
+
+nodeSelector:
+  "kubernetes.io/hostname": k8s-master
+
+service:
+  type: NodePort
+  nodePort: 30008
+tolerations:
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/master
+    value: "true"
+  - effect: NoSchedule
+    key: unschedulable
+    value: "true"
+
+master: 
+  command: []
+  environment:
+    OTEL_SERVICE_NAME: "master"
+    OTEL_COLLECTOR_NAME: otel-collector.otel-demo
+    OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE: cumulative
+    LOCUST_WEB_HOST: 0.0.0.0
+    PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION: python
+    FLAGD_HOST: flagd.otel-demo
+    FLAGD_PORT: "8013"
+    FLAGD_OFREP_PORT: "8016"
+    OTEL_EXPORTER_OTLP_ENDPOINT: http://$(OTEL_COLLECTOR_NAME):4317
+
+worker: 
+  replicas: 2
+  command: []
+  environment:
+    OTEL_SERVICE_NAME: "worker"
+    OTEL_COLLECTOR_NAME: otel-collector
+    OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE: cumulative
+    LOCUST_WEB_HOST: 0.0.0.0
+    PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION: python
+    FLAGD_HOST: flagd
+    FLAGD_PORT: "8013"
+    FLAGD_OFREP_PORT: "8016"
+    OTEL_EXPORTER_OTLP_ENDPOINT: http://$(OTEL_COLLECTOR_NAME):4317
