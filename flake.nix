@@ -50,6 +50,7 @@
                         kubectl
                         kubernetes-helm
                         clickhouse
+                        k9s
                     ];
                     KUBECONFIG = kubeconfig;
                 };

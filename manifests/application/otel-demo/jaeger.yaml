@@ -1,0 +1,19 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: otel-demo-aggregated-trace-metrics
+  namespace: otel-demo
+  labels:    
+    release: kube-prometheus-stack
+spec:
+  jobLabel: otel-demo-jaeger
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: jaeger
+  namespaceSelector:
+    matchNames:
+      - "otel-demo"
+  endpoints:
+  - port: span-metrics
+    interval: 15s
