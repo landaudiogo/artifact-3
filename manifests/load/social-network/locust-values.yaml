@@ -1,6 +1,6 @@
 loadtest: 
-  name: sn-loadtest
-  locust_locustfile_configmap: sn-locustfile
+  name: social-network-loadtest
+  locust_locustfile_configmap: social-network-locustfile
   locust_host: "http://nginx-thrift.social-network:8080"
 
 nodeSelector:

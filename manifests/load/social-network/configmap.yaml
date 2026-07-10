@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata: 
-  name: sn-locustfile
+  name: social-network-locustfile
 data:
   main.py: |
     import random
