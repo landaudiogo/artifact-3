@@ -1,0 +1,396 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: accounting
+spec:
+  template:
+    spec:
+      containers:
+      - name: accounting
+        resources:
+          limits:
+            cpu: 0.046
+            memory: 253755392.0
+          requests:
+            cpu: 0.034
+            memory: 253755392.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ad
+spec:
+  template:
+    spec:
+      containers:
+      - name: ad
+        resources:
+          limits:
+            cpu: 0.019
+            memory: 442499072.0
+          requests:
+            cpu: 0.01
+            memory: 442499072.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cart
+spec:
+  template:
+    spec:
+      containers:
+      - name: cart
+        resources:
+          limits:
+            cpu: 0.046
+            memory: 104857600.0
+          requests:
+            cpu: 0.037
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: checkout
+spec:
+  template:
+    spec:
+      containers:
+      - name: checkout
+        resources:
+          limits:
+            cpu: 0.037
+            memory: 104857600.0
+          requests:
+            cpu: 0.029
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: currency
+spec:
+  template:
+    spec:
+      containers:
+      - name: currency
+        resources:
+          limits:
+            cpu: 0.013
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: email
+spec:
+  template:
+    spec:
+      containers:
+      - name: email
+        resources:
+          limits:
+            cpu: 0.014
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flagd
+spec:
+  template:
+    spec:
+      containers:
+      - name: flagd
+        resources:
+          limits:
+            cpu: 0.01
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flagd
+spec:
+  template:
+    spec:
+      containers:
+      - name: flagd-ui
+        resources:
+          limits:
+            cpu: 0.01
+            memory: 195035136.0
+          requests:
+            cpu: 0.01
+            memory: 195035136.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fraud-detection
+spec:
+  template:
+    spec:
+      containers:
+      - name: fraud-detection
+        resources:
+          limits:
+            cpu: 0.012
+            memory: 391118848.0
+          requests:
+            cpu: 0.01
+            memory: 391118848.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  template:
+    spec:
+      containers:
+      - name: frontend
+        resources:
+          limits:
+            cpu: 0.152
+            memory: 104857600.0
+          requests:
+            cpu: 0.136
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-proxy
+spec:
+  template:
+    spec:
+      containers:
+      - name: frontend-proxy
+        resources:
+          limits:
+            cpu: 0.047
+            memory: 104857600.0
+          requests:
+            cpu: 0.043
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-provider
+spec:
+  template:
+    spec:
+      containers:
+      - name: image-provider
+        resources:
+          limits:
+            cpu: 0.01
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaeger
+spec:
+  template:
+    spec:
+      containers:
+      - name: jaeger
+        resources:
+          limits:
+            cpu: 0.053
+            memory: 974127104.0
+          requests:
+            cpu: 0.027
+            memory: 974127104.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka
+spec:
+  template:
+    spec:
+      containers:
+      - name: kafka
+        resources:
+          limits:
+            cpu: 0.03
+            memory: 753926144.0
+          requests:
+            cpu: 0.02
+            memory: 753926144.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment
+spec:
+  template:
+    spec:
+      containers:
+      - name: payment
+        resources:
+          limits:
+            cpu: 0.017
+            memory: 127926272.0
+          requests:
+            cpu: 0.014
+            memory: 127926272.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgresql
+spec:
+  template:
+    spec:
+      containers:
+      - name: postgresql
+        resources:
+          limits:
+            cpu: 0.048
+            memory: 104857600.0
+          requests:
+            cpu: 0.04
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-catalog
+spec:
+  template:
+    spec:
+      containers:
+      - name: product-catalog
+        resources:
+          limits:
+            cpu: 0.079
+            memory: 104857600.0
+          requests:
+            cpu: 0.069
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-reviews
+spec:
+  template:
+    spec:
+      containers:
+      - name: product-reviews
+        resources:
+          limits:
+            cpu: 0.016
+            memory: 104857600.0
+          requests:
+            cpu: 0.015
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quote
+spec:
+  template:
+    spec:
+      containers:
+      - name: quote
+        resources:
+          limits:
+            cpu: 0.01
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendation
+spec:
+  template:
+    spec:
+      containers:
+      - name: recommendation
+        resources:
+          limits:
+            cpu: 0.034
+            memory: 104857600.0
+          requests:
+            cpu: 0.029
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shipping
+spec:
+  template:
+    spec:
+      containers:
+      - name: shipping
+        resources:
+          limits:
+            cpu: 0.01
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: valkey-cart
+spec:
+  template:
+    spec:
+      containers:
+      - name: valkey-cart
+        resources:
+          limits:
+            cpu: 0.01
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---

@@ -11,10 +11,12 @@ helmCharts:
     namespace: otel-demo
     valuesFile: ./values.yaml
 
-patches:
-  - path: ./patches/otel-collector-agent.yaml
-  - path: ./patches/jaeger-user-config.yaml
-
 resources:
   - ./namespace.yaml
   - ./jaeger.yaml
+
+patches:
+  - path: ./patches/otel-collector-agent.yaml
+  - path: ./patches/jaeger-user-config.yaml
+  - path: ./patches/resources.yaml
+  # - path: ./patches/no-resources.yaml

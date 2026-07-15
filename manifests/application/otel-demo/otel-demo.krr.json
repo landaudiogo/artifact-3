@@ -1,0 +1,1671 @@
+{
+  "scans": [
+    {
+      "object": {
+        "cluster": "local",
+        "name": "accounting",
+        "container": "accounting",
+        "pods": [
+          {
+            "name": "accounting-cc58f6465-c7kwc",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "accounting",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "accounting",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "accounting"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"accounting\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"accounting\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"accounting\"},\"name\":\"accounting\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"accounting\"}},\"template\":{\"metadata\":{\"annotations\":{\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"accounting\",\"app.kubernetes.io/name\":\"accounting\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"accounting\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"KAFKA_ADDR\",\"value\":\"kafka:9092\"},{\"name\":\"OTEL_EXPORTER_OTLP_ENDPOINT\",\"value\":\"http://$(OTEL_COLLECTOR_NAME):4318\"},{\"name\":\"DB_CONNECTION_STRING\",\"value\":\"Host=postgresql;Username=otelu;Password=otelp;Database=otel\"},{\"name\":\"OTEL_DOTNET_AUTO_TRACES_ENTITYFRAMEWORKCORE_INSTRUMENTATION_ENABLED\",\"value\":\"false\"}],\"image\":\"ghcr.io/open-telemetry/demo:2.2.0-accounting\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"accounting\"}],\"initContainers\":[{\"command\":[\"sh\",\"-c\",\"until nc -z -v -w30 kafka 9092; do echo waiting for kafka; sleep 2; done;\"],\"image\":\"busybox:latest\",\"name\":\"wait-for-kafka\"}],\"serviceAccountName\":\"opentelemetry-demo\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.034,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 253755392.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.046,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 253755392.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "ad",
+        "container": "ad",
+        "pods": [
+          {
+            "name": "ad-bdfdbc8f4-lvnrk",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "ad",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "ad",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "ad"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"ad\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"ad\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"ad\"},\"name\":\"ad\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"ad\"}},\"template\":{\"metadata\":{\"annotations\":{\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"ad\",\"app.kubernetes.io/name\":\"ad\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"ad\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"AD_PORT\",\"value\":\"8080\"},{\"name\":\"FLAGD_HOST\",\"value\":\"flagd\"},{\"name\":\"FLAGD_PORT\",\"value\":\"8013\"},{\"name\":\"OTEL_EXPORTER_OTLP_ENDPOINT\",\"value\":\"http://$(OTEL_COLLECTOR_NAME):4318\"},{\"name\":\"OTEL_LOGS_EXPORTER\",\"value\":\"otlp\"}],\"image\":\"ghcr.io/open-telemetry/demo:2.2.0-ad\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"ad\",\"ports\":[{\"containerPort\":8080,\"name\":\"service\"}]}],\"serviceAccountName\":\"opentelemetry-demo\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 442499072.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.019,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 442499072.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "cart",
+        "container": "cart",
+        "pods": [
+          {
+            "name": "cart-7d58bbfd54-rjrl7",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "cart",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "cart",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "cart"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"cart\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"cart\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"cart\"},\"name\":\"cart\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"cart\"}},\"template\":{\"metadata\":{\"annotations\":{\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"cart\",\"app.kubernetes.io/name\":\"cart\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"cart\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"CART_PORT\",\"value\":\"8080\"},{\"name\":\"ASPNETCORE_URLS\",\"value\":\"http://*:$(CART_PORT)\"},{\"name\":\"VALKEY_ADDR\",\"value\":\"valkey-cart:6379\"},{\"name\":\"FLAGD_HOST\",\"value\":\"flagd\"},{\"name\":\"FLAGD_PORT\",\"value\":\"8013\"},{\"name\":\"OTEL_EXPORTER_OTLP_ENDPOINT\",\"value\":\"http://$(OTEL_COLLECTOR_NAME):4317\"}],\"image\":\"ghcr.io/open-telemetry/demo:2.2.0-cart\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"cart\",\"ports\":[{\"containerPort\":8080,\"name\":\"service\"}]}],\"initContainers\":[{\"command\":[\"sh\",\"-c\",\"until nc -z -v -w30 valkey-cart 6379; do echo waiting for valkey-cart; sleep 2; done;\"],\"image\":\"busybox:latest\",\"name\":\"wait-for-valkey-cart\"}],\"serviceAccountName\":\"opentelemetry-demo\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.037,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.046,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "checkout",
+        "container": "checkout",
+        "pods": [
+          {
+            "name": "checkout-7fdb89dbd7-xq2w8",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "checkout",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "checkout",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "checkout"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"checkout\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"checkout\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"checkout\"},\"name\":\"checkout\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"checkout\"}},\"template\":{\"metadata\":{\"annotations\":{\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"checkout\",\"app.kubernetes.io/name\":\"checkout\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"checkout\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"CHECKOUT_PORT\",\"value\":\"8080\"},{\"name\":\"CART_ADDR\",\"value\":\"cart:8080\"},{\"name\":\"CURRENCY_ADDR\",\"value\":\"currency:8080\"},{\"name\":\"EMAIL_ADDR\",\"value\":\"http://email:8080\"},{\"name\":\"PAYMENT_ADDR\",\"value\":\"payment:8080\"},{\"name\":\"PRODUCT_CATALOG_ADDR\",\"value\":\"product-catalog:8080\"},{\"name\":\"SHIPPING_ADDR\",\"value\":\"http://shipping:8080\"},{\"name\":\"KAFKA_ADDR\",\"value\":\"kafka:9092\"},{\"name\":\"FLAGD_HOST\",\"value\":\"flagd\"},{\"name\":\"FLAGD_PORT\",\"value\":\"8013\"},{\"name\":\"OTEL_EXPORTER_OTLP_ENDPOINT\",\"value\":\"http://$(OTEL_COLLECTOR_NAME):4317\"},{\"name\":\"GOMEMLIMIT\",\"value\":\"16MiB\"}],\"image\":\"ghcr.io/open-telemetry/demo:2.2.0-checkout\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"checkout\",\"ports\":[{\"containerPort\":8080,\"name\":\"service\"}]}],\"initContainers\":[{\"command\":[\"sh\",\"-c\",\"until nc -z -v -w30 kafka 9092; do echo waiting for kafka; sleep 2; done;\"],\"image\":\"busybox:latest\",\"name\":\"wait-for-kafka\"}],\"serviceAccountName\":\"opentelemetry-demo\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.029,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.037,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "currency",
+        "container": "currency",
+        "pods": [
+          {
+            "name": "currency-66697b6f6-tnf9b",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "currency",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "currency",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "currency"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"currency\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"currency\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"currency\"},\"name\":\"currency\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"currency\"}},\"template\":{\"metadata\":{\"annotations\":{\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"currency\",\"app.kubernetes.io/name\":\"currency\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"currency\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"CURRENCY_PORT\",\"value\":\"8080\"},{\"name\":\"OTEL_EXPORTER_OTLP_ENDPOINT\",\"value\":\"http://$(OTEL_COLLECTOR_NAME):4317\"},{\"name\":\"VERSION\",\"value\":\"2.2.0\"},{\"name\":\"IPV6_ENABLED\",\"value\":\"false\"}],\"image\":\"ghcr.io/open-telemetry/demo:2.2.0-currency\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"currency\",\"ports\":[{\"containerPort\":8080,\"name\":\"service\"}]}],\"serviceAccountName\":\"opentelemetry-demo\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.013,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "email",
+        "container": "email",
+        "pods": [
+          {
+            "name": "email-786987748c-qp4jj",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "email",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "email",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "email"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"email\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"email\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"email\"},\"name\":\"email\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"email\"}},\"template\":{\"metadata\":{\"annotations\":{\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"email\",\"app.kubernetes.io/name\":\"email\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"email\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"EMAIL_PORT\",\"value\":\"8080\"},{\"name\":\"APP_ENV\",\"value\":\"production\"},{\"name\":\"OTEL_EXPORTER_OTLP_ENDPOINT\",\"value\":\"http://$(OTEL_COLLECTOR_NAME):4318\"},{\"name\":\"FLAGD_HOST\",\"value\":\"flagd\"},{\"name\":\"FLAGD_PORT\",\"value\":\"8013\"}],\"image\":\"ghcr.io/open-telemetry/demo:2.2.0-email\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"email\",\"ports\":[{\"containerPort\":8080,\"name\":\"service\"}]}],\"serviceAccountName\":\"opentelemetry-demo\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.014,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "flagd",
+        "container": "flagd",
+        "pods": [
+          {
+            "name": "flagd-9848f99d9-2bhhf",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "flagd",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "flagd",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "flagd"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"flagd\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"flagd\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"flagd\"},\"name\":\"flagd\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"flagd\"}},\"template\":{\"metadata\":{\"annotations\":{\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"flagd\",\"app.kubernetes.io/name\":\"flagd\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"flagd\"}},\"spec\":{\"containers\":[{\"command\":[\"/flagd-build\",\"start\",\"--port\",\"8013\",\"--ofrep-port\",\"8016\",\"--uri\",\"file:./etc/flagd/demo.flagd.json\"],\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"FLAGD_METRICS_EXPORTER\",\"value\":\"otel\"},{\"name\":\"FLAGD_OTEL_COLLECTOR_URI\",\"value\":\"$(OTEL_COLLECTOR_NAME):4317\"},{\"name\":\"GOMEMLIMIT\",\"value\":\"60MiB\"}],\"image\":\"ghcr.io/open-feature/flagd:v0.12.9\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"flagd\",\"ports\":[{\"containerPort\":8013,\"name\":\"rpc\"},{\"containerPort\":8016,\"name\":\"ofrep\"}],\"volumeMounts\":[{\"mountPath\":\"/etc/flagd\",\"name\":\"config-rw\"}]},{\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"FLAGD_METRICS_EXPORTER\",\"value\":\"otel\"},{\"name\":\"OTEL_EXPORTER_OTLP_ENDPOINT\",\"value\":\"http://$(OTEL_COLLECTOR_NAME):4318\"},{\"name\":\"FLAGD_UI_PORT\",\"value\":\"4000\"},{\"name\":\"SECRET_KEY_BASE\",\"value\":\"yYrECL4qbNwleYInGJYvVnSkwJuSQJ4ijPTx5tirGUXrbznFIBFVJdPl5t6O9ASw\"},{\"name\":\"PHX_HOST\",\"value\":\"localhost\"}],\"image\":\"ghcr.io/open-telemetry/demo:2.2.0-flagd-ui\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"flagd-ui\",\"ports\":[{\"containerPort\":4000,\"name\":\"service\"}],\"volumeMounts\":[{\"mountPath\":\"/app/data\",\"name\":\"config-rw\"}]}],\"initContainers\":[{\"command\":[\"sh\",\"-c\",\"cp /config-ro/demo.flagd.json /config-rw/demo.flagd.json \\u0026\\u0026 cat /config-rw/demo.flagd.json\"],\"image\":\"busybox\",\"name\":\"init-config\",\"volumeMounts\":[{\"mountPath\":\"/config-ro\",\"name\":\"config-ro\"},{\"mountPath\":\"/config-rw\",\"name\":\"config-rw\"}]}],\"serviceAccountName\":\"opentelemetry-demo\",\"volumes\":[{\"emptyDir\":{},\"name\":\"config-rw\"},{\"configMap\":{\"name\":\"flagd-config\"},\"name\":\"config-ro\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "flagd",
+        "container": "flagd-ui",
+        "pods": [
+          {
+            "name": "flagd-9848f99d9-2bhhf",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "flagd",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "flagd",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "flagd"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"flagd\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"flagd\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"flagd\"},\"name\":\"flagd\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"flagd\"}},\"template\":{\"metadata\":{\"annotations\":{\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"flagd\",\"app.kubernetes.io/name\":\"flagd\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"flagd\"}},\"spec\":{\"containers\":[{\"command\":[\"/flagd-build\",\"start\",\"--port\",\"8013\",\"--ofrep-port\",\"8016\",\"--uri\",\"file:./etc/flagd/demo.flagd.json\"],\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"FLAGD_METRICS_EXPORTER\",\"value\":\"otel\"},{\"name\":\"FLAGD_OTEL_COLLECTOR_URI\",\"value\":\"$(OTEL_COLLECTOR_NAME):4317\"},{\"name\":\"GOMEMLIMIT\",\"value\":\"60MiB\"}],\"image\":\"ghcr.io/open-feature/flagd:v0.12.9\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"flagd\",\"ports\":[{\"containerPort\":8013,\"name\":\"rpc\"},{\"containerPort\":8016,\"name\":\"ofrep\"}],\"volumeMounts\":[{\"mountPath\":\"/etc/flagd\",\"name\":\"config-rw\"}]},{\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"FLAGD_METRICS_EXPORTER\",\"value\":\"otel\"},{\"name\":\"OTEL_EXPORTER_OTLP_ENDPOINT\",\"value\":\"http://$(OTEL_COLLECTOR_NAME):4318\"},{\"name\":\"FLAGD_UI_PORT\",\"value\":\"4000\"},{\"name\":\"SECRET_KEY_BASE\",\"value\":\"yYrECL4qbNwleYInGJYvVnSkwJuSQJ4ijPTx5tirGUXrbznFIBFVJdPl5t6O9ASw\"},{\"name\":\"PHX_HOST\",\"value\":\"localhost\"}],\"image\":\"ghcr.io/open-telemetry/demo:2.2.0-flagd-ui\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"flagd-ui\",\"ports\":[{\"containerPort\":4000,\"name\":\"service\"}],\"volumeMounts\":[{\"mountPath\":\"/app/data\",\"name\":\"config-rw\"}]}],\"initContainers\":[{\"command\":[\"sh\",\"-c\",\"cp /config-ro/demo.flagd.json /config-rw/demo.flagd.json \\u0026\\u0026 cat /config-rw/demo.flagd.json\"],\"image\":\"busybox\",\"name\":\"init-config\",\"volumeMounts\":[{\"mountPath\":\"/config-ro\",\"name\":\"config-ro\"},{\"mountPath\":\"/config-rw\",\"name\":\"config-rw\"}]}],\"serviceAccountName\":\"opentelemetry-demo\",\"volumes\":[{\"emptyDir\":{},\"name\":\"config-rw\"},{\"configMap\":{\"name\":\"flagd-config\"},\"name\":\"config-ro\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 195035136.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 195035136.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "fraud-detection",
+        "container": "fraud-detection",
+        "pods": [
+          {
+            "name": "fraud-detection-5668497b5b-gh7sg",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "fraud-detection",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "fraud-detection",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "fraud-detection"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"fraud-detection\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"fraud-detection\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"fraud-detection\"},\"name\":\"fraud-detection\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"fraud-detection\"}},\"template\":{\"metadata\":{\"annotations\":{\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"fraud-detection\",\"app.kubernetes.io/name\":\"fraud-detection\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"fraud-detection\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"KAFKA_ADDR\",\"value\":\"kafka:9092\"},{\"name\":\"FLAGD_HOST\",\"value\":\"flagd\"},{\"name\":\"FLAGD_PORT\",\"value\":\"8013\"},{\"name\":\"OTEL_EXPORTER_OTLP_ENDPOINT\",\"value\":\"http://$(OTEL_COLLECTOR_NAME):4318\"},{\"name\":\"OTEL_INSTRUMENTATION_KAFKA_EXPERIMENTAL_SPAN_ATTRIBUTES\",\"value\":\"true\"},{\"name\":\"OTEL_INSTRUMENTATION_MESSAGING_EXPERIMENTAL_RECEIVE_TELEMETRY_ENABLED\",\"value\":\"true\"}],\"image\":\"ghcr.io/open-telemetry/demo:2.2.0-fraud-detection\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"fraud-detection\"}],\"initContainers\":[{\"command\":[\"sh\",\"-c\",\"until nc -z -v -w30 kafka 9092; do echo waiting for kafka; sleep 2; done;\"],\"image\":\"busybox:latest\",\"name\":\"wait-for-kafka\"}],\"serviceAccountName\":\"opentelemetry-demo\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 391118848.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.012,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 391118848.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "frontend",
+        "container": "frontend",
+        "pods": [
+          {
+            "name": "frontend-57f54d478b-glz67",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "frontend",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "frontend",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "frontend"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"frontend\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"frontend\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"frontend\"},\"name\":\"frontend\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"frontend\"}},\"template\":{\"metadata\":{\"annotations\":{\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"frontend\",\"app.kubernetes.io/name\":\"frontend\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"frontend\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"FRONTEND_PORT\",\"value\":\"8080\"},{\"name\":\"PORT\",\"value\":\"$(FRONTEND_PORT)\"},{\"name\":\"FRONTEND_ADDR\",\"value\":\":8080\"},{\"name\":\"AD_ADDR\",\"value\":\"ad:8080\"},{\"name\":\"CART_ADDR\",\"value\":\"cart:8080\"},{\"name\":\"CHECKOUT_ADDR\",\"value\":\"checkout:8080\"},{\"name\":\"CURRENCY_ADDR\",\"value\":\"currency:8080\"},{\"name\":\"PRODUCT_CATALOG_ADDR\",\"value\":\"product-catalog:8080\"},{\"name\":\"PRODUCT_REVIEWS_ADDR\",\"value\":\"product-reviews:3551\"},{\"name\":\"RECOMMENDATION_ADDR\",\"value\":\"recommendation:8080\"},{\"name\":\"SHIPPING_ADDR\",\"value\":\"http://shipping:8080\"},{\"name\":\"FLAGD_HOST\",\"value\":\"flagd\"},{\"name\":\"FLAGD_PORT\",\"value\":\"8013\"},{\"name\":\"ENV_PLATFORM\",\"value\":\"kubernetes\"},{\"name\":\"OTEL_COLLECTOR_HOST\",\"value\":\"$(OTEL_COLLECTOR_NAME)\"},{\"name\":\"OTEL_EXPORTER_OTLP_ENDPOINT\",\"value\":\"http://$(OTEL_COLLECTOR_NAME):4317\"},{\"name\":\"WEB_OTEL_SERVICE_NAME\",\"value\":\"frontend-web\"},{\"name\":\"PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT\",\"value\":\"http://localhost:8080/otlp-http/v1/traces\"}],\"image\":\"ghcr.io/open-telemetry/demo:2.2.0-frontend\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"frontend\",\"ports\":[{\"containerPort\":8080,\"name\":\"service\"}],\"securityContext\":{\"runAsGroup\":1001,\"runAsNonRoot\":true,\"runAsUser\":1001}}],\"serviceAccountName\":\"opentelemetry-demo\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.136,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.152,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "frontend-proxy",
+        "container": "frontend-proxy",
+        "pods": [
+          {
+            "name": "frontend-proxy-6868c957ff-dts5q",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "frontend-proxy",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "frontend-proxy",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "frontend-proxy"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"frontend-proxy\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"frontend-proxy\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"frontend-proxy\"},\"name\":\"frontend-proxy\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"frontend-proxy\"}},\"template\":{\"metadata\":{\"annotations\":{\"io.opentelemetry.discovery.metrics/config\":\"targets:\\n  - endpoint: \\\"http://`endpoint`\\\"\\n\",\"io.opentelemetry.discovery.metrics/enabled\":\"true\",\"io.opentelemetry.discovery.metrics/scraper\":\"httpcheck\",\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"frontend-proxy\",\"app.kubernetes.io/name\":\"frontend-proxy\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"frontend-proxy\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"ENVOY_PORT\",\"value\":\"8080\"},{\"name\":\"ENVOY_ADDR\",\"value\":\"0.0.0.0\"},{\"name\":\"ENVOY_ADMIN_PORT\",\"value\":\"10000\"},{\"name\":\"FLAGD_HOST\",\"value\":\"flagd\"},{\"name\":\"FLAGD_PORT\",\"value\":\"8013\"},{\"name\":\"FLAGD_UI_HOST\",\"value\":\"flagd\"},{\"name\":\"FLAGD_UI_PORT\",\"value\":\"4000\"},{\"name\":\"FRONTEND_HOST\",\"value\":\"frontend\"},{\"name\":\"FRONTEND_PORT\",\"value\":\"8080\"},{\"name\":\"GRAFANA_HOST\",\"value\":\"grafana\"},{\"name\":\"GRAFANA_PORT\",\"value\":\"80\"},{\"name\":\"IMAGE_PROVIDER_HOST\",\"value\":\"image-provider\"},{\"name\":\"IMAGE_PROVIDER_PORT\",\"value\":\"8081\"},{\"name\":\"JAEGER_HOST\",\"value\":\"jaeger\"},{\"name\":\"JAEGER_UI_PORT\",\"value\":\"16686\"},{\"name\":\"LOCUST_WEB_HOST\",\"value\":\"load-generator\"},{\"name\":\"LOCUST_WEB_PORT\",\"value\":\"8089\"},{\"name\":\"OTEL_COLLECTOR_HOST\",\"value\":\"$(OTEL_COLLECTOR_NAME)\"},{\"name\":\"OTEL_COLLECTOR_PORT_GRPC\",\"value\":\"4317\"},{\"name\":\"OTEL_COLLECTOR_PORT_HTTP\",\"value\":\"4318\"}],\"image\":\"ghcr.io/open-telemetry/demo:2.2.0-frontend-proxy\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"frontend-proxy\",\"ports\":[{\"containerPort\":8080,\"name\":\"service\"}],\"securityContext\":{\"runAsGroup\":101,\"runAsNonRoot\":true,\"runAsUser\":101}}],\"serviceAccountName\":\"opentelemetry-demo\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.043,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.047,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "image-provider",
+        "container": "image-provider",
+        "pods": [
+          {
+            "name": "image-provider-5bcd5fc7cb-gtdqq",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "image-provider",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "image-provider",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "image-provider"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"image-provider\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"image-provider\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"image-provider\"},\"name\":\"image-provider\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"image-provider\"}},\"template\":{\"metadata\":{\"annotations\":{\"io.opentelemetry.discovery.metrics/config\":\"endpoint: \\\"http://`endpoint`/status\\\"\\ncollection_interval: \\\"10s\\\"\\ntimeout: \\\"20s\\\"\\n\",\"io.opentelemetry.discovery.metrics/enabled\":\"true\",\"io.opentelemetry.discovery.metrics/scraper\":\"nginx\",\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"image-provider\",\"app.kubernetes.io/name\":\"image-provider\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"image-provider\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"IMAGE_PROVIDER_PORT\",\"value\":\"8081\"},{\"name\":\"OTEL_COLLECTOR_PORT_GRPC\",\"value\":\"4317\"},{\"name\":\"OTEL_COLLECTOR_HOST\",\"value\":\"$(OTEL_COLLECTOR_NAME)\"}],\"image\":\"ghcr.io/open-telemetry/demo:2.2.0-image-provider\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"image-provider\",\"ports\":[{\"containerPort\":8081,\"name\":\"service\"}]}],\"serviceAccountName\":\"opentelemetry-demo\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "jaeger",
+        "container": "jaeger",
+        "pods": [
+          {
+            "name": "jaeger-6895c64844-zvs5q",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "all-in-one",
+          "app.kubernetes.io/instance": "opentelemetry-demo",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "jaeger",
+          "app.kubernetes.io/version": "2.17.0",
+          "helm.sh/chart": "jaeger-4.7.0",
+          "prometheus.io/port": "8888",
+          "prometheus.io/scrape": "true"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"all-in-one\",\"app.kubernetes.io/instance\":\"opentelemetry-demo\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"jaeger\",\"app.kubernetes.io/version\":\"2.17.0\",\"helm.sh/chart\":\"jaeger-4.7.0\",\"prometheus.io/port\":\"8888\",\"prometheus.io/scrape\":\"true\"},\"name\":\"jaeger\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app.kubernetes.io/component\":\"all-in-one\",\"app.kubernetes.io/instance\":\"opentelemetry-demo\",\"app.kubernetes.io/name\":\"jaeger\"}},\"strategy\":{\"type\":\"Recreate\"},\"template\":{\"metadata\":{\"annotations\":{\"prometheus.io/port\":\"8888\",\"prometheus.io/scrape\":\"true\"},\"labels\":{\"app.kubernetes.io/component\":\"all-in-one\",\"app.kubernetes.io/instance\":\"opentelemetry-demo\",\"app.kubernetes.io/name\":\"jaeger\"}},\"spec\":{\"containers\":[{\"args\":[\"--config\",\"/etc/jaeger/user-config.yaml\"],\"env\":[{\"name\":\"MEMORY_MAX_TRACES\",\"value\":\"25000\"},{\"name\":\"PROMETHEUS_ADDR\",\"value\":\"kube-prometheus-stack-prometheus.monitoring:9090\"},{\"name\":\"OTEL_COLLECTOR_HOST\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_COLLECTOR_PORT_HTTP\",\"value\":\"4318\"},{\"name\":\"JAEGER_HOST\",\"value\":\"0.0.0.0\"},{\"name\":\"JAEGER_GRPC_PORT\",\"value\":\"4317\"}],\"image\":\"jaegertracing/jaeger:2.17.0\",\"imagePullPolicy\":\"IfNotPresent\",\"livenessProbe\":{\"failureThreshold\":5,\"httpGet\":{\"path\":\"/status\",\"port\":13133,\"scheme\":\"HTTP\"},\"initialDelaySeconds\":5,\"periodSeconds\":15,\"successThreshold\":1,\"timeoutSeconds\":1},\"name\":\"jaeger\",\"ports\":[{\"containerPort\":5775,\"protocol\":\"UDP\"},{\"containerPort\":6831,\"protocol\":\"UDP\"},{\"containerPort\":6832,\"protocol\":\"UDP\"},{\"containerPort\":5778,\"protocol\":\"TCP\"},{\"containerPort\":16686,\"protocol\":\"TCP\"},{\"containerPort\":16685,\"protocol\":\"TCP\"},{\"containerPort\":9411,\"protocol\":\"TCP\"},{\"containerPort\":4317,\"protocol\":\"TCP\"},{\"containerPort\":4318,\"protocol\":\"TCP\"},{\"containerPort\":13133,\"protocol\":\"TCP\"},{\"containerPort\":8888,\"protocol\":\"TCP\"}],\"readinessProbe\":{\"failureThreshold\":3,\"httpGet\":{\"path\":\"/status\",\"port\":13133,\"scheme\":\"HTTP\"},\"initialDelaySeconds\":1,\"periodSeconds\":10,\"successThreshold\":1,\"timeoutSeconds\":1},\"securityContext\":{},\"volumeMounts\":[{\"mountPath\":\"/etc/jaeger/user-config.yaml\",\"name\":\"user-config\",\"subPath\":\"user-config.yaml\"}]}],\"securityContext\":{\"fsGroup\":10001,\"runAsGroup\":10001,\"runAsUser\":10001},\"serviceAccountName\":\"jaeger\",\"volumes\":[{\"configMap\":{\"name\":\"user-config\"},\"name\":\"user-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.027,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 974127104.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.053,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 974127104.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "kafka",
+        "container": "kafka",
+        "pods": [
+          {
+            "name": "kafka-686cf97568-66g89",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "kafka",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "kafka",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "kafka"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"kafka\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"kafka\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"kafka\"},\"name\":\"kafka\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"kafka\"}},\"template\":{\"metadata\":{\"annotations\":{\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"kafka\",\"app.kubernetes.io/name\":\"kafka\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"kafka\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"KAFKA_ADVERTISED_LISTENERS\",\"value\":\"PLAINTEXT://kafka:9092\"},{\"name\":\"OTEL_EXPORTER_OTLP_ENDPOINT\",\"value\":\"http://$(OTEL_COLLECTOR_NAME):4318\"},{\"name\":\"KAFKA_HEAP_OPTS\",\"value\":\"-Xmx400M -Xms400M\"},{\"name\":\"KAFKA_LISTENERS\",\"value\":\"PLAINTEXT://:9092,CONTROLLER://:9093\"},{\"name\":\"KAFKA_CONTROLLER_LISTENER_NAMES\",\"value\":\"CONTROLLER\"},{\"name\":\"KAFKA_CONTROLLER_QUORUM_VOTERS\",\"value\":\"1@kafka:9093\"}],\"image\":\"ghcr.io/open-telemetry/demo:2.2.0-kafka\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"kafka\",\"ports\":[{\"containerPort\":9092,\"name\":\"plaintext\"},{\"containerPort\":9093,\"name\":\"controller\"}],\"securityContext\":{\"runAsGroup\":1000,\"runAsNonRoot\":true,\"runAsUser\":1000}}],\"serviceAccountName\":\"opentelemetry-demo\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.02,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 753926144.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.03,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 753926144.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "payment",
+        "container": "payment",
+        "pods": [
+          {
+            "name": "payment-5b94b59574-mlr6q",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "payment",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "payment",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "payment"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"payment\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"payment\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"payment\"},\"name\":\"payment\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"payment\"}},\"template\":{\"metadata\":{\"annotations\":{\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"payment\",\"app.kubernetes.io/name\":\"payment\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"payment\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"PAYMENT_PORT\",\"value\":\"8080\"},{\"name\":\"FLAGD_HOST\",\"value\":\"flagd\"},{\"name\":\"FLAGD_PORT\",\"value\":\"8013\"},{\"name\":\"OTEL_EXPORTER_OTLP_ENDPOINT\",\"value\":\"http://$(OTEL_COLLECTOR_NAME):4317\"},{\"name\":\"IPV6_ENABLED\",\"value\":\"false\"}],\"image\":\"ghcr.io/open-telemetry/demo:2.2.0-payment\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"payment\",\"ports\":[{\"containerPort\":8080,\"name\":\"service\"}],\"securityContext\":{\"runAsGroup\":1000,\"runAsNonRoot\":true,\"runAsUser\":1000}}],\"serviceAccountName\":\"opentelemetry-demo\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.014,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 127926272.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.017,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 127926272.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "postgresql",
+        "container": "postgresql",
+        "pods": [
+          {
+            "name": "postgresql-688cf7c64-h6kz5",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "postgresql",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "postgresql",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "postgresql"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"postgresql\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"postgresql\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"postgresql\"},\"name\":\"postgresql\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"postgresql\"}},\"template\":{\"metadata\":{\"annotations\":{\"io.opentelemetry.discovery.metrics/config\":\"username: root\\npassword: otel\\nmetrics:\\n  postgresql.blks_hit:\\n    enabled: true\\n  postgresql.blks_read:\\n    enabled: true\\n  postgresql.tup_fetched:\\n    enabled: true\\n  postgresql.tup_returned:\\n    enabled: true\\n  postgresql.tup_inserted:\\n    enabled: true\\n  postgresql.tup_updated:\\n    enabled: true\\n  postgresql.tup_deleted:\\n    enabled: true\\n  postgresql.deadlocks:\\n    enabled: true\\ntls:\\n  insecure: true\\n\",\"io.opentelemetry.discovery.metrics/enabled\":\"true\",\"io.opentelemetry.discovery.metrics/scraper\":\"postgresql\",\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"postgresql\",\"app.kubernetes.io/name\":\"postgresql\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"postgresql\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"POSTGRES_USER\",\"value\":\"root\"},{\"name\":\"POSTGRES_PASSWORD\",\"value\":\"otel\"},{\"name\":\"POSTGRES_DB\",\"value\":\"otel\"}],\"image\":\"postgres:17.6\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"postgresql\",\"ports\":[{\"containerPort\":5432,\"name\":\"service\"}],\"volumeMounts\":[{\"mountPath\":\"/docker-entrypoint-initdb.d\",\"name\":\"postgresql-init\"}]}],\"serviceAccountName\":\"opentelemetry-demo\",\"volumes\":[{\"configMap\":{\"name\":\"postgresql-init\"},\"name\":\"postgresql-init\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.04,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.048,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "product-catalog",
+        "container": "product-catalog",
+        "pods": [
+          {
+            "name": "product-catalog-77847f689c-ml7zd",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "product-catalog",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "product-catalog",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "product-catalog"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"product-catalog\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"product-catalog\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"product-catalog\"},\"name\":\"product-catalog\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"product-catalog\"}},\"template\":{\"metadata\":{\"annotations\":{\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"product-catalog\",\"app.kubernetes.io/name\":\"product-catalog\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"product-catalog\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"PRODUCT_CATALOG_PORT\",\"value\":\"8080\"},{\"name\":\"FLAGD_HOST\",\"value\":\"flagd\"},{\"name\":\"FLAGD_PORT\",\"value\":\"8013\"},{\"name\":\"GOMEMLIMIT\",\"value\":\"16MiB\"},{\"name\":\"DB_CONNECTION_STRING\",\"value\":\"postgres://otelu:otelp@postgresql/otel?sslmode=disable\"},{\"name\":\"OTEL_SEMCONV_STABILITY_OPT_IN\",\"value\":\"database\"},{\"name\":\"OTEL_EXPORTER_OTLP_ENDPOINT\",\"value\":\"http://$(OTEL_COLLECTOR_NAME):4317\"}],\"image\":\"ghcr.io/open-telemetry/demo:2.2.0-product-catalog\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"product-catalog\",\"ports\":[{\"containerPort\":8080,\"name\":\"service\"}]}],\"serviceAccountName\":\"opentelemetry-demo\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.069,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.079,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "product-reviews",
+        "container": "product-reviews",
+        "pods": [
+          {
+            "name": "product-reviews-6bcbb5b594-p87nv",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "product-reviews",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "product-reviews",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "product-reviews"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"product-reviews\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"product-reviews\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"product-reviews\"},\"name\":\"product-reviews\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"product-reviews\"}},\"template\":{\"metadata\":{\"annotations\":{\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"product-reviews\",\"app.kubernetes.io/name\":\"product-reviews\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"product-reviews\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"OPENAI_API_KEY\",\"value\":\"dummy\"},{\"name\":\"LLM_MODEL\",\"value\":\"astronomy-llm\"},{\"name\":\"LLM_HOST\",\"value\":\"llm\"},{\"name\":\"LLM_PORT\",\"value\":\"8000\"},{\"name\":\"LLM_BASE_URL\",\"value\":\"http://$(LLM_HOST):$(LLM_PORT)/v1\"},{\"name\":\"PRODUCT_REVIEWS_PORT\",\"value\":\"3551\"},{\"name\":\"PRODUCT_CATALOG_ADDR\",\"value\":\"product-catalog:8080\"},{\"name\":\"FLAGD_HOST\",\"value\":\"flagd\"},{\"name\":\"FLAGD_PORT\",\"value\":\"8013\"},{\"name\":\"DB_CONNECTION_STRING\",\"value\":\"host=postgresql user=otelu password=otelp dbname=otel\"},{\"name\":\"PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION\",\"value\":\"python\"},{\"name\":\"OTEL_PYTHON_LOG_CORRELATION\",\"value\":\"true\"},{\"name\":\"OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT\",\"value\":\"true\"},{\"name\":\"OTEL_EXPORTER_OTLP_ENDPOINT\",\"value\":\"http://$(OTEL_COLLECTOR_NAME):4317\"}],\"image\":\"ghcr.io/open-telemetry/demo:2.2.0-product-reviews\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"product-reviews\",\"ports\":[{\"containerPort\":3551,\"name\":\"service\"}]}],\"serviceAccountName\":\"opentelemetry-demo\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.015,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.016,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "quote",
+        "container": "quote",
+        "pods": [
+          {
+            "name": "quote-8587d4bffb-zrbcw",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "quote",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "quote",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "quote"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"quote\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"quote\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"quote\"},\"name\":\"quote\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"quote\"}},\"template\":{\"metadata\":{\"annotations\":{\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"quote\",\"app.kubernetes.io/name\":\"quote\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"quote\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"QUOTE_PORT\",\"value\":\"8080\"},{\"name\":\"OTEL_PHP_AUTOLOAD_ENABLED\",\"value\":\"true\"},{\"name\":\"OTEL_PHP_INTERNAL_METRICS_ENABLED\",\"value\":\"true\"},{\"name\":\"OTEL_EXPORTER_OTLP_ENDPOINT\",\"value\":\"http://$(OTEL_COLLECTOR_NAME):4318\"},{\"name\":\"IPV6_ENABLED\",\"value\":\"false\"}],\"image\":\"ghcr.io/open-telemetry/demo:2.2.0-quote\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"quote\",\"ports\":[{\"containerPort\":8080,\"name\":\"service\"}],\"securityContext\":{\"runAsGroup\":33,\"runAsNonRoot\":true,\"runAsUser\":33}}],\"serviceAccountName\":\"opentelemetry-demo\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "recommendation",
+        "container": "recommendation",
+        "pods": [
+          {
+            "name": "recommendation-f9967cf57-r945m",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "recommendation",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "recommendation",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "recommendation"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"recommendation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"recommendation\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"recommendation\"},\"name\":\"recommendation\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"recommendation\"}},\"template\":{\"metadata\":{\"annotations\":{\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"recommendation\",\"app.kubernetes.io/name\":\"recommendation\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"recommendation\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"RECOMMENDATION_PORT\",\"value\":\"8080\"},{\"name\":\"PRODUCT_CATALOG_ADDR\",\"value\":\"product-catalog:8080\"},{\"name\":\"OTEL_PYTHON_LOG_CORRELATION\",\"value\":\"true\"},{\"name\":\"PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION\",\"value\":\"python\"},{\"name\":\"FLAGD_HOST\",\"value\":\"flagd\"},{\"name\":\"FLAGD_PORT\",\"value\":\"8013\"},{\"name\":\"OTEL_EXPORTER_OTLP_ENDPOINT\",\"value\":\"http://$(OTEL_COLLECTOR_NAME):4317\"}],\"image\":\"ghcr.io/open-telemetry/demo:2.2.0-recommendation\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"recommendation\",\"ports\":[{\"containerPort\":8080,\"name\":\"service\"}]}],\"serviceAccountName\":\"opentelemetry-demo\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.029,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.034,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "shipping",
+        "container": "shipping",
+        "pods": [
+          {
+            "name": "shipping-d8c546d5b-xlb2t",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "shipping",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "shipping",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "shipping"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"shipping\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"shipping\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"shipping\"},\"name\":\"shipping\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"shipping\"}},\"template\":{\"metadata\":{\"annotations\":{\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"shipping\",\"app.kubernetes.io/name\":\"shipping\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"shipping\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"OTEL_SERVICE_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.labels['app.kubernetes.io/component']\"}}},{\"name\":\"OTEL_COLLECTOR_NAME\",\"value\":\"otel-collector\"},{\"name\":\"OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE\",\"value\":\"cumulative\"},{\"name\":\"SHIPPING_PORT\",\"value\":\"8080\"},{\"name\":\"QUOTE_ADDR\",\"value\":\"http://quote:8080\"},{\"name\":\"OTEL_EXPORTER_OTLP_ENDPOINT\",\"value\":\"http://$(OTEL_COLLECTOR_NAME):4317\"},{\"name\":\"IPV6_ENABLED\",\"value\":\"false\"}],\"image\":\"ghcr.io/open-telemetry/demo:2.2.0-shipping\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"shipping\",\"ports\":[{\"containerPort\":8080,\"name\":\"service\"}]}],\"serviceAccountName\":\"opentelemetry-demo\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "valkey-cart",
+        "container": "valkey-cart",
+        "pods": [
+          {
+            "name": "valkey-cart-656fc89f56-2j59l",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "valkey-cart",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "valkey-cart",
+          "app.kubernetes.io/part-of": "opentelemetry-demo",
+          "app.kubernetes.io/version": "2.2.0",
+          "helm.sh/chart": "opentelemetry-demo-0.40.9",
+          "opentelemetry.io/name": "valkey-cart"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"valkey-cart\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"valkey-cart\",\"app.kubernetes.io/part-of\":\"opentelemetry-demo\",\"app.kubernetes.io/version\":\"2.2.0\",\"helm.sh/chart\":\"opentelemetry-demo-0.40.9\",\"opentelemetry.io/name\":\"valkey-cart\"},\"name\":\"valkey-cart\",\"namespace\":\"otel-demo\"},\"spec\":{\"replicas\":1,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"opentelemetry.io/name\":\"valkey-cart\"}},\"template\":{\"metadata\":{\"annotations\":{\"io.opentelemetry.discovery.metrics/config\":\"username: valkey\\ncollection_interval: 10s\\n\",\"io.opentelemetry.discovery.metrics/enabled\":\"true\",\"io.opentelemetry.discovery.metrics/scraper\":\"redis\",\"resource.opentelemetry.io/service.namespace\":\"otel-demo\"},\"labels\":{\"app.kubernetes.io/component\":\"valkey-cart\",\"app.kubernetes.io/name\":\"valkey-cart\",\"app.kubernetes.io/version\":\"2.2.0\",\"opentelemetry.io/name\":\"valkey-cart\"}},\"spec\":{\"containers\":[{\"env\":[],\"image\":\"valkey/valkey:9.0.1-alpine3.23\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"valkey-cart\",\"ports\":[{\"containerPort\":6379,\"name\":\"valkey-cart\"}],\"securityContext\":{\"runAsGroup\":1000,\"runAsNonRoot\":true,\"runAsUser\":999}}],\"serviceAccountName\":\"opentelemetry-demo\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "otel-collector-agent",
+        "container": "opentelemetry-collector",
+        "pods": [
+          {
+            "name": "otel-collector-agent-6m8hn",
+            "deleted": false
+          },
+          {
+            "name": "otel-collector-agent-89rhr",
+            "deleted": false
+          },
+          {
+            "name": "otel-collector-agent-wkm7p",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "otel-demo",
+        "kind": "DaemonSet",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/component": "agent-collector",
+          "app.kubernetes.io/instance": "opentelemetry-demo",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "opentelemetry-collector",
+          "app.kubernetes.io/part-of": "opentelemetry-collector",
+          "app.kubernetes.io/version": "0.151.0",
+          "helm.sh/chart": "opentelemetry-collector-0.153.0"
+        },
+        "annotations": {
+          "deprecated.daemonset.template.generation": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"DaemonSet\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"agent-collector\",\"app.kubernetes.io/instance\":\"opentelemetry-demo\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"opentelemetry-collector\",\"app.kubernetes.io/part-of\":\"opentelemetry-collector\",\"app.kubernetes.io/version\":\"0.151.0\",\"helm.sh/chart\":\"opentelemetry-collector-0.153.0\"},\"name\":\"otel-collector-agent\",\"namespace\":\"otel-demo\"},\"spec\":{\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"app.kubernetes.io/instance\":\"opentelemetry-demo\",\"app.kubernetes.io/name\":\"opentelemetry-collector\",\"component\":\"agent-collector\"}},\"template\":{\"metadata\":{\"annotations\":{\"checksum/config\":\"7dba8a979d857ebb52533850488791835c79512970cce1301b640254ebfdec2c\"},\"labels\":{\"app.kubernetes.io/instance\":\"opentelemetry-demo\",\"app.kubernetes.io/name\":\"opentelemetry-collector\",\"component\":\"agent-collector\"}},\"spec\":{\"automountServiceAccountToken\":true,\"containers\":[{\"args\":[\"--config=/conf/relay.yaml\"],\"env\":[{\"name\":\"MY_POD_IP\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"status.podIP\"}}},{\"name\":\"OTEL_K8S_NODE_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"spec.nodeName\"}}},{\"name\":\"OTEL_K8S_NODE_IP\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"status.hostIP\"}}},{\"name\":\"OTEL_K8S_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"OTEL_K8S_POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"metadata.name\"}}},{\"name\":\"OTEL_K8S_POD_IP\",\"valueFrom\":{\"fieldRef\":{\"apiVersion\":\"v1\",\"fieldPath\":\"status.podIP\"}}},{\"name\":\"K8S_NODE_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"spec.nodeName\"}}},{\"name\":\"K8S_NODE_IP\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"status.hostIP\"}}},{\"name\":\"GOMEMLIMIT\",\"value\":\"160MiB\"}],\"image\":\"otel/opentelemetry-collector-contrib:0.151.0\",\"imagePullPolicy\":\"IfNotPresent\",\"livenessProbe\":{\"httpGet\":{\"path\":\"/\",\"port\":13133}},\"name\":\"opentelemetry-collector\",\"ports\":[{\"containerPort\":6831,\"hostPort\":6831,\"name\":\"jaeger-compact\",\"protocol\":\"UDP\"},{\"containerPort\":14250,\"hostPort\":14250,\"name\":\"jaeger-grpc\",\"protocol\":\"TCP\"},{\"containerPort\":14268,\"hostPort\":14268,\"name\":\"jaeger-thrift\",\"protocol\":\"TCP\"},{\"containerPort\":8888,\"name\":\"metrics\",\"protocol\":\"TCP\"},{\"containerPort\":4317,\"hostPort\":4317,\"name\":\"otlp\",\"protocol\":\"TCP\"},{\"containerPort\":4318,\"hostPort\":4318,\"name\":\"otlp-http\",\"protocol\":\"TCP\"},{\"containerPort\":9411,\"hostPort\":9411,\"name\":\"zipkin\",\"protocol\":\"TCP\"}],\"readinessProbe\":{\"httpGet\":{\"path\":\"/\",\"port\":13133}},\"securityContext\":{},\"volumeMounts\":[{\"mountPath\":\"/conf\",\"name\":\"opentelemetry-collector-configmap\"},{\"mountPath\":\"/hostfs\",\"mountPropagation\":\"HostToContainer\",\"name\":\"hostfs\",\"readOnly\":true}]}],\"hostNetwork\":false,\"hostPID\":false,\"securityContext\":{},\"serviceAccountName\":\"otel-collector\",\"terminationGracePeriodSeconds\":30,\"volumes\":[{\"configMap\":{\"items\":[{\"key\":\"relay\",\"path\":\"relay.yaml\"}],\"name\":\"otel-collector-agent\"},\"name\":\"opentelemetry-collector-configmap\"},{\"hostPath\":{\"path\":\"/\"},\"name\":\"hostfs\"}]}},\"updateStrategy\":{\"type\":\"RollingUpdate\"}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.035,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 145752064.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.082,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 145752064.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    }
+  ],
+  "score": 30,
+  "resources": [
+    "cpu",
+    "memory"
+  ],
+  "description": "[b]Simple_Limit Strategy[/b]\n\nCPU request: 70.0% percentile, limit: 99.0% percentile\nMemory request: max + 15.0%, limit: max + 15.0%\nHistory: 2.0 hours\nStep: 1.0 minutes\n\nAll parameters can be customized. For example: `krr simple_limit --cpu_request=66 --cpu_limit=96 --memory_buffer_percentage=15 --history_duration=24 --timeframe_duration=0.5`\n\nThis strategy does not work with objects with HPA defined (Horizontal Pod Autoscaler).\nIf HPA is defined for CPU or Memory, the strategy will return \"?\" for that resource.\nYou can override this behaviour by passing the --allow-hpa flag\n\nLearn more: [underline]https://github.com/robusta-dev/krr#algorithm[/underline]",
+  "strategy": {
+    "name": "simple_limit",
+    "settings": {
+      "history_duration": 2.0,
+      "timeframe_duration": 1.0,
+      "end_epoch": 1784120082.0868278,
+      "cpu_request": 70.0,
+      "cpu_limit": 99.0,
+      "memory_buffer_percentage": 15.0,
+      "points_required": 100,
+      "allow_hpa": false,
+      "use_oomkill_data": false,
+      "oom_memory_buffer_percentage": 25.0
+    }
+  },
+  "errors": [],
+  "clusterSummary": {
+    "cluster_memory": 36815593472.0,
+    "cluster_cpu": 28.0,
+    "kube_system_mem_req": 146800640.0,
+    "kube_system_cpu_req": 0.2
+  },
+  "config": {
+    "quiet": true,
+    "verbose": false,
+    "clusters": [],
+    "kubeconfig": null,
+    "impersonate_user": null,
+    "impersonate_group": null,
+    "namespaces": [
+      "otel-demo"
+    ],
+    "resources": "*",
+    "selector": null,
+    "cpu_min_value": 10,
+    "memory_min_value": 100,
+    "prometheus_url": "http://k8s-master:30954",
+    "prometheus_auth_header": null,
+    "prometheus_other_headers": {},
+    "prometheus_ssl_enabled": false,
+    "prometheus_cluster_label": null,
+    "prometheus_label": null,
+    "eks_managed_prom": false,
+    "eks_managed_prom_profile_name": null,
+    "eks_access_key": null,
+    "eks_secret_key": null,
+    "eks_service_name": "aps",
+    "eks_managed_prom_region": null,
+    "eks_assume_role": null,
+    "coralogix_token": null,
+    "openshift": false,
+    "max_workers": 10,
+    "discovery_job_batch_size": 5000,
+    "discovery_job_max_batches": 100,
+    "job_grouping_labels": null,
+    "job_grouping_limit": 500,
+    "format": "json",
+    "show_cluster_name": false,
+    "strategy": "simple_limit",
+    "log_to_stderr": false,
+    "width": 900,
+    "show_severity": true,
+    "publish_scan_url": null,
+    "start_time": null,
+    "scan_id": null,
+    "named_sinks": [],
+    "file_output": null,
+    "file_output_dynamic": false,
+    "slack_output": null,
+    "slack_title": null,
+    "azureblob_output": null,
+    "teams_webhook": null,
+    "azure_subscription_id": null,
+    "azure_resource_group": null,
+    "other_args": {
+      "history_duration": "2",
+      "timeframe_duration": "1",
+      "end_epoch": "1784120082.0868278",
+      "cpu_request": "70",
+      "cpu_limit": "99",
+      "memory_buffer_percentage": "15",
+      "points_required": "100",
+      "allow_hpa": false,
+      "use_oomkill_data": false,
+      "oom_memory_buffer_percentage": "25"
+    },
+    "inside_cluster": false
+  }
+}
