@@ -1,0 +1,189 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: accounting
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ad
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cart
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: checkout
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: currency
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: email
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flagd
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fraud-detection
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-proxy
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-provider
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaeger
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgresql
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-catalog
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-reviews
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quote
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendation
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shipping
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: valkey-cart
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker2
+
+---

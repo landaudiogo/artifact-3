@@ -19,4 +19,5 @@ patches:
   - path: ./patches/otel-collector-agent.yaml
   - path: ./patches/jaeger-user-config.yaml
   - path: ./patches/resources.yaml
+  - path: ./patches/deployment-node.yaml
   # - path: ./patches/no-resources.yaml
