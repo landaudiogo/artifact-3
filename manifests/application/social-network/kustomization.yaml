@@ -19,4 +19,5 @@ resources:
 patches:
   - path: ./patches/nginx-thrift.yaml
   - path: ./patches/resources.yaml
+  - path: ./patches/deployment-node.yaml
   # - path: ./patches/no-resources.yaml

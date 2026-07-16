@@ -1,0 +1,270 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: compose-post-service
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: home-timeline-redis
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: home-timeline-service
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaeger
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: media-frontend
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: media-memcached
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: media-mongodb
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: media-service
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-thrift
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: post-storage-memcached
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: post-storage-mongodb
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: post-storage-service
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: social-graph-mongodb
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: social-graph-redis
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: social-graph-service
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: text-service
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unique-id-service
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: url-shorten-memcached
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: url-shorten-mongodb
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: url-shorten-service
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-memcached
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-mention-service
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-mongodb
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-timeline-mongodb
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-timeline-redis
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-timeline-service
+  namespace: social-network
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker2
+
+---
