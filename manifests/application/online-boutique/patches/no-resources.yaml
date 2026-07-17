@@ -1,0 +1,163 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: adservice
+  name: adservice
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      containers:
+      - name: server
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cartservice
+  name: cartservice
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      containers:
+      - name: server
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: checkoutservice
+  name: checkoutservice
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      containers:
+      - name: server
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: currencyservice
+  name: currencyservice
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      containers:
+      - name: server
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: emailservice
+  name: emailservice
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      containers:
+      - name: server
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontend
+  name: frontend
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      containers:
+      - name: server
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: paymentservice
+  name: paymentservice
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      containers:
+      - name: server
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: productcatalogservice
+  name: productcatalogservice
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      containers:
+      - name: server
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: recommendationservice
+  name: recommendationservice
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      containers:
+      - name: server
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-cart
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      containers:
+      - name: redis
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: shippingservice
+  name: shippingservice
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      containers:
+      - name: server
+        resources: null
+
+---
