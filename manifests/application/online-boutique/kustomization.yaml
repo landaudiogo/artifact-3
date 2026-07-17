@@ -19,6 +19,7 @@ resources:
 patches:
   - path: ./patches/opentelemetry.yaml
   - path: ./patches/images.yaml
+  - path: ./patches/deployment-node.yaml
   - path: ./patches/no-resources.yaml
   - patch: |
       $patch: delete
