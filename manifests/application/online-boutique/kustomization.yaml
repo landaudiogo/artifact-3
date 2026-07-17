@@ -1,0 +1,34 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: online-boutique
+
+helmGlobals:
+ chartHome: ../../../charts
+
+helmCharts:
+  - name: online-boutique
+    releaseName: online-boutique
+    namespace: online-boutique
+    valuesFile: values.yaml
+
+resources:
+  - ./namespace.yaml
+#   - ./jaeger.yaml
+
+# patches:
+#   - patch: |
+#       $patch: delete
+#       apiVersion: v1
+#       kind: Service
+#       metadata:
+#         name: jaeger
+#   - patch: |
+#       $patch: delete
+#       apiVersion: apps/v1
+#       kind: Deployment
+#       metadata:
+#         name: jaeger-hotel-reservation-hotelres
+#   - path: ./patches/deployment-node.yaml
+#   - path: ./patches/resources.yaml
+#   # - path: ./patches/no-resources.yaml
