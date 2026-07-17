@@ -9,7 +9,7 @@ customConfig:
   sources:
     k8s_logs:
       type: kubernetes_logs
-      extra_namespace_label_selector: "kubernetes.io/metadata.name in (social-network,otel-demo)"
+      extra_namespace_label_selector: "kubernetes.io/metadata.name in (social-network,otel-demo,hotel-reservation)"
       extra_label_selector: "name!=jaeger"
 
   sinks:
