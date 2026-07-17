@@ -1,0 +1,22 @@
+loadtest: 
+  name: hotel-reservation-loadtest
+  locust_locustfile_configmap: hotel-reservation-locustfile
+  locust_host: "http://frontend.hotel-reservation:5000"
+
+nodeSelector:
+  "kubernetes.io/hostname": k8s-master
+
+service:
+  type: NodePort
+  nodePort: 30009
+
+tolerations:
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/master
+    value: "true"
+  - effect: NoSchedule
+    key: unschedulable
+    value: "true"
+
+worker: 
+  replicas: 2
