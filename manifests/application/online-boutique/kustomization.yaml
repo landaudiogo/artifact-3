@@ -19,6 +19,13 @@ resources:
 patches:
   - path: ./patches/opentelemetry.yaml
   - path: ./patches/images.yaml
+  - patch: |
+      $patch: delete
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: loadgenerator
+        namespace: online-boutique
 # adservice - not yet implemented
 # checkoutservice - tracing, profiler
   - patch: |-
