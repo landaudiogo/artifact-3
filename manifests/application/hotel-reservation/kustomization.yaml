@@ -30,5 +30,5 @@ patches:
       metadata:
         name: jaeger-hotel-reservation-hotelres
   - path: ./patches/deployment-node.yaml
+  - path: ./patches/resources.yaml
   # - path: ./patches/no-resources.yaml
-#   - path: ./patches/resources.yaml

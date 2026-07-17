@@ -3,8 +3,10 @@ kind: Deployment
 metadata:
   name: consul-hotel-reservation-hotelres
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-worker3
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
 
 ---
 apiVersion: apps/v1
@@ -12,8 +14,10 @@ kind: Deployment
 metadata:
   name: frontend-hotel-reservation-hotelres
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-worker3
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
 
 ---
 apiVersion: apps/v1
@@ -21,8 +25,10 @@ kind: Deployment
 metadata:
   name: geo-hotel-reservation-hotelres
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-worker3
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
 
 ---
 apiVersion: apps/v1
@@ -31,8 +37,10 @@ metadata:
   name: jaeger
   namespace: hotel-reservation
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-worker3
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
 
 ---
 apiVersion: apps/v1
@@ -40,8 +48,10 @@ kind: Deployment
 metadata:
   name: memcached-profile-1-hotel-reservation-hotelres
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-worker1
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
 
 ---
 apiVersion: apps/v1
@@ -49,8 +59,10 @@ kind: Deployment
 metadata:
   name: memcached-rate-1-hotel-reservation-hotelres
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-worker3
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
 
 ---
 apiVersion: apps/v1
@@ -58,8 +70,10 @@ kind: Deployment
 metadata:
   name: memcached-reserve-1-hotel-reservation-hotelres
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-worker1
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
 
 ---
 apiVersion: apps/v1
@@ -67,8 +81,10 @@ kind: Deployment
 metadata:
   name: mongodb-geo-hotel-reservation-hotelres
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-worker1
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
 
 ---
 apiVersion: apps/v1
@@ -76,8 +92,10 @@ kind: Deployment
 metadata:
   name: mongodb-profile-hotel-reservation-hotelres
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-worker3
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
 
 ---
 apiVersion: apps/v1
@@ -85,8 +103,10 @@ kind: Deployment
 metadata:
   name: mongodb-rate-hotel-reservation-hotelres
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-worker3
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
 
 ---
 apiVersion: apps/v1
@@ -94,8 +114,10 @@ kind: Deployment
 metadata:
   name: mongodb-recommendation-hotel-reservation-hotelres
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-worker1
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
 
 ---
 apiVersion: apps/v1
@@ -103,8 +125,10 @@ kind: Deployment
 metadata:
   name: mongodb-reservation-hotel-reservation-hotelres
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-worker1
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
 
 ---
 apiVersion: apps/v1
@@ -112,8 +136,10 @@ kind: Deployment
 metadata:
   name: mongodb-user-hotel-reservation-hotelres
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-worker3
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
 
 ---
 apiVersion: apps/v1
@@ -121,8 +147,10 @@ kind: Deployment
 metadata:
   name: profile-hotel-reservation-hotelres
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-worker1
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
 
 ---
 apiVersion: apps/v1
@@ -130,8 +158,10 @@ kind: Deployment
 metadata:
   name: rate-hotel-reservation-hotelres
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-worker3
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
 
 ---
 apiVersion: apps/v1
@@ -139,8 +169,10 @@ kind: Deployment
 metadata:
   name: recommendation-hotel-reservation-hotelres
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-worker1
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
 
 ---
 apiVersion: apps/v1
@@ -148,8 +180,10 @@ kind: Deployment
 metadata:
   name: reservation-hotel-reservation-hotelres
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-worker3
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
 
 ---
 apiVersion: apps/v1
@@ -157,8 +191,10 @@ kind: Deployment
 metadata:
   name: search-hotel-reservation-hotelres
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-worker1
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
 
 ---
 apiVersion: apps/v1
@@ -166,7 +202,9 @@ kind: Deployment
 metadata:
   name: user-hotel-reservation-hotelres
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-worker1
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
 
 ---
