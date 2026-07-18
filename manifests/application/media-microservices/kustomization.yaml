@@ -1,0 +1,34 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: media-microservices
+
+helmGlobals:
+ chartHome: ../../../charts
+
+helmCharts:
+  - name: mediamicroservices
+    releaseName: media-microservices
+    namespace: media-microservices
+    valuesFile: values.yaml
+
+resources:
+  - ./namespace.yaml
+  # - ./jaeger.yaml
+
+patches:
+  - path: ./patches/deployment-node.yaml
+#   - patch: |
+#       $patch: delete
+#       apiVersion: v1
+#       kind: Service
+#       metadata:
+#         name: jaeger
+#   - patch: |
+#       $patch: delete
+#       apiVersion: apps/v1
+#       kind: Deployment
+#       metadata:
+#         name: jaeger-media-microservices-hotelres
+#   - path: ./patches/resources.yaml
+  # - path: ./patches/no-resources.yaml
