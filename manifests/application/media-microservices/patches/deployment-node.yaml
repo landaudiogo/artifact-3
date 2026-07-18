@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cast-info-memcached
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -14,7 +13,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cast-info-mongodb
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -26,7 +24,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cast-info-service
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -38,7 +35,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: compose-review-memcached
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -50,7 +46,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: compose-review-service
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -62,7 +57,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jaeger
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -74,7 +68,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: movie-id-memcached
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -86,7 +79,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: movie-id-mongodb
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -98,7 +90,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: movie-id-service
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -110,7 +101,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: movie-info-memcached
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -122,7 +112,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: movie-info-mongodb
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -134,7 +123,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: movie-info-service
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -146,7 +134,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: movie-review-mongodb
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -158,7 +145,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: movie-review-redis
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -170,7 +156,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: movie-review-service
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -182,7 +167,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-web-server
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -194,7 +178,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: page-service
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -206,7 +189,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: plot-memcached
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -218,7 +200,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: plot-mongodb
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -230,7 +211,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: plot-service
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -242,7 +222,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rating-redis
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -254,7 +233,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rating-service
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -266,7 +244,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: review-storage-memcached
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -278,7 +255,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: review-storage-mongodb
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -290,7 +266,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: review-storage-service
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -302,7 +277,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: text-service
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -314,7 +288,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: unique-id-service
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -326,7 +299,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: user-memcached
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -338,7 +310,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: user-mongodb
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -350,7 +321,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: user-review-mongodb
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -362,7 +332,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: user-review-redis
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -374,7 +343,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: user-review-service
-  namespace: media-microservices
 spec:
   template:
     spec:
@@ -386,7 +354,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: user-service
-  namespace: media-microservices
 spec:
   template:
     spec:
