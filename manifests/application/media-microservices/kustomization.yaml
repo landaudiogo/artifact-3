@@ -14,21 +14,21 @@ helmCharts:
 
 resources:
   - ./namespace.yaml
-  # - ./jaeger.yaml
+  - ./jaeger.yaml
 
 patches:
   - path: ./patches/deployment-node.yaml
-#   - patch: |
-#       $patch: delete
-#       apiVersion: v1
-#       kind: Service
-#       metadata:
-#         name: jaeger
-#   - patch: |
-#       $patch: delete
-#       apiVersion: apps/v1
-#       kind: Deployment
-#       metadata:
-#         name: jaeger-media-microservices-hotelres
+  - patch: |
+      $patch: delete
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: jaeger
+  - patch: |
+      $patch: delete
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: jaeger
 #   - path: ./patches/resources.yaml
-  # - path: ./patches/no-resources.yaml
+#   - path: ./patches/no-resources.yaml
