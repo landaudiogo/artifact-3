@@ -1,0 +1,36 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: load-generators-media-microservices
+
+helmCharts:
+  - name: locust
+    repo: oci://ghcr.io/deliveryhero/helm-charts
+    version: 0.35.0
+    releaseName: locust
+    namespace: load-generators
+    valuesFile: locust-values.yaml
+
+  - name: prometheus-locust-exporter
+    repo: oci://ghcr.io/deliveryhero/helm-charts
+    version: 1.2.2
+    releaseName: prometheus-locust-exporter
+    namespace: load-generators
+    valuesFile: locust-exporter-values.yaml
+
+
+resources:
+  - ./configmap.yaml
+  - ./namespace.yaml
+
+patches:
+  - path: ./patches/locust-exporter.yaml
+    target:
+      kind: Deployment
+      name: locust-media-microservices
+  - path: ./patches/servicemonitor.yaml
+    target:
+      group: monitoring.coreos.com
+      version: v1
+      kind: ServiceMonitor
+      name: locust-media-microservices

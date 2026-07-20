@@ -1,0 +1,22 @@
+loadtest: 
+  name: media-microservices-loadtest
+  locust_locustfile_configmap: media-microservices-locustfile
+  locust_host: "http://nginx-web-server.media-microservices:8080"
+
+nodeSelector:
+  "kubernetes.io/hostname": k8s-master
+
+service:
+  type: NodePort
+  nodePort: 30013
+
+tolerations:
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/master
+    value: "true"
+  - effect: NoSchedule
+    key: unschedulable
+    value: "true"
+
+worker: 
+  replicas: 2
