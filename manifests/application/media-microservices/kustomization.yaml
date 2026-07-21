@@ -30,5 +30,5 @@ patches:
       kind: Deployment
       metadata:
         name: jaeger
-#   - path: ./patches/resources.yaml
+  - path: ./patches/resources.yaml
 #   - path: ./patches/no-resources.yaml
