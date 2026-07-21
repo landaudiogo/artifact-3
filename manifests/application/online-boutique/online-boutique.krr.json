@@ -1,0 +1,900 @@
+{
+  "scans": [
+    {
+      "object": {
+        "cluster": "local",
+        "name": "adservice",
+        "container": "server",
+        "pods": [
+          {
+            "name": "adservice-56666458f9-dxhlr",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "online-boutique",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app": "adservice"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "3",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"adservice\"},\"name\":\"adservice\",\"namespace\":\"online-boutique\"},\"spec\":{\"selector\":{\"matchLabels\":{\"app\":\"adservice\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"adservice\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"PORT\",\"value\":\"9555\"}],\"image\":\"us-central1-docker.pkg.dev/google-samples/microservices-demo/adservice:v0.10.3\",\"livenessProbe\":{\"grpc\":{\"port\":9555},\"initialDelaySeconds\":20,\"periodSeconds\":15},\"name\":\"server\",\"ports\":[{\"containerPort\":9555}],\"readinessProbe\":{\"grpc\":{\"port\":9555},\"initialDelaySeconds\":20,\"periodSeconds\":15},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"privileged\":false,\"readOnlyRootFilesystem\":true}}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker1\"},\"securityContext\":{\"fsGroup\":1000,\"runAsGroup\":1000,\"runAsNonRoot\":true,\"runAsUser\":1000},\"serviceAccountName\":\"adservice\",\"terminationGracePeriodSeconds\":5}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.018,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 182452224.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.134,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 182452224.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "cartservice",
+        "container": "server",
+        "pods": [
+          {
+            "name": "cartservice-67d6f6899d-rq94b",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "online-boutique",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app": "cartservice"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "3",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"cartservice\"},\"name\":\"cartservice\",\"namespace\":\"online-boutique\"},\"spec\":{\"selector\":{\"matchLabels\":{\"app\":\"cartservice\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"cartservice\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"REDIS_ADDR\",\"value\":\"redis-cart:6379\"}],\"image\":\"us-central1-docker.pkg.dev/google-samples/microservices-demo/cartservice:v0.10.3\",\"livenessProbe\":{\"grpc\":{\"port\":7070},\"initialDelaySeconds\":15,\"periodSeconds\":10},\"name\":\"server\",\"ports\":[{\"containerPort\":7070}],\"readinessProbe\":{\"grpc\":{\"port\":7070},\"initialDelaySeconds\":15},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"privileged\":false,\"readOnlyRootFilesystem\":true}}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker1\"},\"securityContext\":{\"fsGroup\":1000,\"runAsGroup\":1000,\"runAsNonRoot\":true,\"runAsUser\":1000},\"serviceAccountName\":\"cartservice\",\"terminationGracePeriodSeconds\":5}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.066,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.121,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "checkoutservice",
+        "container": "server",
+        "pods": [
+          {
+            "name": "checkoutservice-68dddcbb74-72cs4",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "online-boutique",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app": "checkoutservice"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "3",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"checkoutservice\"},\"name\":\"checkoutservice\",\"namespace\":\"online-boutique\"},\"spec\":{\"selector\":{\"matchLabels\":{\"app\":\"checkoutservice\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"checkoutservice\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"COLLECTOR_SERVICE_ADDR\",\"value\":\"opentelemetrycollector:4317\"},{\"name\":\"OTEL_SERVICE_NAME\",\"value\":\"checkoutservice\"},{\"name\":\"ENABLE_TRACING\",\"value\":\"1\"},{\"name\":\"PORT\",\"value\":\"5050\"},{\"name\":\"PRODUCT_CATALOG_SERVICE_ADDR\",\"value\":\"productcatalogservice:3550\"},{\"name\":\"SHIPPING_SERVICE_ADDR\",\"value\":\"shippingservice:50051\"},{\"name\":\"PAYMENT_SERVICE_ADDR\",\"value\":\"paymentservice:50051\"},{\"name\":\"EMAIL_SERVICE_ADDR\",\"value\":\"emailservice:5000\"},{\"name\":\"CURRENCY_SERVICE_ADDR\",\"value\":\"currencyservice:7000\"},{\"name\":\"CART_SERVICE_ADDR\",\"value\":\"cartservice:7070\"}],\"image\":\"us-central1-docker.pkg.dev/google-samples/microservices-demo/checkoutservice:v0.10.3\",\"livenessProbe\":{\"grpc\":{\"port\":5050}},\"name\":\"server\",\"ports\":[{\"containerPort\":5050}],\"readinessProbe\":{\"grpc\":{\"port\":5050}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"privileged\":false,\"readOnlyRootFilesystem\":true}}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"securityContext\":{\"fsGroup\":1000,\"runAsGroup\":1000,\"runAsNonRoot\":true,\"runAsUser\":1000},\"serviceAccountName\":\"checkoutservice\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "currencyservice",
+        "container": "server",
+        "pods": [
+          {
+            "name": "currencyservice-794f7b968d-mb754",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "online-boutique",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app": "currencyservice"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "3",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"currencyservice\"},\"name\":\"currencyservice\",\"namespace\":\"online-boutique\"},\"spec\":{\"selector\":{\"matchLabels\":{\"app\":\"currencyservice\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"currencyservice\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"COLLECTOR_SERVICE_ADDR\",\"value\":\"opentelemetrycollector:4317\"},{\"name\":\"OTEL_SERVICE_NAME\",\"value\":\"currencyservice\"},{\"name\":\"ENABLE_TRACING\",\"value\":\"1\"},{\"name\":\"PORT\",\"value\":\"7000\"},{\"name\":\"DISABLE_PROFILER\",\"value\":\"1\"}],\"image\":\"us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/currencyservice:v0.10.6\",\"livenessProbe\":{\"grpc\":{\"port\":7000}},\"name\":\"server\",\"ports\":[{\"containerPort\":7000,\"name\":\"grpc\"}],\"readinessProbe\":{\"grpc\":{\"port\":7000}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"privileged\":false,\"readOnlyRootFilesystem\":true}}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker1\"},\"securityContext\":{\"fsGroup\":1000,\"runAsGroup\":1000,\"runAsNonRoot\":true,\"runAsUser\":1000},\"serviceAccountName\":\"currencyservice\",\"terminationGracePeriodSeconds\":5}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.12,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.157,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "emailservice",
+        "container": "server",
+        "pods": [
+          {
+            "name": "emailservice-784c45d4cb-k84tv",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "online-boutique",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app": "emailservice"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "3",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"emailservice\"},\"name\":\"emailservice\",\"namespace\":\"online-boutique\"},\"spec\":{\"selector\":{\"matchLabels\":{\"app\":\"emailservice\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"emailservice\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"COLLECTOR_SERVICE_ADDR\",\"value\":\"opentelemetrycollector:4317\"},{\"name\":\"OTEL_SERVICE_NAME\",\"value\":\"emailservice\"},{\"name\":\"ENABLE_TRACING\",\"value\":\"1\"},{\"name\":\"PORT\",\"value\":\"8080\"},{\"name\":\"DISABLE_PROFILER\",\"value\":\"1\"}],\"image\":\"us-central1-docker.pkg.dev/google-samples/microservices-demo/emailservice:v0.10.3\",\"livenessProbe\":{\"grpc\":{\"port\":8080},\"periodSeconds\":5},\"name\":\"server\",\"ports\":[{\"containerPort\":8080}],\"readinessProbe\":{\"grpc\":{\"port\":8080},\"periodSeconds\":5},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"privileged\":false,\"readOnlyRootFilesystem\":true}}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"securityContext\":{\"fsGroup\":1000,\"runAsGroup\":1000,\"runAsNonRoot\":true,\"runAsUser\":1000},\"serviceAccountName\":\"emailservice\",\"terminationGracePeriodSeconds\":5}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "frontend",
+        "container": "server",
+        "pods": [
+          {
+            "name": "frontend-6bbc4ffdb4-5w2dj",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "online-boutique",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app": "frontend"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "3",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"frontend\"},\"name\":\"frontend\",\"namespace\":\"online-boutique\"},\"spec\":{\"selector\":{\"matchLabels\":{\"app\":\"frontend\"}},\"template\":{\"metadata\":{\"annotations\":{\"sidecar.istio.io/rewriteAppHTTPProbers\":\"true\"},\"labels\":{\"app\":\"frontend\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"ENABLE_TRACING\",\"value\":\"1\"},{\"name\":\"COLLECTOR_SERVICE_ADDR\",\"value\":\"opentelemetrycollector:4317\"},{\"name\":\"OTEL_SERVICE_NAME\",\"value\":\"frontend\"},{\"name\":\"PORT\",\"value\":\"8080\"},{\"name\":\"PRODUCT_CATALOG_SERVICE_ADDR\",\"value\":\"productcatalogservice:3550\"},{\"name\":\"CURRENCY_SERVICE_ADDR\",\"value\":\"currencyservice:7000\"},{\"name\":\"CART_SERVICE_ADDR\",\"value\":\"cartservice:7070\"},{\"name\":\"RECOMMENDATION_SERVICE_ADDR\",\"value\":\"recommendationservice:8080\"},{\"name\":\"SHIPPING_SERVICE_ADDR\",\"value\":\"shippingservice:50051\"},{\"name\":\"CHECKOUT_SERVICE_ADDR\",\"value\":\"checkoutservice:5050\"},{\"name\":\"AD_SERVICE_ADDR\",\"value\":\"adservice:9555\"},{\"name\":\"SHOPPING_ASSISTANT_SERVICE_ADDR\",\"value\":\"shoppingassistantservice:80\"},{\"name\":\"ENV_PLATFORM\",\"value\":\"local\"},{\"name\":\"CYMBAL_BRANDING\",\"value\":\"false\"},{\"name\":\"ENABLE_ASSISTANT\",\"value\":\"false\"},{\"name\":\"ENABLE_SINGLE_SHARED_SESSION\",\"value\":\"false\"}],\"image\":\"us-central1-docker.pkg.dev/google-samples/microservices-demo/frontend:v0.10.3\",\"livenessProbe\":{\"httpGet\":{\"httpHeaders\":[{\"name\":\"Cookie\",\"value\":\"shop_session-id=x-liveness-probe\"}],\"path\":\"/_healthz\",\"port\":8080},\"initialDelaySeconds\":10},\"name\":\"server\",\"ports\":[{\"containerPort\":8080}],\"readinessProbe\":{\"httpGet\":{\"httpHeaders\":[{\"name\":\"Cookie\",\"value\":\"shop_session-id=x-readiness-probe\"}],\"path\":\"/_healthz\",\"port\":8080},\"initialDelaySeconds\":10},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"privileged\":false,\"readOnlyRootFilesystem\":true}}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker1\"},\"securityContext\":{\"fsGroup\":1000,\"runAsGroup\":1000,\"runAsNonRoot\":true,\"runAsUser\":1000},\"serviceAccountName\":\"frontend\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.251,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.269,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "jaeger",
+        "container": "jaeger",
+        "pods": [
+          {
+            "name": "jaeger-78cff9dc44-sdkl4",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "online-boutique",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app": "jaeger"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"jaeger\"},\"name\":\"jaeger\",\"namespace\":\"online-boutique\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"name\":\"jaeger\"}},\"template\":{\"metadata\":{\"labels\":{\"name\":\"jaeger\"},\"name\":\"jaeger\"},\"spec\":{\"containers\":[{\"args\":[\"--config\",\"/etc/jaeger/config.yml\"],\"env\":[{\"name\":\"JAEGER_UI_CONFIG\",\"value\":\"/etc/jaeger/jaeger-ui.json\"}],\"image\":\"jaegertracing/jaeger@sha256:d2cbd047e44b50c11454820f84fd5f34c24a435e5301cf94fe026bf055db80b3\",\"name\":\"jaeger\",\"volumeMounts\":[{\"mountPath\":\"/etc/jaeger\",\"name\":\"config-volume\"}]}],\"enableServiceLinks\":false,\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"jaeger-config\"},\"name\":\"config-volume\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.011,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 619708416.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.04,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 619708416.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "opentelemetrycollector",
+        "container": "otel-gateway",
+        "pods": [
+          {
+            "name": "opentelemetrycollector-7f8798fc9b-ql9dk",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "online-boutique",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {},
+        "annotations": {
+          "deployment.kubernetes.io/revision": "5",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"name\":\"opentelemetrycollector\",\"namespace\":\"online-boutique\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"opentelemetrycollector\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"opentelemetrycollector\"}},\"spec\":{\"containers\":[{\"args\":[\"--config=/conf/collector-gateway-config.yaml\"],\"image\":\"otel/opentelemetry-collector-contrib:0.122.1@sha256:0076e6c250bef16968e29e8f94177b87b5a851c79ce14b270e657f5f655b9e04\",\"name\":\"otel-gateway\",\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"privileged\":false,\"readOnlyRootFilesystem\":true},\"volumeMounts\":[{\"mountPath\":\"/conf\",\"name\":\"collector-gateway-config\"}]}],\"initContainers\":[{\"command\":[\"/bin/sh\",\"-c\",\"sed \\\"s/PROJECT_ID/$(curl -H 'Metadata-Flavor: Google' http://metadata.google.internal/computeMetadata/v1/project/project-id)/\\\" /template/collector-gateway-config-template.yaml \\u003e\\u003e /conf/collector-gateway-config.yaml\\n\"],\"image\":\"busybox:latest@sha256:37f7b378a29ceb4c551b1b5582e27747b855bbfaa73fa11914fe0df028dc581f\",\"name\":\"otel-gateway-init\",\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"privileged\":false,\"readOnlyRootFilesystem\":true},\"volumeMounts\":[{\"mountPath\":\"/template\",\"name\":\"collector-gateway-config-template\"},{\"mountPath\":\"/conf\",\"name\":\"collector-gateway-config\"}]}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"securityContext\":{\"fsGroup\":1000,\"runAsGroup\":1000,\"runAsNonRoot\":true,\"runAsUser\":1000},\"serviceAccountName\":\"opentelemetrycollector\",\"volumes\":[{\"configMap\":{\"items\":[{\"key\":\"collector-gateway-config-template.yaml\",\"path\":\"collector-gateway-config-template.yaml\"}],\"name\":\"collector-gateway-config-template\"},\"name\":\"collector-gateway-config-template\"},{\"emptyDir\":{},\"name\":\"collector-gateway-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.014,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.015,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "paymentservice",
+        "container": "server",
+        "pods": [
+          {
+            "name": "paymentservice-6fd8dcc585-dw4tl",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "online-boutique",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app": "paymentservice"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "3",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"paymentservice\"},\"name\":\"paymentservice\",\"namespace\":\"online-boutique\"},\"spec\":{\"selector\":{\"matchLabels\":{\"app\":\"paymentservice\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"paymentservice\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"COLLECTOR_SERVICE_ADDR\",\"value\":\"opentelemetrycollector:4317\"},{\"name\":\"OTEL_SERVICE_NAME\",\"value\":\"paymentservice\"},{\"name\":\"ENABLE_TRACING\",\"value\":\"1\"},{\"name\":\"PORT\",\"value\":\"50051\"},{\"name\":\"DISABLE_PROFILER\",\"value\":\"1\"}],\"image\":\"us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/paymentservice:v0.10.6\",\"livenessProbe\":{\"grpc\":{\"port\":50051}},\"name\":\"server\",\"ports\":[{\"containerPort\":50051}],\"readinessProbe\":{\"grpc\":{\"port\":50051}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"privileged\":false,\"readOnlyRootFilesystem\":true}}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker1\"},\"securityContext\":{\"fsGroup\":1000,\"runAsGroup\":1000,\"runAsNonRoot\":true,\"runAsUser\":1000},\"serviceAccountName\":\"paymentservice\",\"terminationGracePeriodSeconds\":5}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.034,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "productcatalogservice",
+        "container": "server",
+        "pods": [
+          {
+            "name": "productcatalogservice-59d7858fbb-t6mqv",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "online-boutique",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app": "productcatalogservice"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "3",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"productcatalogservice\"},\"name\":\"productcatalogservice\",\"namespace\":\"online-boutique\"},\"spec\":{\"selector\":{\"matchLabels\":{\"app\":\"productcatalogservice\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"productcatalogservice\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"COLLECTOR_SERVICE_ADDR\",\"value\":\"opentelemetrycollector:4317\"},{\"name\":\"OTEL_SERVICE_NAME\",\"value\":\"productcatalogservice\"},{\"name\":\"ENABLE_TRACING\",\"value\":\"1\"},{\"name\":\"PORT\",\"value\":\"3550\"},{\"name\":\"DISABLE_PROFILER\",\"value\":\"1\"},{\"name\":\"EXTRA_LATENCY\"}],\"image\":\"us-central1-docker.pkg.dev/google-samples/microservices-demo/productcatalogservice:v0.10.3\",\"livenessProbe\":{\"grpc\":{\"port\":3550}},\"name\":\"server\",\"ports\":[{\"containerPort\":3550}],\"readinessProbe\":{\"grpc\":{\"port\":3550}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"privileged\":false,\"readOnlyRootFilesystem\":true}}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"securityContext\":{\"fsGroup\":1000,\"runAsGroup\":1000,\"runAsNonRoot\":true,\"runAsUser\":1000},\"serviceAccountName\":\"productcatalogservice\",\"terminationGracePeriodSeconds\":5}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.076,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.082,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "recommendationservice",
+        "container": "server",
+        "pods": [
+          {
+            "name": "recommendationservice-56f5dc7799-qjcl9",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "online-boutique",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app": "recommendationservice"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "3",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"recommendationservice\"},\"name\":\"recommendationservice\",\"namespace\":\"online-boutique\"},\"spec\":{\"selector\":{\"matchLabels\":{\"app\":\"recommendationservice\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"recommendationservice\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"COLLECTOR_SERVICE_ADDR\",\"value\":\"opentelemetrycollector:4317\"},{\"name\":\"OTEL_SERVICE_NAME\",\"value\":\"recommendationservice\"},{\"name\":\"ENABLE_TRACING\",\"value\":\"1\"},{\"name\":\"PORT\",\"value\":\"8080\"},{\"name\":\"PRODUCT_CATALOG_SERVICE_ADDR\",\"value\":\"productcatalogservice:3550\"},{\"name\":\"DISABLE_PROFILER\",\"value\":\"1\"}],\"image\":\"us-central1-docker.pkg.dev/google-samples/microservices-demo/recommendationservice:v0.10.3\",\"livenessProbe\":{\"grpc\":{\"port\":8080},\"periodSeconds\":5},\"name\":\"server\",\"ports\":[{\"containerPort\":8080}],\"readinessProbe\":{\"grpc\":{\"port\":8080},\"periodSeconds\":5},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"privileged\":false,\"readOnlyRootFilesystem\":true}}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker1\"},\"securityContext\":{\"fsGroup\":1000,\"runAsGroup\":1000,\"runAsNonRoot\":true,\"runAsUser\":1000},\"serviceAccountName\":\"recommendationservice\",\"terminationGracePeriodSeconds\":5}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.126,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.136,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "redis-cart",
+        "container": "redis",
+        "pods": [
+          {
+            "name": "redis-cart-664c975fd9-59h55",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "online-boutique",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {},
+        "annotations": {
+          "deployment.kubernetes.io/revision": "3",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"name\":\"redis-cart\",\"namespace\":\"online-boutique\"},\"spec\":{\"selector\":{\"matchLabels\":{\"app\":\"redis-cart\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"redis-cart\"}},\"spec\":{\"containers\":[{\"image\":\"redis:alpine@sha256:02419de7eddf55aa5bcf49efb74e88fa8d931b4d77c07eff8a6b2144472b6952\",\"livenessProbe\":{\"periodSeconds\":5,\"tcpSocket\":{\"port\":6379}},\"name\":\"redis\",\"ports\":[{\"containerPort\":6379}],\"readinessProbe\":{\"periodSeconds\":5,\"tcpSocket\":{\"port\":6379}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"privileged\":false,\"readOnlyRootFilesystem\":true},\"volumeMounts\":[{\"mountPath\":\"/data\",\"name\":\"redis-data\"}]}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"securityContext\":{\"fsGroup\":1000,\"runAsGroup\":1000,\"runAsNonRoot\":true,\"runAsUser\":1000},\"serviceAccountName\":\"redis-cart\",\"volumes\":[{\"emptyDir\":{},\"name\":\"redis-data\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.011,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.011,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "shippingservice",
+        "container": "server",
+        "pods": [
+          {
+            "name": "shippingservice-644dff6b4c-sm6mh",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "online-boutique",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app": "shippingservice"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "3",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"shippingservice\"},\"name\":\"shippingservice\",\"namespace\":\"online-boutique\"},\"spec\":{\"selector\":{\"matchLabels\":{\"app\":\"shippingservice\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"shippingservice\"}},\"spec\":{\"containers\":[{\"image\":\"us-central1-docker.pkg.dev/google-samples/microservices-demo/shippingservice:v0.10.3\",\"livenessProbe\":{\"grpc\":{\"port\":50051}},\"name\":\"server\",\"ports\":[{\"containerPort\":50051}],\"readinessProbe\":{\"grpc\":{\"port\":50051},\"periodSeconds\":5},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"privileged\":false,\"readOnlyRootFilesystem\":true}}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker1\"},\"securityContext\":{\"fsGroup\":1000,\"runAsGroup\":1000,\"runAsNonRoot\":true,\"runAsUser\":1000},\"serviceAccountName\":\"shippingservice\"}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    }
+  ],
+  "score": 30,
+  "resources": [
+    "cpu",
+    "memory"
+  ],
+  "description": "[b]Simple_Limit Strategy[/b]\n\nCPU request: 70.0% percentile, limit: 100.0% percentile\nMemory request: max + 15.0%, limit: max + 15.0%\nHistory: 2.0 hours\nStep: 1.0 minutes\n\nAll parameters can be customized. For example: `krr simple_limit --cpu_request=66 --cpu_limit=96 --memory_buffer_percentage=15 --history_duration=24 --timeframe_duration=0.5`\n\nThis strategy does not work with objects with HPA defined (Horizontal Pod Autoscaler).\nIf HPA is defined for CPU or Memory, the strategy will return \"?\" for that resource.\nYou can override this behaviour by passing the --allow-hpa flag\n\nLearn more: [underline]https://github.com/robusta-dev/krr#algorithm[/underline]",
+  "strategy": {
+    "name": "simple_limit",
+    "settings": {
+      "history_duration": 2.0,
+      "timeframe_duration": 1.0,
+      "end_epoch": 1784311190.8470132,
+      "cpu_request": 70.0,
+      "cpu_limit": 100.0,
+      "memory_buffer_percentage": 15.0,
+      "points_required": 100,
+      "allow_hpa": false,
+      "use_oomkill_data": false,
+      "oom_memory_buffer_percentage": 25.0
+    }
+  },
+  "errors": [],
+  "clusterSummary": {
+    "cluster_memory": 36815593472.0,
+    "cluster_cpu": 28.0,
+    "kube_system_mem_req": 146800640.0,
+    "kube_system_cpu_req": 0.2
+  },
+  "config": {
+    "quiet": true,
+    "verbose": false,
+    "clusters": [],
+    "kubeconfig": null,
+    "impersonate_user": null,
+    "impersonate_group": null,
+    "namespaces": [
+      "online-boutique"
+    ],
+    "resources": "*",
+    "selector": null,
+    "cpu_min_value": 10,
+    "memory_min_value": 100,
+    "prometheus_url": "http://k8s-master:30954",
+    "prometheus_auth_header": null,
+    "prometheus_other_headers": {},
+    "prometheus_ssl_enabled": false,
+    "prometheus_cluster_label": null,
+    "prometheus_label": null,
+    "eks_managed_prom": false,
+    "eks_managed_prom_profile_name": null,
+    "eks_access_key": null,
+    "eks_secret_key": null,
+    "eks_service_name": "aps",
+    "eks_managed_prom_region": null,
+    "eks_assume_role": null,
+    "coralogix_token": null,
+    "openshift": false,
+    "max_workers": 10,
+    "discovery_job_batch_size": 5000,
+    "discovery_job_max_batches": 100,
+    "job_grouping_labels": null,
+    "job_grouping_limit": 500,
+    "format": "json",
+    "show_cluster_name": false,
+    "strategy": "simple_limit",
+    "log_to_stderr": false,
+    "width": 900,
+    "show_severity": true,
+    "publish_scan_url": null,
+    "start_time": null,
+    "scan_id": null,
+    "named_sinks": [],
+    "file_output": null,
+    "file_output_dynamic": false,
+    "slack_output": null,
+    "slack_title": null,
+    "azureblob_output": null,
+    "teams_webhook": null,
+    "azure_subscription_id": null,
+    "azure_resource_group": null,
+    "other_args": {
+      "history_duration": "2",
+      "timeframe_duration": "1",
+      "end_epoch": "1784311190.8470132",
+      "cpu_request": "70",
+      "cpu_limit": "100",
+      "memory_buffer_percentage": "15",
+      "points_required": "100",
+      "allow_hpa": false,
+      "use_oomkill_data": false,
+      "oom_memory_buffer_percentage": "25"
+    },
+    "inside_cluster": false
+  }
+}

@@ -20,7 +20,8 @@ patches:
   - path: ./patches/opentelemetry.yaml
   - path: ./patches/images.yaml
   - path: ./patches/deployment-node.yaml
-  - path: ./patches/no-resources.yaml
+  # - path: ./patches/no-resources.yaml
+  - path: ./patches/resources.yaml
   - patch: |
       $patch: delete
       apiVersion: apps/v1
