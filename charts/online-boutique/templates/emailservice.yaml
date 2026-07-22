@@ -94,7 +94,7 @@ spec:
           grpc:
             port: 8080
         livenessProbe:
-          periodSeconds: 5
+          periodSeconds: 10
           grpc:
             port: 8080
         resources:

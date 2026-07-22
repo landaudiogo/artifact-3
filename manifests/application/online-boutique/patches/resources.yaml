@@ -86,7 +86,7 @@ spec:
       - name: server
         resources:
           limits:
-            cpu: 0.015
+            cpu: 0.1
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -162,7 +162,7 @@ spec:
       - name: server
         resources:
           limits:
-            cpu: 0.034
+            cpu: 0.05
             memory: 104857600.0
           requests:
             cpu: 0.01
