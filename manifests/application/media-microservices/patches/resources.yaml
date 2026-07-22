@@ -9,7 +9,7 @@ spec:
       - name: cast-info-memcached
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -27,7 +27,7 @@ spec:
       - name: cast-info-mongodb
         resources:
           limits:
-            cpu: 0.141
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -45,7 +45,7 @@ spec:
       - name: cast-info-service
         resources:
           limits:
-            cpu: 0.125
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -63,7 +63,7 @@ spec:
       - name: compose-review-memcached
         resources:
           limits:
-            cpu: 0.044
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.029
@@ -81,7 +81,7 @@ spec:
       - name: compose-review-service
         resources:
           limits:
-            cpu: 0.177
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.118
@@ -100,7 +100,7 @@ spec:
       - name: jaeger
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -118,7 +118,7 @@ spec:
       - name: movie-id-memcached
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -136,7 +136,7 @@ spec:
       - name: movie-id-mongodb
         resources:
           limits:
-            cpu: 0.018
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -154,7 +154,7 @@ spec:
       - name: movie-id-service
         resources:
           limits:
-            cpu: 0.046
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.031
@@ -172,7 +172,7 @@ spec:
       - name: movie-info-memcached
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -190,7 +190,7 @@ spec:
       - name: movie-info-mongodb
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -208,7 +208,7 @@ spec:
       - name: movie-info-service
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -226,7 +226,7 @@ spec:
       - name: movie-review-mongodb
         resources:
           limits:
-            cpu: 0.051
+            cpu: null
             memory: 130023424.0
           requests:
             cpu: 0.034
@@ -244,7 +244,7 @@ spec:
       - name: movie-review-redis
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -262,7 +262,7 @@ spec:
       - name: movie-review-service
         resources:
           limits:
-            cpu: 0.039
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.026
@@ -280,7 +280,7 @@ spec:
       - name: nginx-web-server
         resources:
           limits:
-            cpu: 0.123
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.029
@@ -298,7 +298,7 @@ spec:
       - name: page-service
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -316,7 +316,7 @@ spec:
       - name: plot-memcached
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -334,7 +334,7 @@ spec:
       - name: plot-mongodb
         resources:
           limits:
-            cpu: 0.019
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -352,7 +352,7 @@ spec:
       - name: plot-service
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -370,7 +370,7 @@ spec:
       - name: rating-redis
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -388,7 +388,7 @@ spec:
       - name: rating-service
         resources:
           limits:
-            cpu: 0.046
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.031
@@ -406,7 +406,7 @@ spec:
       - name: review-storage-memcached
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -424,7 +424,7 @@ spec:
       - name: review-storage-mongodb
         resources:
           limits:
-            cpu: 0.027
+            cpu: null
             memory: 165675008.0
           requests:
             cpu: 0.018
@@ -442,7 +442,7 @@ spec:
       - name: review-storage-service
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -460,7 +460,7 @@ spec:
       - name: text-service
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -478,7 +478,7 @@ spec:
       - name: unique-id-service
         resources:
           limits:
-            cpu: 0.021
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.014
@@ -496,7 +496,7 @@ spec:
       - name: user-memcached
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -514,7 +514,7 @@ spec:
       - name: user-mongodb
         resources:
           limits:
-            cpu: 0.025
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -532,7 +532,7 @@ spec:
       - name: user-review-mongodb
         resources:
           limits:
-            cpu: 0.042
+            cpu: null
             memory: 131072000.0
           requests:
             cpu: 0.028
@@ -550,7 +550,7 @@ spec:
       - name: user-review-redis
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -568,7 +568,7 @@ spec:
       - name: user-review-service
         resources:
           limits:
-            cpu: 0.038
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.025
@@ -586,7 +586,7 @@ spec:
       - name: user-service
         resources:
           limits:
-            cpu: 0.019
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.013

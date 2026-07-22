@@ -9,7 +9,7 @@ spec:
       - name: accounting
         resources:
           limits:
-            cpu: 0.046
+            cpu: null
             memory: 253755392.0
           requests:
             cpu: 0.034
@@ -27,7 +27,7 @@ spec:
       - name: ad
         resources:
           limits:
-            cpu: 0.019
+            cpu: null
             memory: 442499072.0
           requests:
             cpu: 0.01
@@ -45,7 +45,7 @@ spec:
       - name: cart
         resources:
           limits:
-            cpu: 0.046
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.037
@@ -63,7 +63,7 @@ spec:
       - name: checkout
         resources:
           limits:
-            cpu: 0.037
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.029
@@ -81,7 +81,7 @@ spec:
       - name: currency
         resources:
           limits:
-            cpu: 0.013
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -99,7 +99,7 @@ spec:
       - name: email
         resources:
           limits:
-            cpu: 0.014
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -117,7 +117,7 @@ spec:
       - name: flagd
         resources:
           limits:
-            cpu: 0.01
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -135,7 +135,7 @@ spec:
       - name: flagd-ui
         resources:
           limits:
-            cpu: 0.01
+            cpu: null
             memory: 195035136.0
           requests:
             cpu: 0.01
@@ -153,7 +153,7 @@ spec:
       - name: fraud-detection
         resources:
           limits:
-            cpu: 0.012
+            cpu: null
             memory: 391118848.0
           requests:
             cpu: 0.01
@@ -171,7 +171,7 @@ spec:
       - name: frontend
         resources:
           limits:
-            cpu: 0.152
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.136
@@ -189,7 +189,7 @@ spec:
       - name: frontend-proxy
         resources:
           limits:
-            cpu: 0.047
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.043
@@ -207,7 +207,7 @@ spec:
       - name: image-provider
         resources:
           limits:
-            cpu: 0.01
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -225,7 +225,7 @@ spec:
       - name: jaeger
         resources:
           limits:
-            cpu: 0.053
+            cpu: null
             memory: 974127104.0
           requests:
             cpu: 0.027
@@ -243,7 +243,7 @@ spec:
       - name: kafka
         resources:
           limits:
-            cpu: 0.03
+            cpu: null
             memory: 753926144.0
           requests:
             cpu: 0.02
@@ -261,7 +261,7 @@ spec:
       - name: payment
         resources:
           limits:
-            cpu: 0.017
+            cpu: null
             memory: 127926272.0
           requests:
             cpu: 0.014
@@ -279,7 +279,7 @@ spec:
       - name: postgresql
         resources:
           limits:
-            cpu: 0.048
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.04
@@ -297,7 +297,7 @@ spec:
       - name: product-catalog
         resources:
           limits:
-            cpu: 0.079
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.069
@@ -315,7 +315,7 @@ spec:
       - name: product-reviews
         resources:
           limits:
-            cpu: 0.016
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.015
@@ -333,7 +333,7 @@ spec:
       - name: quote
         resources:
           limits:
-            cpu: 0.01
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -351,7 +351,7 @@ spec:
       - name: recommendation
         resources:
           limits:
-            cpu: 0.034
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.029
@@ -369,7 +369,7 @@ spec:
       - name: shipping
         resources:
           limits:
-            cpu: 0.01
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -387,7 +387,7 @@ spec:
       - name: valkey-cart
         resources:
           limits:
-            cpu: 0.01
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01

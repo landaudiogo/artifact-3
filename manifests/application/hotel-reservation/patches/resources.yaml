@@ -9,7 +9,7 @@ spec:
       - name: consul
         resources:
           limits:
-            cpu: 0.019
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.013
@@ -27,7 +27,7 @@ spec:
       - name: hotel-reserv-frontend
         resources:
           limits:
-            cpu: 0.123
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.082
@@ -45,7 +45,7 @@ spec:
       - name: hotel-reserv-geo
         resources:
           limits:
-            cpu: 0.03
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.02
@@ -64,7 +64,7 @@ spec:
       - name: jaeger
         resources:
           limits:
-            cpu: 0.022
+            cpu: null
             memory: 1055916032.0
           requests:
             cpu: 0.014
@@ -82,7 +82,7 @@ spec:
       - name: hotel-reserv-profile-mmc
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -100,7 +100,7 @@ spec:
       - name: hotel-reserv-rate-mmc
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -118,7 +118,7 @@ spec:
       - name: hotel-reserv-reservation-mmc
         resources:
           limits:
-            cpu: 0.022
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.015
@@ -136,7 +136,7 @@ spec:
       - name: hotel-reserv-geo-mongo
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -154,7 +154,7 @@ spec:
       - name: hotel-reserv-profile-mongo
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 105906176.0
           requests:
             cpu: 0.01
@@ -172,7 +172,7 @@ spec:
       - name: hotel-reserv-rate-mongo
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -190,7 +190,7 @@ spec:
       - name: hotel-reserv-recommendation-mongo
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -208,7 +208,7 @@ spec:
       - name: hotel-reserv-reservation-mongo
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -226,7 +226,7 @@ spec:
       - name: hotel-reserv-user-mongo
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -244,7 +244,7 @@ spec:
       - name: hotel-reserv-profile
         resources:
           limits:
-            cpu: 0.095
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.063
@@ -262,7 +262,7 @@ spec:
       - name: hotel-reserv-rate
         resources:
           limits:
-            cpu: 0.071
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.047
@@ -280,7 +280,7 @@ spec:
       - name: hotel-reserv-recommendation
         resources:
           limits:
-            cpu: 0.03
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.02
@@ -298,7 +298,7 @@ spec:
       - name: hotel-reserv-reservation
         resources:
           limits:
-            cpu: 0.132
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.088
@@ -316,7 +316,7 @@ spec:
       - name: hotel-reserv-search
         resources:
           limits:
-            cpu: 0.118
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.079
@@ -334,7 +334,7 @@ spec:
       - name: hotel-reserv-user
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01

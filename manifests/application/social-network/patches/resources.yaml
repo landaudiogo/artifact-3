@@ -10,7 +10,7 @@ spec:
       - name: compose-post-service
         resources:
           limits:
-            cpu: 0.021
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.014
@@ -29,7 +29,7 @@ spec:
       - name: home-timeline-redis
         resources:
           limits:
-            cpu: 0.036
+            cpu: null
             memory: 289406976.0
           requests:
             cpu: 0.012
@@ -48,7 +48,7 @@ spec:
       - name: home-timeline-service
         resources:
           limits:
-            cpu: 0.024
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.016
@@ -67,7 +67,7 @@ spec:
       - name: jaeger
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 298844160.0
           requests:
             cpu: 0.01
@@ -86,7 +86,7 @@ spec:
       - name: media-frontend
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -105,7 +105,7 @@ spec:
       - name: media-memcached
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -124,7 +124,7 @@ spec:
       - name: media-mongodb
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -143,7 +143,7 @@ spec:
       - name: media-service
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -162,7 +162,7 @@ spec:
       - name: nginx-thrift
         resources:
           limits:
-            cpu: 0.6
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.138
@@ -181,7 +181,7 @@ spec:
       - name: post-storage-memcached
         resources:
           limits:
-            cpu: 0.016
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -200,7 +200,7 @@ spec:
       - name: post-storage-mongodb
         resources:
           limits:
-            cpu: 0.018
+            cpu: null
             memory: 164626432.0
           requests:
             cpu: 0.012
@@ -219,7 +219,7 @@ spec:
       - name: post-storage-service
         resources:
           limits:
-            cpu: 0.081
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.054
@@ -238,11 +238,11 @@ spec:
       - name: social-graph-mongodb
         resources:
           limits:
-            cpu: 0.666
-            memory: 606076928
+            cpu: null
+            memory: 606076928.0
           requests:
             cpu: 0.01
-            memory: 606076928
+            memory: 606076928.0
 
 ---
 apiVersion: apps/v1
@@ -257,7 +257,7 @@ spec:
       - name: social-graph-redis
         resources:
           limits:
-            cpu: 0.249
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -276,7 +276,7 @@ spec:
       - name: social-graph-service
         resources:
           limits:
-            cpu: 0.599
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -295,7 +295,7 @@ spec:
       - name: text-service
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -314,7 +314,7 @@ spec:
       - name: unique-id-service
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -333,7 +333,7 @@ spec:
       - name: url-shorten-memcached
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -352,7 +352,7 @@ spec:
       - name: url-shorten-mongodb
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 158334976.0
           requests:
             cpu: 0.01
@@ -371,7 +371,7 @@ spec:
       - name: url-shorten-service
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -390,7 +390,7 @@ spec:
       - name: user-memcached
         resources:
           limits:
-            cpu: 0.6
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -409,7 +409,7 @@ spec:
       - name: user-mention-service
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -428,7 +428,7 @@ spec:
       - name: user-mongodb
         resources:
           limits:
-            cpu: 0.6
+            cpu: null
             memory: 303038464.0
           requests:
             cpu: 0.01
@@ -447,7 +447,7 @@ spec:
       - name: user-service
         resources:
           limits:
-            cpu: 0.6
+            cpu: null
             memory: 303038464.0
           requests:
             cpu: 0.01
@@ -466,7 +466,7 @@ spec:
       - name: user-timeline-mongodb
         resources:
           limits:
-            cpu: 0.021
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.014
@@ -485,7 +485,7 @@ spec:
       - name: user-timeline-redis
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
@@ -504,7 +504,7 @@ spec:
       - name: user-timeline-service
         resources:
           limits:
-            cpu: 0.015
+            cpu: null
             memory: 104857600.0
           requests:
             cpu: 0.01
