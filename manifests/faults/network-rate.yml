@@ -1,0 +1,15 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: NetworkChaos
+metadata:
+  name: network-emulation
+spec:
+  action: netem
+  mode: all
+  selector:
+    namespaces:
+      - online-boutique
+    labelSelectors:
+      'app': 'productcatalogservice'
+  rate:
+    rate: '225kbit'
+  duration: 1m

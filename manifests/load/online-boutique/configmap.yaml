@@ -80,3 +80,5 @@ data:
     class WebsiteUser(FastHttpUser):
         tasks = [UserBehavior]
         wait_time = between(0.5, 2)
+        network_timeout = 5.0
+        connection_timeout = 5.0

@@ -1,0 +1,17 @@
+kind: StressChaos
+apiVersion: chaos-mesh.org/v1alpha1
+metadata:
+  namespace: faults
+  name: stress-cpu
+spec:
+  selector:
+    namespaces:
+      - social-network
+    labelSelectors:
+      app: user-timeline-mongodb
+  mode: all
+  stressors:
+    cpu:
+      workers: 2
+      load: 100
+  duration: 2m
