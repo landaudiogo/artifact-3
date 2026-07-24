@@ -51,12 +51,12 @@ spec:
               while true; do
                 result=$(clickhouse-client -h sample-clickhouse-headless --port 9000 --user default --password "$(echo $CLICKHOUSE_PASSWORD)" -q "select count(*) from information_schema.tables where table_schema = 'default'" 2>/dev/null | tr -d '[:space:]')
                 
-                if [ -n "$result" ] && [ "$result" -eq "36" ]; then
-                  echo "Found 36 tables. Schema is ready."
+                if [ -n "$result" ] && [ "$result" -eq "37" ]; then
+                  echo "Found 37 tables. Schema is ready."
                   break
                 fi
                 
-                echo "Waiting for schema... Currently found ${result:-0} tables (Expected 36)."
+                echo "Waiting for schema... Currently found ${result:-0} tables (Expected 37)."
                 sleep 5
               done
       containers:

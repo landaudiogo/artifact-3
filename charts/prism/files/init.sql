@@ -15,14 +15,20 @@ ON CLUSTER default
 AS default.docker_local
 ENGINE = Distributed(default, default, docker_local, machine_id);
 
-CREATE TABLE IF NOT EXISTS default.linux_consts
+CREATE TABLE IF NOT EXISTS default.linux_consts_local
 ON CLUSTER default
 (
     const_type  VARCHAR,
     const_name  VARCHAR,
     `value`     UInt32
-) ENGINE = ReplicatedMergeTree()
+) ENGINE = MergeTree()
+PARTITION BY const_type
 ORDER BY (const_type, const_name);
+
+CREATE TABLE IF NOT EXISTS default.linux_consts
+ON CLUSTER default 
+AS default.linux_consts_local
+ENGINE = Distributed(default, default, linux_consts_local, cityHash64(const_type));
 
 CREATE TABLE IF NOT EXISTS default.iowait_local
 ON CLUSTER default

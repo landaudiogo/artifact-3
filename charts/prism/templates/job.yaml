@@ -30,11 +30,11 @@ spec:
 
               result=$(clickhouse-client -h sample-clickhouse-headless --port 9000 --user default --password "$(echo $CLICKHOUSE_PASSWORD)" -q "select count(*) from information_schema.tables where table_schema = 'default'" 2>/dev/null | tr -d '[:space:]')
               
-              if [[ "$result" -eq "36" ]]; then
-                echo "Default schema has 36 tables. Success"
+              if [[ "$result" -eq "37" ]]; then
+                echo "Default schema has 37 tables. Success"
                 exit 0
               else
-                echo "Default schema has $result tables. Expected 36"
+                echo "Default schema has $result tables. Expected 37"
                 exit 1
               fi
           volumeMounts:
