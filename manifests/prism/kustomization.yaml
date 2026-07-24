@@ -4,9 +4,13 @@ kind: Kustomization
 namespace: prism
 
 helmGlobals:
- chartHome: ../../../charts
+ chartHome: ../../charts
 
 helmCharts:
   - name: prism
     releaseName: prism
     namespace: prism
+    valuesFile: ./values.yaml
+
+resources:
+  - ./namespace.yaml

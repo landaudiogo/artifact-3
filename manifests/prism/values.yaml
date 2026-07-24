@@ -1,0 +1,4 @@
+prism: 
+  bootstrap:
+    namespace: "online-boutique"
+    podSubstring: "productcatalogservice"
