@@ -1,0 +1,53 @@
+# apiVersion: apps/v1
+# kind: DaemonSet
+# metadata: 
+#   name: chaos-daemon
+#   namespace: faults
+# spec:
+#   template:
+#     spec:
+#       containers: 
+#       - name: chaos-daemon
+#         volumeMounts:  
+#         - name: lib-modules
+#           readOnly: true
+#         - name: nix-store
+#           mountPaths: /nix/store
+#           readOnly: true
+#       volumes:
+#       - name: lib-modules 
+#         hostPath: 
+#           path: /run/current-system/kernel-modules/lib/modules
+#           type: ""
+#       - name: nix-store
+#         hostPath: 
+#           path: /nix/store
+#           type: ""
+
+# ---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: chaos-daemon
+  namespace: faults
+spec:
+  template:
+    spec:
+      containers:
+      - name: chaos-daemon
+        volumeMounts:
+        - mountPath: /lib/modules
+          name: lib-modules
+          readOnly: true
+        - mountPath: /nix/store
+          name: nix-store
+          readOnly: true
+      volumes:
+      - name: lib-modules 
+        hostPath: 
+          path: /run/current-system/kernel-modules/lib/modules
+          type: ""
+      - name: nix-store
+        hostPath: 
+          path: /nix/store
+          type: ""
