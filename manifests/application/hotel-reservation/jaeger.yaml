@@ -99,7 +99,7 @@ data:
         backends:
           some_storage:
             memory:
-              max_traces: 100000
+              max_traces: 10000
         metric_backends:
           some_metrics_storage:
             prometheus:

@@ -17,7 +17,7 @@ jaeger:
   jaeger:
     extraEnv:
       - name: MEMORY_MAX_TRACES
-        value: "25000"
+        value: "10000"
       - name: PROMETHEUS_ADDR
         value: kube-prometheus-stack-prometheus.monitoring:9090
       - name: OTEL_COLLECTOR_HOST
