@@ -1,4 +1,5 @@
 prism: 
+  tag: "6ffe27c"
   bootstrap:
     namespace: "online-boutique"
     podSubstring: "productcatalogservice"
