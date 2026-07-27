@@ -15,6 +15,7 @@ helmCharts:
 resources:
   - ./namespace.yaml
   - ./jaeger.yaml
+  - ./init-job.yaml
 
 patches:
   - path: ./patches/deployment-node.yaml

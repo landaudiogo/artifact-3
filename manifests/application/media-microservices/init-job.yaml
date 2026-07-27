@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: init-media-microservices
+  namespace: media-microservices
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+
+      initContainers:
+      - name: wait-for-nginx
+        image: busybox:1.36
+        command:
+        - sh
+        - -c
+        - |
+          until nc -z nginx-web-server 8080; do
+            echo "Waiting for nginx-web-server:8080..."
+            sleep 2
+          done
+          echo "nginx-web-server is ready."
+
+      containers:
+      - name: init
+        image: dclandau/initmediamicroservices:6027bdd
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1" 
+        args:
+        - nginx-web-server:8080

@@ -28,10 +28,10 @@ spec:
         resources:
           limits:
             cpu: null
-            memory: 104857600.0
+            memory: 304857600.0
           requests:
             cpu: 0.01
-            memory: 104857600.0
+            memory: 304857600.0
 
 ---
 apiVersion: apps/v1
@@ -515,10 +515,10 @@ spec:
         resources:
           limits:
             cpu: null
-            memory: 104857600.0
+            memory: 304857600.0
           requests:
             cpu: 0.01
-            memory: 104857600.0
+            memory: 304857600.0
 
 ---
 apiVersion: apps/v1
