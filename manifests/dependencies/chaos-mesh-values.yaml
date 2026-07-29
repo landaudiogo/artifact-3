@@ -4,3 +4,13 @@ chaosDaemon:
 
 controllerManager:
   chaosdSecurityMode: false
+  replicaCount: 1
+  nodeSelector:
+    "kubernetes.io/hostname": "k8s-master"
+  tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/master
+      value: "true"
+    - effect: NoSchedule
+      key: unschedulable
+      value: "true"
