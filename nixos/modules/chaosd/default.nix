@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 let 
-    runtimeDeps = with pkgs; [ iproute2 stress-ng ];
-    chaosd = pkgs.buildGoModule { 
+    runtimeDeps = with pkgs; [ iproute2 stress-ng ipset iptables ];
+    chaosd_ = pkgs.buildGoModule { 
         name = "chaosd";
         src = builtins.fetchGit {
           url = "https://github.com/chaos-mesh/chaosd/";
@@ -11,13 +11,22 @@ let
         patches = [ ./dbstore.patch ];
         vendorHash = "sha256-sXkAcppDboqXrWobAlxsvJE9idagV7Xmqd++1FpGwKY=";
         subPackages = [ "cmd" ];
-        buildInputs = with pkgs; [ makeWrapper ];
         postInstall = ''
             mv $out/bin/cmd $out/bin/chaosd
+        '';
+        doCheck = false;
+    };
+    chaosd = pkgs.stdenv.mkDerivation {
+        name = "chaosd-wrapped";
+        buildInputs = with pkgs; [ makeWrapper ];
+        dontUnpack = true;
+        dontBuild = true;
+        installPhase = ''
+            mkdir -p $out/bin
+            cp ${chaosd_}/bin/chaosd $out/bin/chaosd
             wrapProgram $out/bin/chaosd \
                 --set PATH ${lib.makeBinPath runtimeDeps}
         '';
-        doCheck = false;
     };
 in
 {
