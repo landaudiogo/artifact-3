@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-mongodb
+        volumeMounts:
+        - name: datadir
+          mountPath: /data/db
+      volumes:
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: user-pvc
+

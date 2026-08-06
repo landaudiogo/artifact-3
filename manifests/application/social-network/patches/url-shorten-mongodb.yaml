@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: url-shorten-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: url-shorten-mongodb
+        volumeMounts:
+        - name: datadir
+          mountPath: /data/db
+      volumes:
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: url-shorten-pvc
+
