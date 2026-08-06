@@ -2,8 +2,10 @@
 {
   imports = [
     "${inputs.nixpkgs}/nixos/modules/profiles/minimal.nix"
+    ./lvm.nix
   ];
 
+  boot.kernelModules = [ "dm-delay" "dm-snapshot" ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -25,6 +27,7 @@
   };
   environment.systemPackages = with pkgs; [
     vim
+    lvm2
   ];
 
 

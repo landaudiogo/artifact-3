@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: openebs-lvm-localpv-node
+spec:
+  template:
+    spec:
+      containers:
+      - name:  openebs-lvm-plugin
+        volumeMounts:
+        - mountPath: /etc/lvm/lvm.conf
+          name: lvm-config
+        
+      volumes:
+      - hostPath: 
+          path: /etc/lvm/lvm.conf
+          type: File
+        name: lvm-config

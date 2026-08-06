@@ -15,6 +15,7 @@ resources:
   - ./clickhouse-operator.yaml
   - ./prometheus.yaml
   - ./faults.yaml
+  - ./openebs
 
 patches:
   - path: ./patches/chaos-mesh.yaml
