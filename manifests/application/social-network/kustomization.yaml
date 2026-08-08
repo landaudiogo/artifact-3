@@ -16,21 +16,12 @@ resources:
   - ./namespace.yaml
   - ./jaeger.yaml
   - ./init-job.yaml
-  - ./resources/media-mongodb.yaml
-  - ./resources/post-storage-mongodb.yaml
-  - ./resources/social-graph-mongodb.yaml
-  - ./resources/url-shorten-mongodb.yaml
-  - ./resources/user-mongodb.yaml
-  - ./resources/user-timeline-mongodb.yaml
+  - ./resources/mongodb-pvc.yaml
+  - ./resources/mongo-entrypoint.yaml
 
 patches:
   - path: ./patches/nginx-thrift.yaml
   - path: ./patches/resources.yaml
   - path: ./patches/deployment-node.yaml
   # - path: ./patches/no-resources.yaml
-  - path: ./patches/media-mongodb.yaml
-  - path: ./patches/post-storage-mongodb.yaml
-  - path: ./patches/social-graph-mongodb.yaml
-  - path: ./patches/url-shorten-mongodb.yaml
-  - path: ./patches/user-mongodb.yaml
-  - path: ./patches/user-timeline-mongodb.yaml
+  - path: ./patches/mongodb.yaml

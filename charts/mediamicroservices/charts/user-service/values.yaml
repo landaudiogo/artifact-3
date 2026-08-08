@@ -7,6 +7,7 @@ ports:
 container:
   command: UserService
   image: dclandau/media-microservices
+  imageVersion: "latest@sha256:db22945c1e405f6ab56c3049b7492fb01358cfe424be1491da449ce8714e14af"
   name: user-service
   ports:
     - containerPort: 9090

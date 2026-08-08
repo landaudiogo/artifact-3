@@ -1,0 +1,209 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: media-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: media-mongodb
+        securityContext:
+          privileged: true  
+        command: ["/entrypoint.sh"]
+        env:
+        - name: POD_UID
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.uid
+        volumeMounts:
+        - name: entrypoint
+          mountPath: /entrypoint.sh
+          subPath: entrypoint.sh
+        volumeDevices:
+        - devicePath: /bdev/lvma
+          name: datadir
+      volumes:
+      - name: entrypoint
+        configMap:
+          name: mongo-entrypoint
+          defaultMode: 0555
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: media-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: post-storage-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: post-storage-mongodb
+        securityContext:
+          privileged: true  
+        command: ["/entrypoint.sh"]
+        env:
+        - name: POD_UID
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.uid
+        volumeMounts:
+        - name: entrypoint
+          mountPath: /entrypoint.sh
+          subPath: entrypoint.sh
+        volumeDevices:
+        - devicePath: /bdev/lvma
+          name: datadir
+      volumes:
+      - name: entrypoint
+        configMap:
+          name: mongo-entrypoint
+          defaultMode: 0555
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: post-storage-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: social-graph-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: social-graph-mongodb
+        securityContext:
+          privileged: true  
+        command: ["/entrypoint.sh"]
+        env:
+        - name: POD_UID
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.uid
+        volumeMounts:
+        - name: entrypoint
+          mountPath: /entrypoint.sh
+          subPath: entrypoint.sh
+        volumeDevices:
+        - devicePath: /bdev/lvma
+          name: datadir
+      volumes:
+      - name: entrypoint
+        configMap:
+          name: mongo-entrypoint
+          defaultMode: 0555
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: social-graph-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: url-shorten-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: url-shorten-mongodb
+        securityContext:
+          privileged: true  
+        command: ["/entrypoint.sh"]
+        env:
+        - name: POD_UID
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.uid
+        volumeMounts:
+        - name: entrypoint
+          mountPath: /entrypoint.sh
+          subPath: entrypoint.sh
+        volumeDevices:
+        - devicePath: /bdev/lvma
+          name: datadir
+      volumes:
+      - name: entrypoint
+        configMap:
+          name: mongo-entrypoint
+          defaultMode: 0555
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: url-shorten-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-mongodb
+        securityContext:
+          privileged: true  
+        command: ["/entrypoint.sh"]
+        env:
+        - name: POD_UID
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.uid
+        volumeMounts:
+        - name: entrypoint
+          mountPath: /entrypoint.sh
+          subPath: entrypoint.sh
+        volumeDevices:
+        - devicePath: /bdev/lvma
+          name: datadir
+      volumes:
+      - name: entrypoint
+        configMap:
+          name: mongo-entrypoint
+          defaultMode: 0555
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: user-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-timeline-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-timeline-mongodb
+        securityContext:
+          privileged: true  
+        command: ["/entrypoint.sh"]
+        env:
+        - name: POD_UID
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.uid
+        volumeMounts:
+        - name: entrypoint
+          mountPath: /entrypoint.sh
+          subPath: entrypoint.sh
+        volumeDevices:
+        - devicePath: /bdev/lvma
+          name: datadir
+      volumes:
+      - name: entrypoint
+        configMap:
+          name: mongo-entrypoint
+          defaultMode: 0555
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: user-timeline-pvc
