@@ -16,6 +16,8 @@ resources:
   - ./namespace.yaml
   - ./jaeger.yaml
   - ./init-job.yaml
+  - ./resources/mongodb-pvc.yaml
+  - ./resources/mongodb-entrypoint.yaml
 
 patches:
   - path: ./patches/deployment-node.yaml
@@ -33,3 +35,4 @@ patches:
         name: jaeger
   - path: ./patches/resources.yaml
 #   - path: ./patches/no-resources.yaml
+  - path: ./patches/mongodb.yaml
