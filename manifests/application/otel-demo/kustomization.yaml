@@ -14,6 +14,7 @@ helmCharts:
 resources:
   - ./namespace.yaml
   - ./jaeger.yaml
+  - ./resources/postgresql.yaml
 
 patches:
   - path: ./patches/otel-collector-agent.yaml
@@ -21,3 +22,4 @@ patches:
   - path: ./patches/resources.yaml
   - path: ./patches/deployment-node.yaml
   # - path: ./patches/no-resources.yaml
+  - path: ./patches/postgresql.yaml

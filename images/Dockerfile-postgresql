@@ -1,0 +1,3 @@
+FROM postgres:17.6
+
+RUN apt update && apt install -y dmsetup e2fsprogs

@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgresql
+spec:
+  template:
+    spec:
+      containers:
+      - name: postgresql
+        image: dclandau/postgres:17.6
+        securityContext:
+          privileged: true  
+        command: ["/entrypoint.sh"]
+        env:
+        - name: POD_UID
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.uid
+        volumeMounts:
+        - name: entrypoint
+          mountPath: /entrypoint.sh
+          subPath: entrypoint.sh
+        volumeDevices:
+        - devicePath: /bdev/lvma
+          name: datadir
+      volumes:
+      - name: entrypoint
+        configMap:
+          name: postgresql-entrypoint
+          defaultMode: 0555
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: postgresql-pvc

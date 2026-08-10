@@ -280,7 +280,7 @@ spec:
         resources:
           limits:
             cpu: null
-            memory: 104857600.0
+            memory: 304857600.0
           requests:
             cpu: 0.04
             memory: 104857600.0
