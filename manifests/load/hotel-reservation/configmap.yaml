@@ -75,7 +75,7 @@ data:
             self.client.get(path, name='recommend',
                 context={'type': 'recommend'})
 
-        @task(5)
+        @task(400)
         def reserve(self):
             in_date = random.randint(9, 23)
             out_date = in_date + random.randint(1, 5)
