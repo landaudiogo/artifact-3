@@ -41,7 +41,7 @@
             );
 
             autothrottle = pkgs.callPackage ./autothrottle { inherit kubeconfig; };
-
+            fault-manager = pkgs.callPackage ./faults/manager { };
         in
         {
             devShells.${system} = {
@@ -55,6 +55,7 @@
                     KUBECONFIG = kubeconfig;
                 };
                 autothrottle = autothrottle.devShell;
+                fault-manager = fault-manager.devShell;
             };
         };
 
