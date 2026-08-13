@@ -4,5 +4,8 @@ let
 in
 pkgs.symlinkJoin {
     name = "injectors"; 
-    paths = [ service.packages.cpu-stress ];
+    paths = [ 
+        service.packages.cpu-stress
+        service.packages.cpu-reduce
+    ];
 }
