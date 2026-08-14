@@ -45,7 +45,6 @@ class CPUStress:
 
         res = self.kubernetes_client.list_namespaced_pod(self.spec["namespace"], label_selector=self.spec["label_selector"])
         for pod in res.items:
-            logger.debug(pod.metadata.name)
             logger.debug(CPU_TEMPLATE.render(namespace=pod.metadata.namespace, pod=pod.metadata.name))
             res = self.prometheus_client.get(
                 "/api/v1/query",
@@ -80,14 +79,15 @@ class CPUStress:
                 # headroom.
                 value = int(value * 100_000)
                 node, id = container["metric"]["node"], container["metric"]["id"]
-                logger.debug(f"{node} {id}: {value}")
                 self.fault_parameters.append(CPUParameters(uid=str(uuid4()), node=node, cgroup=id, cpu_max=int(value*1.05)))
 
     def execute(self):
         node_chaosd = {}
         
-        for fault in self.fault_parameters:
-            logger.debug(f"Executing {fault}")
+        faults = self.fault_parameters
+        self.fault_parameters = []
+        for fault in faults:
+            logger.debug(f"inject {fault}")
             if node_chaosd.get(fault.node) is None:
                 node_chaosd[fault.node] = Client(base_url=f"http://{fault.node}:31767")
 
@@ -98,17 +98,20 @@ class CPUStress:
                 "recoverCmd": f"service-cpu-stress recover --uid {fault.uid}",
             }
             
-            logger.debug(f"chaosd request:\n{chaosd.base_url}/api/attack/user_defined\n{data}")
+            logger.debug(f"chaosd request: {chaosd.base_url}/api/attack/user_defined {data}")
             res = chaosd.post("/api/attack/user_defined", json=data)
             if res.status_code != httpx.codes.OK:
-                logger.error(f"chaosd request error: {res.status_code} {res.text}")
-                raise Exception("Chaosd")
+                logger.warn(f"chaosd request failed: {fault.uid}")
+                logger.debug(f"status code: {res.status_code} {res.text}")
+                continue
+            self.fault_parameters.append(fault)
+            logger.info(f"started cpu stress {fault.uid}")
 
     def recover(self):
         node_chaosd = {}
         
         for fault in self.fault_parameters:
-            logger.debug(f"Recovering {fault}")
+            logger.debug(f"recover {fault}")
             if node_chaosd.get(fault.node) is None:
                 node_chaosd[fault.node] = Client(base_url=f"http://{fault.node}:31767")
 
@@ -117,7 +120,7 @@ class CPUStress:
             if res.status_code != httpx.codes.OK:
                 logger.error(f"chaosd request error: {res.status_code} {res.text}")
                 raise Exception("Chaosd")
-            logger.debug(f"Successfully recovered from fault with uid {fault.uid}")
+            logger.info(f"recovered cpu stress {fault.uid}")
 
 
 class CPUReduce:
@@ -136,7 +139,6 @@ class CPUReduce:
 
         res = self.kubernetes_client.list_namespaced_pod(self.spec["namespace"], label_selector=self.spec["label_selector"])
         for pod in res.items:
-            logger.debug(pod.metadata.name)
             logger.debug(CPU_TEMPLATE.render(namespace=pod.metadata.namespace, pod=pod.metadata.name))
             res = self.prometheus_client.get(
                 "/api/v1/query",
@@ -171,14 +173,15 @@ class CPUReduce:
                 # headroom.
                 value = int(value * 100_000)
                 node, id = container["metric"]["node"], container["metric"]["id"]
-                logger.debug(f"{node} {id}: {value}")
                 self.fault_parameters.append(CPUParameters(uid=str(uuid4()), node=node, cgroup=id, cpu_max=int(value*0.5)))
 
     def execute(self):
         node_chaosd = {}
         
-        for fault in self.fault_parameters:
-            logger.debug(f"Executing {fault}")
+        faults = self.fault_parameters
+        self.fault_parameters = []
+        for fault in faults:
+            logger.debug(f"inject {fault}")
             if node_chaosd.get(fault.node) is None:
                 node_chaosd[fault.node] = Client(base_url=f"http://{fault.node}:31767")
 
@@ -189,23 +192,26 @@ class CPUReduce:
                 "recoverCmd": f"service-cpu-reduce recover --uid {fault.uid}",
             }
             
-            logger.debug(f"chaosd request:\n{chaosd.base_url}/api/attack/user_defined\n{data}")
+            logger.debug(f"chaosd request: {chaosd.base_url}/api/attack/user_defined {data}")
             res = chaosd.post("/api/attack/user_defined", json=data)
             if res.status_code != httpx.codes.OK:
-                logger.error(f"chaosd request error: {res.status_code} {res.text}")
-                raise Exception("Chaosd")
+                logger.warn(f"chaosd request failed: {fault.uid}")
+                logger.debug(f"status code: {res.status_code} {res.text}")
+                continue
+            self.fault_parameters.append(fault)
+            logger.info(f"started cpu reduce {fault.uid}")
 
     def recover(self):
         node_chaosd = {}
         
         for fault in self.fault_parameters:
-            logger.debug(f"Recovering {fault}")
+            logger.debug(f"recover {fault}")
             if node_chaosd.get(fault.node) is None:
                 node_chaosd[fault.node] = Client(base_url=f"http://{fault.node}:31767")
 
             chaosd = node_chaosd[fault.node]
             res = chaosd.delete(f"/api/attack/{fault.uid}")
             if res.status_code != httpx.codes.OK:
-                logger.error(f"chaosd request error: {res.status_code} {res.text}")
+                logger.error(f"chaosd request failed: {res.status_code} {res.text}")
                 raise Exception("Chaosd")
-            logger.debug(f"Successfully recovered from fault with uid {fault.uid}")
+            logger.info(f"recovered cpu reduce {fault.uid}")

@@ -31,8 +31,12 @@ def cpu_stress():
 def attack(uid, cgroup, cpu_max, chaosd_dir):
     # Attack expects depends on cgexec and stress-ng to be available in its $PATH
     cpumax_path = Path(f"/sys/fs/cgroup/{cgroup}/cpu.max")
-    original_contents = cpumax_path.read_text()
-    cpumax_path.write_text(f"{cpu_max} 100000")
+    try:
+        original_contents = cpumax_path.read_text()
+        cpumax_path.write_text(f"{cpu_max} 100000")
+    except Exception as e:
+        print(f"File {cpumax_path} error: {e}", file=sys.stderr)
+        sys.exit(1)
 
     log_file = Path(f"{chaosd_dir}") / Path(f"{uid}.log")
     with log_file.open("ab") as log:
@@ -62,19 +66,26 @@ def attack(uid, cgroup, cpu_max, chaosd_dir):
 )
 def recover(uid, chaosd_dir):
     fault_store = Path(f"{chaosd_dir}") / Path(f"{uid}.recover")
-    with fault_store.open("r") as f:
-        recover_data = json.load(f)
+    try:
+        with fault_store.open("r") as f:
+            recover_data = json.load(f)
+    except Exception as e:
+        # We've received a uuid that hasn't successfully completed attack
+        print(f"Failed to read {fault_store}: {e}", file=sys.stderr)
+        sys.exit(1)
 
     try:
         os.kill(recover_data["pid"], signal.SIGTERM)
     except Exception as e:
+        # We can ignore if the stress-ng process no longer exists
         print(f"Failed to kill process with pid {recover_data['pid']}: {e}", file=sys.stderr)
 
     cpumax_path = Path(recover_data["cpumax_path"])
     try:
         cpumax_path.write_text(recover_data["original_contents"])
     except Exception as e:
-        print(f"Failed to restore cpumax_path original_contents: {e}", file=sys.stderr)
+        # cgroup no longer exists
+        pass
 
     fault_store.unlink(missing_ok=True)
 
