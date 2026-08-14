@@ -14,7 +14,14 @@ logger = logging.getLogger(__name__)
 
 # This query calculates the 5 minute average Memory usage for a particular pod
 MEMORY_TEMPLATE = Template("""
-    sum by (namespace,pod)(container_memory_working_set_bytes{job="kubelet",metrics_path="/metrics/cadvisor",container!="",image!="",namespace=~"online-boutique|social-network"})
+    sum (
+        container_memory_working_set_bytes{
+            # filter out empty and pause images
+            image!~"|docker.io/library/pause.*",
+            pod="{{pod}}",
+            namespace="{{namespace}}",
+        }
+    ) by (node, id)
 """)
 
 CHAOSMESH_MEMSTRESS_TEMPLATE = Template('''
@@ -34,12 +41,6 @@ CHAOSMESH_MEMSTRESS_TEMPLATE = Template('''
           size: 10%
 ''')
 
-
-@dataclass
-class MemoryParameters:
-    uid: str
-    node: str
-    cgroup: str
 
 class MemoryStress:
 
@@ -83,6 +84,95 @@ class MemoryStress:
         )
         logger.info(f"recover memory stress: namespace={self.spec['namespace']} label_selector={self.spec['label_selector']}")
 
+@dataclass
+class MemoryFaultParameters:
+    uid: str
+    node: str
+    cgroup: str
+    memory_max: int
+
 
 class MemoryReduce:
-    pass
+
+
+    def __init__(self, kubernetes_client, prometheus_client, spec):
+        self.kubernetes_client = kubernetes_client
+        self.prometheus_client = prometheus_client
+        self.spec = spec
+
+        # prepare attributes
+        self.fault_parameters = [] 
+
+    def prepare(self):
+        now = time.time()
+
+        res = self.kubernetes_client.list_namespaced_pod(self.spec["namespace"], label_selector=self.spec["label_selector"])
+        for pod in res.items:
+            logger.debug(MEMORY_TEMPLATE.render(namespace=pod.metadata.namespace, pod=pod.metadata.name))
+            res = self.prometheus_client.get(
+                "/api/v1/query",
+                params={
+                    "query": MEMORY_TEMPLATE.render(namespace=pod.metadata.namespace, pod=pod.metadata.name),
+                    "time": now
+                }
+            )
+
+            if res.status_code != httpx.codes.OK:
+                logger.error(f"prometheus query failed: {res.status_code} {res.text}")
+                raise Exception("Prometheus")
+
+            res = json.loads(res.text)
+            logger.debug(res)
+            for container in res["data"]["result"]:
+                node, id = container["metric"]["node"], container["metric"]["id"]
+                value = int(container["value"][1])
+                logger.debug(f"{node} {id} {value}")
+                self.fault_parameters.append(
+                    MemoryFaultParameters(
+                        uid=str(uuid4()), 
+                        node=node,
+                        cgroup=id,
+                        memory_max=int((1/3)*value)
+                    )
+                )
+
+    def execute(self):
+        node_chaosd = {}
+
+        faults = self.fault_parameters
+        self.fault_parameters = []
+        for fault in faults:
+            logger.debug(f"inject {fault}")
+            if node_chaosd.get(fault.node) is None:
+                node_chaosd[fault.node] = Client(base_url=f"http://{fault.node}:31767")
+
+            chaosd = node_chaosd[fault.node]
+            data = {
+                "uid": fault.uid,
+                "attackCmd": f"service-memory-reduce attack --uid {fault.uid} --cgroup {fault.cgroup} --memory-max {fault.memory_max}",
+                "recoverCmd": f"service-memory-reduce recover --uid {fault.uid}",
+            }
+
+            logger.debug(f"chaosd request: {chaosd.base_url}/api/attack/user_defined {data}")
+            res = chaosd.post("/api/attack/user_defined", json=data)
+            if res.status_code != httpx.codes.OK:
+                logger.warn(f"chaosd request failed: {fault.uid}")
+                logger.debug(f"status code: {res.status_code} {res.text}")
+                continue
+            self.fault_parameters.append(fault)
+            logger.info(f"started memory reduce {fault.uid}")
+
+    def recover(self):
+        node_chaosd = {}
+        
+        for fault in self.fault_parameters:
+            logger.debug(f"recover {fault}")
+            if node_chaosd.get(fault.node) is None:
+                node_chaosd[fault.node] = Client(base_url=f"http://{fault.node}:31767")
+
+            chaosd = node_chaosd[fault.node]
+            res = chaosd.delete(f"/api/attack/{fault.uid}")
+            if res.status_code != httpx.codes.OK:
+                logger.error(f"chaosd request failed: {res.status_code} {res.text}")
+                raise Exception("Chaosd")
+            logger.info(f"recovered memory reduce {fault.uid}")

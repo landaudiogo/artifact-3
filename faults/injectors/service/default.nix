@@ -43,6 +43,21 @@
                 install -Dm 555 ${./cpu_reduce.py} $out/bin/service-cpu-reduce
             '';
         };
+        memory-reduce = stdenv.mkDerivation {
+            name = "service-memory-reduce";
+            dontUnpack = true;
+            
+            buildInputs = with pkgs; [
+                (python3.withPackages (py-pkgs: with py-pkgs; [
+                    click
+                ]))
+            ];
+
+            installPhase = ''
+                mkdir -p $out/bin
+                install -Dm 555 ${./memory_reduce.py} $out/bin/service-memory-reduce
+            '';
+        };
     };
 
 }

@@ -55,7 +55,7 @@ class CPUStress:
             )
 
             if res.status_code != httpx.codes.OK:
-                logger.error(f"prometheus query failed: {res.code} {res.text}")
+                logger.error(f"prometheus query failed: {res.status_code} {res.text}")
                 raise Exception("Prometheus")
 
             res = json.loads(res.text)
@@ -149,7 +149,7 @@ class CPUReduce:
             )
 
             if res.status_code != httpx.codes.OK:
-                logger.error(f"prometheus query failed: {res.code} {res.text}")
+                logger.error(f"prometheus query failed: {res.status_code} {res.text}")
                 raise Exception("Prometheus")
 
             res = json.loads(res.text)
@@ -177,7 +177,7 @@ class CPUReduce:
 
     def execute(self):
         node_chaosd = {}
-        
+
         faults = self.fault_parameters
         self.fault_parameters = []
         for fault in faults:
@@ -191,7 +191,7 @@ class CPUReduce:
                 "attackCmd": f"service-cpu-reduce attack --uid {fault.uid} --cgroup {fault.cgroup} --cpu-max {fault.cpu_max}",
                 "recoverCmd": f"service-cpu-reduce recover --uid {fault.uid}",
             }
-            
+
             logger.debug(f"chaosd request: {chaosd.base_url}/api/attack/user_defined {data}")
             res = chaosd.post("/api/attack/user_defined", json=data)
             if res.status_code != httpx.codes.OK:

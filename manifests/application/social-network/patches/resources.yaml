@@ -30,7 +30,7 @@ spec:
         resources:
           limits:
             cpu: null
-            memory: 289406976.0
+            memory: 489406976.0
           requests:
             cpu: 0.012
             memory: 289406976.0
