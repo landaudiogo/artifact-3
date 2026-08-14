@@ -15,6 +15,7 @@ from httpx import Client, HTTPTransport
 
 from .faults.service.cpu import CPUStress, CPUReduce
 from .faults.service.memory import MemoryStress, MemoryReduce
+from .faults.service.net import NetworkPartition
 
 
 def main() -> None:
@@ -24,11 +25,17 @@ def main() -> None:
     transport = HTTPTransport(retries=5)
     prometheus_client = Client(base_url="http://k8s-master:30954",transport=transport)
 
-    memory_reduce = MemoryReduce(client.CoreV1Api(), prometheus_client, {"namespace": "social-network", "label_selector": "app=post-storage-mongodb"})
-    memory_reduce.prepare()
-    memory_reduce.execute()
-    time.sleep(15)
-    memory_reduce.recover()
+    network_partition = NetworkPartition(client.CustomObjectsApi(), {"namespace": "social-network", "label_selector": "app=post-storage-mongodb"})
+    network_partition.prepare()
+    network_partition.execute()
+    time.sleep(60)
+    network_partition.recover()
+
+    # memory_reduce = MemoryReduce(client.CoreV1Api(), prometheus_client, {"namespace": "social-network", "label_selector": "app=post-storage-mongodb"})
+    # memory_reduce.prepare()
+    # memory_reduce.execute()
+    # time.sleep(15)
+    # memory_reduce.recover()
 
     # time.sleep(60)
 
@@ -55,3 +62,4 @@ def main() -> None:
     # cpu_reduce.recover()
 
     # locust_requests_current_response_time_percentile_95
+    # rate(locust_errors[10s])
