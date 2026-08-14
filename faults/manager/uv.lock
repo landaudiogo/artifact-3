@@ -408,6 +408,7 @@ dependencies = [
     { name = "jinja2" },
     { name = "kubernetes" },
     { name = "logging" },
+    { name = "pyyaml" },
 ]
 
 [package.metadata]
@@ -416,6 +417,7 @@ requires-dist = [
     { name = "jinja2", specifier = ">=3.1.6" },
     { name = "kubernetes", specifier = ">=36.0.3" },
     { name = "logging", specifier = ">=0.4.9.6" },
+    { name = "pyyaml", specifier = ">=6.0.3" },
 ]
 
 [[package]]
