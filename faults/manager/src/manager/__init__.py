@@ -16,6 +16,7 @@ from httpx import Client, HTTPTransport
 from .faults.service.cpu import CPUStress, CPUReduce
 from .faults.service.memory import MemoryStress, MemoryReduce
 from .faults.service.net import NetworkPartition, NetworkBandwidth
+from .faults.service.deploy import DeletePods
 
 
 def main() -> None:
@@ -25,11 +26,17 @@ def main() -> None:
     transport = HTTPTransport(retries=5)
     prometheus_client = Client(base_url="http://k8s-master:30954",transport=transport)
 
-    network_bandwidth = NetworkBandwidth(client.CoreV1Api(), client.CustomObjectsApi(), prometheus_client, {"namespace": "social-network", "label_selector": "app=post-storage-mongodb"})
-    network_bandwidth.prepare()
-    network_bandwidth.execute()
+    delete_pods = DeletePods(client.AppsV1Api(), {"namespace": "social-network", "label_selector": "service=post-storage-mongodb"})
+    delete_pods.prepare()
+    delete_pods.execute()
     time.sleep(60)
-    network_bandwidth.recover()
+    delete_pods.recover()
+
+    # network_bandwidth = NetworkBandwidth(client.CoreV1Api(), client.CustomObjectsApi(), prometheus_client, {"namespace": "social-network", "label_selector": "app=post-storage-mongodb"})
+    # network_bandwidth.prepare()
+    # network_bandwidth.execute()
+    # time.sleep(60)
+    # network_bandwidth.recover()
 
     # network_partition = NetworkPartition(client.CustomObjectsApi(), {"namespace": "social-network", "label_selector": "app=post-storage-mongodb"})
     # network_partition.prepare()
