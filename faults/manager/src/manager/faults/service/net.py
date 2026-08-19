@@ -32,7 +32,7 @@ CHAOSMESH_NETPARTITION_TEMPLATE = Template('''
         namespaces:
           - {{ namespace }}
         labelSelectors: {}
-      direction: from
+      direction: to
       externalTargets:
         - "10.0.0.0/8"
 ''')
