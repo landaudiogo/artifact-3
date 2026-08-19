@@ -51,4 +51,3 @@ class DeletePods:
                 scale 
             )
             logger.info(f"restore deployment to {deploy.original_replicas} replicas: namespace={deploy.namespace} name={deploy.name}")
-        pass

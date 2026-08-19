@@ -58,6 +58,25 @@
                 install -Dm 555 ${./memory_reduce.py} $out/bin/service-memory-reduce
             '';
         };
+        block-latency = stdenv.mkDerivation {
+            name = "service-block-latency";
+            dontUnpack = true;
+            
+            buildInputs = with pkgs; [
+                bash
+                makeWrapper
+            ];
+
+            installPhase = ''
+                mkdir -p $out/bin
+                install -Dm 555 ${./block-latency.sh} $out/bin/service-block-latency
+                wrapProgram $out/bin/service-block-latency --prefix PATH : ${lib.makeBinPath [
+                    pkgs.coreutils
+                    pkgs.lvm2
+                    pkgs.gawk
+                ]} 
+            '';
+        };
     };
 
 }
