@@ -19,6 +19,8 @@ from .faults.service.net import NetworkPartition, NetworkBandwidth
 from .faults.service.deploy import DeletePods
 from .faults.service.block import BlockLatency
 
+from .faults.host.cpu import CPUStress as HostCPUStress
+
 
 def main() -> None:
     config.load_kube_config()
@@ -27,11 +29,17 @@ def main() -> None:
     transport = HTTPTransport(retries=5)
     prometheus_client = Client(base_url="http://k8s-master:30954",transport=transport)
 
-    block_latency = BlockLatency(client.CoreV1Api(), {"namespace": "social-network", "label_selector": "app=post-storage-mongodb"})
-    block_latency.prepare()
-    block_latency.execute()
-    time.sleep(15)
-    block_latency.recover()
+    host_cpu_stress = HostCPUStress({"node": "k8s-worker1"})
+    host_cpu_stress.prepare()
+    host_cpu_stress.execute()
+    time.sleep(60)
+    host_cpu_stress.recover()
+
+    # block_latency = BlockLatency(client.CoreV1Api(), {"namespace": "social-network", "label_selector": "app=post-storage-mongodb"})
+    # block_latency.prepare()
+    # block_latency.execute()
+    # time.sleep(15)
+    # block_latency.recover()
 
     # delete_pods = DeletePods(client.AppsV1Api(), {"namespace": "social-network", "label_selector": "service=post-storage-mongodb"})
     # delete_pods.prepare()
