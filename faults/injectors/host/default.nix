@@ -20,5 +20,24 @@
                 ]} 
             '';
         };
+        block-latency = stdenv.mkDerivation {
+            name = "host-block-latency";
+            dontUnpack = true;
+            
+            buildInputs = with pkgs; [
+                bash
+                makeWrapper
+            ];
+
+            installPhase = ''
+                mkdir -p $out/bin
+                install -Dm 555 ${./block-latency.sh} $out/bin/host-block-latency
+                wrapProgram $out/bin/host-block-latency --prefix PATH : ${lib.makeBinPath [
+                    pkgs.coreutils
+                    pkgs.lvm2
+                    pkgs.gawk
+                ]} 
+            '';
+        };
     };
 }
