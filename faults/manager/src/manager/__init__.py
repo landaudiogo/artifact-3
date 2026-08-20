@@ -21,7 +21,10 @@ from .faults.service.block import BlockLatency
 
 from .faults.host.cpu import CPUStress as HostCPUStress
 from .faults.host.block import BlockLatency as HostBlockLatency
-from .faults.host.net import NetworkPartition as HostNetworkPartition
+from .faults.host.net import (
+    NetworkPartition as HostNetworkPartition, 
+    NetworkBandwidth as HostNetworkBandwidth
+)
 
 
 def main() -> None:
@@ -31,15 +34,29 @@ def main() -> None:
     transport = HTTPTransport(retries=5)
     prometheus_client = Client(base_url="http://k8s-master:30954",transport=transport)
 
-    host_network_partition = HostNetworkPartition(client.CustomObjectsApi(), {
+    host_network_bandwidth = HostNetworkBandwidth(client.CustomObjectsApi(), prometheus_client, {
         "node": "k8s-worker3",
-        "destination_address": "192.168.2.23",
         "device": "enp0s31f6",
+        "limit": "50 MiB",
+        "buffer": "1 MiB",
     })
-    host_network_partition.prepare()
-    host_network_partition.execute()
-    time.sleep(60)
-    host_network_partition.recover()
+    host_network_bandwidth.prepare()
+    host_network_bandwidth.execute()
+    time.sleep(5)
+    host_network_bandwidth.recover()
+
+    # host_network_partition = HostNetworkPartition(
+    #     client.CustomObjectsApi(), 
+    #     prometheus_client, 
+    #     {
+    #         "node": "k8s-worker1",
+    #         "destination_node": "k8s-worker3",
+    #     },
+    # )
+    # host_network_partition.prepare()
+    # host_network_partition.execute()
+    # time.sleep(60)
+    # host_network_partition.recover()
 
     # host_block_latency = HostBlockLatency({"node": "k8s-worker1"})
     # host_block_latency.prepare()
