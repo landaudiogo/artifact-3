@@ -25,6 +25,7 @@ from .faults.host.net import (
     NetworkPartition as HostNetworkPartition, 
     NetworkBandwidth as HostNetworkBandwidth
 )
+from .faults.host.reboot import Reboot as HostReboot
 
 
 def main() -> None:
@@ -34,16 +35,21 @@ def main() -> None:
     transport = HTTPTransport(retries=5)
     prometheus_client = Client(base_url="http://k8s-master:30954",transport=transport)
 
-    host_network_bandwidth = HostNetworkBandwidth(client.CustomObjectsApi(), prometheus_client, {
-        "node": "k8s-worker3",
-        "device": "enp0s31f6",
-        "limit": "50 MiB",
-        "buffer": "1 MiB",
-    })
-    host_network_bandwidth.prepare()
-    host_network_bandwidth.execute()
-    time.sleep(5)
-    host_network_bandwidth.recover()
+    host_reboot = HostReboot({"node": "k8s-worker2"})
+    host_reboot.prepare()
+    host_reboot.execute()
+    host_reboot.recover()
+
+    # host_network_bandwidth = HostNetworkBandwidth(client.CustomObjectsApi(), prometheus_client, {
+    #     "node": "k8s-worker3",
+    #     "device": "enp0s31f6",
+    #     "limit": "50 MiB",
+    #     "buffer": "1 MiB",
+    # })
+    # host_network_bandwidth.prepare()
+    # host_network_bandwidth.execute()
+    # time.sleep(60)
+    # host_network_bandwidth.recover()
 
     # host_network_partition = HostNetworkPartition(
     #     client.CustomObjectsApi(), 
