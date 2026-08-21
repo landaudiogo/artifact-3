@@ -1,3 +1,20 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opentelemetrycollector
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      initContainers:
+      - name: otel-gateway-init
+        command:
+        - /bin/sh
+        - -c
+        - |
+          cat /template/collector-gateway-config-template.yaml > /conf/collector-gateway-config.yaml
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
