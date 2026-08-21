@@ -5,12 +5,30 @@ metadata:
   namespace: monitoring
   name: ch-cluster
 spec:
-  replicas: 3
+  replicas: 1
   dataVolumeClaimSpec:
     storageClassName: local-path
     resources:
       requests:
         storage: 1Gi
+  podTemplate:
+    tolerations:
+    - key: "node-role.kubernetes.io/master"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+    - key: "unschedulable"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+              - key: "kubernetes.io/hostname"
+                operator: In
+                values: [ k8s-master ]
 ---
 apiVersion: clickhouse.com/v1alpha1
 kind: ClickHouseCluster
@@ -45,6 +63,24 @@ spec:
           profile: default
           grants:
             - query: "GRANT SELECT ON *.*"
+  podTemplate:
+    tolerations:
+    - key: "node-role.kubernetes.io/master"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+    - key: "unschedulable"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+              - key: "kubernetes.io/hostname"
+                operator: In
+                values: [ k8s-master ]
   keeperClusterRef:
     name: ch-cluster
 ---
