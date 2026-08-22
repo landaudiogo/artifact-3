@@ -27,6 +27,8 @@ from .faults.host.net import (
 )
 from .faults.host.reboot import Reboot as HostReboot
 
+from .faults.application.postgres import PostgresLockContention
+
 
 def main() -> None:
     config.load_kube_config()
@@ -35,10 +37,29 @@ def main() -> None:
     transport = HTTPTransport(retries=5)
     prometheus_client = Client(base_url="http://k8s-master:30954",transport=transport)
 
-    host_reboot = HostReboot({"node": "k8s-worker2"})
-    host_reboot.prepare()
-    host_reboot.execute()
-    host_reboot.recover()
+
+    application_postgres = PostgresLockContention(
+        client.CoreV1Api(), 
+        {
+            "host": "postgresql.otel-demo",
+            "port": "5432",
+            "user": "root",
+            "password": "otel",
+            "database": "otel",
+            "table": "catalog.products",
+            "lock_duration": "0.2",
+            "interval": "0.9",
+        },
+    )
+    application_postgres.prepare()
+    application_postgres.execute()
+    time.sleep(60)
+    application_postgres.recover()
+
+    # host_reboot = HostReboot({"node": "k8s-worker2"})
+    # host_reboot.prepare()
+    # host_reboot.execute()
+    # host_reboot.recover()
 
     # host_network_bandwidth = HostNetworkBandwidth(client.CustomObjectsApi(), prometheus_client, {
     #     "node": "k8s-worker3",
@@ -76,10 +97,10 @@ def main() -> None:
     # time.sleep(60)
     # host_cpu_stress.recover()
 
-    # block_latency = BlockLatency(client.CoreV1Api(), {"namespace": "social-network", "label_selector": "app=post-storage-mongodb"})
+    # block_latency = BlockLatency(client.CoreV1Api(), {"namespace": "otel-demo", "label_selector": "opentelemetry.io/name=postgresql"})
     # block_latency.prepare()
     # block_latency.execute()
-    # time.sleep(15)
+    # time.sleep(60)
     # block_latency.recover()
 
     # delete_pods = DeletePods(client.AppsV1Api(), {"namespace": "social-network", "label_selector": "service=post-storage-mongodb"})
