@@ -23,7 +23,7 @@ spec:
 
       containers:
       - name: init
-        image: dclandau/initsocialgraph:6027bdd
+        image: dclandau/initsocialgraph:4181ebd
         env:
         - name: PYTHONUNBUFFERED
           value: "1" 
