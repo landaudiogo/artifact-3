@@ -28,6 +28,7 @@ from .faults.host.net import (
 from .faults.host.reboot import Reboot as HostReboot
 
 from .faults.application.postgres import PostgresLockContention
+from .faults.application.mongodb import MongodbFsyncLock
 
 
 def main() -> None:
@@ -37,24 +38,37 @@ def main() -> None:
     transport = HTTPTransport(retries=5)
     prometheus_client = Client(base_url="http://k8s-master:30954",transport=transport)
 
-
-    application_postgres = PostgresLockContention(
+    application_mongodb = MongodbFsyncLock(
         client.CoreV1Api(), 
         {
-            "host": "postgresql.otel-demo",
-            "port": "5432",
-            "user": "root",
-            "password": "otel",
-            "database": "otel",
-            "table": "catalog.products",
-            "lock_duration": "0.2",
-            "interval": "0.9",
+            "host": "post-storage-mongodb.social-network",
+            "port": "27017",
+            "lock_duration": "0.4",
+            "interval": "0.6",
         },
     )
-    application_postgres.prepare()
-    application_postgres.execute()
+    application_mongodb.prepare()
+    application_mongodb.execute()
     time.sleep(60)
-    application_postgres.recover()
+    application_mongodb.recover()
+
+    # application_postgres = PostgresLockContention(
+    #     client.CoreV1Api(), 
+    #     {
+    #         "host": "postgresql.otel-demo",
+    #         "port": "5432",
+    #         "user": "root",
+    #         "password": "otel",
+    #         "database": "otel",
+    #         "table": "catalog.products",
+    #         "lock_duration": "0.2",
+    #         "interval": "0.9",
+    #     },
+    # )
+    # application_postgres.prepare()
+    # application_postgres.execute()
+    # time.sleep(60)
+    # application_postgres.recover()
 
     # host_reboot = HostReboot({"node": "k8s-worker2"})
     # host_reboot.prepare()
