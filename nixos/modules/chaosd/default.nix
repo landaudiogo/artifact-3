@@ -1,7 +1,15 @@
 { pkgs, lib, injectors, ... }:
 let 
     injectors = pkgs.callPackage ../../../faults/injectors { };
-    runtimeDeps = with pkgs; [ iproute2 stress-ng ipset iptables injectors bash ];
+    runtimeDeps = with pkgs; [ 
+        iproute2
+        stress-ng
+        ipset
+        iptables
+        bash
+        systemd
+        injectors
+    ];
     chaosd_ = pkgs.buildGoModule { 
         name = "chaosd";
         src = builtins.fetchGit {
