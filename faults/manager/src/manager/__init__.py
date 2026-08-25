@@ -30,6 +30,8 @@ from .faults.host.reboot import Reboot as HostReboot
 from .faults.application.postgres import PostgresLockContention
 from .faults.application.mongodb import MongodbFsyncLock
 
+from .kpis.prometheus import PrometheusKPIs
+
 
 def main() -> None:
     config.load_kube_config()
@@ -38,19 +40,63 @@ def main() -> None:
     transport = HTTPTransport(retries=5)
     prometheus_client = Client(base_url="http://k8s-master:30954",transport=transport)
 
-    application_mongodb = MongodbFsyncLock(
-        client.CoreV1Api(), 
-        {
-            "host": "post-storage-mongodb.social-network",
-            "port": "27017",
-            "lock_duration": "0.4",
-            "interval": "0.6",
-        },
-    )
-    application_mongodb.prepare()
-    application_mongodb.execute()
-    time.sleep(60)
-    application_mongodb.recover()
+    baseline_start, baseline_end = 1787584679.9883606, 1787585223.7822719
+
+    applications = {
+        "social_network": PrometheusKPIs(
+            baseline_start,
+            baseline_end,
+            prometheus_client,
+            '{ service="locust-social-network" }',
+            '{ service="locust-social-network" }'
+        ),
+        "media_microservices": PrometheusKPIs(
+            baseline_start,
+            baseline_end,
+            prometheus_client,
+            '{ service="locust-media-microservices" }',
+            '{ service="locust-media-microservices" }'
+        ),
+        "online_boutique": PrometheusKPIs(
+            baseline_start,
+            baseline_end,
+            prometheus_client,
+            '{ service="locust-online-boutique" }',
+            '{ service="locust-online-boutique" }'
+        ),
+        "otel_demo": PrometheusKPIs(
+            baseline_start,
+            baseline_end,
+            prometheus_client,
+            '{ service="locust-otel-demo" }',
+            '{ service="locust-otel-demo" }'
+        ),
+        "hotel_reservation": PrometheusKPIs(
+            baseline_start,
+            baseline_end,
+            prometheus_client,
+            '{ service="locust-hotel-reservation" }',
+            '{ service="locust-hotel-reservation" }'
+        ),
+    }
+
+    # application_mongodb = MongodbFsyncLock(
+    #     client.CoreV1Api(), 
+    #     {
+    #         "host": "post-storage-mongodb.social-network",
+    #         "port": "27017",
+    #         "lock_duration": "0.4",
+    #         "interval": "0.6",
+    #     },
+    # )
+    # application_mongodb.prepare()
+    # inject_start = time.time()
+    # application_mongodb.execute()
+    # time.sleep(60)
+    # application_mongodb.recover()
+    # inject_end = time.time()
+    # print("social", social_network.impacted_period(inject_start, inject_end))
+    # print("media", media_microservices.impacted_period(inject_start, inject_end))
 
     # application_postgres = PostgresLockContention(
     #     client.CoreV1Api(), 
@@ -107,9 +153,11 @@ def main() -> None:
 
     # host_cpu_stress = HostCPUStress({"node": "k8s-worker1"})
     # host_cpu_stress.prepare()
+    # inject_start = time.time()
     # host_cpu_stress.execute()
     # time.sleep(60)
     # host_cpu_stress.recover()
+    # inject_end = time.time()
 
     # block_latency = BlockLatency(client.CoreV1Api(), {"namespace": "otel-demo", "label_selector": "opentelemetry.io/name=postgresql"})
     # block_latency.prepare()
@@ -153,9 +201,13 @@ def main() -> None:
 
     # cpu_stress = CPUStress(client.CoreV1Api(), prometheus_client, {"namespace": "social-network", "label_selector": "app=post-storage-mongodb"})
     # cpu_stress.prepare()
+    # inject_start = time.time()
     # cpu_stress.execute()
     # time.sleep(60)
     # cpu_stress.recover()
+    # inject_end = time.time()
+    # for application, kpis in applications.items():
+    #     print(application, kpis.impacted_period(inject_start, inject_end))
 
     # time.sleep(60)
 
