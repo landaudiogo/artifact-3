@@ -1025,8 +1025,8 @@ data:
                 "Content-Type": "application/x-www-form-urlencoded"
             },
         )
-        if res.status != "200":
-            print(res.status, res.text)
+        if (int(res.status_code) // 100) != 2:
+            print("unexpected status code", res.status_code, res.text)
 
 
     class UserBehavior(TaskSet):
