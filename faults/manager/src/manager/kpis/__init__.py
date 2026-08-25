@@ -8,3 +8,11 @@ LATENCY_95_LOCUST_TEMPLATE = Template('''
 ERROR_LOCUST_TEMPLATE = Template('''
     sum (rate(locust_errors{{ filter }}[10s])) by (service)
 ''')
+
+CONTAINER_START_WINDOW_LOCUST_TEMPLATE = Template('''
+    (
+      container_start_time_seconds{{ filter }}
+      unless
+      container_start_time_seconds{{ filter }} offset 5s
+    ) > bool 0
+''')

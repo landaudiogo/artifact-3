@@ -16,7 +16,7 @@ def has_effect(
         alternative="less",
     )
 
-    return res.pvalue < alpha
+    return bool(res.pvalue < alpha)
 
     # statistical_effect = p_value < alpha
 
