@@ -11,6 +11,8 @@ import json
 import httpx
 import logging
 
+from .. import FaultTrait
+
 logger = logging.getLogger(__name__)
 
 FAULT_POD_TEMPLATE = Template('''
@@ -45,7 +47,7 @@ class MongodbFsyncLockParameters:
     interval: str 
 
 
-class MongodbFsyncLock:
+class MongodbFsyncLock(FaultTrait):
 
 
     def __init__(self, kubernetes_client, spec):

@@ -10,6 +10,8 @@ import json
 import httpx
 import logging
 
+from .. import FaultTrait
+
 logger = logging.getLogger(__name__)
 
 NETWORK_BANDWIDTH_TEMPLATE = Template("""
@@ -53,7 +55,7 @@ CHAOSMESH_NETBANDWIDTH_TEMPLATE = Template('''
 ''')
 
 
-class NetworkPartition:
+class NetworkPartition(FaultTrait):
 
 
     def __init__(self, kubernetes_client, spec):
@@ -105,7 +107,7 @@ class NetworkBandwidthParameters:
     rate: str
 
 
-class NetworkBandwidth:
+class NetworkBandwidth(FaultTrait):
 
 
     def __init__(self, core_k8s_client, custom_k8s_client, prometheus_client, spec):

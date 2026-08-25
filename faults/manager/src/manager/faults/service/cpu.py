@@ -8,6 +8,8 @@ import json
 import httpx
 import logging
 
+from .. import FaultTrait
+
 logger = logging.getLogger(__name__)
 
 # This query calculates the 5 minute average CPU usage for a particular pod
@@ -29,7 +31,7 @@ class CPUParameters:
     cpu_max: int
 
 
-class CPUStress:
+class CPUStress(FaultTrait):
 
 
     def __init__(self, kubernetes_client, prometheus_client, spec):
@@ -123,7 +125,7 @@ class CPUStress:
             logger.info(f"recovered cpu stress {fault.uid}")
 
 
-class CPUReduce:
+class CPUReduce(FaultTrait):
 
 
     def __init__(self, kubernetes_client, prometheus_client, spec):

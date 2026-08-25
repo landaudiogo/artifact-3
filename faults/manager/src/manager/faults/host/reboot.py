@@ -7,6 +7,7 @@ import logging
 import httpx
 import time
 
+from .. import FaultTrait
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +18,7 @@ class RebootParameters:
     node: str
 
 
-class Reboot:
+class Reboot(FaultTrait):
 
 
     def __init__(self, spec):
@@ -94,4 +95,3 @@ class Reboot:
             time.sleep(5)
 
         raise Exception(f"Node {self.fault.node} stayed up until {deadline} deadline")
-

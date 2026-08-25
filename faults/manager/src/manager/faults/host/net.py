@@ -12,6 +12,8 @@ import httpx
 import logging
 import socket
 
+from .. import FaultTrait
+
 logger = logging.getLogger(__name__)
 
 CHAOSMESH_NETPARTITION_TEMPLATE = Template('''
@@ -66,7 +68,7 @@ class NetworkPartitionParameters:
     destination_address: str
     device: str
 
-class NetworkPartition:
+class NetworkPartition(FaultTrait):
 
 
     def __init__(self, kubernetes_client, prometheus_client, spec):
@@ -154,7 +156,7 @@ class NetworkBandwidthParameters(BaseModel):
     # The number of bytes that can be queued waiting for tokens to become available
     limit: ByteSize
 
-class NetworkBandwidth:
+class NetworkBandwidth(FaultTrait):
 
 
     def __init__(self, custom_k8s_client, prometheus_client, spec):

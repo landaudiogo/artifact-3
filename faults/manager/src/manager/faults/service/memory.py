@@ -10,6 +10,8 @@ import json
 import httpx
 import logging
 
+from .. import FaultTrait
+
 logger = logging.getLogger(__name__)
 
 # This query calculates the 5 minute average Memory usage for a particular pod
@@ -42,7 +44,7 @@ CHAOSMESH_MEMSTRESS_TEMPLATE = Template('''
 ''')
 
 
-class MemoryStress:
+class MemoryStress(FaultTrait):
 
 
     def __init__(self, kubernetes_client, spec):
@@ -92,7 +94,7 @@ class MemoryFaultParameters:
     memory_max: int
 
 
-class MemoryReduce:
+class MemoryReduce(FaultTrait):
 
 
     def __init__(self, kubernetes_client, prometheus_client, spec):

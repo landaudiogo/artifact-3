@@ -5,6 +5,8 @@ from httpx import Client
 import logging
 import httpx
 
+from .. import FaultTrait
+
 logger = logging.getLogger(__name__)
 
 
@@ -14,7 +16,7 @@ class BlockLatencyParameters:
     node: str
 
 
-class BlockLatency:
+class BlockLatency(FaultTrait):
 
 
     def __init__(self, spec):

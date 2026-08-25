@@ -10,6 +10,8 @@ import json
 import httpx
 import logging
 
+from .. import FaultTrait
+
 logger = logging.getLogger(__name__)
 
 FAULT_POD_TEMPLATE = Template('''
@@ -54,7 +56,7 @@ class PostgresLockContentionParameters:
     interval: str 
 
 
-class PostgresLockContention:
+class PostgresLockContention(FaultTrait):
 
 
     def __init__(self, kubernetes_client, spec):

@@ -3,6 +3,8 @@ from kubernetes.client import V1Scale, V1ScaleSpec
 
 import logging
 
+from .. import FaultTrait
+
 logger = logging.getLogger(__name__)
 
 @dataclass
@@ -13,7 +15,7 @@ class DeletePodsParameters:
 
 
 
-class DeletePods:
+class DeletePods(FaultTrait):
 
 
     def __init__(self, kubernetes_client, spec):
