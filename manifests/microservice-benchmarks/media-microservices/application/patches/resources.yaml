@@ -1,0 +1,595 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cast-info-memcached
+spec:
+  template:
+    spec:
+      containers:
+      - name: cast-info-memcached
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cast-info-mongodb
+spec:
+  template:
+    spec:
+      containers:
+      - name: cast-info-mongodb
+        resources:
+          limits:
+            cpu: null
+            memory: 304857600.0
+          requests:
+            cpu: 0.01
+            memory: 304857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cast-info-service
+spec:
+  template:
+    spec:
+      containers:
+      - name: cast-info-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: compose-review-memcached
+spec:
+  template:
+    spec:
+      containers:
+      - name: compose-review-memcached
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.029
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: compose-review-service
+spec:
+  template:
+    spec:
+      containers:
+      - name: compose-review-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.118
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaeger
+  namespace: media-microservices
+spec:
+  template:
+    spec:
+      containers:
+      - name: jaeger
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-id-memcached
+spec:
+  template:
+    spec:
+      containers:
+      - name: movie-id-memcached
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-id-mongodb
+spec:
+  template:
+    spec:
+      containers:
+      - name: movie-id-mongodb
+        resources:
+          limits:
+            cpu: null
+            memory: 304857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-id-service
+spec:
+  template:
+    spec:
+      containers:
+      - name: movie-id-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.031
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-info-memcached
+spec:
+  template:
+    spec:
+      containers:
+      - name: movie-info-memcached
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-info-mongodb
+spec:
+  template:
+    spec:
+      containers:
+      - name: movie-info-mongodb
+        resources:
+          limits:
+            cpu: null
+            memory: 304857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-info-service
+spec:
+  template:
+    spec:
+      containers:
+      - name: movie-info-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-review-mongodb
+spec:
+  template:
+    spec:
+      containers:
+      - name: movie-review-mongodb
+        resources:
+          limits:
+            cpu: null
+            memory: 330023424.0
+          requests:
+            cpu: 0.034
+            memory: 130023424.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-review-redis
+spec:
+  template:
+    spec:
+      containers:
+      - name: movie-review-redis
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-review-service
+spec:
+  template:
+    spec:
+      containers:
+      - name: movie-review-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.026
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-web-server
+spec:
+  template:
+    spec:
+      containers:
+      - name: nginx-web-server
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.029
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: page-service
+spec:
+  template:
+    spec:
+      containers:
+      - name: page-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plot-memcached
+spec:
+  template:
+    spec:
+      containers:
+      - name: plot-memcached
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plot-mongodb
+spec:
+  template:
+    spec:
+      containers:
+      - name: plot-mongodb
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plot-service
+spec:
+  template:
+    spec:
+      containers:
+      - name: plot-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rating-redis
+spec:
+  template:
+    spec:
+      containers:
+      - name: rating-redis
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rating-service
+spec:
+  template:
+    spec:
+      containers:
+      - name: rating-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.031
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: review-storage-memcached
+spec:
+  template:
+    spec:
+      containers:
+      - name: review-storage-memcached
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: review-storage-mongodb
+spec:
+  template:
+    spec:
+      containers:
+      - name: review-storage-mongodb
+        resources:
+          limits:
+            cpu: null
+            memory: 365675008.0
+          requests:
+            cpu: 0.018
+            memory: 165675008.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: review-storage-service
+spec:
+  template:
+    spec:
+      containers:
+      - name: review-storage-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: text-service
+spec:
+  template:
+    spec:
+      containers:
+      - name: text-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unique-id-service
+spec:
+  template:
+    spec:
+      containers:
+      - name: unique-id-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.014
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-memcached
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-memcached
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-mongodb
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-mongodb
+        resources:
+          limits:
+            cpu: null
+            memory: 304857600.0
+          requests:
+            cpu: 0.01
+            memory: 304857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-review-mongodb
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-review-mongodb
+        resources:
+          limits:
+            cpu: null
+            memory: 331072000.0
+          requests:
+            cpu: 0.028
+            memory: 131072000.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-review-redis
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-review-redis
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-review-service
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-review-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.025
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.013
+            memory: 104857600.0
+
+---

@@ -1,0 +1,2144 @@
+{
+  "scans": [
+    {
+      "object": {
+        "cluster": "local",
+        "name": "cast-info-memcached",
+        "container": "cast-info-memcached",
+        "pods": [
+          {
+            "name": "cast-info-memcached-5f6764cd8c-cbzcj",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "cast-info-memcached"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"cast-info-memcached\"},\"name\":\"cast-info-memcached\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"cast-info-memcached\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"cast-info-memcached\",\"service\":\"cast-info-memcached\"}},\"spec\":{\"containers\":[{\"image\":\"docker.io/library/memcached:1.6.7\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"cast-info-memcached\",\"ports\":[{\"containerPort\":11211}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"cast-info-memcached-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"cast-info-memcached-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"cast-info-memcached\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker2\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"cast-info-memcached\"},\"name\":\"cast-info-memcached-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "cast-info-mongodb",
+        "container": "cast-info-mongodb",
+        "pods": [
+          {
+            "name": "cast-info-mongodb-6cfffbcbdb-lbgzm",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "cast-info-mongodb"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"cast-info-mongodb\"},\"name\":\"cast-info-mongodb\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"cast-info-mongodb\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"cast-info-mongodb\",\"service\":\"cast-info-mongodb\"}},\"spec\":{\"containers\":[{\"args\":[\"--config\",\"/media-microservices/config/mongod.conf\"],\"image\":\"docker.io/library/mongo:4.4.6\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"cast-info-mongodb\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/mongod.conf\",\"name\":\"cast-info-mongodb-config\",\"subPath\":\"mongod.conf\"}]}],\"hostname\":\"cast-info-mongodb\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker2\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"cast-info-mongodb\"},\"name\":\"cast-info-mongodb-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.141,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "cast-info-service",
+        "container": "cast-info-service",
+        "pods": [
+          {
+            "name": "cast-info-service-57f96dd7f6-7wnbw",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "cast-info-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"cast-info-service\"},\"name\":\"cast-info-service\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"cast-info-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"cast-info-service\",\"service\":\"cast-info-service\"}},\"spec\":{\"containers\":[{\"command\":[\"CastInfoService\"],\"image\":\"docker.io/dclandau/media-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"cast-info-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"cast-info-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"cast-info-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"cast-info-service\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker2\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"cast-info-service\"},\"name\":\"cast-info-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.125,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "compose-review-memcached",
+        "container": "compose-review-memcached",
+        "pods": [
+          {
+            "name": "compose-review-memcached-b948d6566-xj8sv",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "compose-review-memcached"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"compose-review-memcached\"},\"name\":\"compose-review-memcached\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"compose-review-memcached\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"compose-review-memcached\",\"service\":\"compose-review-memcached\"}},\"spec\":{\"containers\":[{\"image\":\"docker.io/library/memcached:1.6.7\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"compose-review-memcached\",\"ports\":[{\"containerPort\":11211}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"compose-review-memcached-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"compose-review-memcached-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"compose-review-memcached\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker1\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"compose-review-memcached\"},\"name\":\"compose-review-memcached-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.029,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.03,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "compose-review-service",
+        "container": "compose-review-service",
+        "pods": [
+          {
+            "name": "compose-review-service-5bfdc9bb7-2qspj",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "compose-review-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"compose-review-service\"},\"name\":\"compose-review-service\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"compose-review-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"compose-review-service\",\"service\":\"compose-review-service\"}},\"spec\":{\"containers\":[{\"command\":[\"ComposeReviewService\"],\"image\":\"docker.io/dclandau/media-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"compose-review-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"compose-review-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"compose-review-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"compose-review-service\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker2\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"compose-review-service\"},\"name\":\"compose-review-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.118,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.122,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "jaeger",
+        "container": "jaeger",
+        "pods": [
+          {
+            "name": "jaeger-75b8dd95d8-ddt4m",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app": "jaeger"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"jaeger\"},\"name\":\"jaeger\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"name\":\"jaeger\"}},\"template\":{\"metadata\":{\"labels\":{\"name\":\"jaeger\"},\"name\":\"jaeger\"},\"spec\":{\"containers\":[{\"args\":[\"--config\",\"/etc/jaeger/config.yml\"],\"env\":[{\"name\":\"JAEGER_UI_CONFIG\",\"value\":\"/etc/jaeger/jaeger-ui.json\"}],\"image\":\"jaegertracing/jaeger@sha256:d2cbd047e44b50c11454820f84fd5f34c24a435e5301cf94fe026bf055db80b3\",\"name\":\"jaeger\",\"volumeMounts\":[{\"mountPath\":\"/etc/jaeger\",\"name\":\"config-volume\"}]}],\"enableServiceLinks\":false,\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"jaeger-config\"},\"name\":\"config-volume\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "movie-id-memcached",
+        "container": "movie-id-memcached",
+        "pods": [
+          {
+            "name": "movie-id-memcached-78db649877-mxp8s",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "movie-id-memcached"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"movie-id-memcached\"},\"name\":\"movie-id-memcached\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"movie-id-memcached\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"movie-id-memcached\",\"service\":\"movie-id-memcached\"}},\"spec\":{\"containers\":[{\"image\":\"docker.io/library/memcached:1.6.7\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"movie-id-memcached\",\"ports\":[{\"containerPort\":11211}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"movie-id-memcached-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"movie-id-memcached-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"movie-id-memcached\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker2\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"movie-id-memcached\"},\"name\":\"movie-id-memcached-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "movie-id-mongodb",
+        "container": "movie-id-mongodb",
+        "pods": [
+          {
+            "name": "movie-id-mongodb-97d587d9c-rbq49",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "movie-id-mongodb"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"movie-id-mongodb\"},\"name\":\"movie-id-mongodb\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"movie-id-mongodb\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"movie-id-mongodb\",\"service\":\"movie-id-mongodb\"}},\"spec\":{\"containers\":[{\"args\":[\"--config\",\"/media-microservices/config/mongod.conf\"],\"image\":\"docker.io/library/mongo:4.4.6\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"movie-id-mongodb\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/mongod.conf\",\"name\":\"movie-id-mongodb-config\",\"subPath\":\"mongod.conf\"}]}],\"hostname\":\"movie-id-mongodb\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"movie-id-mongodb\"},\"name\":\"movie-id-mongodb-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.018,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "movie-id-service",
+        "container": "movie-id-service",
+        "pods": [
+          {
+            "name": "movie-id-service-cc97c8d7-9zmjw",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "movie-id-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"movie-id-service\"},\"name\":\"movie-id-service\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"movie-id-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"movie-id-service\",\"service\":\"movie-id-service\"}},\"spec\":{\"containers\":[{\"command\":[\"MovieIdService\"],\"image\":\"docker.io/dclandau/media-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"movie-id-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"movie-id-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"movie-id-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"movie-id-service\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker1\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"movie-id-service\"},\"name\":\"movie-id-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.031,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.032,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "movie-info-memcached",
+        "container": "movie-info-memcached",
+        "pods": [
+          {
+            "name": "movie-info-memcached-5fc556cdf6-hw2dm",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "movie-info-memcached"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"movie-info-memcached\"},\"name\":\"movie-info-memcached\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"movie-info-memcached\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"movie-info-memcached\",\"service\":\"movie-info-memcached\"}},\"spec\":{\"containers\":[{\"image\":\"docker.io/library/memcached:1.6.7\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"movie-info-memcached\",\"ports\":[{\"containerPort\":11211}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"movie-info-memcached-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"movie-info-memcached-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"movie-info-memcached\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"movie-info-memcached\"},\"name\":\"movie-info-memcached-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "movie-info-mongodb",
+        "container": "movie-info-mongodb",
+        "pods": [
+          {
+            "name": "movie-info-mongodb-798ff6cc5f-8hs5c",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "movie-info-mongodb"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"movie-info-mongodb\"},\"name\":\"movie-info-mongodb\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"movie-info-mongodb\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"movie-info-mongodb\",\"service\":\"movie-info-mongodb\"}},\"spec\":{\"containers\":[{\"args\":[\"--config\",\"/media-microservices/config/mongod.conf\"],\"image\":\"docker.io/library/mongo:4.4.6\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"movie-info-mongodb\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/mongod.conf\",\"name\":\"movie-info-mongodb-config\",\"subPath\":\"mongod.conf\"}]}],\"hostname\":\"movie-info-mongodb\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker2\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"movie-info-mongodb\"},\"name\":\"movie-info-mongodb-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "movie-info-service",
+        "container": "movie-info-service",
+        "pods": [
+          {
+            "name": "movie-info-service-7f4c56d6cb-phbvn",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "movie-info-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"movie-info-service\"},\"name\":\"movie-info-service\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"movie-info-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"movie-info-service\",\"service\":\"movie-info-service\"}},\"spec\":{\"containers\":[{\"command\":[\"MovieInfoService\"],\"image\":\"docker.io/dclandau/media-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"movie-info-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"movie-info-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"movie-info-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"movie-info-service\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker1\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"movie-info-service\"},\"name\":\"movie-info-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "movie-review-mongodb",
+        "container": "movie-review-mongodb",
+        "pods": [
+          {
+            "name": "movie-review-mongodb-684f9d6c74-vbsct",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "movie-review-mongodb"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"movie-review-mongodb\"},\"name\":\"movie-review-mongodb\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"movie-review-mongodb\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"movie-review-mongodb\",\"service\":\"movie-review-mongodb\"}},\"spec\":{\"containers\":[{\"args\":[\"--config\",\"/media-microservices/config/mongod.conf\"],\"image\":\"docker.io/library/mongo:4.4.6\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"movie-review-mongodb\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/mongod.conf\",\"name\":\"movie-review-mongodb-config\",\"subPath\":\"mongod.conf\"}]}],\"hostname\":\"movie-review-mongodb\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"movie-review-mongodb\"},\"name\":\"movie-review-mongodb-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.034,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 130023424.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.037,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 130023424.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "movie-review-redis",
+        "container": "movie-review-redis",
+        "pods": [
+          {
+            "name": "movie-review-redis-66cf4fc9c5-dpf2l",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "movie-review-redis"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"movie-review-redis\"},\"name\":\"movie-review-redis\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"movie-review-redis\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"movie-review-redis\",\"service\":\"movie-review-redis\"}},\"spec\":{\"containers\":[{\"args\":[\"/media-microservices/config/redis.conf\"],\"image\":\"docker.io/library/redis:6.2.4\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"movie-review-redis\",\"ports\":[{\"containerPort\":6379}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/redis.conf\",\"name\":\"movie-review-redis-config\",\"subPath\":\"redis.conf\"}]}],\"hostname\":\"movie-review-redis\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker1\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"movie-review-redis\"},\"name\":\"movie-review-redis-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "movie-review-service",
+        "container": "movie-review-service",
+        "pods": [
+          {
+            "name": "movie-review-service-76dd6d4694-bjv5l",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "movie-review-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"movie-review-service\"},\"name\":\"movie-review-service\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"movie-review-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"movie-review-service\",\"service\":\"movie-review-service\"}},\"spec\":{\"containers\":[{\"command\":[\"MovieReviewService\"],\"image\":\"docker.io/dclandau/media-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"movie-review-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"movie-review-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"movie-review-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"movie-review-service\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"movie-review-service\"},\"name\":\"movie-review-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.026,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.027,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "nginx-web-server",
+        "container": "nginx-web-server",
+        "pods": [
+          {
+            "name": "nginx-web-server-5cc46bdd54-cwxqn",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "nginx-web-server"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"nginx-web-server\"},\"name\":\"nginx-web-server\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"nginx-web-server\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"nginx-web-server\",\"service\":\"nginx-web-server\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"fqdn_suffix\",\"value\":\".media-microservices.svc.cluster.local\"}],\"image\":\"docker.io/yg397/openresty-thrift:xenial\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"nginx-web-server\",\"ports\":[{\"containerPort\":8080}],\"volumeMounts\":[{\"mountPath\":\"/usr/local/openresty/nginx/jaeger-config.json\",\"name\":\"nginx-web-server-config\",\"subPath\":\"jaeger-config.json\"},{\"mountPath\":\"/usr/local/openresty/nginx/conf/nginx.conf\",\"name\":\"nginx-web-server-config\",\"subPath\":\"nginx.conf\"},{\"mountPath\":\"/usr/local/openresty/nginx/lua-scripts\",\"name\":\"lua-scripts\"},{\"mountPath\":\"/gen-lua\",\"name\":\"gen-lua\"}]}],\"hostname\":\"nginx-web-server\",\"initContainers\":[{\"args\":[\"-c\",\"git clone https://github.com/dimoibiehg/DeathStarBench.git /DeathStarBench \\u0026\\u0026 cp -r /DeathStarBench/mediaMicroservices/gen-lua/* /gen-lua/ \\u0026\\u0026 cp -r /DeathStarBench/mediaMicroservices/nginx-web-server/lua-scripts/* /lua-scripts/\"],\"command\":[\"/bin/sh\"],\"image\":\"docker.io/alpine/git:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"alpine-container\",\"volumeMounts\":[{\"mountPath\":\"/lua-scripts\",\"name\":\"lua-scripts\"},{\"mountPath\":\"/gen-lua\",\"name\":\"gen-lua\"}]}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"nginx-web-server\"},\"name\":\"nginx-web-server-config\"},{\"emptyDir\":{},\"name\":\"lua-scripts\"},{\"emptyDir\":{},\"name\":\"gen-lua\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.029,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.123,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "page-service",
+        "container": "page-service",
+        "pods": [
+          {
+            "name": "page-service-86dbbb8bcc-4fz8x",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "page-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"page-service\"},\"name\":\"page-service\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"page-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"page-service\",\"service\":\"page-service\"}},\"spec\":{\"containers\":[{\"command\":[\"PageService\"],\"image\":\"docker.io/dclandau/media-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"page-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"page-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"page-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"page-service\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker1\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"page-service\"},\"name\":\"page-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "plot-memcached",
+        "container": "plot-memcached",
+        "pods": [
+          {
+            "name": "plot-memcached-949d59c9b-c5x9l",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "plot-memcached"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"plot-memcached\"},\"name\":\"plot-memcached\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"plot-memcached\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"plot-memcached\",\"service\":\"plot-memcached\"}},\"spec\":{\"containers\":[{\"image\":\"docker.io/library/memcached:1.6.7\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"plot-memcached\",\"ports\":[{\"containerPort\":11211}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"plot-memcached-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"plot-memcached-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"plot-memcached\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"plot-memcached\"},\"name\":\"plot-memcached-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "plot-mongodb",
+        "container": "plot-mongodb",
+        "pods": [
+          {
+            "name": "plot-mongodb-ffddf6b7f-lxmk9",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "plot-mongodb"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"plot-mongodb\"},\"name\":\"plot-mongodb\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"plot-mongodb\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"plot-mongodb\",\"service\":\"plot-mongodb\"}},\"spec\":{\"containers\":[{\"args\":[\"--config\",\"/media-microservices/config/mongod.conf\"],\"image\":\"docker.io/library/mongo:4.4.6\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"plot-mongodb\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/mongod.conf\",\"name\":\"plot-mongodb-config\",\"subPath\":\"mongod.conf\"}]}],\"hostname\":\"plot-mongodb\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker2\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"plot-mongodb\"},\"name\":\"plot-mongodb-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.019,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "plot-service",
+        "container": "plot-service",
+        "pods": [
+          {
+            "name": "plot-service-5f8f49d64c-qj86p",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "plot-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"plot-service\"},\"name\":\"plot-service\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"plot-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"plot-service\",\"service\":\"plot-service\"}},\"spec\":{\"containers\":[{\"command\":[\"PlotService\"],\"image\":\"docker.io/dclandau/media-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"plot-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"plot-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"plot-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"plot-service\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"plot-service\"},\"name\":\"plot-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "rating-redis",
+        "container": "rating-redis",
+        "pods": [
+          {
+            "name": "rating-redis-6994f95685-q7m4j",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "rating-redis"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"rating-redis\"},\"name\":\"rating-redis\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"rating-redis\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"rating-redis\",\"service\":\"rating-redis\"}},\"spec\":{\"containers\":[{\"args\":[\"/media-microservices/config/redis.conf\"],\"image\":\"docker.io/library/redis:6.2.4\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"rating-redis\",\"ports\":[{\"containerPort\":6379}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/redis.conf\",\"name\":\"rating-redis-config\",\"subPath\":\"redis.conf\"}]}],\"hostname\":\"rating-redis\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker1\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"rating-redis\"},\"name\":\"rating-redis-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "rating-service",
+        "container": "rating-service",
+        "pods": [
+          {
+            "name": "rating-service-75b5b68957-84zlf",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "rating-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"rating-service\"},\"name\":\"rating-service\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"rating-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"rating-service\",\"service\":\"rating-service\"}},\"spec\":{\"containers\":[{\"command\":[\"RatingService\"],\"image\":\"docker.io/dclandau/media-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"rating-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"rating-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"rating-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"rating-service\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"rating-service\"},\"name\":\"rating-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.031,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.032,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "review-storage-memcached",
+        "container": "review-storage-memcached",
+        "pods": [
+          {
+            "name": "review-storage-memcached-59dbf7c47d-rzsz2",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "review-storage-memcached"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"review-storage-memcached\"},\"name\":\"review-storage-memcached\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"review-storage-memcached\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"review-storage-memcached\",\"service\":\"review-storage-memcached\"}},\"spec\":{\"containers\":[{\"image\":\"docker.io/library/memcached:1.6.7\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"review-storage-memcached\",\"ports\":[{\"containerPort\":11211}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"review-storage-memcached-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"review-storage-memcached-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"review-storage-memcached\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker1\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"review-storage-memcached\"},\"name\":\"review-storage-memcached-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "review-storage-mongodb",
+        "container": "review-storage-mongodb",
+        "pods": [
+          {
+            "name": "review-storage-mongodb-548b5487f9-zrzrk",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "review-storage-mongodb"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"review-storage-mongodb\"},\"name\":\"review-storage-mongodb\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"review-storage-mongodb\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"review-storage-mongodb\",\"service\":\"review-storage-mongodb\"}},\"spec\":{\"containers\":[{\"args\":[\"--config\",\"/media-microservices/config/mongod.conf\"],\"image\":\"docker.io/library/mongo:4.4.6\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"review-storage-mongodb\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/mongod.conf\",\"name\":\"review-storage-mongodb-config\",\"subPath\":\"mongod.conf\"}]}],\"hostname\":\"review-storage-mongodb\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"review-storage-mongodb\"},\"name\":\"review-storage-mongodb-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.018,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 165675008.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.02,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 165675008.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "review-storage-service",
+        "container": "review-storage-service",
+        "pods": [
+          {
+            "name": "review-storage-service-76d889fb45-wndgv",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "review-storage-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"review-storage-service\"},\"name\":\"review-storage-service\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"review-storage-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"review-storage-service\",\"service\":\"review-storage-service\"}},\"spec\":{\"containers\":[{\"command\":[\"ReviewStorageService\"],\"image\":\"docker.io/dclandau/media-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"review-storage-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"review-storage-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"review-storage-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"review-storage-service\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"review-storage-service\"},\"name\":\"review-storage-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "text-service",
+        "container": "text-service",
+        "pods": [
+          {
+            "name": "text-service-787b6d755-q6v56",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "text-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"text-service\"},\"name\":\"text-service\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"text-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"text-service\",\"service\":\"text-service\"}},\"spec\":{\"containers\":[{\"command\":[\"TextService\"],\"image\":\"docker.io/dclandau/media-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"text-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"text-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"text-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"text-service\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"text-service\"},\"name\":\"text-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "unique-id-service",
+        "container": "unique-id-service",
+        "pods": [
+          {
+            "name": "unique-id-service-76d96b577f-ggqgx",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "unique-id-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"unique-id-service\"},\"name\":\"unique-id-service\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"unique-id-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"unique-id-service\",\"service\":\"unique-id-service\"}},\"spec\":{\"containers\":[{\"command\":[\"UniqueIdService\"],\"image\":\"docker.io/dclandau/media-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"unique-id-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"unique-id-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"unique-id-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"unique-id-service\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker2\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"unique-id-service\"},\"name\":\"unique-id-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.014,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.015,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "user-memcached",
+        "container": "user-memcached",
+        "pods": [
+          {
+            "name": "user-memcached-7cc84cdc76-gd95q",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "user-memcached"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"user-memcached\"},\"name\":\"user-memcached\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"user-memcached\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"user-memcached\",\"service\":\"user-memcached\"}},\"spec\":{\"containers\":[{\"image\":\"docker.io/library/memcached:1.6.7\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"user-memcached\",\"ports\":[{\"containerPort\":11211}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"user-memcached-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"user-memcached-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"user-memcached\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"user-memcached\"},\"name\":\"user-memcached-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "user-mongodb",
+        "container": "user-mongodb",
+        "pods": [
+          {
+            "name": "user-mongodb-7c96fb4db-r4qtz",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "user-mongodb"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"user-mongodb\"},\"name\":\"user-mongodb\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"user-mongodb\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"user-mongodb\",\"service\":\"user-mongodb\"}},\"spec\":{\"containers\":[{\"args\":[\"--config\",\"/media-microservices/config/mongod.conf\"],\"image\":\"docker.io/library/mongo:4.4.6\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"user-mongodb\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/mongod.conf\",\"name\":\"user-mongodb-config\",\"subPath\":\"mongod.conf\"}]}],\"hostname\":\"user-mongodb\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"user-mongodb\"},\"name\":\"user-mongodb-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.025,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "user-review-mongodb",
+        "container": "user-review-mongodb",
+        "pods": [
+          {
+            "name": "user-review-mongodb-7bb845bb7f-qp55r",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "user-review-mongodb"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"user-review-mongodb\"},\"name\":\"user-review-mongodb\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"user-review-mongodb\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"user-review-mongodb\",\"service\":\"user-review-mongodb\"}},\"spec\":{\"containers\":[{\"args\":[\"--config\",\"/media-microservices/config/mongod.conf\"],\"image\":\"docker.io/library/mongo:4.4.6\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"user-review-mongodb\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/mongod.conf\",\"name\":\"user-review-mongodb-config\",\"subPath\":\"mongod.conf\"}]}],\"hostname\":\"user-review-mongodb\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker1\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"user-review-mongodb\"},\"name\":\"user-review-mongodb-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.028,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 131072000.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.031,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 131072000.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "user-review-redis",
+        "container": "user-review-redis",
+        "pods": [
+          {
+            "name": "user-review-redis-5f8f4c8dcc-f8wgb",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "user-review-redis"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"user-review-redis\"},\"name\":\"user-review-redis\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"user-review-redis\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"user-review-redis\",\"service\":\"user-review-redis\"}},\"spec\":{\"containers\":[{\"args\":[\"/media-microservices/config/redis.conf\"],\"image\":\"docker.io/library/redis:6.2.4\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"user-review-redis\",\"ports\":[{\"containerPort\":6379}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/redis.conf\",\"name\":\"user-review-redis-config\",\"subPath\":\"redis.conf\"}]}],\"hostname\":\"user-review-redis\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker2\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"user-review-redis\"},\"name\":\"user-review-redis-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "user-review-service",
+        "container": "user-review-service",
+        "pods": [
+          {
+            "name": "user-review-service-55b7cdcb75-msgtq",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "user-review-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"user-review-service\"},\"name\":\"user-review-service\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"user-review-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"user-review-service\",\"service\":\"user-review-service\"}},\"spec\":{\"containers\":[{\"command\":[\"UserReviewService\"],\"image\":\"docker.io/dclandau/media-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"user-review-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"user-review-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"user-review-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"user-review-service\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"user-review-service\"},\"name\":\"user-review-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.025,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.027,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "user-service",
+        "container": "user-service",
+        "pods": [
+          {
+            "name": "user-service-5bc8b8cc49-z4djv",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "media-microservices",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "user-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"user-service\"},\"name\":\"user-service\",\"namespace\":\"media-microservices\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"user-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"user-service\",\"service\":\"user-service\"}},\"spec\":{\"containers\":[{\"command\":[\"UserService\"],\"image\":\"docker.io/dclandau/media-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"user-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/media-microservices/config/jaeger-config.yml\",\"name\":\"user-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/media-microservices/config/service-config.json\",\"name\":\"user-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"user-service\",\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker1\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"user-service\"},\"name\":\"user-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.013,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.014,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    }
+  ],
+  "score": 30,
+  "resources": [
+    "cpu",
+    "memory"
+  ],
+  "description": "[b]Simple_Limit Strategy[/b]\n\nCPU request: 70.0% percentile, limit: 100.0% percentile\nMemory request: max + 15.0%, limit: max + 15.0%\nHistory: 2.0 hours\nStep: 1.0 minutes\n\nAll parameters can be customized. For example: `krr simple_limit --cpu_request=66 --cpu_limit=96 --memory_buffer_percentage=15 --history_duration=24 --timeframe_duration=0.5`\n\nThis strategy does not work with objects with HPA defined (Horizontal Pod Autoscaler).\nIf HPA is defined for CPU or Memory, the strategy will return \"?\" for that resource.\nYou can override this behaviour by passing the --allow-hpa flag\n\nLearn more: [underline]https://github.com/robusta-dev/krr#algorithm[/underline]",
+  "strategy": {
+    "name": "simple_limit",
+    "settings": {
+      "history_duration": 2.0,
+      "timeframe_duration": 1.0,
+      "end_epoch": 1784566092.1045113,
+      "cpu_request": 70.0,
+      "cpu_limit": 100.0,
+      "memory_buffer_percentage": 15.0,
+      "points_required": 100,
+      "allow_hpa": false,
+      "use_oomkill_data": false,
+      "oom_memory_buffer_percentage": 25.0
+    }
+  },
+  "errors": [],
+  "clusterSummary": {
+    "cluster_memory": 36815593472.0,
+    "cluster_cpu": 28.0,
+    "kube_system_mem_req": 146800640.0,
+    "kube_system_cpu_req": 0.2
+  },
+  "config": {
+    "quiet": true,
+    "verbose": false,
+    "clusters": [],
+    "kubeconfig": null,
+    "impersonate_user": null,
+    "impersonate_group": null,
+    "namespaces": [
+      "media-microservices"
+    ],
+    "resources": "*",
+    "selector": null,
+    "cpu_min_value": 10,
+    "memory_min_value": 100,
+    "prometheus_url": "http://k8s-master:30954",
+    "prometheus_auth_header": null,
+    "prometheus_other_headers": {},
+    "prometheus_ssl_enabled": false,
+    "prometheus_cluster_label": null,
+    "prometheus_label": null,
+    "eks_managed_prom": false,
+    "eks_managed_prom_profile_name": null,
+    "eks_access_key": null,
+    "eks_secret_key": null,
+    "eks_service_name": "aps",
+    "eks_managed_prom_region": null,
+    "eks_assume_role": null,
+    "coralogix_token": null,
+    "openshift": false,
+    "max_workers": 10,
+    "discovery_job_batch_size": 5000,
+    "discovery_job_max_batches": 100,
+    "job_grouping_labels": null,
+    "job_grouping_limit": 500,
+    "format": "json",
+    "show_cluster_name": false,
+    "strategy": "simple_limit",
+    "log_to_stderr": false,
+    "width": 900,
+    "show_severity": true,
+    "publish_scan_url": null,
+    "start_time": null,
+    "scan_id": null,
+    "named_sinks": [],
+    "file_output": null,
+    "file_output_dynamic": false,
+    "slack_output": null,
+    "slack_title": null,
+    "azureblob_output": null,
+    "teams_webhook": null,
+    "azure_subscription_id": null,
+    "azure_resource_group": null,
+    "other_args": {
+      "history_duration": "2",
+      "timeframe_duration": "1",
+      "end_epoch": "1784566092.1045113",
+      "cpu_request": "70",
+      "cpu_limit": "100",
+      "memory_buffer_percentage": "15",
+      "points_required": "100",
+      "allow_hpa": false,
+      "use_oomkill_data": false,
+      "oom_memory_buffer_percentage": "25"
+    },
+    "inside_cluster": false
+  }
+}

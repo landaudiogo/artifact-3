@@ -1,0 +1,363 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cast-info-memcached
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cast-info-mongodb
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cast-info-service
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: compose-review-memcached
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: compose-review-service
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaeger
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-id-memcached
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-id-mongodb
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-id-service
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-info-memcached
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-info-mongodb
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-info-service
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-review-mongodb
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-review-redis
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-review-service
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-web-server
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: page-service
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plot-memcached
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plot-mongodb
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plot-service
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rating-redis
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rating-service
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: review-storage-memcached
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: review-storage-mongodb
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: review-storage-service
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: text-service
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unique-id-service
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-memcached
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-mongodb
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-review-mongodb
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-review-redis
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker2
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-review-service
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
+
+---
