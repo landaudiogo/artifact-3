@@ -1,0 +1,30 @@
+grafana: 
+  enabled: false
+
+components:
+  load-generator:
+    enabled: false
+  llm:
+    enabled: false
+
+opensearch:
+  enabled: false
+
+prometheus:
+  enabled: false
+
+jaeger:
+  jaeger:
+    extraEnv:
+      - name: MEMORY_MAX_TRACES
+        value: "10000"
+      - name: PROMETHEUS_ADDR
+        value: kube-prometheus-stack-prometheus.monitoring:9090
+      - name: OTEL_COLLECTOR_HOST
+        value: otel-collector
+      - name: OTEL_COLLECTOR_PORT_HTTP
+        value: "4318"
+      - name: JAEGER_HOST
+        value: "0.0.0.0"
+      - name: JAEGER_GRPC_PORT
+        value: "4317"

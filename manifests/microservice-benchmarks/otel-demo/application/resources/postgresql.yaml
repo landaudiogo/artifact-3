@@ -1,0 +1,80 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgresql-pvc
+spec:
+  storageClassName: openebs-lvmsc
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Block
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgresql-entrypoint
+data:
+  entrypoint.sh: |
+    #!/bin/bash
+
+    set -e
+
+    BLOCKDEV="/bdev/lvma"
+    DMNAME="poddelay_${POD_UID}"
+    PGDIR="/var/lib/postgresql"
+
+    # This environment variable was required for dmsetup to create the 
+    # /dev/mapper/... file in the container filesystem
+    export DM_DISABLE_UDEV=1 
+
+    setup_block_device () {
+        if dmsetup info "$DMNAME" >/dev/null 2>&1; then
+            echo "device-mapper device $DMNAME exists. Attempting remove."
+            dmsetup remove "$DMNAME"
+        fi
+
+        echo "Create device-mapper $DMNAME device"
+        dmsetup \
+            create "$DMNAME" --table \
+            "0 $(blockdev --getsize "$BLOCKDEV") delay "$BLOCKDEV" 0 0"
+
+        if ! blkid "/dev/mapper/$DMNAME"; then
+            echo "Create ext4 filesystem on /dev/mapper/$DMNAME"
+            mkfs.ext4 "/dev/mapper/$DMNAME"
+        fi
+
+        if [ ! -d "$PGDIR" ]; then
+            echo "Create directory $PGDIR"
+            mkdir -p "$PGDIR"
+        fi
+
+        echo "Mount /dev/mapper/$DMNAME -> $PGDIR"
+        mount "/dev/mapper/$DMNAME" "$PGDIR"
+    }
+
+    handle_term () {
+        echo "SIGTERM handler"
+        echo "postgres pid: $postgres_pid"
+        kill -SIGQUIT $postgres_pid
+        wait $postgres_pid
+        postgres_exit=$?
+        
+        echo "umount $PGDIR"
+        umount "$PGDIR"
+
+        echo "remove dm device $DMNAME"
+        dmsetup remove "$DMNAME"
+
+        exit $postgres_exit
+    }
+
+    setup_block_device
+    trap handle_term SIGTERM
+
+    docker-entrypoint.sh postgres &
+    postgres_pid=$!
+    echo "Store postgres: $postgres_pid"
+    wait $postgres_pid
+    handle_term
