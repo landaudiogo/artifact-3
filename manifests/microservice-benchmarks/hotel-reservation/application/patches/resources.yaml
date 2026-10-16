@@ -1,0 +1,343 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consul-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: consul
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.013
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-frontend
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.082
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: geo-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-geo
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.02
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaeger
+  namespace: hotel-reservation
+spec:
+  template:
+    spec:
+      containers:
+      - name: jaeger
+        resources:
+          limits:
+            cpu: null
+            memory: 1055916032.0
+          requests:
+            cpu: 0.014
+            memory: 1055916032.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: memcached-profile-1-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-profile-mmc
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: memcached-rate-1-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-rate-mmc
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: memcached-reserve-1-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-reservation-mmc
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.015
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-geo-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-geo-mongo
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-profile-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-profile-mongo
+        resources:
+          limits:
+            cpu: null
+            memory: 105906176.0
+          requests:
+            cpu: 0.01
+            memory: 105906176.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-rate-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-rate-mongo
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-recommendation-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-recommendation-mongo
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-reservation-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-reservation-mongo
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-user-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-user-mongo
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: profile-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-profile
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.063
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rate-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-rate
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.047
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendation-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-recommendation
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.02
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reservation-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-reservation
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.088
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: search-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-search
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.079
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-user
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---

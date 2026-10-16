@@ -1,0 +1,1375 @@
+{
+  "scans": [
+    {
+      "object": {
+        "cluster": "local",
+        "name": "consul-hotel-reservation-hotelres",
+        "container": "consul",
+        "pods": [
+          {
+            "name": "consul-hotel-reservation-hotelres-7b55955bd8-mbcwp",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "hotel-reservation",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/instance": "hotel-reservation",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "consul",
+          "app.kubernetes.io/version": "0.1.0",
+          "helm.sh/chart": "consul-0.1.0",
+          "service": "consul-hotel-reservation-hotelres"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"consul\",\"app.kubernetes.io/version\":\"0.1.0\",\"helm.sh/chart\":\"consul-0.1.0\",\"service\":\"consul-hotel-reservation-hotelres\"},\"name\":\"consul-hotel-reservation-hotelres\",\"namespace\":\"hotel-reservation\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"consul-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/name\":\"consul\",\"service\":\"consul-hotel-reservation-hotelres\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"consul-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"consul\",\"app.kubernetes.io/version\":\"0.1.0\",\"helm.sh/chart\":\"consul-0.1.0\",\"service\":\"consul-hotel-reservation-hotelres\"}},\"spec\":{\"affinity\":{},\"containers\":[{\"image\":\"docker.io/hashicorp/consul:1.13.2\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"consul\",\"ports\":[{\"containerPort\":8300},{\"containerPort\":8400},{\"containerPort\":8500},{\"containerPort\":53}]}],\"hostname\":\"consul-hotel-reservation-hotelres\",\"nodeSelector\":{},\"restartPolicy\":\"Always\",\"tolerations\":[]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.013,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.014,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "frontend-hotel-reservation-hotelres",
+        "container": "hotel-reserv-frontend",
+        "pods": [
+          {
+            "name": "frontend-hotel-reservation-hotelres-b966f8895-f2bsr",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "hotel-reservation",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/instance": "hotel-reservation",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "frontend",
+          "app.kubernetes.io/version": "0.1.0",
+          "helm.sh/chart": "frontend-0.1.0",
+          "service": "frontend-hotel-reservation-hotelres"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"frontend\",\"app.kubernetes.io/version\":\"0.1.0\",\"helm.sh/chart\":\"frontend-0.1.0\",\"service\":\"frontend-hotel-reservation-hotelres\"},\"name\":\"frontend-hotel-reservation-hotelres\",\"namespace\":\"hotel-reservation\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"frontend-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/name\":\"frontend\",\"service\":\"frontend-hotel-reservation-hotelres\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"frontend-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"frontend\",\"app.kubernetes.io/version\":\"0.1.0\",\"helm.sh/chart\":\"frontend-0.1.0\",\"service\":\"frontend-hotel-reservation-hotelres\"}},\"spec\":{\"affinity\":{},\"containers\":[{\"command\":[\"/go/bin/frontend\"],\"env\":[{\"name\":\"GC\",\"value\":\"100\"},{\"name\":\"JAEGER_SAMPLE_RATIO\",\"value\":\"1\"},{\"name\":\"LOG_LEVEL\",\"value\":\"INFO\"},{\"name\":\"MEMC_TIMEOUT\",\"value\":\"2\"},{\"name\":\"TLS\",\"value\":\"0\"}],\"image\":\"docker.io/deathstarbench/hotel-reservation:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"hotel-reserv-frontend\",\"ports\":[{\"containerPort\":5000}],\"volumeMounts\":[{\"mountPath\":\"config.json\",\"name\":\"frontend-hotel-reservation-hotelres-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"frontend-hotel-reservation-hotelres\",\"nodeSelector\":{},\"restartPolicy\":\"Always\",\"tolerations\":[],\"volumes\":[{\"configMap\":{\"name\":\"frontend-hotel-reservation-hotelres\"},\"name\":\"frontend-hotel-reservation-hotelres-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.082,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.095,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "geo-hotel-reservation-hotelres",
+        "container": "hotel-reserv-geo",
+        "pods": [
+          {
+            "name": "geo-hotel-reservation-hotelres-78f6db8d87-htld5",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "hotel-reservation",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/instance": "hotel-reservation",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "geo",
+          "app.kubernetes.io/version": "0.1.0",
+          "helm.sh/chart": "geo-0.1.0",
+          "service": "geo-hotel-reservation-hotelres"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"geo\",\"app.kubernetes.io/version\":\"0.1.0\",\"helm.sh/chart\":\"geo-0.1.0\",\"service\":\"geo-hotel-reservation-hotelres\"},\"name\":\"geo-hotel-reservation-hotelres\",\"namespace\":\"hotel-reservation\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"geo-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/name\":\"geo\",\"service\":\"geo-hotel-reservation-hotelres\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"geo-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"geo\",\"app.kubernetes.io/version\":\"0.1.0\",\"helm.sh/chart\":\"geo-0.1.0\",\"service\":\"geo-hotel-reservation-hotelres\"}},\"spec\":{\"affinity\":{},\"containers\":[{\"command\":[\"/go/bin/geo\"],\"env\":[{\"name\":\"GC\",\"value\":\"100\"},{\"name\":\"JAEGER_SAMPLE_RATIO\",\"value\":\"1\"},{\"name\":\"LOG_LEVEL\",\"value\":\"INFO\"},{\"name\":\"MEMC_TIMEOUT\",\"value\":\"2\"},{\"name\":\"TLS\",\"value\":\"0\"}],\"image\":\"docker.io/deathstarbench/hotel-reservation:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"hotel-reserv-geo\",\"ports\":[{\"containerPort\":8083}],\"volumeMounts\":[{\"mountPath\":\"config.json\",\"name\":\"geo-hotel-reservation-hotelres-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"geo-hotel-reservation-hotelres\",\"nodeSelector\":{},\"restartPolicy\":\"Always\",\"tolerations\":[],\"volumes\":[{\"configMap\":{\"name\":\"geo-hotel-reservation-hotelres\"},\"name\":\"geo-hotel-reservation-hotelres-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.02,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.022,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "jaeger",
+        "container": "jaeger",
+        "pods": [
+          {
+            "name": "jaeger-75b8dd95d8-dv8m8",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "hotel-reservation",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app": "jaeger"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"jaeger\"},\"name\":\"jaeger\",\"namespace\":\"hotel-reservation\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"name\":\"jaeger\"}},\"template\":{\"metadata\":{\"labels\":{\"name\":\"jaeger\"},\"name\":\"jaeger\"},\"spec\":{\"containers\":[{\"args\":[\"--config\",\"/etc/jaeger/config.yml\"],\"env\":[{\"name\":\"JAEGER_UI_CONFIG\",\"value\":\"/etc/jaeger/jaeger-ui.json\"}],\"image\":\"jaegertracing/jaeger@sha256:d2cbd047e44b50c11454820f84fd5f34c24a435e5301cf94fe026bf055db80b3\",\"name\":\"jaeger\",\"volumeMounts\":[{\"mountPath\":\"/etc/jaeger\",\"name\":\"config-volume\"}]}],\"enableServiceLinks\":false,\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"jaeger-config\"},\"name\":\"config-volume\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.014,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 1055916032.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.022,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 1055916032.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "memcached-profile-1-hotel-reservation-hotelres",
+        "container": "hotel-reserv-profile-mmc",
+        "pods": [
+          {
+            "name": "memcached-profile-1-hotel-reservation-hotelres-6c6c67fc6d-gl4sj",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "hotel-reservation",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/instance": "hotel-reservation",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "memcached-profile",
+          "app.kubernetes.io/version": "0.1.0",
+          "backend": "memcached",
+          "helm.sh/chart": "memcached-profile-0.1.0",
+          "service": "memcached-profile-1-hotel-reservation-hotelres"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"memcached-profile\",\"app.kubernetes.io/version\":\"0.1.0\",\"backend\":\"memcached\",\"helm.sh/chart\":\"memcached-profile-0.1.0\",\"service\":\"memcached-profile-1-hotel-reservation-hotelres\"},\"name\":\"memcached-profile-1-hotel-reservation-hotelres\",\"namespace\":\"hotel-reservation\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"memcached-profile-1-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/name\":\"memcached-profile\",\"backend\":\"memcached\",\"service\":\"memcached-profile-1-hotel-reservation-hotelres\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"memcached-profile-1-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"memcached-profile\",\"app.kubernetes.io/version\":\"0.1.0\",\"backend\":\"memcached\",\"helm.sh/chart\":\"memcached-profile-0.1.0\",\"service\":\"memcached-profile-1-hotel-reservation-hotelres\"}},\"spec\":{\"affinity\":{},\"containers\":[{\"env\":[{\"name\":\"MEMCACHED_CACHE_SIZE\",\"value\":\"128\"},{\"name\":\"MEMCACHED_THREADS\",\"value\":\"2\"}],\"image\":\"docker.io/memcached:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"hotel-reserv-profile-mmc\",\"ports\":[{\"containerPort\":11211}]}],\"hostname\":\"memcached-profile-hotel-reservation-hotelres\",\"nodeSelector\":{},\"restartPolicy\":\"Always\",\"tolerations\":[]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "memcached-rate-1-hotel-reservation-hotelres",
+        "container": "hotel-reserv-rate-mmc",
+        "pods": [
+          {
+            "name": "memcached-rate-1-hotel-reservation-hotelres-7c495498f8-tsmsw",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "hotel-reservation",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/instance": "hotel-reservation",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "memcached-rate",
+          "app.kubernetes.io/version": "0.1.0",
+          "backend": "memcached",
+          "helm.sh/chart": "memcached-rate-0.1.0",
+          "service": "memcached-rate-1-hotel-reservation-hotelres"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"memcached-rate\",\"app.kubernetes.io/version\":\"0.1.0\",\"backend\":\"memcached\",\"helm.sh/chart\":\"memcached-rate-0.1.0\",\"service\":\"memcached-rate-1-hotel-reservation-hotelres\"},\"name\":\"memcached-rate-1-hotel-reservation-hotelres\",\"namespace\":\"hotel-reservation\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"memcached-rate-1-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/name\":\"memcached-rate\",\"backend\":\"memcached\",\"service\":\"memcached-rate-1-hotel-reservation-hotelres\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"memcached-rate-1-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"memcached-rate\",\"app.kubernetes.io/version\":\"0.1.0\",\"backend\":\"memcached\",\"helm.sh/chart\":\"memcached-rate-0.1.0\",\"service\":\"memcached-rate-1-hotel-reservation-hotelres\"}},\"spec\":{\"affinity\":{},\"containers\":[{\"env\":[{\"name\":\"MEMCACHED_CACHE_SIZE\",\"value\":\"128\"},{\"name\":\"MEMCACHED_THREADS\",\"value\":\"2\"}],\"image\":\"docker.io/memcached:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"hotel-reserv-rate-mmc\",\"ports\":[{\"containerPort\":11211}]}],\"hostname\":\"memcached-rate-hotel-reservation-hotelres\",\"nodeSelector\":{},\"restartPolicy\":\"Always\",\"tolerations\":[]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "memcached-reserve-1-hotel-reservation-hotelres",
+        "container": "hotel-reserv-reservation-mmc",
+        "pods": [
+          {
+            "name": "memcached-reserve-1-hotel-reservation-hotelres-6f885557bd-lg97d",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "hotel-reservation",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/instance": "hotel-reservation",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "memcached-reserve",
+          "app.kubernetes.io/version": "0.1.0",
+          "backend": "memcached",
+          "helm.sh/chart": "memcached-reserve-0.1.0",
+          "service": "memcached-reserve-1-hotel-reservation-hotelres"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"memcached-reserve\",\"app.kubernetes.io/version\":\"0.1.0\",\"backend\":\"memcached\",\"helm.sh/chart\":\"memcached-reserve-0.1.0\",\"service\":\"memcached-reserve-1-hotel-reservation-hotelres\"},\"name\":\"memcached-reserve-1-hotel-reservation-hotelres\",\"namespace\":\"hotel-reservation\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"memcached-reserve-1-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/name\":\"memcached-reserve\",\"backend\":\"memcached\",\"service\":\"memcached-reserve-1-hotel-reservation-hotelres\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"memcached-reserve-1-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"memcached-reserve\",\"app.kubernetes.io/version\":\"0.1.0\",\"backend\":\"memcached\",\"helm.sh/chart\":\"memcached-reserve-0.1.0\",\"service\":\"memcached-reserve-1-hotel-reservation-hotelres\"}},\"spec\":{\"affinity\":{},\"containers\":[{\"env\":[{\"name\":\"MEMCACHED_CACHE_SIZE\",\"value\":\"128\"},{\"name\":\"MEMCACHED_THREADS\",\"value\":\"2\"}],\"image\":\"docker.io/memcached:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"hotel-reserv-reservation-mmc\",\"ports\":[{\"containerPort\":11211}]}],\"hostname\":\"memcached-reserve-hotel-reservation-hotelres\",\"nodeSelector\":{},\"restartPolicy\":\"Always\",\"tolerations\":[]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.015,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.018,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "mongodb-geo-hotel-reservation-hotelres",
+        "container": "hotel-reserv-geo-mongo",
+        "pods": [
+          {
+            "name": "mongodb-geo-hotel-reservation-hotelres-5d86fcf4c8-hswnk",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "hotel-reservation",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/instance": "hotel-reservation",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "mongodb-geo",
+          "app.kubernetes.io/version": "0.1.0",
+          "backend": "mongodb",
+          "helm.sh/chart": "mongodb-geo-0.1.0",
+          "service": "mongodb-geo-hotel-reservation-hotelres"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"mongodb-geo\",\"app.kubernetes.io/version\":\"0.1.0\",\"backend\":\"mongodb\",\"helm.sh/chart\":\"mongodb-geo-0.1.0\",\"service\":\"mongodb-geo-hotel-reservation-hotelres\"},\"name\":\"mongodb-geo-hotel-reservation-hotelres\",\"namespace\":\"hotel-reservation\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"mongodb-geo-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/name\":\"mongodb-geo\",\"backend\":\"mongodb\",\"service\":\"mongodb-geo-hotel-reservation-hotelres\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"mongodb-geo-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"mongodb-geo\",\"app.kubernetes.io/version\":\"0.1.0\",\"backend\":\"mongodb\",\"helm.sh/chart\":\"mongodb-geo-0.1.0\",\"service\":\"mongodb-geo-hotel-reservation-hotelres\"}},\"spec\":{\"affinity\":{},\"containers\":[{\"image\":\"docker.io/mongo:5\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"hotel-reserv-geo-mongo\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/data/db\",\"name\":\"mongodb-geo-hotel-reservation-hotelres-path\"}]}],\"hostname\":\"mongodb-geo-hotel-reservation-hotelres\",\"nodeSelector\":{},\"restartPolicy\":\"Always\",\"tolerations\":[],\"volumes\":[{\"emptyDir\":{},\"name\":\"mongodb-geo-hotel-reservation-hotelres-path\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.011,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "mongodb-profile-hotel-reservation-hotelres",
+        "container": "hotel-reserv-profile-mongo",
+        "pods": [
+          {
+            "name": "mongodb-profile-hotel-reservation-hotelres-7f55f7c678-ng4hd",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "hotel-reservation",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/instance": "hotel-reservation",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "mongodb-profile",
+          "app.kubernetes.io/version": "0.1.0",
+          "backend": "mongodb",
+          "helm.sh/chart": "mongodb-profile-0.1.0",
+          "service": "mongodb-profile-hotel-reservation-hotelres"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"mongodb-profile\",\"app.kubernetes.io/version\":\"0.1.0\",\"backend\":\"mongodb\",\"helm.sh/chart\":\"mongodb-profile-0.1.0\",\"service\":\"mongodb-profile-hotel-reservation-hotelres\"},\"name\":\"mongodb-profile-hotel-reservation-hotelres\",\"namespace\":\"hotel-reservation\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"mongodb-profile-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/name\":\"mongodb-profile\",\"backend\":\"mongodb\",\"service\":\"mongodb-profile-hotel-reservation-hotelres\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"mongodb-profile-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"mongodb-profile\",\"app.kubernetes.io/version\":\"0.1.0\",\"backend\":\"mongodb\",\"helm.sh/chart\":\"mongodb-profile-0.1.0\",\"service\":\"mongodb-profile-hotel-reservation-hotelres\"}},\"spec\":{\"affinity\":{},\"containers\":[{\"image\":\"docker.io/mongo:5\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"hotel-reserv-profile-mongo\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/data/db\",\"name\":\"mongodb-profile-hotel-reservation-hotelres-path\"}]}],\"hostname\":\"mongodb-profile-hotel-reservation-hotelres\",\"nodeSelector\":{},\"restartPolicy\":\"Always\",\"tolerations\":[],\"volumes\":[{\"emptyDir\":{},\"name\":\"mongodb-profile-hotel-reservation-hotelres-path\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 105906176.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 105906176.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "mongodb-rate-hotel-reservation-hotelres",
+        "container": "hotel-reserv-rate-mongo",
+        "pods": [
+          {
+            "name": "mongodb-rate-hotel-reservation-hotelres-644c7cb454-cs8pd",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "hotel-reservation",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/instance": "hotel-reservation",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "mongodb-rate",
+          "app.kubernetes.io/version": "0.1.0",
+          "backend": "mongodb",
+          "helm.sh/chart": "mongodb-rate-0.1.0",
+          "service": "mongodb-rate-hotel-reservation-hotelres"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"mongodb-rate\",\"app.kubernetes.io/version\":\"0.1.0\",\"backend\":\"mongodb\",\"helm.sh/chart\":\"mongodb-rate-0.1.0\",\"service\":\"mongodb-rate-hotel-reservation-hotelres\"},\"name\":\"mongodb-rate-hotel-reservation-hotelres\",\"namespace\":\"hotel-reservation\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"mongodb-rate-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/name\":\"mongodb-rate\",\"backend\":\"mongodb\",\"service\":\"mongodb-rate-hotel-reservation-hotelres\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"mongodb-rate-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"mongodb-rate\",\"app.kubernetes.io/version\":\"0.1.0\",\"backend\":\"mongodb\",\"helm.sh/chart\":\"mongodb-rate-0.1.0\",\"service\":\"mongodb-rate-hotel-reservation-hotelres\"}},\"spec\":{\"affinity\":{},\"containers\":[{\"image\":\"docker.io/mongo:5\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"hotel-reserv-rate-mongo\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/data/db\",\"name\":\"mongodb-rate-hotel-reservation-hotelres-path\"}]}],\"hostname\":\"mongodb-rate-hotel-reservation-hotelres\",\"nodeSelector\":{},\"restartPolicy\":\"Always\",\"tolerations\":[],\"volumes\":[{\"emptyDir\":{},\"name\":\"mongodb-rate-hotel-reservation-hotelres-path\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "mongodb-recommendation-hotel-reservation-hotelres",
+        "container": "hotel-reserv-recommendation-mongo",
+        "pods": [
+          {
+            "name": "mongodb-recommendation-hotel-reservation-hotelres-7bb448df6f7d9",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "hotel-reservation",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/instance": "hotel-reservation",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "mongodb-recommendation",
+          "app.kubernetes.io/version": "0.1.0",
+          "backend": "mongodb",
+          "helm.sh/chart": "mongodb-recommendation-0.1.0",
+          "service": "mongodb-recommendation-hotel-reservation-hotelres"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"mongodb-recommendation\",\"app.kubernetes.io/version\":\"0.1.0\",\"backend\":\"mongodb\",\"helm.sh/chart\":\"mongodb-recommendation-0.1.0\",\"service\":\"mongodb-recommendation-hotel-reservation-hotelres\"},\"name\":\"mongodb-recommendation-hotel-reservation-hotelres\",\"namespace\":\"hotel-reservation\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"mongodb-recommendation-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/name\":\"mongodb-recommendation\",\"backend\":\"mongodb\",\"service\":\"mongodb-recommendation-hotel-reservation-hotelres\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"mongodb-recommendation-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"mongodb-recommendation\",\"app.kubernetes.io/version\":\"0.1.0\",\"backend\":\"mongodb\",\"helm.sh/chart\":\"mongodb-recommendation-0.1.0\",\"service\":\"mongodb-recommendation-hotel-reservation-hotelres\"}},\"spec\":{\"affinity\":{},\"containers\":[{\"image\":\"docker.io/mongo:5\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"hotel-reserv-recommendation-mongo\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/data/db\",\"name\":\"mongodb-recommendation-hotel-reservation-hotelres-path\"}]}],\"hostname\":\"mongodb-recommendation-hotel-reservation-hotelres\",\"nodeSelector\":{},\"restartPolicy\":\"Always\",\"tolerations\":[],\"volumes\":[{\"emptyDir\":{},\"name\":\"mongodb-recommendation-hotel-reservation-hotelres-path\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.011,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "mongodb-reservation-hotel-reservation-hotelres",
+        "container": "hotel-reserv-reservation-mongo",
+        "pods": [
+          {
+            "name": "mongodb-reservation-hotel-reservation-hotelres-76bffb9d6d-8hdjf",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "hotel-reservation",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/instance": "hotel-reservation",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "mongodb-reservation",
+          "app.kubernetes.io/version": "0.1.0",
+          "backend": "mongodb",
+          "helm.sh/chart": "mongodb-reservation-0.1.0",
+          "service": "mongodb-reservation-hotel-reservation-hotelres"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"mongodb-reservation\",\"app.kubernetes.io/version\":\"0.1.0\",\"backend\":\"mongodb\",\"helm.sh/chart\":\"mongodb-reservation-0.1.0\",\"service\":\"mongodb-reservation-hotel-reservation-hotelres\"},\"name\":\"mongodb-reservation-hotel-reservation-hotelres\",\"namespace\":\"hotel-reservation\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"mongodb-reservation-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/name\":\"mongodb-reservation\",\"backend\":\"mongodb\",\"service\":\"mongodb-reservation-hotel-reservation-hotelres\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"mongodb-reservation-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"mongodb-reservation\",\"app.kubernetes.io/version\":\"0.1.0\",\"backend\":\"mongodb\",\"helm.sh/chart\":\"mongodb-reservation-0.1.0\",\"service\":\"mongodb-reservation-hotel-reservation-hotelres\"}},\"spec\":{\"affinity\":{},\"containers\":[{\"image\":\"docker.io/mongo:5\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"hotel-reserv-reservation-mongo\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/data/db\",\"name\":\"mongodb-reservation-hotel-reservation-hotelres-path\"}]}],\"hostname\":\"mongodb-reservation-hotel-reservation-hotelres\",\"nodeSelector\":{},\"restartPolicy\":\"Always\",\"tolerations\":[],\"volumes\":[{\"emptyDir\":{},\"name\":\"mongodb-reservation-hotel-reservation-hotelres-path\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.012,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "mongodb-user-hotel-reservation-hotelres",
+        "container": "hotel-reserv-user-mongo",
+        "pods": [
+          {
+            "name": "mongodb-user-hotel-reservation-hotelres-569dc8d5fb-q6cjp",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "hotel-reservation",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/instance": "hotel-reservation",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "mongodb-user",
+          "app.kubernetes.io/version": "0.1.0",
+          "backend": "mongodb",
+          "helm.sh/chart": "mongodb-user-0.1.0",
+          "service": "mongodb-user-hotel-reservation-hotelres"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"mongodb-user\",\"app.kubernetes.io/version\":\"0.1.0\",\"backend\":\"mongodb\",\"helm.sh/chart\":\"mongodb-user-0.1.0\",\"service\":\"mongodb-user-hotel-reservation-hotelres\"},\"name\":\"mongodb-user-hotel-reservation-hotelres\",\"namespace\":\"hotel-reservation\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"mongodb-user-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/name\":\"mongodb-user\",\"backend\":\"mongodb\",\"service\":\"mongodb-user-hotel-reservation-hotelres\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"mongodb-user-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"mongodb-user\",\"app.kubernetes.io/version\":\"0.1.0\",\"backend\":\"mongodb\",\"helm.sh/chart\":\"mongodb-user-0.1.0\",\"service\":\"mongodb-user-hotel-reservation-hotelres\"}},\"spec\":{\"affinity\":{},\"containers\":[{\"image\":\"docker.io/mongo:5\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"hotel-reserv-user-mongo\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/data/db\",\"name\":\"mongodb-user-hotel-reservation-hotelres-path\"}]}],\"hostname\":\"mongodb-user-hotel-reservation-hotelres\",\"nodeSelector\":{},\"restartPolicy\":\"Always\",\"tolerations\":[],\"volumes\":[{\"emptyDir\":{},\"name\":\"mongodb-user-hotel-reservation-hotelres-path\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "profile-hotel-reservation-hotelres",
+        "container": "hotel-reserv-profile",
+        "pods": [
+          {
+            "name": "profile-hotel-reservation-hotelres-84497c48df-rnsgc",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "hotel-reservation",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/instance": "hotel-reservation",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "profile",
+          "app.kubernetes.io/version": "0.1.0",
+          "helm.sh/chart": "profile-0.1.0",
+          "service": "profile-hotel-reservation-hotelres"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"profile\",\"app.kubernetes.io/version\":\"0.1.0\",\"helm.sh/chart\":\"profile-0.1.0\",\"service\":\"profile-hotel-reservation-hotelres\"},\"name\":\"profile-hotel-reservation-hotelres\",\"namespace\":\"hotel-reservation\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"profile-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/name\":\"profile\",\"service\":\"profile-hotel-reservation-hotelres\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"profile-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"profile\",\"app.kubernetes.io/version\":\"0.1.0\",\"helm.sh/chart\":\"profile-0.1.0\",\"service\":\"profile-hotel-reservation-hotelres\"}},\"spec\":{\"affinity\":{},\"containers\":[{\"command\":[\"/go/bin/profile\"],\"env\":[{\"name\":\"GC\",\"value\":\"100\"},{\"name\":\"JAEGER_SAMPLE_RATIO\",\"value\":\"1\"},{\"name\":\"LOG_LEVEL\",\"value\":\"INFO\"},{\"name\":\"MEMC_TIMEOUT\",\"value\":\"2\"},{\"name\":\"TLS\",\"value\":\"0\"}],\"image\":\"docker.io/deathstarbench/hotel-reservation:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"hotel-reserv-profile\",\"ports\":[{\"containerPort\":8081}],\"volumeMounts\":[{\"mountPath\":\"config.json\",\"name\":\"profile-hotel-reservation-hotelres-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"profile-hotel-reservation-hotelres\",\"nodeSelector\":{},\"restartPolicy\":\"Always\",\"tolerations\":[],\"volumes\":[{\"configMap\":{\"name\":\"profile-hotel-reservation-hotelres\"},\"name\":\"profile-hotel-reservation-hotelres-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.063,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.078,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "rate-hotel-reservation-hotelres",
+        "container": "hotel-reserv-rate",
+        "pods": [
+          {
+            "name": "rate-hotel-reservation-hotelres-5444d68dcd-vbdnz",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "hotel-reservation",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/instance": "hotel-reservation",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "rate",
+          "app.kubernetes.io/version": "0.1.0",
+          "helm.sh/chart": "rate-0.1.0",
+          "service": "rate-hotel-reservation-hotelres"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"rate\",\"app.kubernetes.io/version\":\"0.1.0\",\"helm.sh/chart\":\"rate-0.1.0\",\"service\":\"rate-hotel-reservation-hotelres\"},\"name\":\"rate-hotel-reservation-hotelres\",\"namespace\":\"hotel-reservation\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"rate-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/name\":\"rate\",\"service\":\"rate-hotel-reservation-hotelres\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"rate-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"rate\",\"app.kubernetes.io/version\":\"0.1.0\",\"helm.sh/chart\":\"rate-0.1.0\",\"service\":\"rate-hotel-reservation-hotelres\"}},\"spec\":{\"affinity\":{},\"containers\":[{\"command\":[\"/go/bin/rate\"],\"env\":[{\"name\":\"GC\",\"value\":\"100\"},{\"name\":\"JAEGER_SAMPLE_RATIO\",\"value\":\"1\"},{\"name\":\"LOG_LEVEL\",\"value\":\"INFO\"},{\"name\":\"MEMC_TIMEOUT\",\"value\":\"2\"},{\"name\":\"TLS\",\"value\":\"0\"}],\"image\":\"docker.io/deathstarbench/hotel-reservation:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"hotel-reserv-rate\",\"ports\":[{\"containerPort\":8084}],\"volumeMounts\":[{\"mountPath\":\"config.json\",\"name\":\"rate-hotel-reservation-hotelres-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"rate-hotel-reservation-hotelres\",\"nodeSelector\":{},\"restartPolicy\":\"Always\",\"tolerations\":[],\"volumes\":[{\"configMap\":{\"name\":\"rate-hotel-reservation-hotelres\"},\"name\":\"rate-hotel-reservation-hotelres-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.047,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.053,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "recommendation-hotel-reservation-hotelres",
+        "container": "hotel-reserv-recommendation",
+        "pods": [
+          {
+            "name": "recommendation-hotel-reservation-hotelres-75fb6d77f5-w27hx",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "hotel-reservation",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/instance": "hotel-reservation",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "recommendation",
+          "app.kubernetes.io/version": "0.1.0",
+          "helm.sh/chart": "recommendation-0.1.0",
+          "service": "recommendation-hotel-reservation-hotelres"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"recommendation\",\"app.kubernetes.io/version\":\"0.1.0\",\"helm.sh/chart\":\"recommendation-0.1.0\",\"service\":\"recommendation-hotel-reservation-hotelres\"},\"name\":\"recommendation-hotel-reservation-hotelres\",\"namespace\":\"hotel-reservation\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"recommendation-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/name\":\"recommendation\",\"service\":\"recommendation-hotel-reservation-hotelres\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"recommendation-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"recommendation\",\"app.kubernetes.io/version\":\"0.1.0\",\"helm.sh/chart\":\"recommendation-0.1.0\",\"service\":\"recommendation-hotel-reservation-hotelres\"}},\"spec\":{\"affinity\":{},\"containers\":[{\"command\":[\"/go/bin/recommendation\"],\"env\":[{\"name\":\"GC\",\"value\":\"100\"},{\"name\":\"JAEGER_SAMPLE_RATIO\",\"value\":\"1\"},{\"name\":\"LOG_LEVEL\",\"value\":\"INFO\"},{\"name\":\"MEMC_TIMEOUT\",\"value\":\"2\"},{\"name\":\"TLS\",\"value\":\"0\"}],\"image\":\"docker.io/deathstarbench/hotel-reservation:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"hotel-reserv-recommendation\",\"ports\":[{\"containerPort\":8085}],\"volumeMounts\":[{\"mountPath\":\"config.json\",\"name\":\"recommendation-hotel-reservation-hotelres-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"recommendation-hotel-reservation-hotelres\",\"nodeSelector\":{},\"restartPolicy\":\"Always\",\"tolerations\":[],\"volumes\":[{\"configMap\":{\"name\":\"recommendation-hotel-reservation-hotelres\"},\"name\":\"recommendation-hotel-reservation-hotelres-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.02,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.022,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "reservation-hotel-reservation-hotelres",
+        "container": "hotel-reserv-reservation",
+        "pods": [
+          {
+            "name": "reservation-hotel-reservation-hotelres-7ccdb979dc-s79tq",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "hotel-reservation",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/instance": "hotel-reservation",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "reservation",
+          "app.kubernetes.io/version": "0.1.0",
+          "helm.sh/chart": "reservation-0.1.0",
+          "service": "reservation-hotel-reservation-hotelres"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"reservation\",\"app.kubernetes.io/version\":\"0.1.0\",\"helm.sh/chart\":\"reservation-0.1.0\",\"service\":\"reservation-hotel-reservation-hotelres\"},\"name\":\"reservation-hotel-reservation-hotelres\",\"namespace\":\"hotel-reservation\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"reservation-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/name\":\"reservation\",\"service\":\"reservation-hotel-reservation-hotelres\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"reservation-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"reservation\",\"app.kubernetes.io/version\":\"0.1.0\",\"helm.sh/chart\":\"reservation-0.1.0\",\"service\":\"reservation-hotel-reservation-hotelres\"}},\"spec\":{\"affinity\":{},\"containers\":[{\"command\":[\"/go/bin/reservation\"],\"env\":[{\"name\":\"GC\",\"value\":\"100\"},{\"name\":\"JAEGER_SAMPLE_RATIO\",\"value\":\"1\"},{\"name\":\"LOG_LEVEL\",\"value\":\"INFO\"},{\"name\":\"MEMC_TIMEOUT\",\"value\":\"2\"},{\"name\":\"TLS\",\"value\":\"0\"}],\"image\":\"docker.io/deathstarbench/hotel-reservation:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"hotel-reserv-reservation\",\"ports\":[{\"containerPort\":8087}],\"volumeMounts\":[{\"mountPath\":\"config.json\",\"name\":\"reservation-hotel-reservation-hotelres-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"reservation-hotel-reservation-hotelres\",\"nodeSelector\":{},\"restartPolicy\":\"Always\",\"tolerations\":[],\"volumes\":[{\"configMap\":{\"name\":\"reservation-hotel-reservation-hotelres\"},\"name\":\"reservation-hotel-reservation-hotelres-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.088,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.116,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "search-hotel-reservation-hotelres",
+        "container": "hotel-reserv-search",
+        "pods": [
+          {
+            "name": "search-hotel-reservation-hotelres-d97d5bd76-hvkmk",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "hotel-reservation",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/instance": "hotel-reservation",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "search",
+          "app.kubernetes.io/version": "0.1.0",
+          "helm.sh/chart": "search-0.1.0",
+          "service": "search-hotel-reservation-hotelres"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"search\",\"app.kubernetes.io/version\":\"0.1.0\",\"helm.sh/chart\":\"search-0.1.0\",\"service\":\"search-hotel-reservation-hotelres\"},\"name\":\"search-hotel-reservation-hotelres\",\"namespace\":\"hotel-reservation\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"search-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/name\":\"search\",\"service\":\"search-hotel-reservation-hotelres\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"search-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"search\",\"app.kubernetes.io/version\":\"0.1.0\",\"helm.sh/chart\":\"search-0.1.0\",\"service\":\"search-hotel-reservation-hotelres\"}},\"spec\":{\"affinity\":{},\"containers\":[{\"command\":[\"/go/bin/search\"],\"env\":[{\"name\":\"GC\",\"value\":\"100\"},{\"name\":\"JAEGER_SAMPLE_RATIO\",\"value\":\"1\"},{\"name\":\"LOG_LEVEL\",\"value\":\"INFO\"},{\"name\":\"MEMC_TIMEOUT\",\"value\":\"2\"},{\"name\":\"TLS\",\"value\":\"0\"}],\"image\":\"docker.io/deathstarbench/hotel-reservation:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"hotel-reserv-search\",\"ports\":[{\"containerPort\":8082}],\"volumeMounts\":[{\"mountPath\":\"config.json\",\"name\":\"search-hotel-reservation-hotelres-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"search-hotel-reservation-hotelres\",\"nodeSelector\":{},\"restartPolicy\":\"Always\",\"tolerations\":[],\"volumes\":[{\"configMap\":{\"name\":\"search-hotel-reservation-hotelres\"},\"name\":\"search-hotel-reservation-hotelres-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.079,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.087,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "user-hotel-reservation-hotelres",
+        "container": "hotel-reserv-user",
+        "pods": [
+          {
+            "name": "user-hotel-reservation-hotelres-654fb8b4b6-xqbtp",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "hotel-reservation",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app.kubernetes.io/instance": "hotel-reservation",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "user",
+          "app.kubernetes.io/version": "0.1.0",
+          "helm.sh/chart": "user-0.1.0",
+          "service": "user-hotel-reservation-hotelres"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"user\",\"app.kubernetes.io/version\":\"0.1.0\",\"helm.sh/chart\":\"user-0.1.0\",\"service\":\"user-hotel-reservation-hotelres\"},\"name\":\"user-hotel-reservation-hotelres\",\"namespace\":\"hotel-reservation\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"user-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/name\":\"user\",\"service\":\"user-hotel-reservation-hotelres\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"user-hotel-reservation-hotelres\",\"app.kubernetes.io/instance\":\"hotel-reservation\",\"app.kubernetes.io/managed-by\":\"Helm\",\"app.kubernetes.io/name\":\"user\",\"app.kubernetes.io/version\":\"0.1.0\",\"helm.sh/chart\":\"user-0.1.0\",\"service\":\"user-hotel-reservation-hotelres\"}},\"spec\":{\"affinity\":{},\"containers\":[{\"command\":[\"/go/bin/user\"],\"env\":[{\"name\":\"GC\",\"value\":\"100\"},{\"name\":\"JAEGER_SAMPLE_RATIO\",\"value\":\"1\"},{\"name\":\"LOG_LEVEL\",\"value\":\"INFO\"},{\"name\":\"MEMC_TIMEOUT\",\"value\":\"2\"},{\"name\":\"TLS\",\"value\":\"0\"}],\"image\":\"docker.io/deathstarbench/hotel-reservation:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"hotel-reserv-user\",\"ports\":[{\"containerPort\":8086}],\"volumeMounts\":[{\"mountPath\":\"config.json\",\"name\":\"user-hotel-reservation-hotelres-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"user-hotel-reservation-hotelres\",\"nodeSelector\":{},\"restartPolicy\":\"Always\",\"tolerations\":[],\"volumes\":[{\"configMap\":{\"name\":\"user-hotel-reservation-hotelres\"},\"name\":\"user-hotel-reservation-hotelres-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    }
+  ],
+  "score": 30,
+  "resources": [
+    "cpu",
+    "memory"
+  ],
+  "description": "[b]Simple_Limit Strategy[/b]\n\nCPU request: 70.0% percentile, limit: 100.0% percentile\nMemory request: max + 15.0%, limit: max + 15.0%\nHistory: 2.0 hours\nStep: 1.0 minutes\n\nAll parameters can be customized. For example: `krr simple_limit --cpu_request=66 --cpu_limit=96 --memory_buffer_percentage=15 --history_duration=24 --timeframe_duration=0.5`\n\nThis strategy does not work with objects with HPA defined (Horizontal Pod Autoscaler).\nIf HPA is defined for CPU or Memory, the strategy will return \"?\" for that resource.\nYou can override this behaviour by passing the --allow-hpa flag\n\nLearn more: [underline]https://github.com/robusta-dev/krr#algorithm[/underline]",
+  "strategy": {
+    "name": "simple_limit",
+    "settings": {
+      "history_duration": 2.0,
+      "timeframe_duration": 1.0,
+      "end_epoch": 1784290873.039612,
+      "cpu_request": 70.0,
+      "cpu_limit": 100.0,
+      "memory_buffer_percentage": 15.0,
+      "points_required": 100,
+      "allow_hpa": false,
+      "use_oomkill_data": false,
+      "oom_memory_buffer_percentage": 25.0
+    }
+  },
+  "errors": [],
+  "clusterSummary": {
+    "cluster_memory": 36815593472.0,
+    "cluster_cpu": 28.0,
+    "kube_system_mem_req": 146800640.0,
+    "kube_system_cpu_req": 0.2
+  },
+  "config": {
+    "quiet": true,
+    "verbose": false,
+    "clusters": [],
+    "kubeconfig": null,
+    "impersonate_user": null,
+    "impersonate_group": null,
+    "namespaces": [
+      "hotel-reservation"
+    ],
+    "resources": "*",
+    "selector": null,
+    "cpu_min_value": 10,
+    "memory_min_value": 100,
+    "prometheus_url": "http://k8s-master:30954",
+    "prometheus_auth_header": null,
+    "prometheus_other_headers": {},
+    "prometheus_ssl_enabled": false,
+    "prometheus_cluster_label": null,
+    "prometheus_label": null,
+    "eks_managed_prom": false,
+    "eks_managed_prom_profile_name": null,
+    "eks_access_key": null,
+    "eks_secret_key": null,
+    "eks_service_name": "aps",
+    "eks_managed_prom_region": null,
+    "eks_assume_role": null,
+    "coralogix_token": null,
+    "openshift": false,
+    "max_workers": 10,
+    "discovery_job_batch_size": 5000,
+    "discovery_job_max_batches": 100,
+    "job_grouping_labels": null,
+    "job_grouping_limit": 500,
+    "format": "json",
+    "show_cluster_name": false,
+    "strategy": "simple_limit",
+    "log_to_stderr": false,
+    "width": 900,
+    "show_severity": true,
+    "publish_scan_url": null,
+    "start_time": null,
+    "scan_id": null,
+    "named_sinks": [],
+    "file_output": null,
+    "file_output_dynamic": false,
+    "slack_output": null,
+    "slack_title": null,
+    "azureblob_output": null,
+    "teams_webhook": null,
+    "azure_subscription_id": null,
+    "azure_resource_group": null,
+    "other_args": {
+      "history_duration": "2",
+      "timeframe_duration": "1",
+      "end_epoch": "1784290873.039612",
+      "cpu_request": "70",
+      "cpu_limit": "100",
+      "memory_buffer_percentage": "15",
+      "points_required": "100",
+      "allow_hpa": false,
+      "use_oomkill_data": false,
+      "oom_memory_buffer_percentage": "25"
+    },
+    "inside_cluster": false
+  }
+}

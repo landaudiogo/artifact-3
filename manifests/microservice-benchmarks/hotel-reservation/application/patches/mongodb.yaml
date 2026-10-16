@@ -1,0 +1,203 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-geo-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-geo-mongo
+        securityContext:
+          privileged: true  
+        command: ["/entrypoint.sh"]
+        env:
+        - name: POD_UID
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.uid
+        volumeMounts:
+        - name: entrypoint
+          mountPath: /entrypoint.sh
+          subPath: entrypoint.sh
+        volumeDevices:
+        - devicePath: /bdev/lvma
+          name: datadir
+      volumes:
+      - name: entrypoint
+        configMap:
+          name: mongo-entrypoint
+          defaultMode: 0555
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: geo-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-profile-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-profile-mongo
+        securityContext:
+          privileged: true  
+        command: ["/entrypoint.sh"]
+        env:
+        - name: POD_UID
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.uid
+        volumeMounts:
+        - name: entrypoint
+          mountPath: /entrypoint.sh
+          subPath: entrypoint.sh
+        volumeDevices:
+        - devicePath: /bdev/lvma
+          name: datadir
+      volumes:
+      - name: entrypoint
+        configMap:
+          name: mongo-entrypoint
+          defaultMode: 0555
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: profile-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-rate-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-rate-mongo
+        securityContext:
+          privileged: true  
+        command: ["/entrypoint.sh"]
+        env:
+        - name: POD_UID
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.uid
+        volumeMounts:
+        - name: entrypoint
+          mountPath: /entrypoint.sh
+          subPath: entrypoint.sh
+        volumeDevices:
+        - devicePath: /bdev/lvma
+          name: datadir
+      volumes:
+      - name: entrypoint
+        configMap:
+          name: mongo-entrypoint
+          defaultMode: 0555
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: rate-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-recommendation-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-recommendation-mongo
+        securityContext:
+          privileged: true  
+        command: ["/entrypoint.sh"]
+        env:
+        - name: POD_UID
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.uid
+        volumeMounts:
+        - name: entrypoint
+          mountPath: /entrypoint.sh
+          subPath: entrypoint.sh
+        volumeDevices:
+        - devicePath: /bdev/lvma
+          name: datadir
+      volumes:
+      - name: entrypoint
+        configMap:
+          name: mongo-entrypoint
+          defaultMode: 0555
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: recommendation-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-reservation-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-reservation-mongo
+        securityContext:
+          privileged: true  
+        command: ["/entrypoint.sh"]
+        env:
+        - name: POD_UID
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.uid
+        volumeMounts:
+        - name: entrypoint
+          mountPath: /entrypoint.sh
+          subPath: entrypoint.sh
+        volumeDevices:
+        - devicePath: /bdev/lvma
+          name: datadir
+      volumes:
+      - name: entrypoint
+        configMap:
+          name: mongo-entrypoint
+          defaultMode: 0555
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: reservation-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-user-hotel-reservation-hotelres
+spec:
+  template:
+    spec:
+      containers:
+      - name: hotel-reserv-user-mongo
+        securityContext:
+          privileged: true  
+        command: ["/entrypoint.sh"]
+        env:
+        - name: POD_UID
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.uid
+        volumeMounts:
+        - name: entrypoint
+          mountPath: /entrypoint.sh
+          subPath: entrypoint.sh
+        volumeDevices:
+        - devicePath: /bdev/lvma
+          name: datadir
+      volumes:
+      - name: entrypoint
+        configMap:
+          name: mongo-entrypoint
+          defaultMode: 0555
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: user-pvc

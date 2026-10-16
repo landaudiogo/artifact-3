@@ -1,0 +1,4 @@
+global:
+  services:
+    environments:
+      JAEGER_SAMPLE_RATIO: "1"
