@@ -1,0 +1,190 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: online-boutique
+  name: jaeger
+  labels:
+    app: jaeger
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: jaeger
+  template:
+    metadata:
+      name: jaeger
+      labels:
+        name: jaeger
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+      containers:
+      - name: jaeger
+        image: jaegertracing/jaeger@sha256:d2cbd047e44b50c11454820f84fd5f34c24a435e5301cf94fe026bf055db80b3
+        args: ["--config", "/etc/jaeger/config.yml"]
+        env:
+        - name: JAEGER_UI_CONFIG
+          value: "/etc/jaeger/jaeger-ui.json"
+        volumeMounts:
+          - name: config-volume
+            mountPath: /etc/jaeger
+      volumes:
+      - name: config-volume
+        configMap:
+          name: jaeger-config
+      restartPolicy: Always
+      enableServiceLinks: false
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: online-boutique
+  name: jaeger
+  labels:
+    app: jaeger
+spec:
+  type: ClusterIP
+  selector:
+    name: jaeger
+  ports:
+  - name: '4317'
+    port: 4317
+    protocol: 'TCP'
+  - name: '16686'
+    port: 16686
+    protocol: 'TCP'
+  - protocol: 'UDP'
+    name: '6831'
+    port: 6831
+  - protocol: "TCP"
+    name: '8888'
+    port: 8888
+  - protocol: "TCP"
+    name: '8889'
+    port: 8889
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: online-boutique
+  name: jaeger-config
+data:
+  config.yml: |
+    service:
+      extensions: [jaeger_storage, jaeger_query]
+      pipelines:
+        traces:
+          receivers: [otlp, jaeger]
+          processors: [batch]
+          exporters: [jaeger_storage_exporter, spanmetrics]
+        metrics/spanmetrics:
+          receivers: [spanmetrics]
+          exporters: [prometheus]
+      telemetry:
+        resource:
+          service.name: jaeger
+        metrics:
+          level: detailed
+          readers:
+            - pull:
+                exporter:
+                  prometheus:
+                    host: 0.0.0.0
+                    port: 8888
+        logs:
+          level: DEBUG
+
+    extensions:
+      jaeger_query:
+        storage:
+          traces: some_storage
+          metrics: some_metrics_storage
+      jaeger_storage:
+        backends:
+          some_storage:
+            memory:
+              max_traces: 10000
+        metric_backends:
+          some_metrics_storage:
+            prometheus:
+              endpoint: http://kube-prometheus-stack-prometheus.monitoring:9090
+              normalize_calls: true
+              normalize_duration: true
+
+    connectors:
+      spanmetrics:
+        metrics_flush_interval: ${env:SPANMETRICS_FLUSH_INTERVAL:-15s}
+
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+            endpoint: "0.0.0.0:4317"
+          http:
+            endpoint: "0.0.0.0:4318"
+      jaeger:
+        protocols:
+          thrift_compact:
+            endpoint: "0.0.0.0:6831"
+
+    processors:
+      batch:
+
+    exporters:
+      jaeger_storage_exporter:
+        trace_storage: some_storage
+      prometheus:
+        endpoint: "0.0.0.0:8889"
+  jaeger-ui.json: |
+    {
+      "monitor": {
+        "menuEnabled": true
+      },
+      "dependencies": {
+        "menuEnabled": true
+      }
+    }
+  sampling_strategies.json: |
+    {
+      "default_strategy": {
+        "type": "probabilistic",
+        "param": 1
+      }
+    }
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: online-boutique-aggregated-trace-metrics
+  namespace: monitoring
+  labels:    
+    release: kube-prometheus-stack
+spec:
+  jobLabel: jaeger
+  selector:
+    matchLabels:
+      app: jaeger
+  namespaceSelector:
+    matchNames:
+      - "online-boutique"
+  endpoints:
+  - port: "8889"
+    interval: 15s
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: online-boutique-jaeger-collector-metrics
+  namespace: monitoring
+  labels:    
+    release: kube-prometheus-stack
+spec:
+  jobLabel: jaeger
+  selector:
+    matchLabels:
+      app: jaeger
+  namespaceSelector:
+    matchNames:
+      - "online-boutique"
+  endpoints:
+  - port: "8888"

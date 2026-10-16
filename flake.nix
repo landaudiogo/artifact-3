@@ -60,6 +60,7 @@
             autothrottle = pkgs.callPackage ./autothrottle { inherit kubeconfig; };
             fault-manager = pkgs.callPackage ./faults/manager { inherit kubeconfig pyproject-nix uv2nix pyproject-build-systems; };
             injectors = pkgs.callPackage ./faults/injectors { };
+            manifests = pkgs.callPackage ./manifests { };
         in
         {
             devShells.${system} = {
@@ -78,6 +79,7 @@
             packages.${system} = {
                 fault-manager = fault-manager.packages.manager;
                 inherit injectors;
+                manifests = manifests.packages;
             };
         };
 

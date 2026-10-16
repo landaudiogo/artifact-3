@@ -1,0 +1,156 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adservice
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cartservice
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: checkoutservice
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: currencyservice
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emailservice
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaeger
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opentelemetrycollector
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paymentservice
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productcatalogservice
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendationservice
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-cart
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker3
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shippingservice
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
+
+---

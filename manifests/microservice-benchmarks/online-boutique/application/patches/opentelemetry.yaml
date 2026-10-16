@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opentelemetrycollector
+  namespace: online-boutique
+spec:
+  template:
+    spec:
+      initContainers:
+      - name: otel-gateway-init
+        command:
+        - /bin/sh
+        - -c
+        - |
+          cat /template/collector-gateway-config-template.yaml > /conf/collector-gateway-config.yaml
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: collector-gateway-config-template
+  namespace: online-boutique
+data:
+  collector-gateway-config-template.yaml: |
+    receivers:
+      otlp:
+        protocols:
+          grpc: 
+            endpoint: 0.0.0.0:4317
+          http:
+            cors:
+              allowed_origins:
+              - http://*
+              - https://*
+            endpoint: 0.0.0.0:4318
+    processors:
+      batch:
+
+    exporters:
+      otlp/jaeger:
+        endpoint: jaeger:4317
+        tls:
+          insecure: true
+
+    service:
+      pipelines:
+        traces:
+          receivers: [otlp]
+          processors: [batch]
+          exporters: [otlp/jaeger]
