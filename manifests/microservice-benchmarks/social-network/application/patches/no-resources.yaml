@@ -1,0 +1,403 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: compose-post-service
+  name: compose-post-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: compose-post-service
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: home-timeline-redis
+  name: home-timeline-redis
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: home-timeline-redis
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: home-timeline-service
+  name: home-timeline-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: home-timeline-service
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: jaeger
+  name: jaeger
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers: []
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: media-frontend
+  name: media-frontend
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: media-frontend
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: media-memcached
+  name: media-memcached
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: media-memcached
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: media-mongodb
+  name: media-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: media-mongodb
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: media-service
+  name: media-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: media-service
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: nginx-thrift
+  name: nginx-thrift
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: nginx-thrift
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: post-storage-memcached
+  name: post-storage-memcached
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: post-storage-memcached
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: post-storage-mongodb
+  name: post-storage-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: post-storage-mongodb
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: post-storage-service
+  name: post-storage-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: post-storage-service
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: social-graph-mongodb
+  name: social-graph-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: social-graph-mongodb
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: social-graph-redis
+  name: social-graph-redis
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: social-graph-redis
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: social-graph-service
+  name: social-graph-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: social-graph-service
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: text-service
+  name: text-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: text-service
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: unique-id-service
+  name: unique-id-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: unique-id-service
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: url-shorten-memcached
+  name: url-shorten-memcached
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: url-shorten-memcached
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: url-shorten-mongodb
+  name: url-shorten-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: url-shorten-mongodb
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: url-shorten-service
+  name: url-shorten-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: url-shorten-service
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: user-memcached
+  name: user-memcached
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-memcached
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: user-mention-service
+  name: user-mention-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-mention-service
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: user-mongodb
+  name: user-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-mongodb
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: user-service
+  name: user-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-service
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: user-timeline-mongodb
+  name: user-timeline-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-timeline-mongodb
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: user-timeline-redis
+  name: user-timeline-redis
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-timeline-redis
+        resources: null
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: user-timeline-service
+  name: user-timeline-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-timeline-service
+        resources: null
+
+---

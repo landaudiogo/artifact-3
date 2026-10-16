@@ -1,0 +1,28 @@
+nameOverride: "social-network"
+fullnameOverride: "locust-social-network"
+
+config:
+  locust_uri: "http://locust:8089"
+
+image:
+  repository: rvankruistum/locust-exporter
+  tag: 0.7.0
+
+service:
+  create: true
+
+serviceMonitor:
+  enabled: true
+  additionalLabels:
+    release: kube-prometheus-stack
+
+tolerations:
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/master
+    value: "true"
+  - effect: NoSchedule
+    key: unschedulable
+    value: "true"
+
+nodeSelector:
+  "kubernetes.io/hostname": k8s-master

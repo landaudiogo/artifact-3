@@ -1,0 +1,513 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: compose-post-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: compose-post-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.014
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: home-timeline-redis
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: home-timeline-redis
+        resources:
+          limits:
+            cpu: null
+            memory: 489406976.0
+          requests:
+            cpu: 0.012
+            memory: 289406976.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: home-timeline-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: home-timeline-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.016
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaeger
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: jaeger
+        resources:
+          limits:
+            cpu: null
+            memory: 298844160.0
+          requests:
+            cpu: 0.01
+            memory: 298844160.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: media-frontend
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: media-frontend
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: media-memcached
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: media-memcached
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: media-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: media-mongodb
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: media-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: media-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-thrift
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: nginx-thrift
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.138
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: post-storage-memcached
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: post-storage-memcached
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: post-storage-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: post-storage-mongodb
+        resources:
+          limits:
+            cpu: null
+            memory: 664626432.0
+          requests:
+            cpu: 0.012
+            memory: 164626432.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: post-storage-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: post-storage-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.054
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: social-graph-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: social-graph-mongodb
+        resources:
+          limits:
+            cpu: null
+            memory: 606076928.0
+          requests:
+            cpu: 0.01
+            memory: 606076928.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: social-graph-redis
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: social-graph-redis
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: social-graph-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: social-graph-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: text-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: text-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unique-id-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: unique-id-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: url-shorten-memcached
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: url-shorten-memcached
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: url-shorten-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: url-shorten-mongodb
+        resources:
+          limits:
+            cpu: null
+            memory: 358334976.0
+          requests:
+            cpu: 0.01
+            memory: 158334976.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: url-shorten-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: url-shorten-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-memcached
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-memcached
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-mention-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-mention-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-mongodb
+        resources:
+          limits:
+            cpu: null
+            memory: 303038464.0
+          requests:
+            cpu: 0.01
+            memory: 303038464.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-service
+        resources:
+          limits:
+            cpu: null
+            memory: 303038464.0
+          requests:
+            cpu: 0.01
+            memory: 303038464.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-timeline-mongodb
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-timeline-mongodb
+        resources:
+          limits:
+            cpu: null
+            memory: 304857600.0
+          requests:
+            cpu: 0.014
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-timeline-redis
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-timeline-redis
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-timeline-service
+  namespace: social-network
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-timeline-service
+        resources:
+          limits:
+            cpu: null
+            memory: 104857600.0
+          requests:
+            cpu: 0.01
+            memory: 104857600.0
+
+---

@@ -1,0 +1,1772 @@
+{
+  "scans": [
+    {
+      "object": {
+        "cluster": "local",
+        "name": "compose-post-service",
+        "container": "compose-post-service",
+        "pods": [
+          {
+            "name": "compose-post-service-56488d957-rcmlh",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "compose-post-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"compose-post-service\"},\"name\":\"compose-post-service\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"compose-post-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"compose-post-service\",\"service\":\"compose-post-service\"}},\"spec\":{\"containers\":[{\"command\":[\"ComposePostService\"],\"image\":\"docker.io/deathstarbench/social-network-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"compose-post-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/jaeger-config.yml\",\"name\":\"compose-post-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/social-network-microservices/config/service-config.json\",\"name\":\"compose-post-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"compose-post-service\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"compose-post-service\"},\"name\":\"compose-post-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.014,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.02,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "home-timeline-redis",
+        "container": "home-timeline-redis",
+        "pods": [
+          {
+            "name": "home-timeline-redis-7cf4dff9d4-t2m47",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "home-timeline-redis"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"home-timeline-redis\"},\"name\":\"home-timeline-redis\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"home-timeline-redis\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"home-timeline-redis\",\"service\":\"home-timeline-redis\"}},\"spec\":{\"containers\":[{\"args\":[\"/social-network-microservices/config/redis.conf\"],\"image\":\"docker.io/library/redis:6.2.4\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"home-timeline-redis\",\"ports\":[{\"containerPort\":6379}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/redis.conf\",\"name\":\"home-timeline-redis-config\",\"subPath\":\"redis.conf\"}]}],\"hostname\":\"home-timeline-redis\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"home-timeline-redis\"},\"name\":\"home-timeline-redis-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.012,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 289406976.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.036,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 289406976.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "home-timeline-service",
+        "container": "home-timeline-service",
+        "pods": [
+          {
+            "name": "home-timeline-service-54dd95459c-fgf4r",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "home-timeline-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"home-timeline-service\"},\"name\":\"home-timeline-service\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"home-timeline-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"home-timeline-service\",\"service\":\"home-timeline-service\"}},\"spec\":{\"containers\":[{\"command\":[\"HomeTimelineService\"],\"image\":\"docker.io/deathstarbench/social-network-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"home-timeline-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/jaeger-config.yml\",\"name\":\"home-timeline-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/social-network-microservices/config/service-config.json\",\"name\":\"home-timeline-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"home-timeline-service\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"home-timeline-service\"},\"name\":\"home-timeline-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.016,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.02,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "jaeger",
+        "container": "jaeger",
+        "pods": [
+          {
+            "name": "jaeger-75b8dd95d8-h5zkt",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "app": "jaeger"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"jaeger\"},\"name\":\"jaeger\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"name\":\"jaeger\"}},\"template\":{\"metadata\":{\"labels\":{\"name\":\"jaeger\"},\"name\":\"jaeger\"},\"spec\":{\"containers\":[{\"args\":[\"--config\",\"/etc/jaeger/config.yml\"],\"env\":[{\"name\":\"JAEGER_UI_CONFIG\",\"value\":\"/etc/jaeger/jaeger-ui.json\"}],\"image\":\"jaegertracing/jaeger@sha256:d2cbd047e44b50c11454820f84fd5f34c24a435e5301cf94fe026bf055db80b3\",\"name\":\"jaeger\",\"volumeMounts\":[{\"mountPath\":\"/etc/jaeger\",\"name\":\"config-volume\"}]}],\"enableServiceLinks\":false,\"nodeSelector\":{\"kubernetes.io/hostname\":\"k8s-worker3\"},\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"jaeger-config\"},\"name\":\"config-volume\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 298844160.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.013,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 298844160.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "media-frontend",
+        "container": "media-frontend",
+        "pods": [
+          {
+            "name": "media-frontend-5dc45b548-twztl",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "media-frontend"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"media-frontend\"},\"name\":\"media-frontend\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"media-frontend\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"media-frontend\",\"service\":\"media-frontend\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"fqdn_suffix\",\"value\":\".social-network.svc.cluster.local\"}],\"image\":\"docker.io/yg397/media-frontend:xenial\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"media-frontend\",\"ports\":[{\"containerPort\":8081}],\"volumeMounts\":[{\"mountPath\":\"/usr/local/openresty/nginx/conf/nginx.conf\",\"name\":\"media-frontend-config\",\"subPath\":\"nginx.conf\"},{\"mountPath\":\"/social-network-microservices/config/jaeger-config.yml\",\"name\":\"media-frontend-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/social-network-microservices/config/service-config.json\",\"name\":\"media-frontend-config\",\"subPath\":\"service-config.json\"},{\"mountPath\":\"/usr/local/openresty/nginx/lua-scripts\",\"name\":\"lua-scripts\"}]}],\"hostname\":\"media-frontend\",\"initContainers\":[{\"args\":[\"-c\",\"git clone --depth 1 https://github.com/dimoibiehg/DeathStarBench.git /DeathStarBench \\u0026\\u0026\\n  cp -r /DeathStarBench/socialNetwork/media-frontend/lua-scripts/* /lua-scripts/ \\n\"],\"command\":[\"/bin/sh\"],\"image\":\"docker.io/alpine/git:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"alpine-container\",\"resources\":{\"limits\":{\"cpu\":\"100m\",\"memory\":\"128Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"128Mi\"}},\"volumeMounts\":[{\"mountPath\":\"/lua-scripts\",\"name\":\"lua-scripts\"}]}],\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"media-frontend\"},\"name\":\"media-frontend-config\"},{\"emptyDir\":{},\"name\":\"lua-scripts\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "media-memcached",
+        "container": "media-memcached",
+        "pods": [
+          {
+            "name": "media-memcached-ccd974bc-jgg59",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "media-memcached"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"media-memcached\"},\"name\":\"media-memcached\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"media-memcached\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"media-memcached\",\"service\":\"media-memcached\"}},\"spec\":{\"containers\":[{\"image\":\"docker.io/library/memcached:1.6.7\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"media-memcached\",\"ports\":[{\"containerPort\":11211}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/jaeger-config.yml\",\"name\":\"media-memcached-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/social-network-microservices/config/service-config.json\",\"name\":\"media-memcached-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"media-memcached\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"media-memcached\"},\"name\":\"media-memcached-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "media-mongodb",
+        "container": "media-mongodb",
+        "pods": [
+          {
+            "name": "media-mongodb-587f6786f8-6fvqd",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "media-mongodb"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"media-mongodb\"},\"name\":\"media-mongodb\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"media-mongodb\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"media-mongodb\",\"service\":\"media-mongodb\"}},\"spec\":{\"containers\":[{\"args\":[\"--config\",\"/social-network-microservices/config/mongod.conf\"],\"image\":\"docker.io/library/mongo:4.4.6\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"media-mongodb\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/mongod.conf\",\"name\":\"media-mongodb-config\",\"subPath\":\"mongod.conf\"}]}],\"hostname\":\"media-mongodb\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"media-mongodb\"},\"name\":\"media-mongodb-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "media-service",
+        "container": "media-service",
+        "pods": [
+          {
+            "name": "media-service-5dd47bfb7c-j24jp",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "media-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"media-service\"},\"name\":\"media-service\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"media-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"media-service\",\"service\":\"media-service\"}},\"spec\":{\"containers\":[{\"command\":[\"MediaService\"],\"image\":\"docker.io/deathstarbench/social-network-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"media-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/jaeger-config.yml\",\"name\":\"media-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/social-network-microservices/config/service-config.json\",\"name\":\"media-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"media-service\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"media-service\"},\"name\":\"media-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "nginx-thrift",
+        "container": "nginx-thrift",
+        "pods": [
+          {
+            "name": "nginx-thrift-65f5fff7b5-z6sgw",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "nginx-thrift"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"nginx-thrift\"},\"name\":\"nginx-thrift\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"nginx-thrift\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"nginx-thrift\",\"service\":\"nginx-thrift\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"fqdn_suffix\",\"value\":\".social-network.svc.cluster.local\"}],\"image\":\"docker.io/yg397/openresty-thrift:xenial\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"nginx-thrift\",\"ports\":[{\"containerPort\":8080}],\"volumeMounts\":[{\"mountPath\":\"/usr/local/openresty/nginx/jaeger-config.json\",\"name\":\"nginx-thrift-config\",\"subPath\":\"jaeger-config.json\"},{\"mountPath\":\"/usr/local/openresty/nginx/conf/nginx.conf\",\"name\":\"nginx-thrift-config\",\"subPath\":\"nginx.conf\"},{\"mountPath\":\"/usr/local/openresty/nginx/lua-scripts\",\"name\":\"lua-scripts\"},{\"mountPath\":\"/usr/local/openresty/lualib/thrift\",\"name\":\"lua-thrift\"},{\"mountPath\":\"/usr/local/openresty/nginx/pages\",\"name\":\"pages\"},{\"mountPath\":\"/gen-lua\",\"name\":\"gen-lua\"},{\"mountPath\":\"/keys\",\"name\":\"keys\"}]}],\"hostname\":\"nginx-thrift\",\"initContainers\":[{\"args\":[\"-c\",\"git clone --depth 1 https://github.com/dimoibiehg/DeathStarBench.git /DeathStarBench \\u0026\\u0026\\n  cp -r /DeathStarBench/socialNetwork/gen-lua/* /gen-lua/ \\u0026\\u0026\\n  cp -r /DeathStarBench/socialNetwork/docker/openresty-thrift/lua-thrift/* /lua-thrift/ \\u0026\\u0026\\n  cp -r /DeathStarBench/socialNetwork/nginx-web-server/lua-scripts/* /lua-scripts/ \\u0026\\u0026\\n  cp -r /DeathStarBench/socialNetwork/nginx-web-server/pages/* /pages/ \\u0026\\u0026\\n  cp /DeathStarBench/socialNetwork/keys/* /keys/        \\n\"],\"command\":[\"/bin/sh\"],\"image\":\"docker.io/alpine/git:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"alpine-container\",\"resources\":{\"limits\":{\"cpu\":\"100m\",\"memory\":\"128Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"128Mi\"}},\"volumeMounts\":[{\"mountPath\":\"/lua-scripts\",\"name\":\"lua-scripts\"},{\"mountPath\":\"/lua-thrift\",\"name\":\"lua-thrift\"},{\"mountPath\":\"/pages\",\"name\":\"pages\"},{\"mountPath\":\"/gen-lua\",\"name\":\"gen-lua\"},{\"mountPath\":\"/keys\",\"name\":\"keys\"}]}],\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"nginx-thrift\"},\"name\":\"nginx-thrift-config\"},{\"emptyDir\":{},\"name\":\"lua-scripts\"},{\"emptyDir\":{},\"name\":\"pages\"},{\"emptyDir\":{},\"name\":\"gen-lua\"},{\"emptyDir\":{},\"name\":\"lua-thrift\"},{\"emptyDir\":{},\"name\":\"keys\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.138,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.23,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "post-storage-memcached",
+        "container": "post-storage-memcached",
+        "pods": [
+          {
+            "name": "post-storage-memcached-5889544685-mknwn",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "post-storage-memcached"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"post-storage-memcached\"},\"name\":\"post-storage-memcached\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"post-storage-memcached\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"post-storage-memcached\",\"service\":\"post-storage-memcached\"}},\"spec\":{\"containers\":[{\"image\":\"docker.io/library/memcached:1.6.7\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"post-storage-memcached\",\"ports\":[{\"containerPort\":11211}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/jaeger-config.yml\",\"name\":\"post-storage-memcached-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/social-network-microservices/config/service-config.json\",\"name\":\"post-storage-memcached-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"post-storage-memcached\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"post-storage-memcached\"},\"name\":\"post-storage-memcached-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.016,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "post-storage-mongodb",
+        "container": "post-storage-mongodb",
+        "pods": [
+          {
+            "name": "post-storage-mongodb-7794984866-f2zc6",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "post-storage-mongodb"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"post-storage-mongodb\"},\"name\":\"post-storage-mongodb\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"post-storage-mongodb\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"post-storage-mongodb\",\"service\":\"post-storage-mongodb\"}},\"spec\":{\"containers\":[{\"args\":[\"--config\",\"/social-network-microservices/config/mongod.conf\"],\"image\":\"docker.io/library/mongo:4.4.6\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"post-storage-mongodb\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/mongod.conf\",\"name\":\"post-storage-mongodb-config\",\"subPath\":\"mongod.conf\"}]}],\"hostname\":\"post-storage-mongodb\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"post-storage-mongodb\"},\"name\":\"post-storage-mongodb-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.012,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 164626432.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.013,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 164626432.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "post-storage-service",
+        "container": "post-storage-service",
+        "pods": [
+          {
+            "name": "post-storage-service-5b8cf5d854-npk6s",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "post-storage-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"post-storage-service\"},\"name\":\"post-storage-service\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"post-storage-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"post-storage-service\",\"service\":\"post-storage-service\"}},\"spec\":{\"containers\":[{\"command\":[\"PostStorageService\"],\"image\":\"docker.io/deathstarbench/social-network-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"post-storage-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/jaeger-config.yml\",\"name\":\"post-storage-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/social-network-microservices/config/service-config.json\",\"name\":\"post-storage-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"post-storage-service\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"post-storage-service\"},\"name\":\"post-storage-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.054,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.067,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "social-graph-mongodb",
+        "container": "social-graph-mongodb",
+        "pods": [
+          {
+            "name": "social-graph-mongodb-55866b78bb-rfwb5",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "social-graph-mongodb"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"social-graph-mongodb\"},\"name\":\"social-graph-mongodb\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"social-graph-mongodb\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"social-graph-mongodb\",\"service\":\"social-graph-mongodb\"}},\"spec\":{\"containers\":[{\"args\":[\"--config\",\"/social-network-microservices/config/mongod.conf\"],\"image\":\"docker.io/library/mongo:4.4.6\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"social-graph-mongodb\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/mongod.conf\",\"name\":\"social-graph-mongodb-config\",\"subPath\":\"mongod.conf\"}]}],\"hostname\":\"social-graph-mongodb\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"social-graph-mongodb\"},\"name\":\"social-graph-mongodb-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 606076928.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.666,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 606076928.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "social-graph-redis",
+        "container": "social-graph-redis",
+        "pods": [
+          {
+            "name": "social-graph-redis-5f6d84d659-hgc6x",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "social-graph-redis"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"social-graph-redis\"},\"name\":\"social-graph-redis\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"social-graph-redis\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"social-graph-redis\",\"service\":\"social-graph-redis\"}},\"spec\":{\"containers\":[{\"args\":[\"/social-network-microservices/config/redis.conf\"],\"image\":\"docker.io/library/redis:6.2.4\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"social-graph-redis\",\"ports\":[{\"containerPort\":6379}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/redis.conf\",\"name\":\"social-graph-redis-config\",\"subPath\":\"redis.conf\"}]}],\"hostname\":\"social-graph-redis\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"social-graph-redis\"},\"name\":\"social-graph-redis-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.249,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "social-graph-service",
+        "container": "social-graph-service",
+        "pods": [
+          {
+            "name": "social-graph-service-6ff5c75796-hrr56",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "social-graph-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"social-graph-service\"},\"name\":\"social-graph-service\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"social-graph-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"social-graph-service\",\"service\":\"social-graph-service\"}},\"spec\":{\"containers\":[{\"command\":[\"SocialGraphService\"],\"image\":\"docker.io/deathstarbench/social-network-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"social-graph-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/jaeger-config.yml\",\"name\":\"social-graph-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/social-network-microservices/config/service-config.json\",\"name\":\"social-graph-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"social-graph-service\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"social-graph-service\"},\"name\":\"social-graph-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.599,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "text-service",
+        "container": "text-service",
+        "pods": [
+          {
+            "name": "text-service-9c87b6fd6-gx6vf",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "text-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"text-service\"},\"name\":\"text-service\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"text-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"text-service\",\"service\":\"text-service\"}},\"spec\":{\"containers\":[{\"command\":[\"TextService\"],\"image\":\"docker.io/deathstarbench/social-network-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"text-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/jaeger-config.yml\",\"name\":\"text-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/social-network-microservices/config/service-config.json\",\"name\":\"text-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"text-service\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"text-service\"},\"name\":\"text-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.013,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "unique-id-service",
+        "container": "unique-id-service",
+        "pods": [
+          {
+            "name": "unique-id-service-699866655-xjxnw",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "unique-id-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"unique-id-service\"},\"name\":\"unique-id-service\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"unique-id-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"unique-id-service\",\"service\":\"unique-id-service\"}},\"spec\":{\"containers\":[{\"command\":[\"UniqueIdService\"],\"image\":\"docker.io/deathstarbench/social-network-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"unique-id-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/jaeger-config.yml\",\"name\":\"unique-id-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/social-network-microservices/config/service-config.json\",\"name\":\"unique-id-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"unique-id-service\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"unique-id-service\"},\"name\":\"unique-id-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "url-shorten-memcached",
+        "container": "url-shorten-memcached",
+        "pods": [
+          {
+            "name": "url-shorten-memcached-6bf66fb79c-cndgv",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "url-shorten-memcached"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"url-shorten-memcached\"},\"name\":\"url-shorten-memcached\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"url-shorten-memcached\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"url-shorten-memcached\",\"service\":\"url-shorten-memcached\"}},\"spec\":{\"containers\":[{\"image\":\"docker.io/library/memcached:1.6.7\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"url-shorten-memcached\",\"ports\":[{\"containerPort\":11211}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/jaeger-config.yml\",\"name\":\"url-shorten-memcached-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/social-network-microservices/config/service-config.json\",\"name\":\"url-shorten-memcached-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"url-shorten-memcached\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"url-shorten-memcached\"},\"name\":\"url-shorten-memcached-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "url-shorten-mongodb",
+        "container": "url-shorten-mongodb",
+        "pods": [
+          {
+            "name": "url-shorten-mongodb-676f488b77-pvw9l",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "url-shorten-mongodb"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"url-shorten-mongodb\"},\"name\":\"url-shorten-mongodb\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"url-shorten-mongodb\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"url-shorten-mongodb\",\"service\":\"url-shorten-mongodb\"}},\"spec\":{\"containers\":[{\"args\":[\"--config\",\"/social-network-microservices/config/mongod.conf\"],\"image\":\"docker.io/library/mongo:4.4.6\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"url-shorten-mongodb\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/mongod.conf\",\"name\":\"url-shorten-mongodb-config\",\"subPath\":\"mongod.conf\"}]}],\"hostname\":\"url-shorten-mongodb\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"url-shorten-mongodb\"},\"name\":\"url-shorten-mongodb-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 158334976.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.011,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 158334976.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "url-shorten-service",
+        "container": "url-shorten-service",
+        "pods": [
+          {
+            "name": "url-shorten-service-54cc5944c5-25jfs",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "url-shorten-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"url-shorten-service\"},\"name\":\"url-shorten-service\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"url-shorten-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"url-shorten-service\",\"service\":\"url-shorten-service\"}},\"spec\":{\"containers\":[{\"command\":[\"UrlShortenService\"],\"image\":\"docker.io/deathstarbench/social-network-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"url-shorten-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/jaeger-config.yml\",\"name\":\"url-shorten-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/social-network-microservices/config/service-config.json\",\"name\":\"url-shorten-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"url-shorten-service\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"url-shorten-service\"},\"name\":\"url-shorten-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "user-memcached",
+        "container": "user-memcached",
+        "pods": [
+          {
+            "name": "user-memcached-565fbf65ff-gdgkc",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "user-memcached"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"user-memcached\"},\"name\":\"user-memcached\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"user-memcached\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"user-memcached\",\"service\":\"user-memcached\"}},\"spec\":{\"containers\":[{\"image\":\"docker.io/library/memcached:1.6.7\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"user-memcached\",\"ports\":[{\"containerPort\":11211}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/jaeger-config.yml\",\"name\":\"user-memcached-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/social-network-microservices/config/service-config.json\",\"name\":\"user-memcached-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"user-memcached\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"user-memcached\"},\"name\":\"user-memcached-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.045,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "user-mention-service",
+        "container": "user-mention-service",
+        "pods": [
+          {
+            "name": "user-mention-service-7d7dfc5f46-gpfzb",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "user-mention-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"user-mention-service\"},\"name\":\"user-mention-service\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"user-mention-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"user-mention-service\",\"service\":\"user-mention-service\"}},\"spec\":{\"containers\":[{\"command\":[\"UserMentionService\"],\"image\":\"docker.io/deathstarbench/social-network-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"user-mention-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/jaeger-config.yml\",\"name\":\"user-mention-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/social-network-microservices/config/service-config.json\",\"name\":\"user-mention-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"user-mention-service\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"user-mention-service\"},\"name\":\"user-mention-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "user-mongodb",
+        "container": "user-mongodb",
+        "pods": [
+          {
+            "name": "user-mongodb-5f5fdd4cff-dntnm",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "user-mongodb"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"user-mongodb\"},\"name\":\"user-mongodb\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"user-mongodb\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"user-mongodb\",\"service\":\"user-mongodb\"}},\"spec\":{\"containers\":[{\"args\":[\"--config\",\"/social-network-microservices/config/mongod.conf\"],\"image\":\"docker.io/library/mongo:4.4.6\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"user-mongodb\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/mongod.conf\",\"name\":\"user-mongodb-config\",\"subPath\":\"mongod.conf\"}]}],\"hostname\":\"user-mongodb\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"user-mongodb\"},\"name\":\"user-mongodb-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 303038464.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.063,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 303038464.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "user-service",
+        "container": "user-service",
+        "pods": [
+          {
+            "name": "user-service-544c66cd78-xpfwd",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "user-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"user-service\"},\"name\":\"user-service\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"user-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"user-service\",\"service\":\"user-service\"}},\"spec\":{\"containers\":[{\"command\":[\"UserService\"],\"image\":\"docker.io/deathstarbench/social-network-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"user-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/jaeger-config.yml\",\"name\":\"user-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/social-network-microservices/config/service-config.json\",\"name\":\"user-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"user-service\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"user-service\"},\"name\":\"user-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 303038464.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.106,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 303038464.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "user-timeline-mongodb",
+        "container": "user-timeline-mongodb",
+        "pods": [
+          {
+            "name": "user-timeline-mongodb-66cb49c85-6zbw9",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "user-timeline-mongodb"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"user-timeline-mongodb\"},\"name\":\"user-timeline-mongodb\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"user-timeline-mongodb\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"user-timeline-mongodb\",\"service\":\"user-timeline-mongodb\"}},\"spec\":{\"containers\":[{\"args\":[\"--config\",\"/social-network-microservices/config/mongod.conf\"],\"image\":\"docker.io/library/mongo:4.4.6\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"user-timeline-mongodb\",\"ports\":[{\"containerPort\":27017}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/mongod.conf\",\"name\":\"user-timeline-mongodb-config\",\"subPath\":\"mongod.conf\"}]}],\"hostname\":\"user-timeline-mongodb\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"user-timeline-mongodb\"},\"name\":\"user-timeline-mongodb-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.014,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.017,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "user-timeline-redis",
+        "container": "user-timeline-redis",
+        "pods": [
+          {
+            "name": "user-timeline-redis-8595d88568-b9xhj",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "user-timeline-redis"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"user-timeline-redis\"},\"name\":\"user-timeline-redis\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"user-timeline-redis\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"user-timeline-redis\",\"service\":\"user-timeline-redis\"}},\"spec\":{\"containers\":[{\"args\":[\"/social-network-microservices/config/redis.conf\"],\"image\":\"docker.io/library/redis:6.2.4\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"user-timeline-redis\",\"ports\":[{\"containerPort\":6379}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/redis.conf\",\"name\":\"user-timeline-redis-config\",\"subPath\":\"redis.conf\"}]}],\"hostname\":\"user-timeline-redis\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"user-timeline-redis\"},\"name\":\"user-timeline-redis-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    },
+    {
+      "object": {
+        "cluster": "local",
+        "name": "user-timeline-service",
+        "container": "user-timeline-service",
+        "pods": [
+          {
+            "name": "user-timeline-service-77965694d5-5nl78",
+            "deleted": false
+          }
+        ],
+        "hpa": null,
+        "namespace": "social-network",
+        "kind": "Deployment",
+        "allocations": {
+          "requests": {
+            "cpu": null,
+            "memory": null
+          },
+          "limits": {
+            "cpu": null,
+            "memory": null
+          },
+          "info": {}
+        },
+        "warnings": [],
+        "labels": {
+          "service": "user-timeline-service"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"service\":\"user-timeline-service\"},\"name\":\"user-timeline-service\",\"namespace\":\"social-network\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"service\":\"user-timeline-service\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"user-timeline-service\",\"service\":\"user-timeline-service\"}},\"spec\":{\"containers\":[{\"command\":[\"UserTimelineService\"],\"image\":\"docker.io/deathstarbench/social-network-microservices:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"user-timeline-service\",\"ports\":[{\"containerPort\":9090}],\"volumeMounts\":[{\"mountPath\":\"/social-network-microservices/config/jaeger-config.yml\",\"name\":\"user-timeline-service-config\",\"subPath\":\"jaeger-config.yml\"},{\"mountPath\":\"/social-network-microservices/config/service-config.json\",\"name\":\"user-timeline-service-config\",\"subPath\":\"service-config.json\"}]}],\"hostname\":\"user-timeline-service\",\"restartPolicy\":\"Always\",\"volumes\":[{\"configMap\":{\"name\":\"user-timeline-service\"},\"name\":\"user-timeline-service-config\"}]}}}}\n"
+        }
+      },
+      "recommended": {
+        "requests": {
+          "cpu": {
+            "value": 0.01,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "limits": {
+          "cpu": {
+            "value": 0.011,
+            "severity": "WARNING"
+          },
+          "memory": {
+            "value": 104857600.0,
+            "severity": "WARNING"
+          }
+        },
+        "info": {
+          "cpu": null,
+          "memory": null
+        }
+      },
+      "severity": "WARNING"
+    }
+  ],
+  "score": 30,
+  "resources": [
+    "cpu",
+    "memory"
+  ],
+  "description": "[b]Simple_Limit Strategy[/b]\n\nCPU request: 70.0% percentile, limit: 100.0% percentile\nMemory request: max + 15.0%, limit: max + 15.0%\nHistory: 3.0 hours\nStep: 1.0 minutes\n\nAll parameters can be customized. For example: `krr simple_limit --cpu_request=66 --cpu_limit=96 --memory_buffer_percentage=15 --history_duration=24 --timeframe_duration=0.5`\n\nThis strategy does not work with objects with HPA defined (Horizontal Pod Autoscaler).\nIf HPA is defined for CPU or Memory, the strategy will return \"?\" for that resource.\nYou can override this behaviour by passing the --allow-hpa flag\n\nLearn more: [underline]https://github.com/robusta-dev/krr#algorithm[/underline]",
+  "strategy": {
+    "name": "simple_limit",
+    "settings": {
+      "history_duration": 3.0,
+      "timeframe_duration": 1.0,
+      "end_epoch": 1784139542.7493577,
+      "cpu_request": 70.0,
+      "cpu_limit": 100.0,
+      "memory_buffer_percentage": 15.0,
+      "points_required": 100,
+      "allow_hpa": false,
+      "use_oomkill_data": false,
+      "oom_memory_buffer_percentage": 25.0
+    }
+  },
+  "errors": [],
+  "clusterSummary": {
+    "cluster_memory": 36815593472.0,
+    "cluster_cpu": 28.0,
+    "kube_system_mem_req": 146800640.0,
+    "kube_system_cpu_req": 0.2
+  },
+  "config": {
+    "quiet": true,
+    "verbose": false,
+    "clusters": [],
+    "kubeconfig": null,
+    "impersonate_user": null,
+    "impersonate_group": null,
+    "namespaces": [
+      "social-network"
+    ],
+    "resources": "*",
+    "selector": null,
+    "cpu_min_value": 10,
+    "memory_min_value": 100,
+    "prometheus_url": "http://k8s-master:30954",
+    "prometheus_auth_header": null,
+    "prometheus_other_headers": {},
+    "prometheus_ssl_enabled": false,
+    "prometheus_cluster_label": null,
+    "prometheus_label": null,
+    "eks_managed_prom": false,
+    "eks_managed_prom_profile_name": null,
+    "eks_access_key": null,
+    "eks_secret_key": null,
+    "eks_service_name": "aps",
+    "eks_managed_prom_region": null,
+    "eks_assume_role": null,
+    "coralogix_token": null,
+    "openshift": false,
+    "max_workers": 10,
+    "discovery_job_batch_size": 5000,
+    "discovery_job_max_batches": 100,
+    "job_grouping_labels": null,
+    "job_grouping_limit": 500,
+    "format": "json",
+    "show_cluster_name": false,
+    "strategy": "simple_limit",
+    "log_to_stderr": false,
+    "width": 900,
+    "show_severity": true,
+    "publish_scan_url": null,
+    "start_time": null,
+    "scan_id": null,
+    "named_sinks": [],
+    "file_output": null,
+    "file_output_dynamic": false,
+    "slack_output": null,
+    "slack_title": null,
+    "azureblob_output": null,
+    "teams_webhook": null,
+    "azure_subscription_id": null,
+    "azure_resource_group": null,
+    "other_args": {
+      "history_duration": "3",
+      "timeframe_duration": "1",
+      "end_epoch": "1784139542.7493577",
+      "cpu_request": "70",
+      "cpu_limit": "100",
+      "memory_buffer_percentage": "15",
+      "points_required": "100",
+      "allow_hpa": false,
+      "use_oomkill_data": false,
+      "oom_memory_buffer_percentage": "25"
+    },
+    "inside_cluster": false
+  }
+}
