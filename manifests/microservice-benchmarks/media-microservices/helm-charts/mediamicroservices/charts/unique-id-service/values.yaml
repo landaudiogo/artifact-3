@@ -1,0 +1,22 @@
+name: unique-id-service
+
+ports:
+  - port: 9090
+    targetPort: 9090
+
+container:
+  command: UniqueIdService
+  image: dclandau/media-microservices
+  imageVersion: "latest@sha256:db22945c1e405f6ab56c3049b7492fb01358cfe424be1491da449ce8714e14af"
+  name: unique-id-service
+  ports:
+    - containerPort: 9090
+
+configMaps:
+  - name: jaeger-config.yml
+    mountPath: /media-microservices/config/jaeger-config.yml
+    value: jaeger-config
+
+  - name: service-config.json
+    mountPath: /media-microservices/config/service-config.json
+    value: service-config
