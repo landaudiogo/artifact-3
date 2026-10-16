@@ -18,3 +18,10 @@ Debug cluster-admin public key:
 ```
 nix run nixpkgs#openssl -- x509 -in secrets/cluster-admin.pem -text
 ```
+
+```bash
+sudo nixos-rebuild --flake .#k8s-master --target-host k8s-master switch
+sudo nixos-rebuild --flake .#k8s-worker1 --target-host k8s-worker1 switch
+sudo nixos-rebuild --flake .#k8s-worker2 --target-host k8s-worker2 switch
+sudo nixos-rebuild --flake .#k8s-worker3 --target-host k8s-worker3 switch
+```

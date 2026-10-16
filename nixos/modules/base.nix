@@ -15,6 +15,7 @@
   nixpkgs.config.allowUnfree = true;
 
   networking.networkmanager.enable = true;
+  networking.search = [ "ad.dlandau.nl" ];
 
   services.logind.lidSwitch = "ignore";
   services.openssh = {

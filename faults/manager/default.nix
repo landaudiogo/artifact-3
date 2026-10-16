@@ -21,7 +21,6 @@ let
             ]
           );
       virtualenv = pythonSet.mkVirtualEnv "dev-env" workspace.deps.all;
-      service-cpu-stress = pkgs.callPackage ./src/injector/service { };
 in
 {
     devShell = pkgs.mkShell {
@@ -38,6 +37,5 @@ in
     };
     packages = {
         manager = virtualenv;
-        service-cpu-stress = service-cpu-stress.package;
     };
 }
