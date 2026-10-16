@@ -227,7 +227,7 @@ spec:
         resources:
           limits:
             cpu: null
-            memory: 130023424.0
+            memory: 330023424.0
           requests:
             cpu: 0.034
             memory: 130023424.0
@@ -425,7 +425,7 @@ spec:
         resources:
           limits:
             cpu: null
-            memory: 165675008.0
+            memory: 365675008.0
           requests:
             cpu: 0.018
             memory: 165675008.0
@@ -533,7 +533,7 @@ spec:
         resources:
           limits:
             cpu: null
-            memory: 131072000.0
+            memory: 331072000.0
           requests:
             cpu: 0.028
             memory: 131072000.0

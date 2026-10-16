@@ -23,7 +23,7 @@ spec:
 
       containers:
       - name: init
-        image: dclandau/initmediamicroservices:6027bdd
+        image: dclandau/initmediamicroservices:bd75677
         env:
         - name: PYTHONUNBUFFERED
           value: "1" 
