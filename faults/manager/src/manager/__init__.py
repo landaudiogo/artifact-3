@@ -10,12 +10,16 @@ logging.getLogger("httpx").setLevel("WARNING")
 logging.getLogger("kubernetes").setLevel("WARNING")
 logging.getLogger("httpcore").setLevel("WARNING")
 
+import asyncio
+
 from datetime import datetime, timedelta
-from httpx import Client, HTTPTransport
+from httpx import AsyncClient, AsyncHTTPTransport
+from pathlib import Path
 
 from .faults.fault import Fault
 
 from .kpis.prometheus import PrometheusKPIs
+from .applications.online_boutique import OnlineBoutique
 
 def recover(applications, deadline=timedelta(minutes=5)):
     end = datetime.now() + deadline
@@ -42,6 +46,28 @@ def recover(applications, deadline=timedelta(minutes=5)):
 
 
 def main() -> None:
+    transport = AsyncHTTPTransport(retries=5)
+    prometheus_client = AsyncClient(base_url=os.getenv("PROMETHEUS_URL"),transport=transport)
+
+    online_boutique = OnlineBoutique(
+        Path(os.getenv("MANIFEST_ONLINE_BOUTIQUE")),
+        os.getenv("LOCUST_ONLINE_BOUTIQUE"),
+        prometheus_client,
+    )
+    if not online_boutique.deploy():
+        return
+
+    loop = asyncio.get_event_loop()
+    wait_for_ready = asyncio.gather(
+        online_boutique.wait_for_ready(),
+    )
+    loop.run_until_complete(wait_for_ready)
+    loop.run_until_complete(online_boutique.set_load(20))
+    time.sleep(120)
+    if not online_boutique.destroy():
+        return
+    return
+
     transport = HTTPTransport(retries=5)
     prometheus_client = Client(base_url="http://k8s-master:30954",transport=transport)
     baseline_start, baseline_end = 1787646931.5262878, 1787647122.984789

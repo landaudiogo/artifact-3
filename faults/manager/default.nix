@@ -1,4 +1,4 @@
-{ pkgs, pyproject-build-systems, pyproject-nix, lib, uv2nix, kubeconfig }:
+{ pkgs, lib, pyproject-build-systems, pyproject-nix, uv2nix, kubeconfig, manifest_online_boutique }:
 let 
       python = pkgs.python312;
       workspace = uv2nix.lib.workspace.loadWorkspace { workspaceRoot = ./.; };
@@ -27,11 +27,18 @@ in
         packages = with pkgs; [ 
             python3 
             uv 
+            kubectl
         ];
 
-        env.LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
-            pkgs.stdenv.cc.cc.lib
-        ];
+        env = {
+            LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+                pkgs.stdenv.cc.cc.lib
+            ];
+            PROMETHEUS_URL = "http://k8s-master:30954";
+
+            MANIFEST_ONLINE_BOUTIQUE = manifest_online_boutique;
+            LOCUST_ONLINE_BOUTIQUE = "http://k8s-master:30012";
+        };
 
         KUBECONFIG = kubeconfig;
     };

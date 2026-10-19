@@ -3,15 +3,36 @@ import logging
 import httpx
 import json
 import random
+import time
 
-from . import (
-    LATENCY_95_LOCUST_TEMPLATE,
-    ERROR_LOCUST_TEMPLATE,
-    CONTAINER_START_WINDOW_LOCUST_TEMPLATE,
-)
+from jinja2 import Template
+from typing import Optional
+from httpx import AsyncClient
+
 from .stats import has_effect
 
 logger = logging.getLogger(__name__)
+
+
+LOCUST_LATENCY_95_TEMPLATE = Template('''
+    locust_requests_current_response_time_percentile_95{{ filter }}
+''')
+
+LOCUST_USERS_TEMPLATE = Template('''
+    locust_users{{ filter }}
+''')
+
+LOCUST_ERROR_RATE_TEMPLATE = Template('''
+    sum (rate(locust_errors{{ filter }}[10s])) by (service)
+''')
+
+CONTAINER_START_WINDOW_TEMPLATE = Template('''
+    (
+      container_start_time_seconds{{ filter }}
+      unless
+      container_start_time_seconds{{ filter }} offset 5s
+    ) > bool 0
+''')
 
 class PrometheusKPIs:
     def __init__(
@@ -97,3 +118,54 @@ class PrometheusKPIs:
         
         return latency_increased or errors_increased
 
+class PrometheusKPI:
+
+
+    def __init__(self, prometheus_client: AsyncClient, query: str):
+        self.prometheus_client = prometheus_client
+        self.promql_query = query
+
+
+    async def query(self, time_epoch: Optional[int] = None):
+        '''Prometheus query.
+        
+        parameters:
+            time: epoch timestamp reference
+        '''
+        if time_epoch is None:
+            time_epoch = time.time()
+
+        res = await self.prometheus_client.get(
+            "/api/v1/query",
+            params={
+                "query": self.promql_query,
+                "time": time_epoch,
+            },
+        )
+        if res.status_code != httpx.codes.OK:
+            logger.error(f"prometheus query failed: {res.status_code} {res.text}")
+            raise Exception("Prometheus")
+
+        return res.json()["data"]["result"]
+
+    async def query_range(self, start_epoch: int, end_epoch: int):
+        '''Prometheus query range.
+        
+        parameters:
+            start: start unix epoch.
+            end: end unix epoch.
+        '''
+        res = await self.prometheus_client.get(
+            "/api/v1/query_range",
+            params={
+                "query": self.promql_query,
+                "start": start_epoch,
+                "end": end_epoch,
+                "step": 1 # second granularity
+            },
+        )
+        if res.status_code != httpx.codes.OK:
+            logger.error(f"prometheus query failed: {res.status_code} {res.text}")
+            raise Exception("Prometheus")
+
+        return res.json()["data"]["result"]
