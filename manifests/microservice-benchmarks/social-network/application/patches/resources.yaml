@@ -9,9 +9,9 @@ spec:
       containers:
       - name: compose-post-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.014
             memory: 104857600.0
@@ -28,9 +28,9 @@ spec:
       containers:
       - name: home-timeline-redis
         resources:
-          limits:
-            cpu: null
-            memory: 489406976.0
+          limits: null
+            # cpu: null
+            # memory: 489406976.0
           requests:
             cpu: 0.012
             memory: 289406976.0
@@ -47,9 +47,9 @@ spec:
       containers:
       - name: home-timeline-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.016
             memory: 104857600.0
@@ -66,9 +66,9 @@ spec:
       containers:
       - name: jaeger
         resources:
-          limits:
-            cpu: null
-            memory: 298844160.0
+          limits: null
+            # cpu: null
+            # memory: 298844160.0
           requests:
             cpu: 0.01
             memory: 298844160.0
@@ -85,9 +85,9 @@ spec:
       containers:
       - name: media-frontend
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -104,9 +104,9 @@ spec:
       containers:
       - name: media-memcached
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -123,9 +123,9 @@ spec:
       containers:
       - name: media-mongodb
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -142,9 +142,9 @@ spec:
       containers:
       - name: media-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -161,9 +161,9 @@ spec:
       containers:
       - name: nginx-thrift
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.138
             memory: 104857600.0
@@ -180,9 +180,9 @@ spec:
       containers:
       - name: post-storage-memcached
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -199,9 +199,9 @@ spec:
       containers:
       - name: post-storage-mongodb
         resources:
-          limits:
-            cpu: null
-            memory: 664626432.0
+          limits: null
+            # cpu: null
+            # memory: 664626432.0
           requests:
             cpu: 0.012
             memory: 164626432.0
@@ -218,9 +218,9 @@ spec:
       containers:
       - name: post-storage-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.054
             memory: 104857600.0
@@ -237,9 +237,9 @@ spec:
       containers:
       - name: social-graph-mongodb
         resources:
-          limits:
-            cpu: null
-            memory: 606076928.0
+          limits: null
+            # cpu: null
+            # memory: 606076928.0
           requests:
             cpu: 0.01
             memory: 606076928.0
@@ -256,9 +256,9 @@ spec:
       containers:
       - name: social-graph-redis
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -275,9 +275,9 @@ spec:
       containers:
       - name: social-graph-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -294,9 +294,9 @@ spec:
       containers:
       - name: text-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -313,9 +313,9 @@ spec:
       containers:
       - name: unique-id-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -332,9 +332,9 @@ spec:
       containers:
       - name: url-shorten-memcached
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -351,9 +351,9 @@ spec:
       containers:
       - name: url-shorten-mongodb
         resources:
-          limits:
-            cpu: null
-            memory: 358334976.0
+          limits: null
+            # cpu: null
+            # memory: 358334976.0
           requests:
             cpu: 0.01
             memory: 158334976.0
@@ -370,9 +370,9 @@ spec:
       containers:
       - name: url-shorten-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -389,9 +389,9 @@ spec:
       containers:
       - name: user-memcached
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -408,9 +408,9 @@ spec:
       containers:
       - name: user-mention-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -427,9 +427,9 @@ spec:
       containers:
       - name: user-mongodb
         resources:
-          limits:
-            cpu: null
-            memory: 303038464.0
+          limits: null
+            # cpu: null
+            # memory: 303038464.0
           requests:
             cpu: 0.01
             memory: 303038464.0
@@ -446,9 +446,9 @@ spec:
       containers:
       - name: user-service
         resources:
-          limits:
-            cpu: null
-            memory: 303038464.0
+          limits: null
+            # cpu: null
+            # memory: 303038464.0
           requests:
             cpu: 0.01
             memory: 303038464.0
@@ -465,9 +465,9 @@ spec:
       containers:
       - name: user-timeline-mongodb
         resources:
-          limits:
-            cpu: null
-            memory: 304857600.0
+          limits: null
+            # cpu: null
+            # memory: 304857600.0
           requests:
             cpu: 0.014
             memory: 104857600.0
@@ -484,9 +484,9 @@ spec:
       containers:
       - name: user-timeline-redis
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -503,9 +503,9 @@ spec:
       containers:
       - name: user-timeline-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
