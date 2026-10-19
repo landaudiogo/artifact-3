@@ -58,9 +58,12 @@
             );
 
             autothrottle = pkgs.callPackage ./autothrottle { inherit kubeconfig; };
-            fault-manager = pkgs.callPackage ./faults/manager { inherit kubeconfig pyproject-nix uv2nix pyproject-build-systems; };
             injectors = pkgs.callPackage ./faults/injectors { };
             manifests = pkgs.callPackage ./manifests { };
+            fault-manager = pkgs.callPackage ./faults/manager { 
+                inherit kubeconfig pyproject-nix uv2nix pyproject-build-systems;
+                benchmark_manifests_dir = manifests.packages.microservice-benchmarks.default;
+            };
         in
         {
             devShells.${system} = {

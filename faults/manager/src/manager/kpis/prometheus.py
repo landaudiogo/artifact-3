@@ -15,23 +15,27 @@ logger = logging.getLogger(__name__)
 
 
 LOCUST_LATENCY_95_TEMPLATE = Template('''
-    locust_requests_current_response_time_percentile_95{{ filter }}
+    locust_requests_current_response_time_percentile_95{ service="{{ service }}" }
 ''')
 
 LOCUST_USERS_TEMPLATE = Template('''
-    locust_users{{ filter }}
+    locust_users{ service="{{ service }}" }
 ''')
 
 LOCUST_ERROR_RATE_TEMPLATE = Template('''
-    sum (rate(locust_errors{{ filter }}[10s])) by (service)
+    rate(locust_requests_num_failures{ name='Aggregated', service="{{ service }}" }[10s]) 
+    / rate(locust_requests_num_requests{ name='Aggregated', service="{{ service }}" }[10s])
 ''')
 
 CONTAINER_START_WINDOW_TEMPLATE = Template('''
     (
-      container_start_time_seconds{{ filter }}
-      unless
-      container_start_time_seconds{{ filter }} offset 5s
-    ) > bool 0
+      count(
+        container_start_time_seconds{ namespace = "{{ namespace }}" }
+        unless
+        container_start_time_seconds{ namespace = "{{ namespace }}" } offset 10s
+      ) > bool 0
+    )
+    or vector(0)
 ''')
 
 class PrometheusKPIs:
@@ -118,7 +122,7 @@ class PrometheusKPIs:
         
         return latency_increased or errors_increased
 
-class PrometheusKPI:
+class PrometheusMetric:
 
 
     def __init__(self, prometheus_client: AsyncClient, query: str):
