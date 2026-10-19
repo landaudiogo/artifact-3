@@ -7,7 +7,7 @@ stdenv.mkDerivation {
     outputHashAlgo = "sha256";
     outputHashMode = "recursive";
     # outputHash = lib.fakeHash;
-    outputHash = "sha256-Flu1rjgKANLIXSaoekXqYXx9FLD3it3E4Oq+3YWsBlc=";
+    outputHash = "sha256-9kBViUYiHb9B+XGYYlUq1oh+YxzBpgF3K9QJ5NK/FK0=";
 
     buildInputs = with pkgs; [
         kubectl
@@ -15,6 +15,8 @@ stdenv.mkDerivation {
     ];
 
     installPhase = ''
-        kubectl kustomize --enable-helm ./ > $out
+        mkdir $out
+        kubectl kustomize --enable-helm ./application > $out/application.yaml
+        kubectl kustomize --enable-helm ./load > $out/load.yaml
     '';
 }

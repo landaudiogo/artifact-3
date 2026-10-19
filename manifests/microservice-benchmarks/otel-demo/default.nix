@@ -1,13 +1,13 @@
 { pkgs ? import <nixpkgs> {}, stdenv ? pkgs.stdenv, lib ? pkgs.lib, ... }:
 stdenv.mkDerivation {
-    name = "social-network-manifest";
+    name = "otel-demo-manifest";
     src = ./.;
     dontBuild = true;
 
     outputHashAlgo = "sha256";
     outputHashMode = "recursive";
     # outputHash = lib.fakeHash;
-    outputHash = "sha256-QzmetCegxjyYeO4+NR64u1IYx4WXik43nC9mDylUx8E=";
+    outputHash = "sha256-Cg7erCmbG6cROR43IwGsEzOXT58z3xO1NEZWNN0FBgE=";
 
     buildInputs = with pkgs; [
         kubectl
@@ -15,6 +15,8 @@ stdenv.mkDerivation {
     ];
 
     installPhase = ''
-        kubectl kustomize --enable-helm ./ > $out
+        mkdir $out
+        kubectl kustomize --enable-helm ./application > $out/application.yaml
+        kubectl kustomize --enable-helm ./load > $out/load.yaml
     '';
 }
