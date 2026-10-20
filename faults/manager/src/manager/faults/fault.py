@@ -30,7 +30,7 @@ class Fault:
     @staticmethod
     def from_manifest(manifest) -> FaultTrait:
         transport = HTTPTransport(retries=5)
-        prometheus_client = Client(base_url="http://k8s-master:30954",transport=transport)
+        prometheus_client = Client(base_url="http://k8s-master:30954", transport=transport)
 
         match manifest["type"]:
             case "service-cpu-stress":

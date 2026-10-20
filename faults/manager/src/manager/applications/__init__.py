@@ -4,6 +4,7 @@ import subprocess
 import time
 import httpx
 import random
+import numpy as np
 
 from datetime import datetime, timedelta
 from httpx import AsyncClient, AsyncHTTPTransport, Timeout
@@ -16,6 +17,7 @@ from ..kpis.prometheus import (
     LOCUST_ERROR_RATE_TEMPLATE,
     CONTAINER_START_WINDOW_TEMPLATE,
 )
+from ..kpis import stats
 
 
 logger = logging.getLogger(__name__)
@@ -172,7 +174,7 @@ class Application:
         backoff_interval: timedelta = timedelta(seconds=10),
         attempts: int = 1
     ):
-        logger.info(f"{self.microservice_benchmark} setting load to {users}")
+        logger.debug(f"{self.microservice_benchmark} setting load to {users}")
         for i in range(attempts):
             end = datetime.now() + timeout
 
@@ -197,7 +199,7 @@ class Application:
                     logger.info(f"{self.microservice_benchmark} load set to {users}")
                     return True
 
-                logger.info(f"{self.microservice_benchmark} current load {current_users} != {users} desired. Retrying")
+                logger.debug(f"{self.microservice_benchmark} current load {current_users} != {users} desired. Retrying")
                 await asyncio.sleep(backoff_interval.total_seconds())
 
             if i == attempts-1:
@@ -217,39 +219,73 @@ class Application:
             logger.error(f"locust swarm failed: {res.status_code} {res.text}")
             raise Exception("Locust")
 
-    async def stable(self, start_epoch, end_epoch) -> bool:
+    async def slo_error(self, start_epoch, end_epoch) -> bool:
+        '''Status of error SLO. Returns true if target SLO is satisfied.'''
+
         res = await self.metric_error_rate.query_range(start_epoch, end_epoch)
         if not res:
-            logger.info(f"{self.microservice_benchmark} no error rate data: {res}")
+            logger.debug(f"{self.microservice_benchmark} no error rate data: {res}")
             return False
         errors = [float(val) for _, val in res[0]['values'] if float(val) > self.slo_error_rate]
         if len(errors) > 0:
-            logger.info(f"{self.microservice_benchmark} error rate exceeds slo {self.slo_error_rate} between [{start_epoch}; {end_epoch}]")
-            logger.debug(f"errors: {errors}")
-            return False
-
-        res = await self.metric_container_restarts.query_range(start_epoch, end_epoch)
-        if not res:
-            logger.info(f"{self.microservice_benchmark} no container restarts data")
-            return False
-        container_restarts = [int(val) for _, val in res[0]['values'] if int(val) > 0]
-        if len(container_restarts) > 0:
-            logger.info(f"{self.microservice_benchmark} had {len(container_restarts)} container restarts between [{start_epoch}; {end_epoch}]")
+            logger.debug(f"{self.microservice_benchmark} error rate exceeds slo {self.slo_error_rate} between [{start_epoch}; {end_epoch}]")
             return False
         return True
 
-    async def set_baseline_latency(self, start_epoch, end_epoch) -> bool:
-        logger.info(f"{self.microservice_benchmark}: creating new latency baseline")
+    async def slo_restart(self, start_epoch, end_epoch):
+        '''Status of restarts SLO. Returns true if target SLO is satisfied.'''
+
+        res = await self.metric_container_restarts.query_range(start_epoch, end_epoch)
+        if not res:
+            logger.debug(f"{self.microservice_benchmark} no container restarts data")
+            return False
+        container_restarts = [int(val) for _, val in res[0]['values'] if int(val) > 0]
+        if len(container_restarts) > 0:
+            logger.debug(f"{self.microservice_benchmark} had {len(container_restarts)} container restarts between [{start_epoch}; {end_epoch}]")
+            return False
+
+        return True
+
+    async def slo_latency(self, start_epoch, end_epoch):
+        """Status of latency SLO.
+
+        The latency service level objective (SLO) depends on the application's
+        current baseline. If there is a statistically significant increase in latency for
+        the parameterized period [start_epoch; end_epoch], this function will return
+        False, meaning that the latency SLO is not within target.
+
+        """
+
+        if not self.baseline_latency:
+            # We don't have a frame of reference, and therefore the SLO is True by default
+            return True
+
         res = await self.metric_latency.query_range(start_epoch, end_epoch)
         if not res:
-            logger.info(f"{self.microservice_benchmark} no latency data")
+            logger.debug(f"{self.microservice_benchmark} no container restarts data")
+            return False
+
+        compare_latency = [float(val) for _, val in res[0]['values']]
+        has_effect = stats.has_effect(self.baseline_latency, compare_latency) 
+        relative_latency = np.median(compare_latency) / np.median(self.baseline_latency)
+        logger.debug(f"{self.microservice_benchmark} has_effect={has_effect} relative_latency={relative_latency}")
+        return not (has_effect and (relative_latency > 2))
+
+    async def stable(self, start_epoch, end_epoch) -> bool:
+        return (await self.slo_error(start_epoch, end_epoch)) and (await self.slo_restart(start_epoch, end_epoch))
+
+    async def set_baseline_latency(self, start_epoch, end_epoch) -> bool:
+        logger.debug(f"{self.microservice_benchmark}: creating new latency baseline")
+        res = await self.metric_latency.query_range(start_epoch, end_epoch)
+        if not res:
+            logger.debug(f"{self.microservice_benchmark} no latency data")
             return False
         latencies = res[0]['values']
         if len(latencies) < (end_epoch-start_epoch):
-            logger.info(f"not enough samples for baseline latency: {len(latencies)} < {end_epoch-start_epoch}")
+            logger.debug(f"not enough samples for baseline latency: {len(latencies)} < {end_epoch-start_epoch}")
             return False
 
         latencies = [float(val) for _, val in latencies]
         self.baseline_latency = latencies
-        logger.info(f"{self.microservice_benchmark}: created new latency baseline")
+        logger.debug(f"{self.microservice_benchmark}: created new latency baseline")
         return True

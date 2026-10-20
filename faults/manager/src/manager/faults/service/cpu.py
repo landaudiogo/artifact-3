@@ -80,8 +80,10 @@ class CPUStress(FaultTrait):
                 # additional 5% to what prometheus reported for some additional
                 # headroom.
                 value = int(value * 100_000)
+                # The cgroup v2 minimum quota is 1000 µs
+                cpu_max = max(1000, int(value*1.05))
                 node, id = container["metric"]["node"], container["metric"]["id"]
-                self.fault_parameters.append(CPUParameters(uid=str(uuid4()), node=node, cgroup=id, cpu_max=int(value*1.05)))
+                self.fault_parameters.append(CPUParameters(uid=str(uuid4()), node=node, cgroup=id, cpu_max=cpu_max))
 
     def execute(self):
         node_chaosd = {}
@@ -174,8 +176,10 @@ class CPUReduce(FaultTrait):
                 # additional 5% to what prometheus reported for some additional
                 # headroom.
                 value = int(value * 100_000)
+                # The cgroup v2 minimum quota is 1000 µs
+                cpu_max = max(1000, int(value*0.5))
                 node, id = container["metric"]["node"], container["metric"]["id"]
-                self.fault_parameters.append(CPUParameters(uid=str(uuid4()), node=node, cgroup=id, cpu_max=int(value*0.5)))
+                self.fault_parameters.append(CPUParameters(uid=str(uuid4()), node=node, cgroup=id, cpu_max=cpu_max))
 
     def execute(self):
         node_chaosd = {}

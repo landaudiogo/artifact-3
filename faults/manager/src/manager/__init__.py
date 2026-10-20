@@ -26,7 +26,7 @@ from .applications import Application
 
 class Controller:
 
-    def __init__(self):
+    def __init__(self, faults=None):
         prometheus_client = AsyncClient(base_url=os.getenv("PROMETHEUS_URL"), transport=AsyncHTTPTransport(retries=5))
         self.applications = [
             Application(Path(os.getenv("BENCHMARK_MANIFESTS_DIR")), "social-network", os.getenv("LOCUST_SOCIAL_NETWORK"), prometheus_client),
@@ -35,6 +35,11 @@ class Controller:
             Application(Path(os.getenv("BENCHMARK_MANIFESTS_DIR")), "online-boutique", os.getenv("LOCUST_ONLINE_BOUTIQUE"), prometheus_client),
             Application(Path(os.getenv("BENCHMARK_MANIFESTS_DIR")), "otel-demo", os.getenv("LOCUST_OTEL_DEMO"), prometheus_client),
         ]
+
+        if faults is None:
+            faults = []
+        self.faults = faults
+        
 
     async def bootstrap(self):
         ready_handles, load_handles = [], []
@@ -45,15 +50,88 @@ class Controller:
         await asyncio.gather(*ready_handles)
         await asyncio.gather(*load_handles)
 
+    async def create_baseline(
+        self,
+        baseline_interval: timedelta = timedelta(minutes=1),
+        deadline: timedelta = timedelta(minutes=5),
+        backoff_interval: timedelta = timedelta(seconds=10)
+    ):
+        end = datetime.now() + deadline
+        while datetime.now() < end:
+            end_epoch = time.time()
+            start_epoch = end_epoch - baseline_interval.total_seconds()
+            logger.debug(f"attempting new baseline period [{start_epoch}; {end_epoch}]")
+            stability_handles, slo_latency_handles, set_baseline_handles = [], [], []
+            for application in self.applications:
+                stability_handles.append(application.stable(start_epoch, end_epoch)) 
+                slo_latency_handles.append(application.slo_latency(start_epoch, end_epoch)) 
+                set_baseline_handles.append(application.set_baseline_latency(start_epoch, end_epoch))
+
+            unstable = [application 
+                for application, stable in zip(self.applications, await asyncio.gather(*stability_handles)) 
+                if not stable
+            ]
+            if len(unstable) > 0:
+                violating_applications = [application.microservice_benchmark for application in unstable]
+                logger.debug(f"{violating_applications} are unstable")
+                await asyncio.sleep(backoff_interval.total_seconds())
+                continue
+
+            latency_violations = [application
+                for application, slo_latency in zip(self.applications, await asyncio.gather(*slo_latency_handles))
+                if not slo_latency
+            ]
+            if len(latency_violations) > 0:
+                violating_applications = [application.microservice_benchmark for application in latency_violations]
+                logger.debug(f"{violating_applications} do not satisfy latency SLO")
+                await asyncio.sleep(backoff_interval.total_seconds())
+                continue
+
+            set_baseline_results = await asyncio.gather(*set_baseline_handles)
+            if not all(set_baseline_results):
+                await asyncio.sleep(backoff_interval.total_seconds())
+                continue
+            
+            logger.info(f"found new baseline period [{start_epoch}; {end_epoch}]")
+            return True
+        return False
+
+    async def inject_fault(self, fault, fault_interval: timedelta = timedelta(minutes=1)):
+        fault = Fault.from_manifest(fault)
+        fault.prepare()
+        fault.execute()
+        start_epoch = time.time()
+        await asyncio.sleep(fault_interval.total_seconds())
+        end_epoch = time.time()
+        logger.info(f"fault injection interval [{start_epoch}; {end_epoch}]")
+        fault.recover()
+        error_handles, restart_handles, latency_handles = [], [], []
+        for application in self.applications:
+            error_handles.append(application.slo_error(start_epoch, end_epoch))
+            restart_handles.append(application.slo_restart(start_epoch, end_epoch))
+            latency_handles.append(application.slo_latency(start_epoch, end_epoch))
+
+        restart_violations = [application.microservice_benchmark for restart_slo, application in zip(await asyncio.gather(*restart_handles), self.applications) if not restart_slo]
+        if len(restart_violations) > 0:
+            logger.info(f"{restart_violations} had restart SLO violations during fault injection period")
+
+        error_violations = [application.microservice_benchmark for error_slo, application in zip(await asyncio.gather(*error_handles), self.applications) if not error_slo]
+        if len(error_violations) > 0:
+            logger.info(f"{error_violations} had error SLO violations during fault injection period")
+
+        latency_violations = [(latency_slo, application.microservice_benchmark) for latency_slo, application in zip(await asyncio.gather(*latency_handles), self.applications) if not latency_slo]
+        if len(latency_violations) > 0:
+            logger.info(f"{latency_violations} had latency SLO violations during fault injection period")
+
     def control_loop(self):
         loop = asyncio.get_event_loop()
-        loop.run_until_complete(self.bootstrap())
+        # loop.run_until_complete(self.bootstrap())
 
-        time.sleep(120)
-        while True:
-            pass
+        for fault in self.faults:
+            loop.run_until_complete(self.create_baseline())
+            loop.run_until_complete(self.inject_fault(fault))
 
-        self.cleanup()
+        # self.cleanup()
 
     def cleanup(self):
         for application in self.applications:
@@ -83,73 +161,27 @@ def recover(applications, deadline=timedelta(minutes=5)):
 
 
 def main() -> None:
-    controller = Controller()
+    faults = [
+        {
+            "type": "service-cpu-stress",
+            "spec": {
+                "namespace": "social-network",
+                "label_selector": "app=post-storage-mongodb"
+            }
+        },
+        {
+            "type": "service-block-latency",
+            "spec": {
+                "namespace": "media-microservices",
+                "label_selector": "app=review-storage-mongodb"
+            }
+        }
+    ]
+
+    controller = Controller(faults=faults)
     controller.control_loop()
     return
 
-    # transport = HTTPTransport(retries=5)
-    # prometheus_client = Client(base_url="http://k8s-master:30954",transport=transport)
-    # baseline_start, baseline_end = 1787646931.5262878, 1787647122.984789
-
-    # applications = {
-    #     "social_network": PrometheusKPIs(
-    #         baseline_start,
-    #         baseline_end,
-    #         prometheus_client,
-    #         '{ service="locust-social-network" }',
-    #         '{ service="locust-social-network" }',
-    #         '{ namespace="social-network" }',
-    #     ),
-    #     "media_microservices": PrometheusKPIs(
-    #         baseline_start,
-    #         baseline_end,
-    #         prometheus_client,
-    #         '{ service="locust-media-microservices" }',
-    #         '{ service="locust-media-microservices" }',
-    #         '{ namespace="media-microservices" }',
-    #     ),
-    #     "online_boutique": PrometheusKPIs(
-    #         baseline_start,
-    #         baseline_end,
-    #         prometheus_client,
-    #         '{ service="locust-online-boutique" }',
-    #         '{ service="locust-online-boutique" }',
-    #         '{ namespace="online-boutique" }',
-    #     ),
-    #     "otel_demo": PrometheusKPIs(
-    #         baseline_start,
-    #         baseline_end,
-    #         prometheus_client,
-    #         '{ service="locust-otel-demo" }',
-    #         '{ service="locust-otel-demo" }',
-    #         '{ namespace="otel-demo" }',
-    #     ),
-    #     "hotel_reservation": PrometheusKPIs(
-    #         baseline_start,
-    #         baseline_end,
-    #         prometheus_client,
-    #         '{ service="locust-hotel-reservation" }',
-    #         '{ service="locust-hotel-reservation" }',
-    #         '{ namespace="hotel-reservation" }',
-    #     ),
-    # }
-
-    # faults = [
-    #     {
-    #         "type": "service-cpu-stress",
-    #         "spec": {
-    #             "namespace": "social-network",
-    #             "label_selector": "app=post-storage-mongodb"
-    #         }
-    #     },
-    #     {
-    #         "type": "service-block-latency",
-    #         "spec": {
-    #             "namespace": "media-microservices",
-    #             "label_selector": "app=review-storage-mongodb"
-    #         }
-    #     }
-    # ]
 
     # recover(applications, timedelta(minutes=5))
     # # for fault_manifest in faults:
