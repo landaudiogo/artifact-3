@@ -24,6 +24,40 @@ from .kpis.prometheus import PrometheusKPIs
 from .applications import Application
 
 
+class Controller:
+
+    def __init__(self):
+        prometheus_client = AsyncClient(base_url=os.getenv("PROMETHEUS_URL"), transport=AsyncHTTPTransport(retries=5))
+        self.applications = [
+            Application(Path(os.getenv("BENCHMARK_MANIFESTS_DIR")), "social-network", os.getenv("LOCUST_SOCIAL_NETWORK"), prometheus_client),
+            Application(Path(os.getenv("BENCHMARK_MANIFESTS_DIR")), "media-microservices", os.getenv("LOCUST_MEDIA_MICROSERVICES"), prometheus_client),
+            Application(Path(os.getenv("BENCHMARK_MANIFESTS_DIR")), "hotel-reservation", os.getenv("LOCUST_HOTEL_RESERVATION"), prometheus_client),
+            Application(Path(os.getenv("BENCHMARK_MANIFESTS_DIR")), "online-boutique", os.getenv("LOCUST_ONLINE_BOUTIQUE"), prometheus_client),
+            Application(Path(os.getenv("BENCHMARK_MANIFESTS_DIR")), "otel-demo", os.getenv("LOCUST_OTEL_DEMO"), prometheus_client),
+        ]
+
+    async def bootstrap(self):
+        ready_handles, load_handles = [], []
+        for application in self.applications:
+            application.deploy()
+            ready_handles.append(application.wait_for_ready())
+            load_handles.append(application.set_load(10, attempts=5))
+        await asyncio.gather(*ready_handles)
+        await asyncio.gather(*load_handles)
+
+    def control_loop(self):
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(self.bootstrap())
+
+        time.sleep(120)
+        while True:
+            pass
+
+        self.cleanup()
+
+    def cleanup(self):
+        for application in self.applications:
+            application.destroy()
 
 def recover(applications, deadline=timedelta(minutes=5)):
     end = datetime.now() + deadline
@@ -48,31 +82,9 @@ def recover(applications, deadline=timedelta(minutes=5)):
     raise Exception("could not recover within deadline")
 
 
-
 def main() -> None:
-    transport = AsyncHTTPTransport(retries=5)
-    prometheus_client = AsyncClient(base_url=os.getenv("PROMETHEUS_URL"),transport=transport)
-
-    application = Application(
-        Path(os.getenv("BENCHMARK_MANIFESTS_DIR")),
-        "social-network",
-        os.getenv("LOCUST_SOCIAL_NETWORK"),
-        prometheus_client,
-    )
-    if not application.deploy():
-        return
-
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(application.wait_for_ready())
-    if not loop.run_until_complete(application.set_load(20)):
-        return
-
-    time.sleep(60)
-    res = loop.run_until_complete(application.create_baseline_latency())
-    if res == True:
-        logger.info("successfully found latency baseline")
-    if not application.destroy():
-        return
+    controller = Controller()
+    controller.control_loop()
     return
 
     # transport = HTTPTransport(retries=5)

@@ -67,6 +67,25 @@ class Application:
         logger.info(f"{self.microservice_benchmark} k8s resources created")
         return True
 
+    def deploy_load(self) -> bool:
+        '''Creates the application's load generator k8s resources. Returns `True` if it succeeds and `False` otherwise'''
+
+        # This command is already asynchronous.
+        # We do care if creating any of the kubernetes resources fails.
+        logger.info(f"creating {self.microservice_benchmark} load generator k8s resources")
+        completed_process = subprocess.run(
+            f"kubectl apply -f {self.manifests_path}/{self.microservice_benchmark}/load.yaml",
+            shell=True,
+            check=False, # we don't want an exception to be raised non-zero exit code
+            capture_output=True
+        )
+        if completed_process.returncode != 0:
+            logger.warning(f"kubectl did not exit successfully: stdout[{completed_process.stdout}] stderr[{completed_process.stderr}]")
+            return False
+
+        logger.info(f"{self.microservice_benchmark} load generator k8s resources created")
+        return True
+
 
     async def wait_for_ready(self):
         logger.info(f"waiting for {self.microservice_benchmark} resources to be available")
@@ -106,10 +125,26 @@ class Application:
         if process.returncode != 0:
             stdout = await process.stdout.read()
             stderr = await process.stderr.read()
-            logger.warning(f"kubectl process did not exit successfully: stdout[{stdout}] stderr[{stderr}]")
-            return False
+            logger.info(f"kubectl wait {self.microservice_benchmark} jobs output: stdout[{stdout}] stderr[{stderr}]")
         logger.info(f"{self.microservice_benchmark} jobs have completed")
 
+        return True
+
+    def destroy_load(self):
+        '''Deletes the application's load generator k8s resources. Returns `True` if it succeeds and `False` otherwise'''
+
+        logger.info(f"deleting {self.microservice_benchmark} load generator k8s resources")
+        completed_process = subprocess.run(
+            f"kubectl delete -f {self.manifests_path}/{self.microservice_benchmark}/load.yaml",
+            shell=True,
+            check=False, # we don't want an exception to be raised on non-zero exit code
+            capture_output=True
+        )
+        if completed_process.returncode != 0:
+            logger.warning(f"kubectl did not exit successfully: stdout[{completed_process.stdout}] stderr[{completed_process.stderr}]")
+            return False
+
+        logger.info(f"{self.microservice_benchmark} load generator k8s resources deleted")
         return True
 
     def destroy(self):
@@ -129,31 +164,49 @@ class Application:
         logger.info(f"{self.microservice_benchmark} k8s resources deleted")
         return True
 
-    async def set_load(self, users: int, timeout: timedelta = timedelta(minutes=5), backoff_interval: timedelta = timedelta(seconds=10)):
-        end = datetime.now() + timeout
+    async def set_load(
+        self,
+        users: int,
+        spawn_rate: int = 20,
+        timeout: timedelta = timedelta(seconds=30),
+        backoff_interval: timedelta = timedelta(seconds=10),
+        attempts: int = 1
+    ):
         logger.info(f"{self.microservice_benchmark} setting load to {users}")
+        for i in range(attempts):
+            end = datetime.now() + timeout
 
-        while datetime.now() < end:
-            res = await self.locust_client.post(
-                "/swarm",
-                data={"user_count": users, "spawn_rate": 20}
-            )
+            while datetime.now() < end:
+                res = await self.locust_client.post(
+                    "/swarm",
+                    data={"user_count": users, "spawn_rate": spawn_rate}
+                )
 
-            if res.status_code != httpx.codes.OK:
-                logger.error(f"locust swarm failed: {res.status_code} {res.text}")
-                raise Exception("Locust")
+                if res.status_code != httpx.codes.OK:
+                    logger.error(f"locust swarm failed: {res.status_code} {res.text}")
+                    asyncio.sleep(backoff_interval.total_seconds())
+                    continue
 
-            res = await self.metric_user_count.query()
-            if not res:
-                continue
+                res = await self.metric_user_count.query()
+                if not res:
+                    await asyncio.sleep(backoff_interval.total_seconds())
+                    continue
 
-            current_users = int(res[0]["value"][1])
-            if (current_users == users):
-                logger.info(f"{self.microservice_benchmark} load set to {users}")
-                return True
+                current_users = int(res[0]["value"][1])
+                if (current_users == users):
+                    logger.info(f"{self.microservice_benchmark} load set to {users}")
+                    return True
 
-            logger.info(f"{self.microservice_benchmark} current load {current_users} != {users} desired. Retrying")
-            await asyncio.sleep(backoff_interval.total_seconds())
+                logger.info(f"{self.microservice_benchmark} current load {current_users} != {users} desired. Retrying")
+                await asyncio.sleep(backoff_interval.total_seconds())
+
+            if i == attempts-1:
+                raise Exception(f"Failed to set load for {self.microservice_benchmark}")
+
+            logger.info("failed to set load within deadline. Restarting load generator.")
+            self.destroy_load()
+            self.deploy_load()
+            await self.wait_for_ready()
 
         logger.error(f"failed to set {self.microservice_benchmark} load to {users} users")
         return False
@@ -164,50 +217,39 @@ class Application:
             logger.error(f"locust swarm failed: {res.status_code} {res.text}")
             raise Exception("Locust")
 
-    async def create_baseline_latency(
-        self, timeout: timedelta = timedelta(minutes=5), baseline_interval: timedelta = timedelta(minutes=1), backoff_interval: timedelta = timedelta(seconds=10)
-    ):
-        end = datetime.now() + timeout
-        logger.info(f"creating {self.microservice_benchmark} baseline")
-        while datetime.now() < end:
-            end_epoch = time.time()
-            start_epoch = end_epoch - baseline_interval.total_seconds()
+    async def stable(self, start_epoch, end_epoch) -> bool:
+        res = await self.metric_error_rate.query_range(start_epoch, end_epoch)
+        if not res:
+            logger.info(f"{self.microservice_benchmark} no error rate data: {res}")
+            return False
+        errors = [float(val) for _, val in res[0]['values'] if float(val) > self.slo_error_rate]
+        if len(errors) > 0:
+            logger.info(f"{self.microservice_benchmark} error rate exceeds slo {self.slo_error_rate} between [{start_epoch}; {end_epoch}]")
+            logger.debug(f"errors: {errors}")
+            return False
 
-            res = await self.metric_error_rate.query_range(start_epoch, end_epoch)
-            if not res:
-                logger.info(f"{self.microservice_benchmark} no error rate data: {res}")
-                await asyncio.sleep(backoff_interval.total_seconds())
-                continue
-            errors = [float(val) for _, val in res[0]['values'] if float(val) > self.slo_error_rate]
-            if len(errors) > 0:
-                logger.info(f"{self.microservice_benchmark} error rate exceeds slo {self.slo_error_rate} between [{start_epoch}; {end_epoch}]")
-                logger.debug(f"errors: {errors}")
-                await asyncio.sleep(backoff_interval.total_seconds())
-                continue
+        res = await self.metric_container_restarts.query_range(start_epoch, end_epoch)
+        if not res:
+            logger.info(f"{self.microservice_benchmark} no container restarts data")
+            return False
+        container_restarts = [int(val) for _, val in res[0]['values'] if int(val) > 0]
+        if len(container_restarts) > 0:
+            logger.info(f"{self.microservice_benchmark} had {len(container_restarts)} container restarts between [{start_epoch}; {end_epoch}]")
+            return False
+        return True
 
-            res = await self.metric_container_restarts.query_range(start_epoch, end_epoch)
-            if not res:
-                await asyncio.sleep(backoff_interval.total_seconds())
-                logger.info(f"{self.microservice_benchmark} no container restarts data")
-                continue
-            container_restarts = [int(val) for _, val in res[0]['values'] if int(val) > 0]
-            if len(container_restarts) > 0:
-                logger.info(f"{self.microservice_benchmark} had {len(container_restarts)} container restarts between [{start_epoch}; {end_epoch}]")
-                await asyncio.sleep(backoff_interval.total_seconds())
-                continue
+    async def set_baseline_latency(self, start_epoch, end_epoch) -> bool:
+        logger.info(f"{self.microservice_benchmark}: creating new latency baseline")
+        res = await self.metric_latency.query_range(start_epoch, end_epoch)
+        if not res:
+            logger.info(f"{self.microservice_benchmark} no latency data")
+            return False
+        latencies = res[0]['values']
+        if len(latencies) < (end_epoch-start_epoch):
+            logger.info(f"not enough samples for baseline latency: {len(latencies)} < {end_epoch-start_epoch}")
+            return False
 
-            res = await self.metric_latency.query_range(start_epoch, end_epoch)
-            if not res:
-                logger.info(f"{self.microservice_benchmark} no latency data")
-                await asyncio.sleep(backoff_interval.total_seconds())
-                continue
-            latencies = res[0]['values']
-            if len(latencies) < baseline_interval.total_seconds():
-                logger.info(f"not enough samples for baseline latency: {len(latencies)} < {baseline_interval.total_seconds()}")
-                await asyncio.sleep(backoff_interval.total_seconds())
-                continue
-            logger.info(f"{self.microservice_benchmark}: create new latency baseline")
-            latencies = [float(val) for _, val in latencies]
-            self.baseline_latency = latencies
-            return True
-        return False
+        latencies = [float(val) for _, val in latencies]
+        self.baseline_latency = latencies
+        logger.info(f"{self.microservice_benchmark}: created new latency baseline")
+        return True
