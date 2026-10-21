@@ -6,6 +6,7 @@ import httpx
 import random
 import numpy as np
 
+from typing import Set, Optional
 from datetime import datetime, timedelta
 from httpx import AsyncClient, AsyncHTTPTransport, Timeout
 from pathlib import Path
@@ -34,6 +35,7 @@ class Application:
 
         # To be set dynamically with create_baseline_latency
         self.baseline_latency = []
+        self.load = 0
 
         self.metric_user_count = PrometheusMetric(prometheus_client, LOCUST_USERS_TEMPLATE.render(
             service=f"locust-{microservice_benchmark}"
@@ -196,6 +198,7 @@ class Application:
 
                 current_users = int(res[0]["value"][1])
                 if (current_users == users):
+                    self.load = users
                     logger.info(f"{self.microservice_benchmark} load set to {users}")
                     return True
 
@@ -232,16 +235,29 @@ class Application:
             return False
         return True
 
+    async def restarted_pods(self, start_epoch, end_epoch) -> Optional[Set[str]]:
+        res = await self.metric_container_restarts.query_range(start_epoch, end_epoch)
+        if not res:
+            return None
+
+        restarted_pods = set()
+        for pod in res:
+            for _timestamp, value in pod["values"]:
+                if int(value) > 0:
+                    restarted_pods.add(pod["metric"]["pod"])
+        return restarted_pods
+
     async def slo_restart(self, start_epoch, end_epoch):
         '''Status of restarts SLO. Returns true if target SLO is satisfied.'''
 
-        res = await self.metric_container_restarts.query_range(start_epoch, end_epoch)
-        if not res:
-            logger.debug(f"{self.microservice_benchmark} no container restarts data")
+        restarted_pods = await self.restarted_pods(start_epoch, end_epoch)
+        if restarted_pods is None:
+            logger.info(f"{self.microservice_benchmark} no container restarts data")
             return False
-        container_restarts = [int(val) for _, val in res[0]['values'] if int(val) > 0]
-        if len(container_restarts) > 0:
-            logger.debug(f"{self.microservice_benchmark} had {len(container_restarts)} container restarts between [{start_epoch}; {end_epoch}]")
+
+
+        if len(restarted_pods) > 0:
+            logger.debug(f"{self.microservice_benchmark} had {len(restarted_pods)} container restarts between [{start_epoch}; {end_epoch}]")
             return False
 
         return True

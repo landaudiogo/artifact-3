@@ -28,14 +28,19 @@ LOCUST_ERROR_RATE_TEMPLATE = Template('''
 ''')
 
 CONTAINER_START_WINDOW_TEMPLATE = Template('''
-    (
-      count(
-        container_start_time_seconds{ namespace = "{{ namespace }}" }
-        unless
-        container_start_time_seconds{ namespace = "{{ namespace }}" } offset 10s
-      ) > bool 0
+    max by (pod) (
+      (
+        (
+          container_start_time_seconds{ namespace = "{{ namespace }}", container != "" }
+          unless
+          container_start_time_seconds{ namespace = "{{ namespace }}", container != "" } offset 10s
+        ) > bool 0
+      )
+      or
+      (
+        container_start_time_seconds{ namespace = "{{ namespace }}", container != "" } * 0
+      )
     )
-    or vector(0)
 ''')
 
 class PrometheusKPIs:
