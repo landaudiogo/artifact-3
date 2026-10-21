@@ -21,7 +21,7 @@ class BlockLatencyParameters:
 class BlockLatency(FaultTrait):
 
 
-    def __init__(self, kubernetes_client, node_chaosd_map, spec):
+    def __init__(self, kubernetes_client, node_chaosd_map: dict[str, Client], spec):
         self.kubernetes_client = kubernetes_client
         self.node_chaosd_map = node_chaosd_map
         self.spec = spec

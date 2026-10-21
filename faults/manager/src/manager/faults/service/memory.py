@@ -97,9 +97,10 @@ class MemoryFaultParameters:
 class MemoryReduce(FaultTrait):
 
 
-    def __init__(self, kubernetes_client, prometheus_client, spec):
+    def __init__(self, kubernetes_client, prometheus_client, node_chaosd_map: dict[str, Client], spec):
         self.kubernetes_client = kubernetes_client
         self.prometheus_client = prometheus_client
+        self.node_chaosd_map = node_chaosd_map
         self.spec = spec
 
         # prepare attributes
@@ -139,16 +140,14 @@ class MemoryReduce(FaultTrait):
                 )
 
     def execute(self):
-        node_chaosd = {}
-
         faults = self.fault_parameters
         self.fault_parameters = []
         for fault in faults:
             logger.debug(f"inject {fault}")
-            if node_chaosd.get(fault.node) is None:
-                node_chaosd[fault.node] = Client(base_url=f"http://{fault.node}:31767")
+            chaosd = self.node_chaosd_map.get(fault.node)
+            if chaosd is None:
+                raise Exception(f"Missing node chaosd entry for `{fault.node}`")
 
-            chaosd = node_chaosd[fault.node]
             data = {
                 "uid": fault.uid,
                 "attackCmd": f"service-memory-reduce attack --uid {fault.uid} --cgroup {fault.cgroup} --memory-max {fault.memory_max}",
@@ -165,14 +164,12 @@ class MemoryReduce(FaultTrait):
             logger.info(f"started memory reduce {fault.uid}")
 
     def recover(self):
-        node_chaosd = {}
-        
         for fault in self.fault_parameters:
             logger.debug(f"recover {fault}")
-            if node_chaosd.get(fault.node) is None:
-                node_chaosd[fault.node] = Client(base_url=f"http://{fault.node}:31767")
+            chaosd = self.node_chaosd_map.get(fault.node)
+            if chaosd is None:
+                raise Exception(f"Missing node chaosd entry for `{fault.node}`")
 
-            chaosd = node_chaosd[fault.node]
             res = chaosd.delete(f"/api/attack/{fault.uid}")
             if res.status_code != httpx.codes.OK:
                 logger.error(f"chaosd request failed: {res.status_code} {res.text}")

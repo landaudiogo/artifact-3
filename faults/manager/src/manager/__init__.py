@@ -19,7 +19,6 @@ from httpx import AsyncClient, AsyncHTTPTransport
 from pathlib import Path
 from .faults.fault import Fault
 
-from .kpis.prometheus import PrometheusKPIs
 from .applications import Application
 
 
@@ -206,20 +205,20 @@ def main() -> None:
                 "label_selector": "app=review-storage-mongodb"
             }
         },
-        # {
-        #     "type": "service-memory-reduce",
-        #     "spec": {
-        #         "namespace": "online-boutique",
-        #         "label_selector": "app=frontend"
-        #     }
-        # },
-        # {
-        #     "type": "service-cpu-stress",
-        #     "spec": {
-        #         "namespace": "social-network",
-        #         "label_selector": "app=post-storage-mongodb"
-        #     }
-        # },
+        {
+            "type": "service-memory-reduce",
+            "spec": {
+                "namespace": "online-boutique",
+                "label_selector": "app=frontend"
+            }
+        },
+        {
+            "type": "service-cpu-stress",
+            "spec": {
+                "namespace": "social-network",
+                "label_selector": "app=post-storage-mongodb"
+            }
+        },
     ]
     
     controller = Controller(faults=faults)

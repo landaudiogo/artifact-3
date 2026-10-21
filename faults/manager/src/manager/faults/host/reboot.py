@@ -21,18 +21,18 @@ class RebootParameters:
 class Reboot(FaultTrait):
 
 
-    def __init__(self, spec):
+    def __init__(self, node_chaosd_map: dict[str, Client], spec):
         self.fault = RebootParameters(
             uid=str(uuid4()),
             node=spec["node"],
         )
+        self.chaosd = node_chaosd_map[spec["node"]]
 
     def prepare(self):
         pass
 
     def execute(self):
         logger.debug(f"inject {self.fault}")
-        chaosd = Client(base_url=f"http://{self.fault.node}:31767", timeout=10.0)
 
         data = {
             "uid": self.fault.uid,
@@ -40,10 +40,10 @@ class Reboot(FaultTrait):
             "recoverCmd": f"echo no-op",
         }
 
-        logger.debug(f"chaosd request: {chaosd.base_url}/api/attack/user_defined {data}")
-        res = chaosd.post("/api/attack/user_defined", json=data)
+        logger.debug(f"chaosd request: {self.chaosd.base_url}/api/attack/user_defined {data}")
+        res = self.chaosd.post("/api/attack/user_defined", json=data)
         if res.status_code != httpx.codes.OK:
-            logger.warn(f"chaosd request failed: {self.fault.uid}")
+            logger.warning(f"chaosd request failed: {self.fault.uid}")
             logger.debug(f"status code: {res.status_code} {res.text}")
             raise Exception("Chaosd")
         logger.info(f"started host reboot: {self.fault}")
@@ -52,9 +52,8 @@ class Reboot(FaultTrait):
     def recover(self):
         self._wait_for_node_up(timedelta(minutes=10))
         logger.debug(f"recover {self.fault}")
-        chaosd = Client(base_url=f"http://{self.fault.node}:31767", timeout=10.0)
 
-        res = chaosd.delete(f"/api/attack/{self.fault.uid}")
+        res = self.chaosd.delete(f"/api/attack/{self.fault.uid}")
         if res.status_code != httpx.codes.OK:
             logger.error(f"chaosd request failed: {res.status_code} {res.text}")
             raise Exception("Chaosd")
@@ -65,8 +64,7 @@ class Reboot(FaultTrait):
         end = datetime.now() + deadline
         while datetime.now() < end:
             try:
-                chaosd = Client(base_url=f"http://{self.fault.node}:31767", timeout=10.0)
-                res = chaosd.get("/api/system/health")
+                res = self.chaosd.get("/api/system/health")
                 if res.status_code == httpx.codes.OK:
                     logger.info(f"node {self.fault.node} ready")
                     return
@@ -82,13 +80,12 @@ class Reboot(FaultTrait):
         end = datetime.now() + deadline
         while datetime.now() < end:
             try:
-                chaosd = Client(base_url=f"http://{self.fault.node}:31767", timeout=10.0)
-                res = chaosd.get("/api/system/health")
+                res = self.chaosd.get("/api/system/health")
                 if res.status_code == httpx.codes.OK:
                     logger.info(f"node {self.fault.node} ready")
                     continue
             except Exception as e:
-                logger.info(f"chaosd instance {chaosd.base_url} down")
+                logger.info(f"chaosd instance {self.chaosd.base_url} down")
                 logger.debug(f"reason: {e}")
                 return
             

@@ -44,13 +44,13 @@ class Fault:
     def from_manifest(self, manifest) -> FaultTrait:
         match manifest["type"]:
             case "service-cpu-stress":
-                return CPUStress(client.CoreV1Api(), self.prometheus_client, manifest["spec"])
+                return CPUStress(client.CoreV1Api(), self.prometheus_client, self.node_chaosd_map, manifest["spec"])
             case "service-cpu-reduce":
-                return CPUReduce(client.CoreV1Api(), self.prometheus_client, manifest["spec"])
+                return CPUReduce(client.CoreV1Api(), self.prometheus_client, self.node_chaosd_map, manifest["spec"])
             case "service-memory-stress":
                 return MemoryStress(client.CustomObjectsApi(), manifest["spec"])
             case "service-memory-reduce":
-                return MemoryReduce(client.CoreV1Api(), self.prometheus_client, manifest["spec"])
+                return MemoryReduce(client.CoreV1Api(), self.prometheus_client, self.node_chaosd_map, manifest["spec"])
             case "service-net-partition":
                 return NetworkPartition(client.CustomObjectsApi(), manifest["spec"])
             case "service-net-bandwidth":
@@ -60,19 +60,22 @@ class Fault:
             case "service-block-latency":
                 return BlockLatency(client.CoreV1Api(), self.node_chaosd_map, manifest["spec"])
             case "host-cpu-stress":
-                return HostCPUStress(manifest["spec"])
+                return HostCPUStress(self.node_chaosd_map, manifest["spec"])
             case "host-block-latency":
-                return HostBlockLatency(manifest["spec"])
+                return HostBlockLatency(self.node_chaosd_map, manifest["spec"])
             case "host-net-partition":
                 return HostNetworkPartition(client.CustomObjectsApi(), self.prometheus_client, manifest["spec"],)
             case "host-net-bandwidth":
                 return HostNetworkBandwidth(client.CustomObjectsApi(), self.prometheus_client, manifest["spec"])
             case "host-reboot":
-                return HostReboot(manifest["spec"])
+                return HostReboot(self.node_chaosd_map, manifest["spec"])
             case "postgres-table-lock":
                 return PostgresLockContention(client.CoreV1Api(), manifest["spec"])
             case "mongodb-fsync-lock":
                 return MongodbFsyncLock(client.CoreV1Api(), manifest["spec"])
+            case _:
+                raise Exception(f"Missing fault type `{manifest['type']}`")
+            
 
     # application_mongodb = MongodbFsyncLock(
     #     client.CoreV1Api(),
