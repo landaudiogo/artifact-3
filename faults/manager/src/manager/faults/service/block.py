@@ -1,6 +1,7 @@
 from uuid import uuid4
 from dataclasses import dataclass
 from httpx import Client
+from httpx_retries import Retry, RetryTransport
 
 import logging
 import httpx
@@ -20,8 +21,9 @@ class BlockLatencyParameters:
 class BlockLatency(FaultTrait):
 
 
-    def __init__(self, kubernetes_client, spec):
+    def __init__(self, kubernetes_client, node_chaosd_map, spec):
         self.kubernetes_client = kubernetes_client
+        self.node_chaosd_map = node_chaosd_map
         self.spec = spec
 
         # prepare parameters
@@ -39,16 +41,14 @@ class BlockLatency(FaultTrait):
             )
     
     def execute(self):
-        node_chaosd = {}
-
         faults = self.fault_parameters
         self.fault_parameters = []
         for fault in faults:
             logger.debug(f"inject {fault}")
-            if node_chaosd.get(fault.node) is None:
-                node_chaosd[fault.node] = Client(base_url=f"http://{fault.node}:31767", timeout=10.0)
+            chaosd = self.node_chaosd_map.get(fault.node)
+            if chaosd is None:
+                raise Exception(f"Missing node chaosd entry for `{fault.node}`")
 
-            chaosd = node_chaosd[fault.node]
             data = {
                 "uid": fault.uid,
                 "attackCmd": f"service-block-latency attack {fault.pod_uid}",
@@ -58,21 +58,20 @@ class BlockLatency(FaultTrait):
             logger.debug(f"chaosd request: {chaosd.base_url}/api/attack/user_defined {data}")
             res = chaosd.post("/api/attack/user_defined", json=data)
             if res.status_code != httpx.codes.OK:
-                logger.warn(f"chaosd request failed: {fault.uid}")
+                logger.warning(f"chaosd request failed: {fault.uid}")
                 logger.debug(f"status code: {res.status_code} {res.text}")
                 continue
             self.fault_parameters.append(fault)
             logger.info(f"started block latency {fault.uid}")
 
     def recover(self):
-        node_chaosd = {}
-        
         for fault in self.fault_parameters:
             logger.debug(f"recover {fault}")
-            if node_chaosd.get(fault.node) is None:
-                node_chaosd[fault.node] = Client(base_url=f"http://{fault.node}:31767", timeout=10.0)
 
-            chaosd = node_chaosd[fault.node]
+            chaosd = self.node_chaosd_map.get(fault.node)
+            if chaosd is None:
+                raise Exception(f"Missing node chaosd entry for `{fault.node}`")
+
             res = chaosd.delete(f"/api/attack/{fault.uid}")
             if res.status_code != httpx.codes.OK:
                 logger.error(f"chaosd request failed: {res.status_code} {res.text}")

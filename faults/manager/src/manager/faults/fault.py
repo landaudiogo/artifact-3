@@ -1,5 +1,6 @@
 from kubernetes import client, config
 from httpx import Client, HTTPTransport
+from httpx_retries import Retry, RetryTransport
 
 from . import FaultTrait
 
@@ -12,7 +13,7 @@ from .service.block import BlockLatency
 from .host.cpu import CPUStress as HostCPUStress
 from .host.block import BlockLatency as HostBlockLatency
 from .host.net import (
-    NetworkPartition as HostNetworkPartition, 
+    NetworkPartition as HostNetworkPartition,
     NetworkBandwidth as HostNetworkBandwidth
 )
 from .host.reboot import Reboot as HostReboot
@@ -27,37 +28,45 @@ config.load_kube_config()
 
 
 class Fault:
-    @staticmethod
-    def from_manifest(manifest) -> FaultTrait:
-        transport = HTTPTransport(retries=5)
-        prometheus_client = Client(base_url="http://k8s-master:30954", transport=transport)
 
+
+    def __init__(self):
+        self.prometheus_client = Client(base_url="http://k8s-master:30954", transport=HTTPTransport(retries=5))
+
+        node_chaosd_map = {}
+        for node in client.CoreV1Api().list_node().items:
+            internal_ip = next(filter(lambda address: address.type=="InternalIP", node.status.addresses)).address
+            retry = Retry(total=5, backoff_factor=0.5)
+            transport = RetryTransport(retry=retry)
+            node_chaosd_map[node.metadata.name] = Client(base_url=f"http://{internal_ip}:31767", timeout=10.0, transport=transport)
+        self.node_chaosd_map = node_chaosd_map
+
+    def from_manifest(self, manifest) -> FaultTrait:
         match manifest["type"]:
             case "service-cpu-stress":
-                return CPUStress(client.CoreV1Api(), prometheus_client, manifest["spec"])
+                return CPUStress(client.CoreV1Api(), self.prometheus_client, manifest["spec"])
             case "service-cpu-reduce":
-                return CPUReduce(client.CoreV1Api(), prometheus_client, manifest["spec"])
+                return CPUReduce(client.CoreV1Api(), self.prometheus_client, manifest["spec"])
             case "service-memory-stress":
                 return MemoryStress(client.CustomObjectsApi(), manifest["spec"])
             case "service-memory-reduce":
-                return MemoryReduce(client.CoreV1Api(), prometheus_client, manifest["spec"])
+                return MemoryReduce(client.CoreV1Api(), self.prometheus_client, manifest["spec"])
             case "service-net-partition":
                 return NetworkPartition(client.CustomObjectsApi(), manifest["spec"])
             case "service-net-bandwidth":
-                return NetworkBandwidth(client.CoreV1Api(), client.CustomObjectsApi(), prometheus_client, manifest["spec"])
+                return NetworkBandwidth(client.CoreV1Api(), client.CustomObjectsApi(), self.prometheus_client, manifest["spec"])
             case "service-delete-pods":
                 return DeletePods(client.AppsV1Api(), manifest["spec"])
             case "service-block-latency":
-                return BlockLatency(client.CoreV1Api(), manifest["spec"])
+                return BlockLatency(client.CoreV1Api(), self.node_chaosd_map, manifest["spec"])
             case "host-cpu-stress":
                 return HostCPUStress(manifest["spec"])
             case "host-block-latency":
                 return HostBlockLatency(manifest["spec"])
             case "host-net-partition":
-                return HostNetworkPartition(client.CustomObjectsApi(), prometheus_client, manifest["spec"],)
+                return HostNetworkPartition(client.CustomObjectsApi(), self.prometheus_client, manifest["spec"],)
             case "host-net-bandwidth":
-                return HostNetworkBandwidth(client.CustomObjectsApi(), prometheus_client, manifest["spec"])
-                pass
+                return HostNetworkBandwidth(client.CustomObjectsApi(), self.prometheus_client, manifest["spec"])
             case "host-reboot":
                 return HostReboot(manifest["spec"])
             case "postgres-table-lock":
@@ -66,7 +75,7 @@ class Fault:
                 return MongodbFsyncLock(client.CoreV1Api(), manifest["spec"])
 
     # application_mongodb = MongodbFsyncLock(
-    #     client.CoreV1Api(), 
+    #     client.CoreV1Api(),
     #     {
     #         "host": "post-storage-mongodb.social-network",
     #         "port": "27017",
@@ -84,7 +93,7 @@ class Fault:
     # print("media", media_microservices.impacted_period(inject_start, inject_end))
 
     # application_postgres = PostgresLockContention(
-    #     client.CoreV1Api(), 
+    #     client.CoreV1Api(),
     #     {
     #         "host": "postgresql.otel-demo",
     #         "port": "5432",
@@ -118,8 +127,8 @@ class Fault:
     # host_network_bandwidth.recover()
 
     # host_network_partition = HostNetworkPartition(
-    #     client.CustomObjectsApi(), 
-    #     prometheus_client, 
+    #     client.CustomObjectsApi(),
+    #     prometheus_client,
     #     {
     #         "node": "k8s-worker1",
     #         "destination_node": "k8s-worker3",

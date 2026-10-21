@@ -17,7 +17,6 @@ import asyncio
 from datetime import datetime, timedelta
 from httpx import AsyncClient, AsyncHTTPTransport
 from pathlib import Path
-
 from .faults.fault import Fault
 
 from .kpis.prometheus import PrometheusKPIs
@@ -39,6 +38,7 @@ class Controller:
         if faults is None:
             faults = []
         self.faults = faults
+        self.fault_creator = Fault()
 
 
     async def bootstrap(self):
@@ -134,7 +134,7 @@ class Controller:
         await asyncio.gather(*set_load_handles)
 
     async def inject_fault(self, fault, fault_interval: timedelta = timedelta(minutes=1)):
-        fault = Fault.from_manifest(fault)
+        fault = self.fault_creator.from_manifest(fault)
         fault.prepare()
         fault.execute()
         start_epoch = time.time()
@@ -200,33 +200,30 @@ def recover(applications, deadline=timedelta(minutes=5)):
 def main() -> None:
     faults = [
         {
-            "type": "service-memory-reduce",
-            "spec": {
-                "namespace": "online-boutique",
-                "label_selector": "app=frontend"
-            }
-        },
-        {
-            "type": "service-cpu-stress",
-            "spec": {
-                "namespace": "social-network",
-                "label_selector": "app=post-storage-mongodb"
-            }
-        },
-        {
             "type": "service-block-latency",
             "spec": {
                 "namespace": "media-microservices",
                 "label_selector": "app=review-storage-mongodb"
             }
         },
+        # {
+        #     "type": "service-memory-reduce",
+        #     "spec": {
+        #         "namespace": "online-boutique",
+        #         "label_selector": "app=frontend"
+        #     }
+        # },
+        # {
+        #     "type": "service-cpu-stress",
+        #     "spec": {
+        #         "namespace": "social-network",
+        #         "label_selector": "app=post-storage-mongodb"
+        #     }
+        # },
     ]
-
+    
     controller = Controller(faults=faults)
     controller.control_loop()
-    # loop = asyncio.get_event_loop()
-    # loop.run_until_complete(controller.bootstrap())
-    # loop.run_until_complete(controller.restart_applications(['online-boutique']))
     return
 
 
