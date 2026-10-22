@@ -27,7 +27,8 @@ LOCUST_ERROR_RATE_TEMPLATE = Template('''
     / rate(locust_requests_num_requests{ name='Aggregated', service="{{ service }}" }[10s])
 ''')
 
-CONTAINER_START_WINDOW_TEMPLATE = Template('''
+# Provide a rising edge when container start or stops
+CONTAINER_START_STOP_RE_TEMPLATE = Template('''
     max by (pod) (
       (
         (
@@ -38,7 +39,19 @@ CONTAINER_START_WINDOW_TEMPLATE = Template('''
       )
       or
       (
+        (
+          container_start_time_seconds{ namespace = "{{ namespace }}", container != "" } offset 10s
+          unless
+          container_start_time_seconds{ namespace = "{{ namespace }}", container != "" }
+        ) > bool 0
+      )
+      or
+      (
         container_start_time_seconds{ namespace = "{{ namespace }}", container != "" } * 0
+      )
+      or
+      (
+        container_start_time_seconds{ namespace = "{{ namespace }}", container != "" } offset 10s * 0
       )
     )
 ''')

@@ -16,7 +16,7 @@ from ..kpis.prometheus import (
     LOCUST_LATENCY_95_TEMPLATE,
     LOCUST_USERS_TEMPLATE,
     LOCUST_ERROR_RATE_TEMPLATE,
-    CONTAINER_START_WINDOW_TEMPLATE,
+    CONTAINER_START_STOP_RE_TEMPLATE,
 )
 from ..kpis import stats
 
@@ -55,7 +55,7 @@ class Application:
         self.metric_error_rate = PrometheusMetric(prometheus_client, LOCUST_ERROR_RATE_TEMPLATE.render(
             service=f"locust-{microservice_benchmark}"
         ))
-        self.metric_container_restarts = PrometheusMetric(prometheus_client, CONTAINER_START_WINDOW_TEMPLATE.render(
+        self.metric_container_restarts = PrometheusMetric(prometheus_client, CONTAINER_START_STOP_RE_TEMPLATE.render(
             namespace=microservice_benchmark
         ))
 
