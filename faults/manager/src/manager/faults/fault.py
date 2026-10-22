@@ -1,5 +1,5 @@
 from kubernetes import client, config
-from httpx import Client, HTTPTransport
+from httpx import Client, HTTPTransport, Timeout
 from httpx_retries import Retry, RetryTransport
 
 from . import FaultTrait
@@ -25,8 +25,6 @@ from .application.mongodb import MongodbFsyncLock
 config.load_kube_config()
 
 
-
-
 class Fault:
 
 
@@ -36,9 +34,14 @@ class Fault:
         node_chaosd_map = {}
         for node in client.CoreV1Api().list_node().items:
             internal_ip = next(filter(lambda address: address.type=="InternalIP", node.status.addresses)).address
-            retry = Retry(total=5, backoff_factor=0.5)
+            retry = Retry(
+                total=10,
+                backoff_factor=0.5,
+                max_backoff_wait=30,
+                allowed_methods=["HEAD", "GET", "PUT", "DELETE", "OPTIONS", "TRACE", "POST"]
+            )
             transport = RetryTransport(retry=retry)
-            node_chaosd_map[node.metadata.name] = Client(base_url=f"http://{internal_ip}:31767", timeout=10.0, transport=transport)
+            node_chaosd_map[node.metadata.name] = Client(base_url=f"http://{internal_ip}:31767", timeout=Timeout(10, connect=30), transport=transport)
         self.node_chaosd_map = node_chaosd_map
 
     def from_manifest(self, manifest) -> FaultTrait:

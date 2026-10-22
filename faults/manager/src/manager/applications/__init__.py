@@ -4,9 +4,9 @@ import subprocess
 import time
 import httpx
 import random
+from httpx_retries import Retry, RetryTransport
 import numpy as np
 
-from typing import Set, Optional
 from datetime import datetime, timedelta
 from httpx import AsyncClient, AsyncHTTPTransport, Timeout
 from pathlib import Path
@@ -30,8 +30,15 @@ class Application:
     def __init__(self, manifests_path: Path, microservice_benchmark: str, locust_url: str, prometheus_client: AsyncClient, slo_error_rate: float = 0.05):
         self.manifests_path = manifests_path
         self.microservice_benchmark = microservice_benchmark
-        
-        self.locust_client = AsyncClient(base_url=locust_url, transport=AsyncHTTPTransport(retries=10), timeout=Timeout(10, connect=30))
+
+        retry = Retry(
+            total=10,
+            backoff_factor=0.5,
+            max_backoff_wait=30,
+            allowed_methods=["HEAD", "GET", "PUT", "DELETE", "OPTIONS", "TRACE", "POST"]
+        )
+        transport = RetryTransport(retry=retry)
+        self.locust_client = AsyncClient(base_url=locust_url, transport=transport, timeout=Timeout(10, connect=30))
 
         # To be set dynamically with create_baseline_latency
         self.baseline_latency = []
@@ -68,6 +75,7 @@ class Application:
             logger.warning(f"kubectl did not exit successfully: stdout[{completed_process.stdout}] stderr[{completed_process.stderr}]")
             return False
 
+        self.baseline_latency = []
         logger.info(f"{self.microservice_benchmark} k8s resources created")
         return True
 
@@ -165,6 +173,7 @@ class Application:
             logger.warning(f"kubectl did not exit successfully: stdout[{completed_process.stdout}] stderr[{completed_process.stderr}]")
             return False
 
+        self.baseline_latency = []
         logger.info(f"{self.microservice_benchmark} k8s resources deleted")
         return True
 
@@ -181,14 +190,19 @@ class Application:
             end = datetime.now() + timeout
 
             while datetime.now() < end:
-                res = await self.locust_client.post(
-                    "/swarm",
-                    data={"user_count": users, "spawn_rate": spawn_rate}
-                )
+                try:
+                    res = await self.locust_client.post(
+                        "/swarm",
+                        data={"user_count": users, "spawn_rate": spawn_rate}
+                    )
+                except Exception as e:
+                    logger.warning(f"{self.microservice_benchmark} failed locust post request. Exception: {e}")
+                    await asyncio.sleep(backoff_interval.total_seconds())
+                    continue
 
                 if res.status_code != httpx.codes.OK:
                     logger.error(f"locust swarm failed: {res.status_code} {res.text}")
-                    asyncio.sleep(backoff_interval.total_seconds())
+                    await asyncio.sleep(backoff_interval.total_seconds())
                     continue
 
                 res = await self.metric_user_count.query()
@@ -235,32 +249,17 @@ class Application:
             return False
         return True
 
-    async def restarted_pods(self, start_epoch, end_epoch) -> Optional[Set[str]]:
+    async def restarted_pods(self, start_epoch, end_epoch) -> set[str]:
+        restarted_pods = set()
         res = await self.metric_container_restarts.query_range(start_epoch, end_epoch)
         if not res:
-            return None
+            return restarted_pods
 
-        restarted_pods = set()
         for pod in res:
             for _timestamp, value in pod["values"]:
                 if int(value) > 0:
                     restarted_pods.add(pod["metric"]["pod"])
         return restarted_pods
-
-    async def slo_restart(self, start_epoch, end_epoch):
-        '''Status of restarts SLO. Returns true if target SLO is satisfied.'''
-
-        restarted_pods = await self.restarted_pods(start_epoch, end_epoch)
-        if restarted_pods is None:
-            logger.info(f"{self.microservice_benchmark} no container restarts data")
-            return False
-
-
-        if len(restarted_pods) > 0:
-            logger.debug(f"{self.microservice_benchmark} had {len(restarted_pods)} container restarts between [{start_epoch}; {end_epoch}]")
-            return False
-
-        return True
 
     async def slo_latency(self, start_epoch, end_epoch):
         """Status of latency SLO.
@@ -282,13 +281,16 @@ class Application:
             return False
 
         compare_latency = [float(val) for _, val in res[0]['values']]
-        has_effect = stats.has_effect(self.baseline_latency, compare_latency) 
+        has_effect = stats.has_effect(self.baseline_latency, compare_latency)
         relative_latency = np.median(compare_latency) / np.median(self.baseline_latency)
         logger.debug(f"{self.microservice_benchmark} has_effect={has_effect} relative_latency={relative_latency}")
         return not (has_effect and (relative_latency > 2))
 
     async def stable(self, start_epoch, end_epoch) -> bool:
-        return (await self.slo_error(start_epoch, end_epoch)) and (await self.slo_restart(start_epoch, end_epoch))
+        return (
+            (await self.slo_error(start_epoch, end_epoch))
+            and (len(await self.restarted_pods(start_epoch, end_epoch)) == 0)
+        )
 
     async def set_baseline_latency(self, start_epoch, end_epoch) -> bool:
         logger.debug(f"{self.microservice_benchmark}: creating new latency baseline")

@@ -3,7 +3,7 @@ from kubernetes.client import V1Scale, V1ScaleSpec
 
 import logging
 
-from .. import FaultTrait
+from .. import ExpectedRestarts, FaultTrait, NamespaceRestart
 
 logger = logging.getLogger(__name__)
 
@@ -24,6 +24,9 @@ class DeletePods(FaultTrait):
 
         # prepare output
         self.deployments = []
+
+    def expected_restarts(self) -> ExpectedRestarts:
+        return NamespaceRestart(self.spec["namespace"])
 
     def prepare(self):
         res = self.kubernetes_client.list_namespaced_deployment(

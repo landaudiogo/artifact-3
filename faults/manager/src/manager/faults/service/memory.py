@@ -10,7 +10,7 @@ import json
 import httpx
 import logging
 
-from .. import FaultTrait
+from .. import ExpectedRestarts, FaultTrait, NamespaceRestart
 
 logger = logging.getLogger(__name__)
 
@@ -51,6 +51,9 @@ class MemoryStress(FaultTrait):
         self.kubernetes_client = kubernetes_client
         self.spec = spec
         self.uuid = str(uuid4())
+
+    def expected_restarts(self) -> ExpectedRestarts:
+        return NamespaceRestart(self.spec["namespace"])
 
     def prepare(self):
         pass
@@ -105,6 +108,9 @@ class MemoryReduce(FaultTrait):
 
         # prepare attributes
         self.fault_parameters = [] 
+
+    def expected_restarts(self) -> ExpectedRestarts:
+        return NamespaceRestart(self.spec["namespace"])
 
     def prepare(self):
         now = time.time()

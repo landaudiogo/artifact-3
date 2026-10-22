@@ -2,6 +2,8 @@ import os
 import time
 import logging
 
+from manager.faults import HostRestart, NamespaceRestart
+
 logging.basicConfig(
     level=os.environ.get("LOG_LEVEL", "INFO").upper(),
     format="%(asctime)s [%(levelname)s] %(name)s - %(message)s"
@@ -58,8 +60,8 @@ class Controller:
     ):
         for attempt in range(attempts):
             end = datetime.now() + deadline
-            violating_applications = set()
             while datetime.now() < end:
+                violating_applications = set()
                 end_epoch = time.time()
                 start_epoch = end_epoch - baseline_interval.total_seconds()
                 logger.debug(f"attempting new baseline period [{start_epoch}; {end_epoch}]")
@@ -128,7 +130,7 @@ class Controller:
             application.destroy()
             application.deploy()
             wait_ready_handles.append(application.wait_for_ready())
-            set_load_handles.append(application.set_load(load))
+            set_load_handles.append(application.set_load(load, attempts=5))
         await asyncio.gather(*wait_ready_handles)
         await asyncio.gather(*set_load_handles)
 
@@ -138,30 +140,42 @@ class Controller:
         fault.execute()
         start_epoch = time.time()
         await asyncio.sleep(fault_interval.total_seconds())
+        fault.recover()
         end_epoch = time.time()
         logger.info(f"fault injection interval [{start_epoch}; {end_epoch}]")
-        fault.recover()
         error_handles, restart_handles, latency_handles = [], [], []
         for application in self.applications:
             error_handles.append(application.slo_error(start_epoch, end_epoch))
-            restart_handles.append(application.slo_restart(start_epoch, end_epoch))
+            restart_handles.append(application.restarted_pods(start_epoch, end_epoch))
             latency_handles.append(application.slo_latency(start_epoch, end_epoch))
 
-        restart_violations = [application.microservice_benchmark for restart_slo, application in zip(await asyncio.gather(*restart_handles), self.applications) if not restart_slo]
-        if len(restart_violations) > 0:
-            logger.info(f"{restart_violations} had restart SLO violations during fault injection period")
+        for restarts, application in zip(await asyncio.gather(*restart_handles), self.applications):
+            if (len(restarts) > 0) and (fault.expected_restarts() not in [HostRestart(), NamespaceRestart(application.microservice_benchmark)]):
+                logger.warning(f"{application.microservice_benchmark} had unexpected restarts")
+            elif (len(restarts) == 0) and (fault.expected_restarts() in [HostRestart(), NamespaceRestart(application.microservice_benchmark)]):
+                logger.warning(f"{application.microservice_benchmark} had no expected restarts")
+            elif (len(restarts) > 0) and (fault.expected_restarts() in [HostRestart(), NamespaceRestart(application.microservice_benchmark)]):
+                logger.info(f"{application.microservice_benchmark} has restarts for {fault.expected_restarts()}")
 
-        error_violations = [application.microservice_benchmark for error_slo, application in zip(await asyncio.gather(*error_handles), self.applications) if not error_slo]
+        error_violations = [
+            application.microservice_benchmark
+            for error_slo, application in zip(await asyncio.gather(*error_handles), self.applications)
+            if not error_slo
+        ]
         if len(error_violations) > 0:
             logger.info(f"{error_violations} had error SLO violations during fault injection period")
 
-        latency_violations = [application.microservice_benchmark for latency_slo, application in zip(await asyncio.gather(*latency_handles), self.applications) if not latency_slo]
+        latency_violations = [
+            application.microservice_benchmark
+            for latency_slo, application in zip(await asyncio.gather(*latency_handles), self.applications)
+            if not latency_slo
+        ]
         if len(latency_violations) > 0:
             logger.info(f"{latency_violations} had latency SLO violations during fault injection period")
 
     def control_loop(self):
         loop = asyncio.get_event_loop()
-        # loop.run_until_complete(self.bootstrap())
+        loop.run_until_complete(self.bootstrap())
 
         for fault in self.faults:
             loop.run_until_complete(self.create_baseline())
@@ -173,36 +187,12 @@ class Controller:
         for application in self.applications:
             application.destroy()
 
-def recover(applications, deadline=timedelta(minutes=5)):
-    end = datetime.now() + deadline
-    while datetime.now() < end:
-        application_recovery = {}
-        current_epoch = time.time()
-        recovered = True
-        for application, kpis in applications.items():
-            impacted = kpis.impacted_period(current_epoch-60, current_epoch)
-            # The window to evaluate restarts is slightly bigger
-            containers_started = kpis.containers_started(current_epoch-80, current_epoch)
-            application_recovery[application] = {"kpis": impacted, "containers_started": containers_started}
-            if impacted or containers_started:
-                recovered = False
-            if not containers_started:
-                kpis.set_baseline_latency(current_epoch-60, current_epoch)
-
-        print("recovery status:", application_recovery)
-        if recovered:
-            return
-        time.sleep(10)
-    raise Exception("could not recover within deadline")
-
-
 def main() -> None:
     faults = [
         {
-            "type": "service-block-latency",
+            "type": "host-reboot",
             "spec": {
-                "namespace": "media-microservices",
-                "label_selector": "app=review-storage-mongodb"
+                "node": "k8s-worker3",
             }
         },
         {
@@ -213,6 +203,13 @@ def main() -> None:
             }
         },
         {
+            "type": "service-block-latency",
+            "spec": {
+                "namespace": "media-microservices",
+                "label_selector": "app=review-storage-mongodb"
+            }
+        },
+        {
             "type": "service-cpu-stress",
             "spec": {
                 "namespace": "social-network",
@@ -220,7 +217,7 @@ def main() -> None:
             }
         },
     ]
-    
+
     controller = Controller(faults=faults)
     controller.control_loop()
     return
