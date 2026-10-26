@@ -6,9 +6,6 @@ data:
   entrypoint.sh: |
     #!/bin/bash
 
-    apt update
-    apt install -y dmsetup
-
     set -e
 
     BLOCKDEV="/bdev/lvma"

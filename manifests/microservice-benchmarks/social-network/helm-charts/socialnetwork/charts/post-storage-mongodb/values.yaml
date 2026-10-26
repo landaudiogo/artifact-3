@@ -8,7 +8,7 @@ container:
   args: 
   - --config
   - /social-network-microservices/config/mongod.conf
-  image: library/mongo
+  image: dclandau/social-network-mongodb
   imageVersion: 4.4.6
   name: post-storage-mongodb
   ports: 

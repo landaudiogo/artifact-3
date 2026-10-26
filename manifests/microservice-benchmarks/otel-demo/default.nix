@@ -7,7 +7,7 @@ stdenv.mkDerivation {
     outputHashAlgo = "sha256";
     outputHashMode = "recursive";
     # outputHash = lib.fakeHash;
-    outputHash = "sha256-Cg7erCmbG6cROR43IwGsEzOXT58z3xO1NEZWNN0FBgE=";
+    outputHash = "sha256-+wQ55fK+HkJO0bYUqbtJd+3Z+pv5myVRAzzB2CPXqDo=";
 
     buildInputs = with pkgs; [
         kubectl

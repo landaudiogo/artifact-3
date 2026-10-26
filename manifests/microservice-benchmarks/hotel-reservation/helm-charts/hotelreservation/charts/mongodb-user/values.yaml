@@ -7,8 +7,8 @@ ports:
     targetPort: 27017
  
 container:
-  image: mongo
-  imageVersion: 5.0
+  image: dclandau/hotel-reservation-mongodb
+  imageVersion: "5.0"
   name: hotel-reserv-user-mongo
   ports:
   - containerPort: 27017

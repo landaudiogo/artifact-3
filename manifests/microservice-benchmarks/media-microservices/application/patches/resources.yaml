@@ -8,9 +8,9 @@ spec:
       containers:
       - name: cast-info-memcached
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -26,9 +26,9 @@ spec:
       containers:
       - name: cast-info-mongodb
         resources:
-          limits:
-            cpu: null
-            memory: 304857600.0
+          limits: null
+            # cpu: null
+            # memory: 304857600.0
           requests:
             cpu: 0.01
             memory: 304857600.0
@@ -44,9 +44,9 @@ spec:
       containers:
       - name: cast-info-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -62,9 +62,9 @@ spec:
       containers:
       - name: compose-review-memcached
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.029
             memory: 104857600.0
@@ -80,9 +80,9 @@ spec:
       containers:
       - name: compose-review-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.118
             memory: 104857600.0
@@ -99,9 +99,9 @@ spec:
       containers:
       - name: jaeger
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -117,9 +117,9 @@ spec:
       containers:
       - name: movie-id-memcached
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -135,9 +135,9 @@ spec:
       containers:
       - name: movie-id-mongodb
         resources:
-          limits:
-            cpu: null
-            memory: 304857600.0
+          limits: null
+            # cpu: null
+            # memory: 304857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -153,9 +153,9 @@ spec:
       containers:
       - name: movie-id-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.031
             memory: 104857600.0
@@ -171,9 +171,9 @@ spec:
       containers:
       - name: movie-info-memcached
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -189,9 +189,9 @@ spec:
       containers:
       - name: movie-info-mongodb
         resources:
-          limits:
-            cpu: null
-            memory: 304857600.0
+          limits: null
+            # cpu: null
+            # memory: 304857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -207,9 +207,9 @@ spec:
       containers:
       - name: movie-info-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -225,9 +225,9 @@ spec:
       containers:
       - name: movie-review-mongodb
         resources:
-          limits:
-            cpu: null
-            memory: 330023424.0
+          limits: null
+            # cpu: null
+            # memory: 330023424.0
           requests:
             cpu: 0.034
             memory: 130023424.0
@@ -243,9 +243,9 @@ spec:
       containers:
       - name: movie-review-redis
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -261,9 +261,9 @@ spec:
       containers:
       - name: movie-review-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.026
             memory: 104857600.0
@@ -279,9 +279,9 @@ spec:
       containers:
       - name: nginx-web-server
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.029
             memory: 104857600.0
@@ -297,9 +297,9 @@ spec:
       containers:
       - name: page-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -315,9 +315,9 @@ spec:
       containers:
       - name: plot-memcached
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -333,9 +333,9 @@ spec:
       containers:
       - name: plot-mongodb
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -351,9 +351,9 @@ spec:
       containers:
       - name: plot-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -369,9 +369,9 @@ spec:
       containers:
       - name: rating-redis
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -387,9 +387,9 @@ spec:
       containers:
       - name: rating-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.031
             memory: 104857600.0
@@ -405,9 +405,9 @@ spec:
       containers:
       - name: review-storage-memcached
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -423,9 +423,9 @@ spec:
       containers:
       - name: review-storage-mongodb
         resources:
-          limits:
-            cpu: null
-            memory: 365675008.0
+          limits: null
+            # cpu: null
+            # memory: 365675008.0
           requests:
             cpu: 0.018
             memory: 165675008.0
@@ -441,9 +441,9 @@ spec:
       containers:
       - name: review-storage-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -459,9 +459,9 @@ spec:
       containers:
       - name: text-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -477,9 +477,9 @@ spec:
       containers:
       - name: unique-id-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.014
             memory: 104857600.0
@@ -495,9 +495,9 @@ spec:
       containers:
       - name: user-memcached
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -513,9 +513,9 @@ spec:
       containers:
       - name: user-mongodb
         resources:
-          limits:
-            cpu: null
-            memory: 304857600.0
+          limits: null
+            # cpu: null
+            # memory: 304857600.0
           requests:
             cpu: 0.01
             memory: 304857600.0
@@ -531,9 +531,9 @@ spec:
       containers:
       - name: user-review-mongodb
         resources:
-          limits:
-            cpu: null
-            memory: 331072000.0
+          limits: null
+            # cpu: null
+            # memory: 331072000.0
           requests:
             cpu: 0.028
             memory: 131072000.0
@@ -549,9 +549,9 @@ spec:
       containers:
       - name: user-review-redis
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -567,9 +567,9 @@ spec:
       containers:
       - name: user-review-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.025
             memory: 104857600.0
@@ -585,9 +585,9 @@ spec:
       containers:
       - name: user-service
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.013
             memory: 104857600.0

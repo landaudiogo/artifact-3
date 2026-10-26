@@ -9,9 +9,9 @@ spec:
       containers:
       - name: server
         resources:
-          limits:
-            cpu: null
-            memory: 382452224.0
+          limits: null
+            # cpu: null
+            # memory: 382452224.0
           requests:
             cpu: 0.018
             memory: 382452224.0
@@ -28,9 +28,9 @@ spec:
       containers:
       - name: server
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.066
             memory: 104857600.0
@@ -47,9 +47,9 @@ spec:
       containers:
       - name: server
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -66,9 +66,9 @@ spec:
       containers:
       - name: server
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.12
             memory: 104857600.0
@@ -85,9 +85,9 @@ spec:
       containers:
       - name: server
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -104,9 +104,9 @@ spec:
       containers:
       - name: server
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.251
             memory: 104857600.0
@@ -123,9 +123,9 @@ spec:
       containers:
       - name: jaeger
         resources:
-          limits:
-            cpu: null
-            memory: 919708416.0
+          limits: null
+            # cpu: null
+            # memory: 919708416.0
           requests:
             cpu: 0.011
             memory: 619708416.0
@@ -142,9 +142,9 @@ spec:
       containers:
       - name: otel-gateway
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.014
             memory: 104857600.0
@@ -161,9 +161,9 @@ spec:
       containers:
       - name: server
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
@@ -180,9 +180,9 @@ spec:
       containers:
       - name: server
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.076
             memory: 104857600.0
@@ -199,9 +199,9 @@ spec:
       containers:
       - name: server
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.126
             memory: 104857600.0
@@ -218,9 +218,9 @@ spec:
       containers:
       - name: redis
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.011
             memory: 104857600.0
@@ -237,9 +237,9 @@ spec:
       containers:
       - name: server
         resources:
-          limits:
-            cpu: null
-            memory: 104857600.0
+          limits: null
+            # cpu: null
+            # memory: 104857600.0
           requests:
             cpu: 0.01
             memory: 104857600.0
