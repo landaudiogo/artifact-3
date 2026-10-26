@@ -137,8 +137,8 @@ class Controller:
     async def inject_fault(self, fault, fault_interval: timedelta = timedelta(minutes=1)):
         fault = self.fault_creator.from_manifest(fault)
         fault.prepare()
-        fault.execute()
         start_epoch = time.time()
+        fault.execute()
         await asyncio.sleep(fault_interval.total_seconds())
         fault.recover()
         end_epoch = time.time()
